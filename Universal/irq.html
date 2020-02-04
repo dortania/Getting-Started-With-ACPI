@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Plugin type · GitBook</title>
+        <title>IRQ Fix · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="awac.html" />
     
-    
-    <link rel="prev" href="../Laptops/trackpad.html" />
+    <link rel="prev" href="xosi.html" />
     
 
     </head>
@@ -239,7 +237,7 @@
         
         
     
-        <li class="chapter active" data-level="5.1" data-path="plug.html">
+        <li class="chapter " data-level="5.1" data-path="plug.html">
             
                 <a href="plug.html">
             
@@ -291,7 +289,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.5" data-path="irq.html">
+        <li class="chapter active" data-level="5.5" data-path="irq.html">
             
                 <a href="irq.html">
             
@@ -334,7 +332,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Plugin type</a>
+        <a href=".." >IRQ Fix</a>
     </h1>
 </div>
 
@@ -349,16 +347,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="fixing-power-management">Fixing Power Management</h1>
-<p><strong>Intel CPUs only</strong></p>
-<p>CPU naming is fairly easy to figure out as well, open your decompiled DSDT and search for <code>Processor</code>. This should give you a result like this:</p>
-<p><img src="https://i.imgur.com/U3xffjU.png" alt=""></p>
-<p>As we can see, the first processor in our list is <code>PR00</code>. This is what we&apos;ll be applying the <code>plugin-type=1</code> property too. Now grab <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a> and replace the default <code>CPU0</code> with our <code>PR00</code>. Note that there are 2 mentions of <code>CPU0</code> in the SSDT.</p>
-<p>There are also some edge cases with <code>Processor</code>, specifically on HEDT series like X79, X99 and X299. This edge case is that the ACPI path is much longer and not so obvious:</p>
-<p><img src="https://i.imgur.com/HzOmbx2.png" alt=""></p>
-<p>If we then search for instances of <code>CP00</code> we find that it&apos;s ACPI path is <code>SB.SCK0.CP00</code>:</p>
-<p><img src="https://i.imgur.com/CtL6Csn.png" alt=""></p>
-<p>So for this X299 board, we&apos;d change <code>\_PR.CPU0</code> with <code>\_SB.SCK0.CP00</code> and <code>External (_PR_.CPU0, ProcessorObj)</code> with <code>External (_SB_.SCK0.CP00, ProcessorObj)</code></p>
+                                <h1 id="fixing-irq-conflicts">Fixing IRQ Conflicts</h1>
+<p>So you miss having those fancy hotpatches from Clover like FixIPIC, FixTMR, FixRTC, FixHPET, etc</p>
+<p>Well 1 very small problem, figruing out IRQ patching is a massive headache. <strong>I highly recommend you use SSDTTime</strong>. So head over to <a href="">SSDT: Easy Way</a> on how to make it</p>
 
                                 
                                 </section>
@@ -386,14 +377,10 @@
 
             
                 
-                <a href="../Laptops/trackpad.html" class="navigation navigation-prev " aria-label="Previous page: Trackpad GPIO">
+                <a href="xosi.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: XOSI">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="awac.html" class="navigation navigation-next " aria-label="Next page: AWAC vs RTC">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -402,7 +389,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Plugin type","level":"5.1","depth":1,"next":{"title":"AWAC vs RTC","level":"5.2","depth":1,"path":"Universal/awac.md","ref":"Universal/awac.md","articles":[]},"previous":{"title":"Trackpad GPIO","level":"4.3","depth":1,"path":"Laptops/trackpad.md","ref":"Laptops/trackpad.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/plug.md","mtime":"2020-02-04T22:59:18.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T23:00:04.229Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"IRQ Fix","level":"5.5","depth":1,"previous":{"title":"XOSI","level":"5.4","depth":1,"path":"Universal/xosi.md","ref":"Universal/xosi.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/irq.md","mtime":"2020-02-04T22:59:18.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T23:00:04.229Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

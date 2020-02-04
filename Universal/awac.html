@@ -120,14 +120,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" >
+        <li class="chapter " data-level="1.3" data-path="../ssdt-long.html">
             
-                <span>
+                <a href="../ssdt-long.html">
             
                     
                     SSDTs: Long Way
             
-                </span>
+                </a>
             
 
             
@@ -206,9 +206,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="../Laptops/backlight.md">
+        <li class="chapter " data-level="4.2" data-path="../Laptops/backlight.html">
             
-                <span>
+                <a href="../Laptops/backlight.html">
             
                     
                     Backlight PNLF
@@ -219,9 +219,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3" data-path="../Laptops/trackpad.md">
+        <li class="chapter " data-level="4.3" data-path="../Laptops/trackpad.html">
             
-                <span>
+                <a href="../Laptops/trackpad.html">
             
                     
                     Trackpad GPIO
@@ -278,12 +278,31 @@
             
         </li>
     
+        <li class="chapter " data-level="5.4" data-path="xosi.html">
+            
+                <a href="xosi.html">
+            
+                    
+                    XOSI
+            
+                </a>
+            
 
+            
+        </li>
     
-        
-        <li class="header">Cleanup</li>
-        
-        
+        <li class="chapter " data-level="5.5" data-path="irq.html">
+            
+                <a href="irq.html">
+            
+                    
+                    IRQ Fix
+            
+                </a>
+            
+
+            
+        </li>
     
 
     
@@ -332,11 +351,16 @@
                                 
                                 <h1 id="fixing-system-clocks">Fixing System Clocks</h1>
 <p>What the <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a> will do is force enable the Legacy RTC device in macOS, the reason we want to do this is that macOS currently does not support AWAC as a system clock. In some rare cases, there is no Legacy RTC device to force enable so we&apos;ll need to create a fake RTC device for macOS to play with using <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a></p>
-<p>To determine whether you need <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a> or <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a>, open your decompiled DSDT and search for <code>Device (AWAC)</code>. If you get a result then you have an <code>AWAC</code> system clock present, <strong>if nothing shows then no need to continue and no need for this SSDT</strong>. Otherwise, continue with the next search for <code>STAS ==</code>:</p>
+<p>To determine whether you need <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a> or <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a>:</p>
+<ul>
+<li>open your decompiled DSDT and search for <code>Device (AWAC)</code></li>
+<li>If nothing shows then no need to continue and no need for this SSDT. </li>
+<li>If you get a result then you have an <code>AWAC</code> system clock present, then continue with the next search for <code>STAS ==</code>:</li>
+</ul>
 <p><img src="https://i.imgur.com/uuUF857.png" alt=""></p>
 <p>As you can see we found the <code>STAS ==</code> in our DSDT, this means we&apos;re able to force enable our Legacy RTC. In this case, <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a> will be used As-Is with no modifications required. Just need to compile.</p>
-<p>For systems where no <code>STAS</code> shows up but you do have <code>AWAC</code>, you can use <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a> though you will need to check whether your DSDT uses <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>. </p>
-<p>By default it uses <code>LPCB</code>, you can check by just searching for <code>Name (_ADR, 0x001F0000)</code>. This address is used for Low Pin Count devices(LPC) but the device name can vary between <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>. Just search each one in your config and which ever shows up is the one your system uses</p>
+<p>For systems where no <code>STAS</code> shows up <strong>but</strong> you do have <code>AWAC</code>, you can use <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a> though you will need to check whether your DSDT uses <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>. </p>
+<p>By default it uses <code>LPCB</code>, you can check by just searching for <code>Name (_ADR, 0x001F0000)</code>. This address is used for Low Pin Count devices(LPC) but the device name can vary between <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>. Just search each one in your config and which ever shows up is the one your system uses:</p>
 <p><img src="https://cdn.discordapp.com/attachments/456913818467958789/670148514197667840/Screen_Shot_2020-01-23_at_11.08.30_PM.png" alt=""></p>
 
                                 
@@ -381,7 +405,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWAC vs RTC","level":"5.2","depth":1,"next":{"title":"NVRAM PMC","level":"5.3","depth":1,"path":"Universal/nvram.md","ref":"Universal/nvram.md","articles":[]},"previous":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/awac.md","mtime":"2020-02-04T21:14:07.043Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T21:14:53.091Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWAC vs RTC","level":"5.2","depth":1,"next":{"title":"NVRAM PMC","level":"5.3","depth":1,"path":"Universal/nvram.md","ref":"Universal/nvram.md","articles":[]},"previous":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/awac.md","mtime":"2020-02-04T22:59:18.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T23:00:04.229Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

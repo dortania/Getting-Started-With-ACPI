@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>SSDTs: Easy Way · GitBook</title>
+        <title>SSDTs: Long Way · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="ssdt-long.html" />
+    <link rel="next" href="Manual/dump.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="ssdt-easy.html" />
     
 
     </head>
@@ -107,7 +107,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="ssdt-easy.html">
+        <li class="chapter " data-level="1.2" data-path="ssdt-easy.html">
             
                 <a href="ssdt-easy.html">
             
@@ -120,7 +120,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="ssdt-long.html">
+        <li class="chapter active" data-level="1.3" data-path="ssdt-long.html">
             
                 <a href="ssdt-long.html">
             
@@ -334,7 +334,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >SSDTs: Easy Way</a>
+        <a href="." >SSDTs: Long Way</a>
     </h1>
 </div>
 
@@ -356,7 +356,7 @@
 <ul>
 <li><strong>HEDT SSDTs</strong>: The ACPI is odd on these platforms so manual work is required</li>
 <li><strong>Laptop EC fix</strong>: This is because you need to use an ACPI rename over an SSDT on laptops</li>
-<li><strong>SSDT-PNLF</strong>: No need to configuration required, use prebuilt file <a href="">here</a></li>
+<li><strong>SSDT-PNLF</strong>: Needs to be configured to either <code>IGPU</code>, <code>GFX0</code> or <code>PEG0</code></li>
 <li><strong>SSDT-GPIO</strong>: No need to configuration required, use prebuilt file <a href="">here</a></li>
 <li><strong>SSDT-XOSI</strong>: No need to configuration required, use prebuilt file <a href="">here</a></li>
 <li><strong>AWAC and RTC0 SSDTs</strong>: 300 series intel boards will also need to figure his out(Z390 systems are most common for requiring this but some gigabyte Z370 do as well)</li>
@@ -434,12 +434,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Getting Started With ACPI">
+                <a href="ssdt-easy.html" class="navigation navigation-prev " aria-label="Previous page: SSDTs: Easy Way">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="ssdt-long.html" class="navigation navigation-next " aria-label="Next page: SSDTs: Long Way">
+                <a href="Manual/dump.html" class="navigation navigation-next " aria-label="Next page: Dumping the DSDT">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -450,7 +450,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"next":{"title":"SSDTs: Long Way","level":"1.3","depth":1,"path":"ssdt-long.md","ref":"ssdt-long.md","articles":[]},"previous":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"ssdt-easy.md","mtime":"2020-02-04T22:59:18.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T23:00:04.229Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SSDTs: Long Way","level":"1.3","depth":1,"next":{"title":"Dumping the DSDT","level":"2.1","depth":1,"path":"Manual/dump.md","ref":"Manual/dump.md","articles":[]},"previous":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"ssdt-long.md","mtime":"2020-02-04T22:59:18.661Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T23:00:04.229Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
