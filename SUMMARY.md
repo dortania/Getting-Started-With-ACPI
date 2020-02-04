@@ -2,7 +2,7 @@
 
 * [Getting Started With ACPI](README.md)
 * [SSDTs: Easy Way](ssdt-easy.md)
-* [SSDTs: Long Way]()
+* [SSDTs: Long Way](ssdt-long.md)
 
 ## Manual
 * [Dumping the DSDT](/Manual/dump.md)
@@ -23,8 +23,7 @@
 * [Plugin type](/Universal/plug.md)
 * [AWAC vs RTC](/Universal/awac.md)
 * [NVRAM PMC](/Universal/nvram.md)
-
-
-## Cleanup
+* [XOSI](/Universal/xosi.md)
+* [IRQ Fix](/Universal/irq.md)
 
 

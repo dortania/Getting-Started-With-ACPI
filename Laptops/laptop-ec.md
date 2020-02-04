@@ -28,20 +28,7 @@ As you can see from the table below, we'll be renaming our EC listed in the DSDT
 |change ECDV to EC|45434456|45435f5f|
 |change PGEC to EC|50474543|45435f5f|
 
-
-## Clover users:
-
-| Comment | String | Change XXXX to EC |
-| :--- | :--- | :--- |
-| Disabled | Boolean | No |
-| Find | Data | xxxxxxxx |
-| Replace | Data | xxxxxxxx |
-
-![](https://cdn.discordapp.com/attachments/302485086060937219/668662065665409024/Screen_Shot_2020-01-19_at_8.44.00_PM.png)
-
-![](https://cdn.discordapp.com/attachments/456913818467958789/668666485463318558/Screen_Shot_2020-01-19_at_9.01.20_PM.png)
-
-## Opencore users:
+## Inside your config:
 
 | Comment | String | Change XXXX to EC |
 | :--- | :--- | :--- |

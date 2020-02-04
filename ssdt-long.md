@@ -8,7 +8,7 @@ So what **can't** SSDTTime do?:
 
 * **HEDT SSDTs**: The ACPI is odd on these platforms so manual work is required
 * **Laptop EC fix**: This is because you need to use an ACPI rename over an SSDT on laptops
-* **SSDT-PNLF**: No need to configuration required, use prebuilt file [here]()
+* **SSDT-PNLF**: Needs to be configured to either `IGPU`, `GFX0` or `PEG0`
 * **SSDT-GPIO**: No need to configuration required, use prebuilt file [here]()
 * **SSDT-XOSI**: No need to configuration required, use prebuilt file [here]()
 * **AWAC and RTC0 SSDTs**: 300 series intel boards will also need to figure his out(Z390 systems are most common for requiring this but some gigabyte Z370 do as well)
