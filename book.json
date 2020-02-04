@@ -1,0 +1,34 @@
+{
+    "plugins": ["theme-default", "-lunr", "-search", "search-plus", "addcssjs", "favicon-plus"],
+    "pluginsConfig": {
+        "fontsettings": {
+            "theme":  "night",
+            "family": "sans"
+        },
+        "favicon": "/icons/favicon.ico",
+        "appleTouchIconPrecomposed152": "/icons/appleTouchIconPrecomposed152.png",
+        "output": "_book"
+    },
+    "links": {
+        "sharing": {
+            "google": false,
+            "facebook": false,
+            "twitter": false,
+            "weibo": false,
+            "all": false
+        }
+    },
+    "pdf": {
+        "pageNumbers": false,
+        "fontSize": 12,
+        "paperSize": "a4",
+        "margin": {
+            "right": 62,
+            "left": 62,
+            "top": 36,
+            "bottom": 36
+        },
+        "headerTemplate": null,
+        "footerTemplate": null
+    }
+}
