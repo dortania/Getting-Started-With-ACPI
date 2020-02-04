@@ -1,0 +1,482 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Embedded Controllers · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../Laptops/laptop-ec.html" />
+    
+    
+    <link rel="prev" href="../Manual/compile.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Getting Started With ACPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../ssdt-easy.html">
+            
+                <a href="../ssdt-easy.html">
+            
+                    
+                    SSDTs: Easy Way
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    SSDTs: Long Way
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Manual</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../Manual/dump.html">
+            
+                <a href="../Manual/dump.html">
+            
+                    
+                    Dumping the DSDT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../Manual/compile.html">
+            
+                <a href="../Manual/compile.html">
+            
+                    
+                    Decompiling and Compiling
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Desktop</li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="desktop-ec.html">
+            
+                <a href="desktop-ec.html">
+            
+                    
+                    Embedded Controllers
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Laptop</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../Laptops/laptop-ec.html">
+            
+                <a href="../Laptops/laptop-ec.html">
+            
+                    
+                    Embedded Controllers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../Laptops/backlight.md">
+            
+                <span>
+            
+                    
+                    Backlight PNLF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../Laptops/trackpad.md">
+            
+                <span>
+            
+                    
+                    Trackpad GPIO
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Universal</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../Universal/plug.html">
+            
+                <a href="../Universal/plug.html">
+            
+                    
+                    Plugin type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../Universal/awac.html">
+            
+                <a href="../Universal/awac.html">
+            
+                    
+                    AWAC vs RTC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../Universal/nvram.html">
+            
+                <a href="../Universal/nvram.html">
+            
+                    
+                    NVRAM PMC
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Cleanup</li>
+        
+        
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Embedded Controllers</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="fixing-embedded-controller-desktop">Fixing Embedded Controller (Desktop)</h1>
+<p>This one&apos;s fairly easy to figure out, open your decompiled DSDT and search for <code>PNP0C09</code>. This should give you a result like this:</p>
+<p><img src="https://i.imgur.com/lQ4kpb9.png" alt=""></p>
+<p>As you can see our <code>PNP0C09</code> is found within the <code>Device (EC0)</code> meaning this is the device we want to hide from macOS(others may find ). Now grab our SSDT-EC and uncomment the EC0 function(remove the <code>/*</code> and <code>*/</code> around it):</p>
+<ul>
+<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a><ul>
+<li>For Skylake+ and all AMD systems</li>
+</ul>
+</li>
+<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a><ul>
+<li>For Haswell and older</li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-text">/* &lt;- REMOVE THIS
+External (_SB_.PCI0.LPCB.EC0, DeviceObj)
+
+   Scope (\_SB.PCI0.LPCB.EC0)
+   {   
+      Method (_STA, 0, NotSerialized) // _STA: Status
+      {
+         If (_OSI (&quot;Darwin&quot;))
+         {
+            Return (0)
+         }
+         Else
+      {
+      Return (0x0F)
+     }
+  }
+}
+*/ &lt;- REMOVE THIS
+</code></pre>
+<p>But looking back at the screenshot above we notice something, our ACPI path is different: <code>PC00.LPC0</code> vs <code>PCI0.LPCB</code>. This is very important especially when you&apos;re dealing with Intel consumer vs Intel HEDT and AMD, <code>PC00.LPC0</code> is common on Intel HEDT while <code>PCI0.SBRG</code> is common on AMD. And they even come with name variation such as  <code>EC0</code>, <code>H_EC</code>, <code>PGEC</code> and <code>ECDV</code>, so there can&apos;t be a one size fits all SSDT, <strong>always verify your path and device</strong>. </p>
+<p>And make sure to scroll to the bottom as the new Fake EC function also need the correct path to replace the old EC. <strong>Do not rename the EC device itself</strong>, this is our fake EC we&apos;re using for macOS to play with. Just change the path!</p>
+<blockquote>
+<p>What happens if multiple <code>PNP0C09</code> show up</p>
+</blockquote>
+<p>When this happens you need to figure out which is the main and which is not, it&apos;s fairly easy to figure out. Check each controller for the following properties:</p>
+<ul>
+<li><code>_HID</code></li>
+<li><code>_CRS</code></li>
+<li><code>_GPE</code></li>
+</ul>
+<blockquote>
+<p>What happens if no <code>PNP0C09</code> show up?</p>
+</blockquote>
+<p>This means your SSDT can be <em>almost</em> complied, the main thing to watch for is whether your DSDT uses <code>PCI0.LPCB</code> or not. The reason being is that we have a FakeEC at the bottom of our SSDT that needs to connect properly into our DSDT. Gernally AMD uses <code>SBRG</code> while Intel HEDT use <code>LPC0</code>, <strong>verify which show up in your DSDT</strong>.</p>
+<p>You can check by just searching for <code>Name (_ADR, 0x001F0000)</code>(this only works for Intel, AMD users should assume <code>SBRG</code>). This address is used for Low Pin Count devices(LPC) but the device name can vary between <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>. Just search each one in your config and which ever shows up is the one your system uses</p>
+<p><img src="https://cdn.discordapp.com/attachments/456913818467958789/670148514197667840/Screen_Shot_2020-01-23_at_11.08.30_PM.png" alt=""></p>
+<p>Once you find out, change <code>PCI0.LPCB</code> to your correct path:</p>
+<pre><code class="lang-text">Scope (\_SB.PCI0.LPCB)
+{
+    Device (EC)
+    {
+        Name (_HID, &quot;ACID0001&quot;)  // _HID: Hardware ID
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI (&quot;Darwin&quot;))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>Hey what about USBX? Do I need to do anything?</p>
+</blockquote>
+<p>USBX is universal across all systems, it just creates a USBX device that forces USB power properties. This is crucial for fixing Mics, DACs, Webcams, Bluetooth Dongles and other high power draw devices. This is not mandatory to boot but should be added in post-install if not before. Note that USBX is only used on skylake+ systems, Broadwell and older can ignore and that USBX requires a patched EC to function correctly</p>
+<p>For those who want a deeper dive into the EC issue: <a href="https://www.reddit.com/r/hackintosh/comments/den28t/whats_new_in_macos_catalina/" target="_blank">What&apos;s new in macOS Catalina</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../Manual/compile.html" class="navigation navigation-prev " aria-label="Previous page: Decompiling and Compiling">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../Laptops/laptop-ec.html" class="navigation navigation-next " aria-label="Next page: Embedded Controllers">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Embedded Controllers","level":"3.1","depth":1,"next":{"title":"Embedded Controllers","level":"4.1","depth":1,"path":"Laptops/laptop-ec.md","ref":"Laptops/laptop-ec.md","articles":[]},"previous":{"title":"Decompiling and Compiling","level":"2.2","depth":1,"path":"Manual/compile.md","ref":"Manual/compile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Desktops/desktop-ec.md","mtime":"2020-02-04T21:14:07.043Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T21:14:53.091Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    
+
+    </body>
+</html>
+

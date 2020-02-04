@@ -1,0 +1,22 @@
+language: node_js
+node_js: node
+before_script:
+- npm install -g gitbook-cli
+script: 
+- gitbook install
+- gitbook build
+- cp icons/* _book/gitbook/images
+deploy:
+  local_dir: _book
+  provider: pages
+  skip_cleanup: true
+  name: Travis Build Bot
+  fqdn:
+  keep_history: true
+  on:
+    branch: master
+  target_branch: gh-pages
+  # committer_from_gh: true
+  # allow_empty_commit: true
+  github_token:
+    secure: MHH0aRcfOAVwABknQmtLPzXSA1dD/oC7/wYgZOQDqD7yNI24Fry7gYLE8vepQnGjZAADwTqRwQrDqs+o04J2VPwjSQH7JG2BmqZngKOMcLYAZJdvzFBemMtcWfDF79Q61rChVfWXGCKLuWtjIS/RQGtQ05WSFEpLrfWeCJMD4k25zR7lM4OcA3ITZHQ23l1bj3RZEE/NxVQiQKX0ioFXZLkz3y5rBsDIdcXrYPRGBoxXjO4ilm5Z0Y7oqvHcq4bQaRXWNCUb/4emfwSARm19u5/SBoOC127NRNLv6F0iy1DZCOu+G4aqIaTPAIhFh+f57LZ0QRRJ6XUHHYXWyiqSv31Mk7h0qU+OyjUMhl7iQrDRaQ/YmZTZjsvbo0uckRZno6O6THuoleZVm44noFrwklyt8UWI9eKdZeo6+4fxNuZYe0XIMVBmbUKgGeo2NOhBJf1kMDfecUxbVuorv5GUqyJDMV+BsXmNHYzDZAvtr7fMpf17fxH331EPvsMnYvgzGNeddIYdmae4rGnq5m+PH7187u3dXW6lzq4qJzg0TAXfxRxsbB3PdnbCidJncu5SkdPfo0ebFu5svY0A/1tyCOutmKOJ8iDxLV6z+X4/CoKloLNQqG/NzTuuzdxKCE39tj96WDzOQ4CryfSYg6TTsFZ5JU6ERqcK7RGAmhBt7Ws=
