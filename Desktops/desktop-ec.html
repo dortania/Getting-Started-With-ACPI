@@ -350,16 +350,17 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="fixing-embedded-controller-desktop">Fixing Embedded Controller (Desktop)</h1>
-<p>This one&apos;s fairly easy to figure out, open your decompiled DSDT and search for <code>PNP0C09</code>. This should give you a result like this:</p>
+<p>What we&apos;ll be doing is hiding our actual EC and creating a fake Embedded Comtroller for macOS to play with.</p>
+<p>To find out what EC you have, open your decompiled DSDT and search for <code>PNP0C09</code>. This should give you a result like this:</p>
 <p><img src="https://i.imgur.com/lQ4kpb9.png" alt=""></p>
-<p>As you can see our <code>PNP0C09</code> is found within the <code>Device (EC0)</code> meaning this is the device we want to hide from macOS(others may find ). Now grab our SSDT-EC and uncomment the EC0 function(remove the <code>/*</code> and <code>*/</code> around it):</p>
+<p>As you can see our <code>PNP0C09</code> is found within the <code>Device (EC0)</code> meaning this is the device we want to hide from macOS(others may find <code>H_EC</code>, <code>ECDV</code>, etc, everyone&apos;s systems will be different). Now grab our SSDT-EC and uncomment the EC0 function(remove the <code>/*</code> and <code>*/</code> around it):</p>
 <ul>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a><ul>
 <li>For Skylake+ and all AMD systems</li>
 </ul>
 </li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a><ul>
-<li>For Haswell and older</li>
+<li>For Broadwell and older</li>
 </ul>
 </li>
 </ul>
@@ -382,8 +383,19 @@ External (_SB_.PCI0.LPCB.EC0, DeviceObj)
 }
 */ &lt;- REMOVE THIS
 </code></pre>
-<p>But looking back at the screenshot above we notice something, our ACPI path is different: <code>PC00.LPC0</code> vs <code>PCI0.LPCB</code>. This is very important especially when you&apos;re dealing with Intel consumer vs Intel HEDT and AMD, <code>PC00.LPC0</code> is common on Intel HEDT while <code>PCI0.SBRG</code> is common on AMD. And they even come with name variation such as  <code>EC0</code>, <code>H_EC</code>, <code>PGEC</code> and <code>ECDV</code>, so there can&apos;t be a one size fits all SSDT, <strong>always verify your path and device</strong>. </p>
-<p>And make sure to scroll to the bottom as the new Fake EC function also need the correct path to replace the old EC. <strong>Do not rename the EC device itself</strong>, this is our fake EC we&apos;re using for macOS to play with. Just change the path!</p>
+<p>But looking back at the screenshot above we notice something, our ACPI path is different: <code>PC00.LPC0</code> vs <code>PCI0.LPCB</code>. This is very important especially when you&apos;re dealing with Intel consumer vs Intel HEDT and AMD, <code>PC00.LPC0</code> is common on Intel HEDT while <code>PCI0.SBRG</code> is common on AMD. And they even come with name variation such as  <code>EC0</code>, <code>H_EC</code>, <code>PGEC</code> and <code>ECDV</code>, so there can&apos;t be a one size fits all SSDT, <strong>always verify your path and device. DO NOT ASSUME</strong>.</p>
+<ul>
+<li>Finding the LowPinCount path: <ul>
+<li>Intel: Search <code>Name (_ADR, 0x001F0000)</code></li>
+<li>AMD: Search <code>Name (_ADR, 0x00140003)</code></li>
+</ul>
+</li>
+<li>Finding the PCI path: <ul>
+<li>Search for <code>PNP0A08</code> (If multiple show up, use the first one)</li>
+</ul>
+</li>
+</ul>
+<p>And make sure to scroll to the bottom as the new Fake EC function also need the correct path to replace the old EC. <strong>Do not rename the EC device itself</strong>, this is our fake EC we&apos;re using for macOS to play with so leave Leave <code>Device (EC)</code> alone. <strong>Just change the path!</strong></p>
 <blockquote>
 <p>What happens if multiple <code>PNP0C09</code> show up</p>
 </blockquote>
@@ -397,7 +409,18 @@ External (_SB_.PCI0.LPCB.EC0, DeviceObj)
 <p>What happens if no <code>PNP0C09</code> show up?</p>
 </blockquote>
 <p>This means your SSDT can be <em>almost</em> complied, the main thing to watch for is whether your DSDT uses <code>PCI0.LPCB</code> or not. The reason being is that we have a FakeEC at the bottom of our SSDT that needs to connect properly into our DSDT. Gernally AMD uses <code>SBRG</code> while Intel HEDT use <code>LPC0</code>, <strong>verify which show up in your DSDT</strong>.</p>
-<p>You can check by just searching for <code>Name (_ADR, 0x001F0000)</code>(this only works for Intel, AMD users should assume <code>SBRG</code>). This address is used for Low Pin Count devices(LPC) but the device name can vary between <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>. Just search each one in your config and which ever shows up is the one your system uses</p>
+<p>You can check by just searching for <code>Name (_ADR, 0x001F0000)</code>(this only works for Intel, AMD&apos;s controller is found at <code>Name (_ADR, 0x00140003)</code>). This address is used for Low Pin Count devices(LPC) but the device name can vary between <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>.<strong>Again, double check your device. DO NOT ASSUME</strong>:</p>
+<ul>
+<li>Finding the LowPinCount path: <ul>
+<li>Intel: Search <code>Name (_ADR, 0x001F0000)</code></li>
+<li>AMD: Search <code>Name (_ADR, 0x00140003)</code>(Almost always will be called <code>SBRG</code>)</li>
+</ul>
+</li>
+<li>Finding the PCI path: <ul>
+<li>Search for <code>PNP0A08</code> (If multiple show up, use the first one)</li>
+</ul>
+</li>
+</ul>
 <p><img src="https://cdn.discordapp.com/attachments/456913818467958789/670148514197667840/Screen_Shot_2020-01-23_at_11.08.30_PM.png" alt=""></p>
 <p>Once you find out, change <code>PCI0.LPCB</code> to your correct path:</p>
 <pre><code class="lang-text">Scope (\_SB.PCI0.LPCB)
@@ -467,7 +490,7 @@ External (_SB_.PCI0.LPCB.EC0, DeviceObj)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Embedded Controllers","level":"3.1","depth":1,"next":{"title":"Embedded Controllers","level":"4.1","depth":1,"path":"Laptops/laptop-ec.md","ref":"Laptops/laptop-ec.md","articles":[]},"previous":{"title":"Decompiling and Compiling","level":"2.2","depth":1,"path":"Manual/compile.md","ref":"Manual/compile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Desktops/desktop-ec.md","mtime":"2020-02-04T23:14:09.355Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T23:14:54.533Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Embedded Controllers","level":"3.1","depth":1,"next":{"title":"Embedded Controllers","level":"4.1","depth":1,"path":"Laptops/laptop-ec.md","ref":"Laptops/laptop-ec.md","articles":[]},"previous":{"title":"Decompiling and Compiling","level":"2.2","depth":1,"path":"Manual/compile.md","ref":"Manual/compile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Desktops/desktop-ec.md","mtime":"2020-02-05T06:15:37.860Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T06:16:23.856Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

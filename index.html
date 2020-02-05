@@ -356,7 +356,7 @@
 <p>macOS can be very picky about the devices present in the DSDT and so our job is to correct it. The main devices that need to be corrected for macOS to work properly:</p>
 <ul>
 <li>Embedded controllers(EC) <ul>
-<li>All semi-modern intel machines have an EC exposed in their DSDT, with many AMD systems also having it exposed. These controllers are not compatible with macOS so then need to be hidden from macOS and replaced with a dummy EC when running macOS Catalina</li>
+<li>All semi-modern intel machines have an EC exposed in their DSDT, with many AMD systems also having it exposed. These controllers are not compatible with macOS so then need to be hidden from macOS and replaced with a dummy EC when running macOS Catalina. With laptops, we still need these ECs so we rename them into what macOS would expect ECs to look like</li>
 </ul>
 </li>
 <li>Plugin type<ul>
@@ -393,8 +393,8 @@
 <h3 id="desktop">Desktop</h3>
 <p><strong>Ivy Bridge:</strong></p>
 <ul>
+<li><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></li>
-<li><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a></li>
 </ul>
 <p><strong>Haswell:</strong></p>
 <ul>
@@ -437,7 +437,7 @@
 <h3 id="laptop">Laptop</h3>
 <p><strong>Ivy Bridge:</strong></p>
 <ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></li>
+<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
 <li><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a></li>
 <li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml" target="_blank">SSDT-XOSI</a></li>
@@ -446,8 +446,8 @@
 </ul>
 <p><strong>Haswell:</strong></p>
 <ul>
+<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></li>
 <li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml" target="_blank">SSDT-XOSI</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPIO</a></li>
@@ -455,8 +455,8 @@
 </ul>
 <p><strong>Broadwell:</strong></p>
 <ul>
+<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></li>
 <li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml" target="_blank">SSDT-XOSI</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPIO</a></li>
@@ -464,8 +464,8 @@
 </ul>
 <p><strong>Skylake:</strong></p>
 <ul>
+<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
 <li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml" target="_blank">SSDT-XOSI</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPIO</a></li>
@@ -473,8 +473,8 @@
 </ul>
 <p><strong>Kabylake:</strong></p>
 <ul>
+<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
 <li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml" target="_blank">SSDT-XOSI</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPIO</a></li>
@@ -482,8 +482,8 @@
 </ul>
 <p><strong>Coffeelake(8th Gen):</strong></p>
 <ul>
+<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
 <li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml" target="_blank">SSDT-XOSI</a></li>
 <li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPIO</a></li>
@@ -491,8 +491,8 @@
 </ul>
 <p><strong>Coffeelake(9th Gen):</strong></p>
 <ul>
+<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT AWAC</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></li>
 <li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
@@ -539,7 +539,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"next":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2020-02-04T23:14:09.355Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-04T23:14:54.533Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"next":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2020-02-05T06:15:37.860Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-05T06:16:23.856Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
