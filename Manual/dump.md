@@ -1,13 +1,15 @@
 # Getting a copy of our DSDT
 
-So to start, we'll need to get a copy of your DSDT from your firmware. There's a couple of options:
+So to start, we'll need to get a copy of your DSDT from your firmware. The easyiest way is grabbing the DSDT.aml SSDTTime dumped for us earlier but here are some other options:
 
+
+
+* [SSDTTime](https://github.com/corpnewt/SSDTTime)
+   * Supports both Windows and Linux for DSDT dumping
+   * `4. Dump DSDT - Automatically dump the system DSDT`
 * [MaciASL](https://github.com/acidanthera/MaciASL/releases)
   * Open the app on the target machine(must already be running macOS) and the system's DSDT will show, then File -&gt; SaveAs `System DSDT`. Make sure the file format is ACPI Machine Language Binary(.AML), this will require the machine to be running macOS
   * Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT
-* [SSDTTime](https://github.com/corpnewt/SSDTTime)
-  * Supports both Windows and Linux for DSDT dumping
-  * Option 4 to dump
 * [acpidump.exe](https://acpica.org/sites/acpica/files/iasl-win-20180105.zip)
   * In command prompt run `path/to/acpidump.exe -b -n DSDT -z`, this will dump your DSDT as a .dat file. Rename this to DSDT.aml
 * F4 in Clover Boot menu

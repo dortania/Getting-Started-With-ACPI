@@ -7,4 +7,5 @@ Well sadly some things are not handled by SSDTTime, well have no fear as making 
 * Make SSDTs based of of it
 * Compile SSDTs
 
-Now contnue forth and master the ways of ACPI!
+Now continue forth and master the ways of ACPI!
+

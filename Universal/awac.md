@@ -1,5 +1,7 @@
 # Fixing System Clocks
 
+**For Intel 300 series chipsets only**
+
 What the [SSDT-AWAC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) will do is force enable the Legacy RTC device in macOS, the reason we want to do this is that macOS currently does not support AWAC as a system clock. In some rare cases, there is no Legacy RTC device to force enable so we'll need to create a fake RTC device for macOS to play with using [SSDT-RTC0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl)
 
 To determine whether you need [SSDT-AWAC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) or [SSDT-RTC0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl):

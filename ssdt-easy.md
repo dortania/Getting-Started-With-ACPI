@@ -39,9 +39,9 @@ What we want to do is select option `4. Dump DSDT` first, then select the approp
 
 > What about USBX?
 
-For Skylake+ and AMD, you can grab a prebuilt file here: [SSDT-USBX.aml](https://github.com/khronokernel/Opencore-Vanilla-Desktop-Guide/blob/master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Haswell and older**.
+For Skylake+ and AMD, you can grab a prebuilt file here: [SSDT-USBX.aml](https://github.com/khronokernel/Opencore-Vanilla-Desktop-Guide/blob/master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Broadwell and older**.
 
-**Troubleshooting note**: See [General Troubleshooting](/troubleshooting/troubleshooting).md if you're having issues running SSDTTime
+**Troubleshooting note**: See [General Troubleshooting](https://khronokernel.github.io/Opencore-Vanilla-Desktop-Guide/troubleshooting/troubleshooting.html) if you're having issues running SSDTTime
 
 ## Adding to OpenCore
 
@@ -49,9 +49,9 @@ Don't forget that SSDTs need to be added to Opencore, eminder that .aml is compl
 * EFI/OC/ACPI
 * config.plist -> ACPI -> Add
 
-Reminder that Cmd/Crtl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. Do not add your DSDT to OpenCore, its already in your firmware
+Reminder that Cmd/Crtl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. **Do not add your DSDT to OpenCore, its already in your firmware**
 
-Users of `FixHPET` will also need to merge c_patches.plist into their config.plist
+Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
 
 Steps to do this:
 

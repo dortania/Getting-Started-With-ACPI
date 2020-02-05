@@ -1,16 +1,18 @@
 
 # Fixing Embedded Controller (Desktop)
 
-This one's fairly easy to figure out, open your decompiled DSDT and search for `PNP0C09`. This should give you a result like this:
+What we'll be doing is hiding our actual EC and creating a fake Embedded Comtroller for macOS to play with.
+
+To find out what EC you have, open your decompiled DSDT and search for `PNP0C09`. This should give you a result like this:
 
 ![](https://i.imgur.com/lQ4kpb9.png)
 
-As you can see our `PNP0C09` is found within the `Device (EC0)` meaning this is the device we want to hide from macOS(others may find ). Now grab our SSDT-EC and uncomment the EC0 function(remove the `/*` and `*/` around it):
+As you can see our `PNP0C09` is found within the `Device (EC0)` meaning this is the device we want to hide from macOS(others may find `H_EC`, `ECDV`, etc, everyone's systems will be different). Now grab our SSDT-EC and uncomment the EC0 function(remove the `/*` and `*/` around it):
 
 * [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
   * For Skylake+ and all AMD systems
 * [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
-  * For Haswell and older
+   * For Broadwell and older
 
 ```text
 /* <- REMOVE THIS
@@ -33,9 +35,15 @@ External (_SB_.PCI0.LPCB.EC0, DeviceObj)
 */ <- REMOVE THIS
 ```
 
-But looking back at the screenshot above we notice something, our ACPI path is different: `PC00.LPC0` vs `PCI0.LPCB`. This is very important especially when you're dealing with Intel consumer vs Intel HEDT and AMD, `PC00.LPC0` is common on Intel HEDT while `PCI0.SBRG` is common on AMD. And they even come with name variation such as  `EC0`, `H_EC`, `PGEC` and `ECDV`, so there can't be a one size fits all SSDT, **always verify your path and device**. 
+But looking back at the screenshot above we notice something, our ACPI path is different: `PC00.LPC0` vs `PCI0.LPCB`. This is very important especially when you're dealing with Intel consumer vs Intel HEDT and AMD, `PC00.LPC0` is common on Intel HEDT while `PCI0.SBRG` is common on AMD. And they even come with name variation such as  `EC0`, `H_EC`, `PGEC` and `ECDV`, so there can't be a one size fits all SSDT, **always verify your path and device. DO NOT ASSUME**.
 
-And make sure to scroll to the bottom as the new Fake EC function also need the correct path to replace the old EC. **Do not rename the EC device itself**, this is our fake EC we're using for macOS to play with. Just change the path!
+* Finding the LowPinCount path: 
+   * Intel: Search `Name (_ADR, 0x001F0000)`
+   * AMD: Search `Name (_ADR, 0x00140003)`
+* Finding the PCI path: 
+   * Search for `PNP0A08` (If multiple show up, use the first one)
+
+And make sure to scroll to the bottom as the new Fake EC function also need the correct path to replace the old EC. **Do not rename the EC device itself**, this is our fake EC we're using for macOS to play with so leave Leave `Device (EC)` alone. **Just change the path!**
 
 > What happens if multiple `PNP0C09` show up
 
@@ -49,7 +57,15 @@ When this happens you need to figure out which is the main and which is not, it'
 
 This means your SSDT can be *almost* complied, the main thing to watch for is whether your DSDT uses `PCI0.LPCB` or not. The reason being is that we have a FakeEC at the bottom of our SSDT that needs to connect properly into our DSDT. Gernally AMD uses `SBRG` while Intel HEDT use `LPC0`, **verify which show up in your DSDT**.
 
-You can check by just searching for `Name (_ADR, 0x001F0000)`(this only works for Intel, AMD users should assume `SBRG`). This address is used for Low Pin Count devices(LPC) but the device name can vary between `LPCB`, `LBC` or `LBC0`. Just search each one in your config and which ever shows up is the one your system uses
+You can check by just searching for `Name (_ADR, 0x001F0000)`(this only works for Intel, AMD's controller is found at `Name (_ADR, 0x00140003)`). This address is used for Low Pin Count devices(LPC) but the device name can vary between `LPCB`, `LBC` or `LBC0`.**Again, double check your device. DO NOT ASSUME**:
+
+* Finding the LowPinCount path: 
+   * Intel: Search `Name (_ADR, 0x001F0000)`
+   * AMD: Search `Name (_ADR, 0x00140003)`(Almost always will be called `SBRG`)
+* Finding the PCI path: 
+   * Search for `PNP0A08` (If multiple show up, use the first one)
+
+
 
 ![](https://cdn.discordapp.com/attachments/456913818467958789/670148514197667840/Screen_Shot_2020-01-23_at_11.08.30_PM.png)
 

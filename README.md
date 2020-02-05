@@ -9,7 +9,7 @@ So what are DSDTs and SSDTs? Well, these are tables present in your firmware tha
 macOS can be very picky about the devices present in the DSDT and so our job is to correct it. The main devices that need to be corrected for macOS to work properly:
 
 * Embedded controllers(EC) 
-  * All semi-modern intel machines have an EC exposed in their DSDT, with many AMD systems also having it exposed. These controllers are not compatible with macOS so then need to be hidden from macOS and replaced with a dummy EC when running macOS Catalina
+   * All semi-modern intel machines have an EC exposed in their DSDT, with many AMD systems also having it exposed. These controllers are not compatible with macOS so then need to be hidden from macOS and replaced with a dummy EC when running macOS Catalina. With laptops, we still need these ECs so we rename them into what macOS would expect ECs to look like
 * Plugin type
   * This is used to enable native CPU power management on **Intel** Haswell and newer CPUs, the SSDT will connect to the first thread of the CPU. Not meant for AMD
 * AWAC system clock.
@@ -32,8 +32,8 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 ### Desktop
 
 **Ivy Bridge:**
+* [CPU-PM](https://github.com/Piker-Alpha/ssdtPRGen.sh)(Run in Post-Install)
 * [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
-* [CPU-PM](https://github.com/Piker-Alpha/ssdtPRGen.sh)
 
 **Haswell:**
 * [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl)
@@ -71,7 +71,7 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 ### Laptop
 
 **Ivy Bridge:**
-* [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
+* [EC ACPI Patch](/Laptops/laptop-ec.md)
 * [CPU-PM](https://github.com/Piker-Alpha/ssdtPRGen.sh)
 * [SSDT-PNLF](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
 * [SSDT-XOSI](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml)
@@ -79,48 +79,48 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 * [IRQ SSDT](https://github.com/corpnewt/SSDTTime)
 
 **Haswell:**
+* [EC ACPI Patch](/Laptops/laptop-ec.md)
 * [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl)
-* [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
 * [SSDT-PNLF](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
 * [SSDT-XOSI](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml)
 * [SSDT-GPIO](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml)
 * [IRQ SSDT](https://github.com/corpnewt/SSDTTime)
 
 **Broadwell:**
+* [EC ACPI Patch](/Laptops/laptop-ec.md)
 * [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl)
-* [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
 * [SSDT-PNLF](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
 * [SSDT-XOSI](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml)
 * [SSDT-GPIO](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml)
 * [IRQ SSDT](https://github.com/corpnewt/SSDTTime)
 
 **Skylake:**
+* [EC ACPI Patch](/Laptops/laptop-ec.md)
 * [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl)
-* [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
 * [SSDT-PNLF](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
 * [SSDT-XOSI](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml)
 * [SSDT-GPIO](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml)
 * [IRQ SSDT](https://github.com/corpnewt/SSDTTime)
 
 **Kabylake:**
+* [EC ACPI Patch](/Laptops/laptop-ec.md)
 * [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl)
-* [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
 * [SSDT-PNLF](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
 * [SSDT-XOSI](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml)
 * [SSDT-GPIO](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml)
 * [IRQ SSDT](https://github.com/corpnewt/SSDTTime)
 
 **Coffeelake(8th Gen):**
+* [EC ACPI Patch](/Laptops/laptop-ec.md)
 * [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl)
-* [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
 * [SSDT-PNLF](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
 * [SSDT-XOSI](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml)
 * [SSDT-GPIO](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml)
 * [IRQ SSDT](https://github.com/corpnewt/SSDTTime)
 
 **Coffeelake(9th Gen):**
+* [EC ACPI Patch](/Laptops/laptop-ec.md)
 * [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl)
-* [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
 * [SSDT AWAC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl)
 * [SSDT-PMC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl)
 * [SSDT-PNLF](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
