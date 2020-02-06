@@ -6,14 +6,22 @@ What this tool does is dumps your DSDT from your firmware, and then creates SSDT
 
 So what **can't** SSDTTime do?:
 
-* **HEDT SSDTs**: The ACPI is odd on these platforms so manual work is required
-* **Laptop EC fix**: This is because you need to use an ACPI rename over an SSDT on laptops
-* **SSDT-PNLF**: No need to configuration required for most, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PNLF.aml)
-* **SSDT-GPIO**: No need to configuration required, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPIO.aml)
-* **SSDT-XOSI**: No need to configuration required, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-XOSI.aml)
-* **AWAC and RTC0 SSDTs**: 300 series intel boards will also need to figure his out(Z390 systems are most common for requiring this but some gigabyte Z370 do as well)
-* **PMC SSDT**: For fixing 300 series intel NVRAM, a prebuilt for `PCI0.LPCB` can be found here: [SSDT-PMC.aml](https://github.com/khronokernel/Opencore-Vanilla-Desktop-Guide/blob/master/extra-files/SSDT-PMC.aml)
-* **USBX SSDT**: This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a prebuilt here: [SSDT-USBX.aml](https://github.com/khronokernel/Opencore-Vanilla-Desktop-Guide/blob/master/extra-files/SSDT-USBX.aml)
+* **HEDT SSDTs**: 
+   * The ACPI is odd on these platforms so manual work is required
+* **Laptop EC fix**: 
+   * This is because you need to use an ACPI rename over an SSDT on laptops
+* **SSDT-PNLF**: 
+   * No need to configuration required for most, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PNLF.aml)
+* **SSDT-GPIO**: 
+   * No need to configuration required, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPIO.aml)
+* **SSDT-XOSI**: 
+   * No need to configuration required, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-XOSI.aml)
+* **AWAC and RTC0 SSDTs**: 
+   * 300 series intel boards will also need to figure his out(Z390 systems are most common for requiring this but some gigabyte Z370 do as well)
+* **PMC SSDT**: 
+   * For fixing 300 series intel NVRAM
+* **USBX SSDT**: 
+   * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a prebuilt here: [SSDT-USBX.aml](https://github.com/khronokernel/Opencore-Vanilla-Desktop-Guide/blob/master/extra-files/SSDT-USBX.aml)
 
 For users who don't have all the options avaible to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it support for you.
 

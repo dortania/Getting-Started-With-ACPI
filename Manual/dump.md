@@ -1,6 +1,6 @@
 # Getting a copy of our DSDT
 
-So to start, we'll need to get a copy of your DSDT from your firmware. The easyiest way is grabbing the DSDT.aml SSDTTime dumped for us earlier but here are some other options:
+So to start, we'll need to get a copy of your DSDT from your firmware. The easiest way is grabbing the DSDT.aml SSDTTime dumped for us earlier but here are some other options:
 
 
 
