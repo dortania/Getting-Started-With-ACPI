@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Embedded Controllers · GitBook</title>
+        <title>GPU Spoof · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="backlight.html" />
+    <link rel="next" href="../cleanup.html" />
     
     
-    <link rel="prev" href="../Desktops/desktop-ec.html" />
+    <link rel="prev" href="irq.html" />
     
 
     </head>
@@ -193,9 +193,9 @@
         
         
     
-        <li class="chapter active" data-level="4.1" data-path="laptop-ec.html">
+        <li class="chapter " data-level="4.1" data-path="../Laptops/laptop-ec.html">
             
-                <a href="laptop-ec.html">
+                <a href="../Laptops/laptop-ec.html">
             
                     
                     Embedded Controllers
@@ -206,9 +206,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.2" data-path="backlight.html">
+        <li class="chapter " data-level="4.2" data-path="../Laptops/backlight.html">
             
-                <a href="backlight.html">
+                <a href="../Laptops/backlight.html">
             
                     
                     Backlight PNLF
@@ -219,9 +219,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.3" data-path="trackpad.html">
+        <li class="chapter " data-level="4.3" data-path="../Laptops/trackpad.html">
             
-                <a href="trackpad.html">
+                <a href="../Laptops/trackpad.html">
             
                     
                     Trackpad GPIO
@@ -239,9 +239,9 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="../Universal/plug.html">
+        <li class="chapter " data-level="5.1" data-path="plug.html">
             
-                <a href="../Universal/plug.html">
+                <a href="plug.html">
             
                     
                     Plugin type
@@ -252,9 +252,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.2" data-path="../Universal/awac.html">
+        <li class="chapter " data-level="5.2" data-path="awac.html">
             
-                <a href="../Universal/awac.html">
+                <a href="awac.html">
             
                     
                     AWAC vs RTC
@@ -265,9 +265,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="../Universal/nvram.html">
+        <li class="chapter " data-level="5.3" data-path="nvram.html">
             
-                <a href="../Universal/nvram.html">
+                <a href="nvram.html">
             
                     
                     NVRAM PMC
@@ -278,9 +278,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.4" data-path="../Universal/xosi.html">
+        <li class="chapter " data-level="5.4" data-path="xosi.html">
             
-                <a href="../Universal/xosi.html">
+                <a href="xosi.html">
             
                     
                     XOSI
@@ -291,9 +291,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.5" data-path="../Universal/irq.html">
+        <li class="chapter " data-level="5.5" data-path="irq.html">
             
-                <a href="../Universal/irq.html">
+                <a href="irq.html">
             
                     
                     IRQ Fix
@@ -304,9 +304,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.6" data-path="../Universal/spoof.html">
+        <li class="chapter active" data-level="5.6" data-path="spoof.html">
             
-                <a href="../Universal/spoof.html">
+                <a href="spoof.html">
             
                     
                     GPU Spoof
@@ -367,7 +367,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Embedded Controllers</a>
+        <a href=".." >GPU Spoof</a>
     </h1>
 </div>
 
@@ -382,92 +382,78 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="fixing-embedded-controller-laptop">Fixing Embedded Controller (Laptop)</h1>
-<p>To fix the ECs found in laptops, we&apos;ll be renaming them to look like the ones macOS expects. The reason for this is that many laptops break when you turn off their EC with an SSDT. So this is why we can&apos;t use the fancy SSDTTime to make a patch for us.</p>
-<p>To find out what EC you have, open your decompiled DSDT and search for <code>PNP0C09</code>. This should give you a result like this:</p>
-<p><img src="https://i.imgur.com/lQ4kpb9.png" alt=""></p>
-<p>As you can see our <code>PNP0C09</code> is found within the <code>Device (EC0)</code> meaning this is the device we want to rename.</p>
-<blockquote>
-<p>What happens if multiple <code>PNP0C09</code> show up</p>
-</blockquote>
-<p>When this happens you need to figure out which is the main and which is not, it&apos;s fairly easy to figure out. Check each controller for the following properties:</p>
+                                <h1 id="renaming-gpus">Renaming GPUs</h1>
+<p>So this is mainly needed for GPUs that are not natively supported OOB due to their names, most commonly:</p>
 <ul>
-<li><code>_HID</code> (Hardware ID)</li>
-<li><code>_CRS</code> (Current Resource Settings)</li>
-<li><code>_GPE</code> (General Purpose Events)</li>
+<li>R9 290/390</li>
+<li>R9 280/380</li>
+<li>R7 270/370</li>
+<li>R9 260/360</li>
+<li>R7 250</li>
+<li>R7 240</li>
 </ul>
-<p>Note that only the main EC needs renaming, if you only have one <code>PNP0C09</code> then it is automatically your main regardless of properties.</p>
-<h1 id="applying-your-ec-patch">Applying your EC patch</h1>
-<p>As you can see from the table below, we&apos;ll be renaming our EC listed in the DSDT. Do note you cannot just throw random renames without checking which is the main EC first, as <strong>this can cause actual damage to your laptop.</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Comment</th>
-<th style="text-align:left">Find*[HEX]</th>
-<th style="text-align:left">Replace[HEX]</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">change EC0 to EC</td>
-<td style="text-align:left">4543305f</td>
-<td style="text-align:left">45435f5f</td>
-</tr>
-<tr>
-<td style="text-align:left">change H_EC to EC</td>
-<td style="text-align:left">485f4543</td>
-<td style="text-align:left">45435f5f</td>
-</tr>
-<tr>
-<td style="text-align:left">change ECDV to EC</td>
-<td style="text-align:left">45434456</td>
-<td style="text-align:left">45435f5f</td>
-</tr>
-<tr>
-<td style="text-align:left">change PGEC to EC</td>
-<td style="text-align:left">50474543</td>
-<td style="text-align:left">45435f5f</td>
-</tr>
-</tbody>
-</table>
-<h2 id="inside-your-config">Inside your config:</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Comment</th>
-<th style="text-align:left">String</th>
-<th style="text-align:left">Change XXXX to EC</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Enabled</td>
-<td style="text-align:left">String</td>
-<td style="text-align:left">YES</td>
-</tr>
-<tr>
-<td style="text-align:left">Count</td>
-<td style="text-align:left">Number</td>
-<td style="text-align:left">0</td>
-</tr>
-<tr>
-<td style="text-align:left">Limit</td>
-<td style="text-align:left">Nuber</td>
-<td style="text-align:left">0</td>
-</tr>
-<tr>
-<td style="text-align:left">Find</td>
-<td style="text-align:left">Data</td>
-<td style="text-align:left">xxxxxxxx</td>
-</tr>
-<tr>
-<td style="text-align:left">Replace</td>
-<td style="text-align:left">Data</td>
-<td style="text-align:left">xxxxxxxx</td>
-</tr>
-</tbody>
-</table>
-<p><img src="https://cdn.discordapp.com/attachments/456913818467958789/668667268254793728/Screen_Shot_2020-01-19_at_9.04.50_PM.png" alt=""></p>
+<p>Instead, these GPUs need to be &quot;spoofed&quot; or faked into a model that closely matches theirs, generally this will be the &quot;X&quot; variant of the card. For some reason Apple never bothered adding the PCI IDs for these other cards even though their GPU cores are supported by the driver.</p>
+<p>So to spoof the GPU, we need to find a couple things:</p>
+<ul>
+<li>Suitable PCI ID for the GPU</li>
+<li>ACPI Path of the GPU</li>
+<li><a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip" target="_blank">SSDT-GPU-SPOOF</a></li>
+</ul>
+<h2 id="finding-a-suitable-pci-id">Finding a suitable PCI ID</h2>
+<p>To find a suitable PCI ID, we&apos;ll be using <a href="https://pci-ids.ucw.cz/read/PC/1002" target="_blank">PCI ID Repository</a> which has a full database of all AMD GPUs. For this example, we&apos;ll be creating a Spoof SSDT for the R9 390. For a full list of supported GPUs, please see the <a href="https://khronokernel-3.gitbook.io/catalina-gpu-buyers-guide/" target="_blank">GPU Buyers Guide</a>. The closest match to this GPU would be the 390X, and looking on that site near the top gives us this:</p>
+<pre><code>Vendor 1002 -&gt; Device 1002:67b0
+</code></pre><p>Now lets break this down into a device ID we can use:</p>
+<ul>
+<li><code>1002</code>: The vendor ID, all AMD devices have this ID</li>
+<li><code>67B0</code>: The device ID, this is what we care about</li>
+</ul>
+<p>So how do we convert this to a fake ID? Well the format of a fake ID:</p>
+<pre><code>&quot;device-id&quot;,
+Buffer (0x04)
+{
+     0xB0, 0x67, 0x00, 0x00
+},
+</code></pre><p>As you can see, the bytes are swapped in pairs. Keep this in mind when we make our SSDT</p>
+<p>The specifics are due to <a href="https://en.wikipedia.org/wiki/Endianness" target="_blank">Endianness</a> for those who are curious</p>
+<h2 id="finding-the-acpi-path-of-the-gpu">Finding the ACPI Path of the GPU</h2>
+<p>To find the PCI path of a GPU is fairly simple, best way to find it is running Windows: </p>
+<ul>
+<li>Open Device Manager</li>
+<li>Select Display Adapters, then right click your GPU and select Properties</li>
+<li>Under the Details Tab, search for &quot;Loaction Paths&quot;</li>
+</ul>
+<p><img src="https://cdn.discordapp.com/attachments/456913818467958789/675210740231176212/unknown.png" alt=""></p>
+<p>The second &quot;ACPI&quot; is what we care about:</p>
+<pre><code>ACPI(_SB_)#ACPI(PC02)#ACPI(BR2A)#ACPI(PEGP)#PCI(0000)#PCI(0000)
+</code></pre><p>Now converting this to an ACPI path is quite simple, remove the <code>#ACPI</code> and <code>#PCI(0000)</code>:</p>
+<pre><code>`_SB_.PC02.BR2A.PEGP
+</code></pre><p>And voila! We&apos;ve found our ACPI path, now that we have everything we&apos;re ready to get cooking</p>
+<h2 id="making-the-ssdt">Making the SSDT</h2>
+<p>To start grab our <a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip" target="_blank">SSDT-GPU-SPOOF</a> and open it up. Here there&apos;s a couple things to change:</p>
+<pre><code>External (_SB_.PCI0, DeviceObj)
+External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
+</code></pre><p>For our example, we&apos;ll change all mentions of :</p>
+<ul>
+<li><code>PCI0</code> with <code>PC02</code></li>
+<li><code>PEG0</code> with <code>BR2A</code></li>
+</ul>
+<p>Hint: If your ACPI path is a bit shorter than the example, this is fine. Just make sure the ACPI paths are correct to your device.</p>
+<p>Now that the ACPI pathing is correct, we can finally apply our fake ID!!!</p>
+<p>So the 2 parts we want to change:</p>
+<p><strong>device ID</strong>:</p>
+<pre><code>&quot;device-id&quot;,
+Buffer (0x04)
+{
+    0xB0, 0x67, 0x00, 0x00
+},
+</code></pre><p><strong>Model</strong>:</p>
+<pre><code>&quot;model&quot;,
+Buffer ()
+{
+    &quot;AMD Radeon R9 390&quot;
+}
+</code></pre><p><code>&quot;device-id&quot;</code> will be set to our PCI ID that we found in &quot;Finding a suitable PCI ID&quot; and <code>&quot;model&quot;</code> is mainly cosmetic </p>
+<p>Once these 2 are set, we&apos;re ready to compile!</p>
 
                                 
                                 </section>
@@ -495,12 +481,12 @@
 
             
                 
-                <a href="../Desktops/desktop-ec.html" class="navigation navigation-prev " aria-label="Previous page: Embedded Controllers">
+                <a href="irq.html" class="navigation navigation-prev " aria-label="Previous page: IRQ Fix">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="backlight.html" class="navigation navigation-next " aria-label="Next page: Backlight PNLF">
+                <a href="../cleanup.html" class="navigation navigation-next " aria-label="Next page: Cleanup">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -511,7 +497,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Embedded Controllers","level":"4.1","depth":1,"next":{"title":"Backlight PNLF","level":"4.2","depth":1,"path":"Laptops/backlight.md","ref":"Laptops/backlight.md","articles":[]},"previous":{"title":"Embedded Controllers","level":"3.1","depth":1,"path":"Desktops/desktop-ec.md","ref":"Desktops/desktop-ec.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/laptop-ec.md","mtime":"2020-02-07T06:17:18.292Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-07T06:18:02.885Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GPU Spoof","level":"5.6","depth":1,"next":{"title":"Cleanup","level":"6.1","depth":1,"path":"cleanup.md","ref":"cleanup.md","articles":[]},"previous":{"title":"IRQ Fix","level":"5.5","depth":1,"path":"Universal/irq.md","ref":"Universal/irq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/spoof.md","mtime":"2020-02-07T06:17:18.292Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-07T06:18:02.885Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
