@@ -25,6 +25,7 @@
 * [NVRAM PMC](/Universal/nvram.md)
 * [XOSI](/Universal/xosi.md)
 * [IRQ Fix](/Universal/irq.md)
+* [GPU Spoof](/Universal/spoof.md)
 
 ## Cleanup
 
