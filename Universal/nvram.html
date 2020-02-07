@@ -371,7 +371,17 @@
                                 
                                 <h1 id="fixing-nvram">Fixing NVRAM</h1>
 <p>This SSDT is required for all B360, B365, H310, H370, Z390 motherboards, it specifically brings back NVRAM support and requires very little configuration for the end user.</p>
-<p>By default it uses <code>LPCB</code>, you can check by just searching for <code>Name (_ADR, 0x001F0000)</code>. This address is used for Low Pin Count devices(LPC) but the device name can vary between <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>. Just search each one in your config and which ever shows up is the one your system uses:</p>
+<p>By default it uses <code>PCI0.LPCB</code> for the PCI and LowPinCount path. The device names can vary between <code>PC00</code> and <code>PCI0</code> for PCI path and <code>LPCB</code>, <code>LBC</code> and <code>LBC0</code> for  LowPinCount path. To see what you have:</p>
+<ul>
+<li>Finding the LowPinCount path: <ul>
+<li>Intel: Search <code>Name (_ADR, 0x001F0000)</code></li>
+</ul>
+</li>
+<li>Finding the PCI path: <ul>
+<li>Intel: Search <code>PNP0A08</code> (If multiple show up, use the first one)</li>
+</ul>
+</li>
+</ul>
 <p><img src="https://cdn.discordapp.com/attachments/456913818467958789/670148514197667840/Screen_Shot_2020-01-23_at_11.08.30_PM.png" alt=""></p>
 
                                 
@@ -416,7 +426,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"NVRAM PMC","level":"5.3","depth":1,"next":{"title":"XOSI","level":"5.4","depth":1,"path":"Universal/xosi.md","ref":"Universal/xosi.md","articles":[]},"previous":{"title":"AWAC vs RTC","level":"5.2","depth":1,"path":"Universal/awac.md","ref":"Universal/awac.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/nvram.md","mtime":"2020-02-06T18:40:16.908Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-06T18:41:03.012Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"NVRAM PMC","level":"5.3","depth":1,"next":{"title":"XOSI","level":"5.4","depth":1,"path":"Universal/xosi.md","ref":"Universal/xosi.md","articles":[]},"previous":{"title":"AWAC vs RTC","level":"5.2","depth":1,"path":"Universal/awac.md","ref":"Universal/awac.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/nvram.md","mtime":"2020-02-07T05:18:17.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-07T05:19:02.679Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
