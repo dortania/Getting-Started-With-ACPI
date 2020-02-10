@@ -6,7 +6,12 @@ CPU naming is fairly easy to figure out as well, open your decompiled DSDT and s
 
 ![](https://i.imgur.com/U3xffjU.png)
 
-As we can see, the first processor in our list is `PR00`. This is what we'll be applying the `plugin-type=1` property too. Now grab [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl) and replace the default `CPU0` with our `PR00`. Note that there are 2 mentions of `CPU0` in the SSDT.
+As we can see, the first processor in our list is `PR00`. This is what we'll be applying the `plugin-type=1` property too. Now grab [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl) and replace the default `CPU0` with our `PR00`. There's a couple things to note:
+
+* There's 2 mentions of CPU0 to change
+* The `PR` path may need to be changed, in our example we can see that our `PR00` has `SB` in front.
+
+So in our final example, we'd have `_SB_.PR00` and `\_SB.PR00`
 
 There are also some edge cases with `Processor`, specifically on HEDT series like X79, X99 and X299. This edge case is that the ACPI path is much longer and not so obvious:
 
