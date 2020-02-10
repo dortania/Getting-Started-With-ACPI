@@ -104,3 +104,6 @@ Scope (\_SB.PC00.LPC0)
 > Hey what about USBX? Do I need to do anything?
 
 USBX is universal across all systems, it just creates a USBX device that forces USB power properties. This is crucial for fixing Mics, DACs, Webcams, Bluetooth Dongles and other high power draw devices. This is not mandatory to boot but should be added in post-install if not before. Note that USBX is only used on skylake+ systems, Broadwell and older can ignore and that USBX requires a patched EC to function correctly
+
+
+## [Now you're ready to compile the SSDT!](/Manual/compile.md)

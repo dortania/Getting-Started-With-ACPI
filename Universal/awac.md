@@ -20,15 +20,18 @@ Note: AWAC actually stands for ACPI Wake Alarm Counter/Clock for those curious, 
 To determine whether you need [SSDT-AWAC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) or [SSDT-RTC0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl):
 
 * open your decompiled DSDT and search for `Device (AWAC)`
-* If nothing shows then no need to continue and no need for this SSDT as you have now AWAC. Otherwise, continue on!
+* If nothing shows then no need to continue and no need for this SSDT as you have no AWAC. Otherwise, continue on!
 * If you get a result then you have an `AWAC` system clock present, then continue with the next search for `STAS ==`:
 
 ![](https://i.imgur.com/uuUF857.png)
 
 As you can see we found the `STAS ==` in our DSDT, this means we're able to force enable our Legacy RTC. In this case, [SSDT-AWAC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) will be used As-Is with no modifications required. Just need to compile.
 
-For systems where no `STAS` shows up **but** you do have `AWAC`, you can use [SSDT-RTC0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl) though you will need to check thwe naming of LPC in your DSDT
+For systems where no `STAS` shows up **but** you do have `AWAC`, you can use [SSDT-RTC0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl) though you will need to check the naming of LPC in your DSDT
 
 By default the SSDT uses `LPCB`, you can check what your system uses by just searching for `Name (_ADR, 0x001F0000)`. This address is used for Low Pin Count devices(LPC) but the device name can vary between `LPCB`, `LBC` or `LBC0`:
 
 ![](https://cdn.discordapp.com/attachments/456913818467958789/675169950108876852/Screen_Shot_2020-02-06_at_7.43.24_PM.png)
+
+
+## [Now you're ready to compile the SSDT!](/Manual/compile.md)

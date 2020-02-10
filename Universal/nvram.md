@@ -10,3 +10,5 @@ By default it uses `PCI0.LPCB` for the PCI and LowPinCount path. The device name
    * Intel: Search `PNP0A08` (If multiple show up, use the first one)
 
 ![](https://cdn.discordapp.com/attachments/456913818467958789/670148514197667840/Screen_Shot_2020-01-23_at_11.08.30_PM.png)
+
+## [Now you're ready to compile the SSDT!](/Manual/compile.md)

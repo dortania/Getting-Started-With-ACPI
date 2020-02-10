@@ -22,3 +22,5 @@ If we then search for instances of `CP00` we find that it's ACPI path is `SB.SCK
 ![](https://i.imgur.com/CtL6Csn.png)
 
 So for this X299 board, we'd change `\_PR.CPU0` with `\_SB.SCK0.CP00` and `External (_PR_.CPU0, ProcessorObj)` with `External (_SB_.SCK0.CP00, ProcessorObj)`
+
+## [Now you're ready to compile the SSDT!](/Manual/compile.md)
