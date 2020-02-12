@@ -37,7 +37,7 @@ As you can see from the table below, we'll be renaming our EC listed in the DSDT
 | :--- | :--- | :--- |
 | Enabled | String | YES |
 | Count | Number | 0 |
-| Limit | Nuber | 0 |
+| Limit | Number | 0 |
 | Find | Data | xxxxxxxx |
 | Replace | Data | xxxxxxxx |
 

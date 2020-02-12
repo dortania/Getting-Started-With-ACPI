@@ -16,14 +16,13 @@
 
 * [Embedded Controllers](/Laptops/laptop-ec.md)
 * [Backlight PNLF](/Laptops/backlight.md)
-* [Trackpad GPIO](/Laptops/trackpad.md)
+* [Trackpad GPI0](/Laptops/trackpad.md)
 
 ## Universal
 
 * [Plugin type](/Universal/plug.md)
 * [AWAC vs RTC](/Universal/awac.md)
 * [NVRAM PMC](/Universal/nvram.md)
-* [XOSI](/Universal/xosi.md)
 * [IRQ Fix](/Universal/irq.md)
 * [GPU Spoof](/Universal/spoof.md)
 

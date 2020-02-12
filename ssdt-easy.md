@@ -12,10 +12,8 @@ So what **can't** SSDTTime do?:
    * This is because you need to use an ACPI rename over an SSDT on laptops
 * **SSDT-PNLF**: 
    * No need to configuration required for most, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PNLF.aml)
-* **SSDT-GPIO**: 
-   * No need to configuration required, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPIO.aml)
-* **SSDT-XOSI**: 
-   * No need to configuration required, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-XOSI.aml)
+* **SSDT-GPI0**: 
+   * Need to be configured to your system: [SSDT-GPI0.dsl](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPI0.dsl)
 * **AWAC and RTC0 SSDTs**: 
    * 300 series intel boards will also need to figure his out(Z390 systems are most common for requiring this but some gigabyte Z370 do as well)
 * **PMC SSDT**: 
