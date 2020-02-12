@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Trackpad GPIO · GitBook</title>
+        <title>Trackpad GPI0 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -224,7 +224,7 @@
                 <a href="trackpad.html">
             
                     
-                    Trackpad GPIO
+                    Trackpad GPI0
             
                 </a>
             
@@ -278,20 +278,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.4" data-path="../Universal/xosi.html">
-            
-                <a href="../Universal/xosi.html">
-            
-                    
-                    XOSI
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="5.5" data-path="../Universal/irq.html">
+        <li class="chapter " data-level="5.4" data-path="../Universal/irq.html">
             
                 <a href="../Universal/irq.html">
             
@@ -304,7 +291,7 @@
             
         </li>
     
-        <li class="chapter " data-level="5.6" data-path="../Universal/spoof.html">
+        <li class="chapter " data-level="5.5" data-path="../Universal/spoof.html">
             
                 <a href="../Universal/spoof.html">
             
@@ -367,7 +354,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Trackpad GPIO</a>
+        <a href=".." >Trackpad GPI0</a>
     </h1>
 </div>
 
@@ -383,9 +370,42 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="fixing-trackpads">Fixing Trackpads</h1>
-<p>This SSDT is used to create a stub for VoodooI2C to connect to.</p>
-<p>No configuration required, just drop the prebuilt file into your EFI: <a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPIO.aml" target="_blank">SSDT-GPIO</a></p>
+<p>This SSDT is used to force enable our GPIO for VoodooI2C to connect onto.</p>
+<p>With most modern laptop DSDTs, there&apos;s a variable called <code>GPEN</code> or <code>GPHD</code> which are used for setting the status of the GPIO device. For us, we want to enable the device.</p>
+<h2 id="finding-our-gpio">Finding our GPIO</h2>
+<p>So first things we need to do is find out what variable is used to enable our GPIO device, lets open up our decompiled SSDT and search for <code>Device (GPIO)</code>. Should give you a desult similar to this:</p>
+<p><img src="https://media.discordapp.net/attachments/456913818467958789/677279455525208096/Screen_Shot_2020-02-12_at_3.25.27_PM.png?width=1674&amp;height=1256" alt=""></p>
+<p>What we care about from this is the <code>_STA</code> method:</p>
+<pre><code>Method (_STA, 0, NotSerialized)
+{
+    If ((GPHD == One))
+    {
+        Return (0x03)
+    }
 
+    Return (0x0F)
+}
+</code></pre><p>What we want is for this to always return <code>0x0F</code> when booting macOS, so we want to make an SSDT that will return <code>GPHD == Zero</code> in macOS.</p>
+<p><strong>NOTE that you may have the other way around where GPHD needs to be set as <code>One</code> to return <code>0x0F</code></strong>. And your device name may also be different, don&apos;t throw random SSDTs in thinking it&apos;ll work</p>
+<p>Once you found the variable and what it should be set to, grab a copy of <a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPI0.dsl" target="_blank">SSDT-GPI0.dsl</a> and make the required edits. Then clean up with compiling it</p>
+<h2 id="more-examples">More examples:</h2>
+<p><img src="https://media.discordapp.net/attachments/456913818467958789/677283983322775572/Screen_Shot_2020-02-12_at_3.34.26_PM.png?width=1674&amp;height=1704" alt=""></p>
+<p>With this example, we can see that we need both <code>SBRG</code> and <code>GPEN</code> to return <code>One</code>. If only one is present, it&apos;ll create some issues so in our SSDT we&apos;ll want to have both of them return <code>One</code>:</p>
+<pre><code>DefinitionBlock(&quot;&quot;, &quot;SSDT&quot;, 2, &quot;ACDT&quot;, &quot;GPI0&quot;, 0)
+{
+    External(GPEN, FieldUnitObj)
+    External(SBRG, FieldUnitObj)
+
+    Scope (\)
+    {
+        If (_OSI (&quot;Darwin&quot;))
+        {
+            GPEN = One
+            SBRG = One
+        }
+    }
+}
+</code></pre>
                                 
                                 </section>
                             
@@ -428,7 +448,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Trackpad GPIO","level":"4.3","depth":1,"next":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Backlight PNLF","level":"4.2","depth":1,"path":"Laptops/backlight.md","ref":"Laptops/backlight.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/trackpad.md","mtime":"2020-02-10T19:57:40.367Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-10T19:58:25.882Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Trackpad GPI0","level":"4.3","depth":1,"next":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Backlight PNLF","level":"4.2","depth":1,"path":"Laptops/backlight.md","ref":"Laptops/backlight.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/trackpad.md","mtime":"2020-02-12T23:02:21.077Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-12T23:03:04.278Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
