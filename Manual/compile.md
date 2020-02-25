@@ -2,7 +2,7 @@
 
 ## macOS
 
-So compiling DSDTs and SSDTs are quite easy with macOS, all you need is [MaciASL](https://github.com/acidanthera/MaciASL). To compile, just File -&gt; SaveAs -&gt; ACPI Machine Language Binary\(.AML\), decompiling is just opening the file in MaciASL.
+So compiling DSDTs and SSDTs are quite easy with macOS, all you need is [MaciASL](https://github.com/acidanthera/MaciASL/releases). To compile, just `File -> SaveAs -> ACPI Machine Language Binary(.AML)`, decompiling is just opening the file in MaciASL.
 
 ## Windows
 

@@ -25,7 +25,7 @@ To determine whether you need [SSDT-AWAC](https://github.com/acidanthera/OpenCor
 
 ![](https://i.imgur.com/uuUF857.png)
 
-As you can see we found the `STAS ==` in our DSDT, this means we're able to force enable our Legacy RTC. In this case, [SSDT-AWAC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) will be used As-Is with no modifications required. Just need to compile.
+As you can see we found the `STAS ==` in our DSDT, this means we're able to force enable our Legacy RTC. In this case, [SSDT-AWAC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) will be used As-Is with no modifications required. Just need to compile. Note that `STAS` may be found in AWAC first instead of RTC like in our example, this is normal.
 
 For systems where no `STAS` shows up **but** you do have `AWAC`, you can use [SSDT-RTC0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl) though you will need to check the naming of LPC in your DSDT
 
