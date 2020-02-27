@@ -8,10 +8,11 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "AMDGPU", 0x00001000)
 
     Scope (\_SB.PCI0.PEG0.PEGP)
     {
-      If (_OSI ("Darwin"))
-      {
+      
         Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
         {
+          If (_OSI ("Darwin"))
+          {
             Store (Package ()
             {
                 // Where we shove our FakeID
@@ -31,8 +32,9 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "AMDGPU", 0x00001000)
              }, Local0)
              DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
              Return (Local0)
+           }
          }
-       }
+    }
     Scope (\_SB.PCI0)
     {                   
         Method (DTGP, 5, NotSerialized)
@@ -63,7 +65,7 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "AMDGPU", 0x00001000)
                 }, Arg4)
             Return (Zero)
         }
-      }
+      
     }
 
 }
