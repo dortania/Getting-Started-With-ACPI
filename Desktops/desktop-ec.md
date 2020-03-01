@@ -16,9 +16,9 @@ As you can see our `PNP0C09` is found within the `Device (EC0)` meaning this is 
 
 ```text
 /* <- REMOVE THIS
-External (_SB_.PCI0.LPCB.EC0, DeviceObj)
+External (_SB_.PCI0.LPCB.EC0, DeviceObj) <- Rename this
 
-   Scope (\_SB.PCI0.LPCB.EC0)
+   Scope (\_SB.PCI0.LPCB.EC0) <- Rename this
    {   
       Method (_STA, 0, NotSerialized) // _STA: Status
       {
@@ -79,9 +79,9 @@ We want to make sure the SSDT hooks into our DSDT correctly so we need to make s
 Once you find out, change `PCI0.LPCB` to your correct path:
 
 ```text
-Scope (\_SB.PC00.LPC0)
+Scope (\_SB.PC00.LPC0) <- Rename this
 {
-    Device (EC)
+    Device (EC) <- DO NOT RENAME THIS
     {
         Name (_HID, "ACID0001")  // _HID: Hardware ID
         Method (_STA, 0, NotSerialized)  // _STA: Status

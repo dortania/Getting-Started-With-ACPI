@@ -23,4 +23,40 @@ If we then search for instances of `CP00` we find that it's ACPI path is `SB.SCK
 
 So for this X299 board, we'd change `\_PR.CPU0` with `\_SB.SCK0.CP00` and `External (_PR_.CPU0, ProcessorObj)` with `External (_SB_.SCK0.CP00, ProcessorObj)`
 
+
+```text
+External (_PR_.CPU0, ProcessorObj) <- Rename this
+
+Scope (\_PR.CPU0) <- Rename this
+{
+    Method (DTGP, 5, NotSerialized)
+    {
+        If ((Arg0 == ToUUID ("a0b5b7c6-1318-441c-b0c9-fe695eaf949b")))
+        {
+            If ((Arg1 == One))
+            {
+                If ((Arg2 == Zero))
+                {
+                    Arg4 = Buffer (One)
+                        {
+                             0x03                                             
+                        }
+                    Return (One)
+                }
+
+                If ((Arg2 == One))
+                {
+                    Return (One)
+                }
+            }
+        }
+
+        Arg4 = Buffer (One)
+            {
+                 0x00                                            
+            }
+        Return (Zero)
+    }
+```
+
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)
