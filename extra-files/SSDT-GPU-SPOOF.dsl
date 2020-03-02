@@ -33,7 +33,11 @@ DefinitionBlock ("", "SSDT", 2, "ACDT", "AMDGPU", 0x00001000)
              DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
              Return (Local0)
            }
-         }
+          Else
+          {
+               Return (Zero)
+          }
+        }
     }
     Scope (\_SB.PCI0)
     {                   
