@@ -1,12 +1,12 @@
 # Fixing Trackpads
 
-This SSDT is used to force enable our GPIO for VoodooI2C to connect onto.
+This SSDT is used to force enable our GPI0 for VoodooI2C to connect onto.
 
-With most modern laptop DSDTs, there's a variable called `GPEN` or `GPHD` which are used for setting the status of the GPIO device. For us, we want to enable the device.
+With most modern laptop DSDTs, there's a variable called `GPEN` or `GPHD` which are used for setting the status of the GPI0 device. For us, we want to enable the device.
 
-## Finding our GPIO
+## Finding our GPI0
 
-So first things we need to do is find out what variable is used to enable our GPIO device, lets open up our decompiled SSDT and search for `Device (GPIO)`. Should give you a desult similar to this:
+So first things we need to do is find out what variable is used to enable our GPI0 device, lets open up our decompiled SSDT and search for `Device (GPI0)`. Should give you a desult similar to this:
 
 ![](https://media.discordapp.net/attachments/456913818467958789/677279455525208096/Screen_Shot_2020-02-12_at_3.25.27_PM.png?width=1674&height=1256)
 
