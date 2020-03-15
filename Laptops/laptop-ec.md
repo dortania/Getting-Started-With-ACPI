@@ -20,6 +20,12 @@ When this happens you need to figure out which is the main and which is not, it'
 Note that only the main EC needs renaming, if you only have one `PNP0C09` then it is automatically your main regardless of properties.
 
 
+> What if my main `PNP0C09` device is already called `Device (EC)`?
+
+Mainly relevant for Lenovo and a few other OEMs, when this happens that means that your Embedded Controller is ready to use in macOS! Do make sure that this `Device (EC)` is actually your main EC and not a secondary one. 
+
+**And please verify that the DSDT hasn't already been patched by Clover or OpenCore**, please dump it without booting either of them to be sure or triple check that there aren't any EC renames in your config already
+
 # Applying your EC patch
 
 As you can see from the table below, we'll be renaming our EC listed in the DSDT. Do note you cannot just throw random renames without checking which is the main EC first, as **this can cause actual damage to your laptop.**
