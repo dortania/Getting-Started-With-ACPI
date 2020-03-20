@@ -22,9 +22,9 @@ External (_SB_.PCI0.LPCB.EC0, DeviceObj) <- Rename this
    {   
       Method (_STA, 0, NotSerialized) // _STA: Status
       {
-         If (_OSI ("Darwin"))
+         If (_OSI ("Darwin")) // Darwin = macOS
          {
-            Return (0)
+            Return (0) // Hides our real EC only when in macOS
          }
          Else
       {
@@ -88,7 +88,7 @@ Scope (\_SB.PC00.LPC0) <- Rename this
         {
             If (_OSI ("Darwin"))
             {
-                Return (0x0F)
+                Return (0x0F) // Enable our Fake EC only when in macOS
             }
             Else
             {
