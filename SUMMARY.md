@@ -25,6 +25,7 @@
 * [NVRAM PMC](/Universal/nvram.md)
 * [IRQ Fix](/Universal/irq.md)
 * [GPU Spoof](/Universal/spoof.md)
+* [Fixing SMBus Support](/universal/smbus.md)
 
 ## Cleanup
 

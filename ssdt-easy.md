@@ -4,10 +4,11 @@ So here we'll be using a super simple tool made by CorpNewt: [SSDTTime](https://
 
 What this tool does is dumps your DSDT from your firmware, and then creates SSDTs based off your DSDT. **This must be done on the target machine running either Windows or Linux**
 
-So what **can't** SSDTTime do?:
+## So what **can't** SSDTTime do?:
 
 * **HEDT SSDTs**: 
    * The ACPI is odd on these platforms so manual work is required
+   * This includes X79, X99 and X299 systems
 * **Laptop EC fix**: 
    * This is because you need to use an ACPI rename over an SSDT on laptops
 * **SSDT-PNLF**: 
