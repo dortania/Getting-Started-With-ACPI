@@ -25,3 +25,6 @@ path/to/iasl path/to/DSDT.aml
 ```
 
 If compiled .aml file is provided, a decompiled .dsl file will be given and vice versa.
+
+
+See [General Troubleshooting](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/troubleshooting/troubleshooting) if you have dumping/compiling errors
