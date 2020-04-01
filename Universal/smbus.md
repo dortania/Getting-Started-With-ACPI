@@ -6,10 +6,10 @@ This section of the guide refers to fixing AppleSMBus support in macOS, what is 
 * AppleSMBusController
    * Aids with correct temperature, fan, voltage, ICH, etc readings
 * AppleSMBusPCI
-   * Same idea as AppleSMBusController except for low pandwidth PCI devices
+   * Same idea as AppleSMBusController except for low bandwidth PCI devices
 * Memory Reporting
    * Aids in proper memory reporting and can aid in getting better kernel panic details if memory related
-   
+* Other things SMBus does: [SMBus wiki](https://en.wikipedia.org/wiki/System_Management_Bus)   
 
 For install purposes, this SSDT isn't needed but for post-install it's recommended to put the final touches on your hack.
 
