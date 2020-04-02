@@ -16,3 +16,6 @@ If Windows has been installed on the device, you can also do the following:
 ```text
 Device Manager -> Display Adapters -> Properties -> Details > BIOS device name
 ```
+* Note some GPUs may be hiding under "BIOS device name"
+
+![Credit to 1Revenger1 for the image](https://cdn.discordapp.com/attachments/683011276938543134/695396807739441232/unknown-4.png)

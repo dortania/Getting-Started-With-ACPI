@@ -28,7 +28,8 @@ Directory of fs0:\
 
 01/01/01 3:30p EFI
 
-fs0:\> cd EFI\OC\Tools // note that it's with forward slashes
+fs0:\> cd EFI\OC\Tools
 
 fs0:\EFI\OC\Tools> acpidump.efi -b -n DSDT -z
 ```
+

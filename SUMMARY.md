@@ -11,12 +11,14 @@
 ## Desktop
 
 * [Embedded Controllers](/Desktops/desktop-ec.md)
+* [Disabling desktop dGPUs](/Desktops/desktop-disable.md)
 
 ## Laptop
 
 * [Embedded Controllers](/Laptops/laptop-ec.md)
 * [Backlight PNLF](/Laptops/backlight.md)
 * [Trackpad GPI0](/Laptops/trackpad.md)
+* [Disabling laptop dGPUs](/Laptops/laptop-disable.md)
 
 ## Universal
 
