@@ -14,6 +14,7 @@ To find the PCI path of a GPU is fairly simple, best way to find it is running W
 * Open Device Manager
 * Select Display Adapters, then right click your GPU and select Properties
 * Under the Details Tab, search for "Location Paths"
+   * Note some GPUs may be hiding under "BIOS device name"
 
 ![](https://cdn.discordapp.com/attachments/456913818467958789/675210740231176212/unknown.png)
 

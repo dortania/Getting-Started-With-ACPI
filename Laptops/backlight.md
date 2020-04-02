@@ -10,3 +10,9 @@ No configuration required for most, just drop the prebuilt file into your EFI:
    * For Coffeelake users if the regular SSDT doesn't work, try SSDT-PNLF first and do not mix together
 
 Note: there are some rare cases where the iGPU is called `GPU0` or `VID`in the DSDT, you can double check by searching for `PCI0.GFX0`, `PCI0.VID` and `PCI0.GPU0`. Whichever shows up is your device
+
+If Windows has been installed on the device, you can also do the following:
+
+```text
+Device Manager -> Display Adapters -> Properties -> Details > BIOS device name
+```
