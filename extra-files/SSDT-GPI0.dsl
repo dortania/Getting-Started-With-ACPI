@@ -1,5 +1,5 @@
 // Source: https://github.com/daliansky/OC-little
-DefinitionBlock("", "SSDT", 2, "ACDT", "GPI0", 0)
+DefinitionBlock("", "SSDT", 2, "Slav", "GPI0", 0)
 {
     External(GPEN, FieldUnitObj)
     
