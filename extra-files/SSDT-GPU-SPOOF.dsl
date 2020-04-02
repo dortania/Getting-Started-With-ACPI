@@ -35,7 +35,6 @@ DefinitionBlock ("", "SSDT", 2, "Slav", "AMDGPU", 0x00001000)
            }
           Else
           {
-               Return (Zero)
           }
         }
     }

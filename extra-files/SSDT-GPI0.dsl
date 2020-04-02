@@ -9,5 +9,8 @@ DefinitionBlock("", "SSDT", 2, "Slav", "GPI0", 0)
         {
             GPEN = One
         }
+        Else
+        {
+        }
     }
 }
