@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>AWAC vs RTC · GitBook</title>
+        <title>Disabling desktop dGPUs · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -62,10 +62,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="nvram.html" />
+    <link rel="next" href="../Laptops/laptop-ec.html" />
     
     
-    <link rel="prev" href="plug.html" />
+    <link rel="prev" href="desktop-ec.html" />
     
 
     </head>
@@ -173,9 +173,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../Desktops/desktop-ec.html">
+        <li class="chapter " data-level="3.1" data-path="desktop-ec.html">
             
-                <a href="../Desktops/desktop-ec.html">
+                <a href="desktop-ec.html">
             
                     
                     Embedded Controllers
@@ -186,9 +186,9 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../Desktops/desktop-disable.html">
+        <li class="chapter active" data-level="3.2" data-path="desktop-disable.html">
             
-                <a href="../Desktops/desktop-disable.html">
+                <a href="desktop-disable.html">
             
                     
                     Disabling desktop dGPUs
@@ -265,9 +265,9 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="plug.html">
+        <li class="chapter " data-level="5.1" data-path="../Universal/plug.html">
             
-                <a href="plug.html">
+                <a href="../Universal/plug.html">
             
                     
                     Plugin type
@@ -278,9 +278,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.2" data-path="awac.html">
+        <li class="chapter " data-level="5.2" data-path="../Universal/awac.html">
             
-                <a href="awac.html">
+                <a href="../Universal/awac.html">
             
                     
                     AWAC vs RTC
@@ -291,9 +291,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.3" data-path="nvram.html">
+        <li class="chapter " data-level="5.3" data-path="../Universal/nvram.html">
             
-                <a href="nvram.html">
+                <a href="../Universal/nvram.html">
             
                     
                     NVRAM PMC
@@ -304,9 +304,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.4" data-path="irq.html">
+        <li class="chapter " data-level="5.4" data-path="../Universal/irq.html">
             
-                <a href="irq.html">
+                <a href="../Universal/irq.html">
             
                     
                     IRQ Fix
@@ -317,9 +317,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.5" data-path="spoof.html">
+        <li class="chapter " data-level="5.5" data-path="../Universal/spoof.html">
             
-                <a href="spoof.html">
+                <a href="../Universal/spoof.html">
             
                     
                     GPU Spoof
@@ -330,9 +330,9 @@
             
         </li>
     
-        <li class="chapter " data-level="5.6" data-path="smbus.html">
+        <li class="chapter " data-level="5.6" data-path="../Universal/smbus.html">
             
-                <a href="smbus.html">
+                <a href="../Universal/smbus.html">
             
                     
                     Fixing SMBus Support
@@ -393,7 +393,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >AWAC vs RTC</a>
+        <a href=".." >Disabling desktop dGPUs</a>
     </h1>
 </div>
 
@@ -408,47 +408,40 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="fixing-system-clocks">Fixing System Clocks</h1>
-<p><strong>For Intel 300 series chipsets and newer</strong>, this also includes X299 refreshes and Icelake laptops. Common machines:</p>
+                                <h1 id="disabling-unsupported-gpusdesktops">Disabling unsupported GPUs(Desktops)</h1>
+<p>So this is mainly needed for GPUs that are not supported in macOS, mainly this will be Nvidia users who wish to pair an AMD GPU for macOS use. While WhateverGreen does support the boot-arg <code>-wegnoegpu</code>, this only works when running on iGPU so for the rest of us we&apos;ll need to make an SSDT.</p>
+<p>So to disable a specific GPU, we need to find a couple things:</p>
 <ul>
-<li>X299X (10th Gen refresh)</li>
-<li>B360</li>
-<li>B365</li>
-<li>H310</li>
-<li>H370</li>
-<li>Z370 (Gigabtye and AsRock boards with newer BIOS versions)</li>
-<li>Z390</li>
-<li>400 series (Cometlake)</li>
-<li>495 series (Icelake) </li>
+<li>ACPI Path of the GPU</li>
+<li><a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-DISABLE.dsl.zip" target="_blank">SSDT-GPU-DISABLE</a></li>
 </ul>
-<p>So on newer Intel 300 series motherboards, manufactueres started pushing for a new type of system clock: <strong>AWAC</strong>( <strong>A</strong> <strong>W</strong>eird <strong>A</strong>ss <strong>C</strong>lock). One small problem, macOS doesn&apos;t know what the hell an AWAC clock is instead only familiar with the legacy <strong>RTC</strong>(<strong>R</strong>eal <strong>T</strong>ime <strong>C</strong>lock). So we need to figure out how to bring back the old clock, thats where <code>SSDT-AWAC</code> and <code>SSDT-RTC0</code> come in:</p>
+<h2 id="finding-the-acpi-path-of-the-gpu">Finding the ACPI Path of the GPU</h2>
+<p>To find the PCI path of a GPU is fairly simple, best way to find it is running Windows: </p>
 <ul>
-<li><p><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></p>
-<ul>
-<li>Disables AWAC and enables RTC</li>
-<li>In your DSDT, there&apos;s a varaible called <code>STAS</code> used for holding either a <code>One</code> or <code>Zero</code> to determine which clock to use(<code>One</code> for RTC and <code>Zero</code> for AWAC)</li>
-</ul>
-</li>
-<li><p><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a></p>
-<ul>
-<li>Used for creating a fake RTC device for macOS to play with</li>
-<li>In very rare circumstances, some DSDTs may not have a legacy RTC to fall back on. When this happens, we&apos;ll want to create a fake device to make macOS happy</li>
+<li>Open Device Manager</li>
+<li>Select Display Adapters, then right click your GPU and select Properties</li>
+<li>Under the Details Tab, search for &quot;Location Paths&quot;<ul>
+<li>Note some GPUs may be hiding under &quot;BIOS device name&quot;</li>
 </ul>
 </li>
 </ul>
-<p>Note: AWAC actually stands for ACPI Wake Alarm Counter/Clock for those curious, though I&apos;ll forever know it as A Weird Ass Clock ;p</p>
-<h2 id="determining-which-ssdt-you-need">Determining which SSDT you need</h2>
-<p>To determine whether you need <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a> or <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a>:</p>
+<p><img src="https://cdn.discordapp.com/attachments/456913818467958789/675210740231176212/unknown.png" alt=""></p>
+<p><img src="![Credit to 1Revenger1 for the image](https:/cdn.discordapp.com/attachments/683011276938543134/695396807739441232/unknown-4.png" alt="">)</p>
+<p>The second &quot;ACPI&quot; is what we care about:</p>
+<pre><code>ACPI(_SB_)#ACPI(PC02)#ACPI(BR2A)#ACPI(PEGP)#PCI(0000)#PCI(0000)
+</code></pre><p>Now converting this to an ACPI path is quite simple, remove the <code>#ACPI</code> and <code>#PCI(0000)</code>:</p>
+<pre><code>`_SB_.PC02.BR2A.PEGP
+</code></pre><p>And voila! We&apos;ve found our ACPI path, now that we have everything we&apos;re ready to get cooking</p>
+<h2 id="making-the-ssdt">Making the SSDT</h2>
+<p>To start grab our <a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-DISABLE.dsl.zip" target="_blank">SSDT-GPU-DISABLE</a> and open it up. Here there&apos;s a couple things to change:</p>
+<pre><code>External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
+Method (_SB.PCI0.PEG0.PEGP._DSM, 4, NotSerialized)
+</code></pre><p>For our example, we&apos;ll change all mentions of :</p>
 <ul>
-<li>open your decompiled DSDT and search for <code>Device (AWAC)</code></li>
-<li>If <strong>nothing shows up</strong> then no need to continue and <strong>no need for this SSDT</strong> as you have no AWAC. <strong>Otherwise, continue on!</strong></li>
-<li>If you get a result then you have an <code>AWAC</code> system clock present, then continue with the <strong>next search for <code>STAS</code></strong>:</li>
+<li><code>PCI0</code> with <code>PC02</code></li>
+<li><code>PEG0</code> with <code>BR2A</code></li>
 </ul>
-<p><img src="https://i.imgur.com/uuUF857.png" alt=""></p>
-<p>As you can see we found the <code>STAS</code> in our DSDT, this means we&apos;re able to force enable our Legacy RTC. In this case, <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a> will be used As-Is with no modifications required. Just need to compile. Note that <code>STAS</code> may be found in AWAC first instead of RTC like in our example, this is normal.</p>
-<p>For systems where <strong>no <code>STAS</code></strong> shows up <strong>but</strong> you do have <code>AWAC</code>, you can use <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a> though you will need to check the naming of LPC in your DSDT</p>
-<p>By default the SSDT uses <code>LPCB</code>, you can check what your system uses by just searching for <code>Name (_ADR, 0x001F0000)</code>. This address is used for Low Pin Count devices(LPC) but the device name can vary between <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>:</p>
-<p><img src="https://cdn.discordapp.com/attachments/456913818467958789/675169950108876852/Screen_Shot_2020-02-06_at_7.43.24_PM.png" alt=""></p>
+<p>Hint: If your ACPI path is a bit shorter than the example, this is fine. Just make sure the ACPI paths are correct to your device, some users may also need to adapt <code>_SB_</code> to their path</p>
 <h2 id="now-youre-ready-to-compile-the-ssdt"><a href="../Manual/compile.html">Now you&apos;re ready to compile the SSDT!</a></h2>
 
                                 
@@ -477,12 +470,12 @@
 
             
                 
-                <a href="plug.html" class="navigation navigation-prev " aria-label="Previous page: Plugin type">
+                <a href="desktop-ec.html" class="navigation navigation-prev " aria-label="Previous page: Embedded Controllers">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="nvram.html" class="navigation navigation-next " aria-label="Next page: NVRAM PMC">
+                <a href="../Laptops/laptop-ec.html" class="navigation navigation-next " aria-label="Next page: Embedded Controllers">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -493,7 +486,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWAC vs RTC","level":"5.2","depth":1,"next":{"title":"NVRAM PMC","level":"5.3","depth":1,"path":"Universal/nvram.md","ref":"Universal/nvram.md","articles":[]},"previous":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/awac.md","mtime":"2020-04-02T23:19:19.268Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-02T23:20:13.492Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Disabling desktop dGPUs","level":"3.2","depth":1,"next":{"title":"Embedded Controllers","level":"4.1","depth":1,"path":"Laptops/laptop-ec.md","ref":"Laptops/laptop-ec.md","articles":[]},"previous":{"title":"Embedded Controllers","level":"3.1","depth":1,"path":"Desktops/desktop-ec.md","ref":"Desktops/desktop-ec.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"output":"_book","addcssjs":{"css":[],"js":[]},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"search-plus":{}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Desktops/desktop-disable.md","mtime":"2020-04-02T23:19:19.268Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-02T23:20:13.492Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
