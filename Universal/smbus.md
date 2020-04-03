@@ -62,7 +62,7 @@ Scope (_SB.PC00)
 Device (_SB.PC00.SMBS.BUS0) <- Renamed
 ```
 
-**Note**: We comment out `MCHC` on IvyBridge and newer, reason for this is that MCHC is the memory controller for northbridges. Sandy Bridge was the first generation to merge the north and southbridge controllers meaning there's no reason to define this
+**Note**: The MCHC is actually the DRAM controller, similar idea to SMBus for fixing memory reporting
 
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)
