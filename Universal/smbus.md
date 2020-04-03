@@ -49,7 +49,6 @@ Once finished, it'll look something like this:
 External (_SB_.PC00, DeviceObj) <- Renamed
 External (_SB_.PC00.SMBS.BUS0, DeviceObj) <- Renamed
 
-/* <- Comment out if on Sandy Bridge or newer
 Scope (_SB.PC00) 
 {
     Device (MCHC)
@@ -57,7 +56,6 @@ Scope (_SB.PC00)
         Name (_ADR, Zero)  // _ADR: Address
     }
 }
-*/ <- Close the comment 
 
 Device (_SB.PC00.SMBS.BUS0) <- Renamed
 ```
