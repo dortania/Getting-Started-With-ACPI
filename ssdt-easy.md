@@ -12,11 +12,11 @@ What this tool does is dumps your DSDT from your firmware, and then creates SSDT
 * **Laptop EC fix**: 
    * This is because you need to use an ACPI rename over an SSDT on laptops
 * **SSDT-PNLF**: 
-   * No need to configuration required for most, use prebuilt file [here](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PNLF.aml)
+   * Need to be configured to your system
 * **SSDT-GPI0**: 
-   * Need to be configured to your system: [SSDT-GPI0.dsl](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPI0.dsl)
+   * Need to be configured to your system
 * **AWAC and RTC0 SSDTs**: 
-   * 300 series intel boards will also need to figure his out(Z390 systems are most common for requiring this but some gigabyte Z370 do as well)
+   * 300 series intel boards will also need to figure his out(Z390 systems are most common for requiring this but some Gigabyte Z370 do as well)
 * **PMC SSDT**: 
    * For fixing 300 series intel NVRAM
 * **USBX SSDT**: 
@@ -46,17 +46,17 @@ What we want to do is select option `4. Dump DSDT` first, then select the approp
 
 > What about USBX?
 
-For Skylake+ and AMD, you can grab a prebuilt file here: [SSDT-USBX.aml](https://github.com/khronokernel/Opencore-Vanilla-Desktop-Guide/blob/master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Broadwell and older**.
+For Skylake and newer plus AMD, you can grab a prebuilt file here: [SSDT-USBX.aml](https://github.com/khronokernel/Opencore-Vanilla-Desktop-Guide/blob/master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Broadwell and older**.
 
 **Troubleshooting note**: See [General Troubleshooting](https://khronokernel.github.io/Opencore-Vanilla-Desktop-Guide/troubleshooting/troubleshooting.html) if you're having issues running SSDTTime
 
 ## Adding to OpenCore
 
-Don't forget that SSDTs need to be added to Opencore, eminder that .aml is complied, .dsl is code. **Add only the .aml file**:
+Don't forget that SSDTs need to be added to Opencore, reminder that .aml is complied, .dsl is code. **Add only the .aml file**:
 * EFI/OC/ACPI
 * config.plist -> ACPI -> Add
 
-Reminder that Cmd/Crtl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. **Do not add your DSDT to OpenCore, its already in your firmware**
+Reminder that Cmd/Crtl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. **Do not add your DSDT to OpenCore, its already in your firmware**. If you are unsure what this is referring to, go back to the OpenCore guide and select your config based of the architecture of your CPU.
 
 Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
 
