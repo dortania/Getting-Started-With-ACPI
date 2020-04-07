@@ -20,7 +20,7 @@ So to spoof the GPU, we need to find a couple things:
 
 ## Finding a suitable PCI ID
 
-To find a suitable PCI ID, we'll be using [PCI ID Repository](https://pci-ids.ucw.cz/read/PC/1002) which has a full database of all AMD GPUs. For this example, we'll be creating a Spoof SSDT for the R9 390. For a full list of supported GPUs, please see the [GPU Buyers Guide](https://khronokernel-3.gitbook.io/catalina-gpu-buyers-guide/). The closest match to this GPU would be the 390X, and looking on that site near the top gives us this:
+To find a suitable PCI ID, we'll be using [PCI ID Repository](https://pci-ids.ucw.cz/read/PC/1002) which has a full database of all AMD GPUs. For this example, we'll be creating a Spoof SSDT for the R9 390. For a full list of supported GPUs, please see the [GPU Buyers Guide](https://gpu.dortania.ml/). The closest match to this GPU would be the 390X, and looking on that site near the top gives us this:
 
 ```
 Vendor 1002 -> Device 1002:67b0

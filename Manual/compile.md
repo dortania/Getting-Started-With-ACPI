@@ -1,6 +1,6 @@
 # Compiling and decompiling ACPI Tables
 
-See [General Troubleshooting](https://khronokernel-2.gitbook.io/opencore-vanilla-desktop-guide/troubleshooting/troubleshooting) if you have dumping/compiling errors
+See [General Troubleshooting](https://desktop.dortania.ml/troubleshooting/troubleshooting) if you have dumping/compiling errors
 
 * [macOS Compiling and Decompiling](/Manual/compile.md#macos)
 * [Windows Compiling and Decompiling](/Manual/compile.md#windows)
