@@ -14,7 +14,7 @@ So to start, we'll need to get a copy of your DSDT from your firmware. The easie
   * In command prompt run `path/to/acpidump.exe -b -n DSDT -z`, this will dump your DSDT as a .dat file. Rename this to DSDT.aml
 * F4 in Clover Boot menu
   * DSDT can be found in `EFI/CLOVER/ACPI/origin`, the folder **must** exist before dumping
-* [`acpidump.efi`](https://github.com/khronokernel/Opencore-Vanilla-Desktop-Guide/tree/master/extra-files/acpidump.efi.zip)
+* [`acpidump.efi`](https://github.com/dortania/OpenCore-Desktop-Guide/tree/master/extra-files/acpidump.efi.zip)
   * Add this to `EFI/OC/Tools` and in your config under `Misc -> Tools` with the argument: `-b -n DSDT -z` and select this option in OpenCore's picker. Rename the DSDT.dat to DSDT.aml. Tool is provided by [acpica](https://github.com/acpica/acpica/tree/master/source/tools/acpidump)
 
 If OpenCore is having issues running acpidump, you can call it from the shell with [OpenCoreShell](https://github.com/acidanthera/OpenCoreShell/releases)(reminder to add to both `EFI/OC/Tools` and in your config under `Misc -> Tools` ):
