@@ -1,6 +1,6 @@
 # Getting started with ACPI
 
-![](/images/README-md/acpi-logo.png)
+<img src="images/README-md/acpi-logo.png" width="512">
 
 ## A quick explainer on ACPI and how to make SSDTs
 

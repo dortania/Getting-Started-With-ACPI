@@ -1,5 +1,5 @@
 {
-    "plugins": ["theme-default", "-lunr", "-search", "search-plus", "addcssjs", "favicon-plus"],
+    "plugins": ["theme-default", "-lunr", "-search"],
     "pluginsConfig": {
         "fontsettings": {
             "theme":  "night",
