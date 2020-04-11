@@ -394,8 +394,9 @@
                                 
                                 <h1 id="getting-started-with-acpi">Getting started with ACPI</h1>
 <p><img src="images/README-md/acpi-logo.png" width="512"></p>
-<h2 id="a-quick-explainer-on-acpi-and-how-to-make-ssdts">A quick explainer on ACPI and how to make SSDTs</h2>
+<h2 id="a-quick-explainer-on-acpi">A quick explainer on ACPI</h2>
 <p>So what are DSDTs and SSDTs? Well, these are tables present in your firmware that outline hardware devices like USB controllers, CPU threads, embedded controllers, system clocks and such. A DSDT(Differentiated System Description Table) can be seen as the body holding most of the info with smaller bits of info being passed by the SSDT(Secondary System Description Table). You can think of the DSDT as the building blueprints with SSDTs being sticky notes outlining extra details to the project</p>
+<p>You can read more about ACPI and it&apos;s spec here: <a href="https://uefi.org/sites/default/files/resources/ACPI_6_2.pdf" target="_blank">ACPI 6.2 Manual</a></p>
 <blockquote>
 <p>So why do we care about these tables?</p>
 </blockquote>
@@ -407,7 +408,7 @@
 </ul>
 </li>
 <li>Plugin type<ul>
-<li>This allows XCPM to allowing us native CPU power management on <strong>Intel</strong> Haswell and newer CPUs, the SSDT will connect to the first thread of the CPU. Not meant for AMD</li>
+<li>This allows the use of XCPM providing native CPU power management on <strong>Intel</strong> Haswell and newer CPUs, the SSDT will connect to the first thread of the CPU. Not meant for AMD</li>
 </ul>
 </li>
 <li>AWAC system clock.<ul>
@@ -568,7 +569,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"next":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"fontsettings":{"theme":"night","family":"sans","size":2},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","output":"_book","highlight":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2020-04-11T02:58:55.227Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-11T02:59:44.158Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"next":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"fontsettings":{"theme":"night","family":"sans","size":2},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","output":"_book","highlight":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2020-04-11T17:23:15.305Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-11T17:24:03.021Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
