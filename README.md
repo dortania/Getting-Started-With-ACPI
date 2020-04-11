@@ -2,9 +2,11 @@
 
 <img src="images/README-md/acpi-logo.png" width="512">
 
-## A quick explainer on ACPI and how to make SSDTs
+## A quick explainer on ACPI
 
 So what are DSDTs and SSDTs? Well, these are tables present in your firmware that outline hardware devices like USB controllers, CPU threads, embedded controllers, system clocks and such. A DSDT(Differentiated System Description Table) can be seen as the body holding most of the info with smaller bits of info being passed by the SSDT(Secondary System Description Table). You can think of the DSDT as the building blueprints with SSDTs being sticky notes outlining extra details to the project
+
+You can read more about ACPI and it's spec here: [ACPI 6.2 Manual](https://uefi.org/sites/default/files/resources/ACPI_6_2.pdf)
 
 > So why do we care about these tables?
 
@@ -14,7 +16,7 @@ macOS can be very picky about the devices present in the DSDT and so our job is 
    * All semi-modern intel machines have an EC exposed in their DSDT, with many AMD systems also having it exposed. These controllers are not compatible with macOS so then need to be hidden from macOS and replaced with a dummy EC when running macOS Catalina. 
    * With laptops, we still need these ECs so we rename them into what macOS would expect ECs to look like
 * Plugin type
-  * This allows XCPM to allowing us native CPU power management on **Intel** Haswell and newer CPUs, the SSDT will connect to the first thread of the CPU. Not meant for AMD
+  * This allows the use of XCPM providing native CPU power management on **Intel** Haswell and newer CPUs, the SSDT will connect to the first thread of the CPU. Not meant for AMD
 * AWAC system clock.
   * This applies to all 300 series motherboards including many Z370 boards, the specific issue is that newer boards ship with AWAC clock enabled. This is a problem because macOS cannot communicate with AWAC clocks, so this requires us to either force on the legacy RTC clock or if unavailable create a fake one for macOS to play with
 * NVRAM SSDT
