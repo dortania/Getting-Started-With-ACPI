@@ -1,6 +1,6 @@
 # Compiling and decompiling ACPI Tables
 
-See [General Troubleshooting](https://desktop.dortania.ml/troubleshooting/troubleshooting) if you have dumping/compiling errors
+See [General Troubleshooting](https://dortanian.github.io/OpenCore-Desktop-Guide/troubleshooting/troubleshooting) if you have dumping/compiling errors
 
 * [macOS Compiling and Decompiling](/Manual/compile.md#macos)
 * [Windows Compiling and Decompiling](/Manual/compile.md#windows)
