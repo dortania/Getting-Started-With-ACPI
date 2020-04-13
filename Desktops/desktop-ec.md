@@ -99,6 +99,10 @@ Scope (\_SB.PC00.LPC0) <- Rename this
 }
 ```
 
+![](/images/Desktop/ec.png)
+
+For those having issues, you can also check `Device Manager -> CPU -> BIOS device Name`. Widows will only report the main EC so will save you some headache on that
+
 ## Correcting USB Power
 
 > Hey what about USBX? Do I need to do anything?

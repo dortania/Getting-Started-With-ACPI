@@ -60,6 +60,10 @@ Scope (_SB.PC00)
 Device (_SB.PC00.SMBS.BUS0) <- Renamed
 ```
 
+![](/images/Universal/smbus-md/smbus.png)
+
+For those having issues, you can also check Device Manager -> CPU -> BIOS device Name
+
 **Note**: The MCHC is actually the DRAM controller, similar idea to SMBus for fixing memory reporting
 
 

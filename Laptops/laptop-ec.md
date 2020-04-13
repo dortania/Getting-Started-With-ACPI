@@ -26,6 +26,10 @@ Mainly relevant for Lenovo and a few other OEMs, when this happens that means th
 
 **And please verify that the DSDT hasn't already been patched by Clover or OpenCore**, please dump it without booting either of them to be sure or triple check that there aren't any EC renames in your config already
 
+![](/images/Desktop/ec.png)
+
+For those having issues, you can also check `Device Manager -> CPU -> BIOS device Name`. Widows will only report the main EC so will save you some headache on that
+
 # Applying your EC patch
 
 As you can see from the table below, we'll be renaming our EC listed in the DSDT. Do note you cannot just throw random renames without checking which is the main EC first, as **this can cause actual damage to your laptop.**

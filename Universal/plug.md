@@ -1,7 +1,5 @@
 # Fixing Power Management
 
-**Intel CPUs only**
-
 CPU naming is fairly easy to figure out as well, open your decompiled DSDT and search for `Processor`. This should give you a result like this:
 
 ![](https://i.imgur.com/U3xffjU.png)
@@ -34,5 +32,12 @@ Scope (\_PR.CPU0) <- Rename this
        ...
     }
 ```
+
+![](/images/Universal/plug-md/plug-bios.png)
+![](/images/Universal/plug-md/plug-x299.png)
+
+For those having issues, you can also check `Device Manager -> CPU -> BIOS device Name`
+
+**Note**: X299 may report CP10 or higher for the CPU, when this happens use CP00 instead. This issue is due to weird numeration on Windows' side
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)
