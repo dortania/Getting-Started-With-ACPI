@@ -48,7 +48,7 @@ What we want to do is select option `4. Dump DSDT` first, then select the approp
 
 For Skylake and newer plus AMD, you can grab a prebuilt file here: [SSDT-USBX.aml](https://github.com/dortania/Opencore-Desktop-Guide/blob//master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Broadwell and older**.
 
-**Troubleshooting note**: See [General Troubleshooting](https://dortanian.github.io/OpenCore-Desktop-Guide/troubleshooting/troubleshooting.html) if you're having issues running SSDTTime
+**Troubleshooting note**: See [General Troubleshooting](https://dortania.github.io/OpenCore-Desktop-Guide/troubleshooting/troubleshooting.html) if you're having issues running SSDTTime
 
 ## Adding to OpenCore
 
