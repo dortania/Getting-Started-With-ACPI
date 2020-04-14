@@ -1,7 +1,7 @@
  language: node_js
 node_js: node
 before_script:
-- npm uninstall -g gitbook
+- npm uninstall -g gitbook-cli
 - npm install -g gitbook-cli
 script: 
 - gitbook install
