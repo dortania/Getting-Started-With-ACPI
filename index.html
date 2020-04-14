@@ -12,9 +12,22 @@
         
         
     
+    
     <link rel="stylesheet" href="gitbook/style.css">
 
     
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-medium-zoom/plugin.css">
+                
             
                 
                 <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
@@ -44,6 +57,8 @@
         
     
 
+    
+
         
     
     
@@ -66,6 +81,10 @@
     <div class="book-summary">
         
             
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
             
                 <nav role="navigation">
                 
@@ -390,11 +409,17 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="getting-started-with-acpi">Getting started with ACPI</h1>
+                                <blockquote>
+<p><em>Last modified: Tue Apr 14 2020 01:19:11 GMT+0000 (Coordinated Universal Time)</em></p>
+</blockquote>
+<h1 id="getting-started-with-acpi"><a name="getting-started-with-acpi" class="plugin-anchor" href="#getting-started-with-acpi"><i class="fa fa-link" aria-hidden="true"></i></a>Getting started with ACPI</h1>
 <p><img src="images/README-md/acpi-logo.png" width="512"></p>
-<h2 id="a-quick-explainer-on-acpi">A quick explainer on ACPI</h2>
+<h2 id="a-quick-explainer-on-acpi"><a name="a-quick-explainer-on-acpi" class="plugin-anchor" href="#a-quick-explainer-on-acpi"><i class="fa fa-link" aria-hidden="true"></i></a>A quick explainer on ACPI</h2>
 <p>So what are DSDTs and SSDTs? Well, these are tables present in your firmware that outline hardware devices like USB controllers, CPU threads, embedded controllers, system clocks and such. A DSDT(Differentiated System Description Table) can be seen as the body holding most of the info with smaller bits of info being passed by the SSDT(Secondary System Description Table). You can think of the DSDT as the building blueprints with SSDTs being sticky notes outlining extra details to the project</p>
 <p>You can read more about ACPI and it&apos;s spec here: <a href="https://uefi.org/sites/default/files/resources/ACPI_6_2.pdf" target="_blank">ACPI 6.2 Manual</a></p>
 <blockquote>
@@ -436,9 +461,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="what-ssdts-do-each-platform-need">What SSDTs do each platform need</h2>
+<h2 id="what-ssdts-do-each-platform-need"><a name="what-ssdts-do-each-platform-need" class="plugin-anchor" href="#what-ssdts-do-each-platform-need"><i class="fa fa-link" aria-hidden="true"></i></a>What SSDTs do each platform need</h2>
 <p>Please see the <strong>specific ACPI section of your config.plist</strong>, all SSDTs needed are covered there with a breif explainer. But here&apos;s a very quick TL;DR:</p>
-<h3 id="desktop">Desktop</h3>
+<h3 id="desktop"><a name="desktop" class="plugin-anchor" href="#desktop"><i class="fa fa-link" aria-hidden="true"></i></a>Desktop</h3>
 <p><strong>Ivy Bridge:</strong></p>
 <ul>
 <li><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</li>
@@ -470,7 +495,7 @@
 <ul>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
 </ul>
-<h3 id="high-end-desktop">High End Desktop</h3>
+<h3 id="high-end-desktop"><a name="high-end-desktop" class="plugin-anchor" href="#high-end-desktop"><i class="fa fa-link" aria-hidden="true"></i></a>High End Desktop</h3>
 <p><strong>Haswell-E:</strong></p>
 <ul>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
@@ -487,7 +512,7 @@
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></li>
 </ul>
-<h3 id="laptop">Laptop</h3>
+<h3 id="laptop"><a name="laptop" class="plugin-anchor" href="#laptop"><i class="fa fa-link" aria-hidden="true"></i></a>Laptop</h3>
 <p><strong>Ivy Bridge:</strong></p>
 <ul>
 <li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
@@ -550,6 +575,22 @@
                                 
                                 </section>
                             
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
                         </div>
                     </div>
                 
@@ -569,14 +610,35 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"next":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"fontsettings":{"theme":"night","family":"sans","size":2},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","output":"_book","highlight":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2020-04-13T06:47:27.295Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-13T06:48:19.101Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"next":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","github-edit","anchors","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"family":"sans","size":2,"theme":"night"},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2020-04-14T01:19:11.813Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T01:21:46.236Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    
     <script src="gitbook/gitbook.js"></script>
     <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github-edit/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-medium-zoom/medium-zoom.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-medium-zoom/plugin.js"></script>
+        
     
         
         <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
@@ -585,6 +647,8 @@
         
         <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
         
+    
+
     
 
     </body>

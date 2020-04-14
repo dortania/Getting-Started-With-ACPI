@@ -12,9 +12,22 @@
         
         
     
+    
     <link rel="stylesheet" href="../gitbook/style.css">
 
     
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-medium-zoom/plugin.css">
+                
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
@@ -44,6 +57,8 @@
         
     
 
+    
+
         
     
     
@@ -68,6 +83,10 @@
     <div class="book-summary">
         
             
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
             
                 <nav role="navigation">
                 
@@ -392,16 +411,22 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="disabling-laptop-dgpus">Disabling laptop dGPUs</h1>
+                                <blockquote>
+<p><em>Last modified: Tue Apr 14 2020 01:19:11 GMT+0000 (Coordinated Universal Time)</em></p>
+</blockquote>
+<h1 id="disabling-laptop-dgpus"><a name="disabling-laptop-dgpus" class="plugin-anchor" href="#disabling-laptop-dgpus"><i class="fa fa-link" aria-hidden="true"></i></a>Disabling laptop dGPUs</h1>
 <p>So with laptops, we can hide the dGPU from macOS with the little boot-arg called <code>-wegnoegpu</code> from WhateverGreen. But one small problem, the dGPU is still pulling power draining your battery slowly. We&apos;ll be going over 2 methods for disabling the dGPU in a laptop:</p>
 <ul>
 <li><a href="laptop-disable.html#optimus-method">Optimus Method</a></li>
 <li><a href="laptop-disable.html#bumblebee-method">Bumblebee Method</a></li>
 </ul>
 <p>Note that this is not needed for install, but recommended for post-install</p>
-<h2 id="optimus-method">Optimus Method</h2>
+<h2 id="optimus-method"><a name="optimus-method" class="plugin-anchor" href="#optimus-method"><i class="fa fa-link" aria-hidden="true"></i></a>Optimus Method</h2>
 <p>How this works is that we call the <code>.off</code> method found on Optimus GPUs, this is the expected way to power off a GPU but some may find their dGPU will power back up later on. Mainly seen in Lenovo&apos;s, the Optimus method should work for most users:</p>
 <p>To start, grab <a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-dGPU-Off.dsl.zip" target="_blank">SSDT-dGPU-Off.dsl</a></p>
 <p>Next we need to get on Windows, and head to the following:</p>
@@ -425,7 +450,7 @@
 <ul>
 <li>For those with sleep issues, you can refer to the original <a href="https://www.tonymacx86.com/threads/guide-disabling-discrete-graphics-in-dual-gpu-laptops.163772/" target="_blank">Rehabman thread</a></li>
 </ul>
-<h2 id="bumblebee-method">Bumblebee Method</h2>
+<h2 id="bumblebee-method"><a name="bumblebee-method" class="plugin-anchor" href="#bumblebee-method"><i class="fa fa-link" aria-hidden="true"></i></a>Bumblebee Method</h2>
 <p>With some machines, the simple <code>.off</code> call won&apos;t keep the card off properly, that&apos;s where the Bumblebee method comes in. This SSDT will actually send the dGPU into D3 state being the lowest power state a device can support. Credit to Mameo for the original adaptation.</p>
 <p>To start, grab <a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-NoHybGfx.dsl.zip" target="_blank">SSDT-NoHybGfx.dsl</a></p>
 <p>Next we need to get on Windows, and head to the following:</p>
@@ -449,11 +474,27 @@ External (_SB_.PCI0.PEG0.PEGP._PS3, MethodObj)    // dGPU ACPI Path
 \_SB.PCI0.PEG0.PEGP._PS3 ()
 </code></pre>
 <p>Once adapted to your config, head to the compile section</p>
-<h2 id="now-youre-ready-to-compile-the-ssdt"><a href="../Manual/compile.html">Now you&apos;re ready to compile the SSDT!</a></h2>
+<h2 id="now-youre-ready-to-compile-the-ssdt"><a name="now-youre-ready-to-compile-the-ssdt" class="plugin-anchor" href="#now-youre-ready-to-compile-the-ssdt"><i class="fa fa-link" aria-hidden="true"></i></a><a href="../Manual/compile.html">Now you&apos;re ready to compile the SSDT!</a></h2>
 
                                 
                                 </section>
                             
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
                         </div>
                     </div>
                 
@@ -477,14 +518,35 @@ External (_SB_.PCI0.PEG0.PEGP._PS3, MethodObj)    // dGPU ACPI Path
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Disabling laptop dGPUs","level":"4.4","depth":1,"next":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Trackpad GPI0","level":"4.3","depth":1,"path":"Laptops/trackpad.md","ref":"Laptops/trackpad.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"fontsettings":{"theme":"night","family":"sans","size":2},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","output":"_book","highlight":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/laptop-disable.md","mtime":"2020-04-13T06:47:27.295Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-13T06:48:19.101Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Disabling laptop dGPUs","level":"4.4","depth":1,"next":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Trackpad GPI0","level":"4.3","depth":1,"path":"Laptops/trackpad.md","ref":"Laptops/trackpad.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","github-edit","anchors","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"family":"sans","size":2,"theme":"night"},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/laptop-disable.md","mtime":"2020-04-14T01:19:11.813Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T01:21:46.236Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-edit/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-medium-zoom/medium-zoom.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-medium-zoom/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
@@ -493,6 +555,8 @@ External (_SB_.PCI0.PEG0.PEGP._PS3, MethodObj)    // dGPU ACPI Path
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
         
+    
+
     
 
     </body>

@@ -12,9 +12,22 @@
         
         
     
+    
     <link rel="stylesheet" href="../gitbook/style.css">
 
     
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-medium-zoom/plugin.css">
+                
             
                 
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
@@ -44,6 +57,8 @@
         
     
 
+    
+
         
     
     
@@ -68,6 +83,10 @@
     <div class="book-summary">
         
             
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
             
                 <nav role="navigation">
                 
@@ -392,16 +411,22 @@
                     <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="compiling-and-decompiling-acpi-tables">Compiling and decompiling ACPI Tables</h1>
+                                <blockquote>
+<p><em>Last modified: Tue Apr 14 2020 01:19:11 GMT+0000 (Coordinated Universal Time)</em></p>
+</blockquote>
+<h1 id="compiling-and-decompiling-acpi-tables"><a name="compiling-and-decompiling-acpi-tables" class="plugin-anchor" href="#compiling-and-decompiling-acpi-tables"><i class="fa fa-link" aria-hidden="true"></i></a>Compiling and decompiling ACPI Tables</h1>
 <p>See <a href="https://desktop.dortania.ml/troubleshooting/troubleshooting" target="_blank">General Troubleshooting</a> if you have dumping/compiling errors</p>
 <ul>
 <li><a href="compile.html#macos">macOS Compiling and Decompiling</a></li>
 <li><a href="compile.html#windows">Windows Compiling and Decompiling</a></li>
 <li><a href="compile.html#linux">Linux Compiling and Decompiling</a></li>
 </ul>
-<h2 id="macos">macOS</h2>
+<h2 id="macos"><a name="macos" class="plugin-anchor" href="#macos"><i class="fa fa-link" aria-hidden="true"></i></a>macOS</h2>
 <p>So compiling DSDTs and SSDTs are quite easy with macOS, all you need is <a href="https://github.com/acidanthera/MaciASL/releases" target="_blank">MaciASL</a>. To compile, just <code>File -&gt; SaveAs -&gt; ACPI Machine Language Binary(.AML)</code>, decompiling is just opening the file in MaciASL.</p>
 <p>For those who prefer the command line, grab <a href="https://github.com/acidanthera/MaciASL/blob/master/Dist/iasl-stable" target="_blank">iasl-stable</a> and run the following:</p>
 <pre><code class="lang-text">path/to/iasl.exe path/to/DSDT.aml
@@ -410,7 +435,7 @@
 <li>If compiled .aml file is provided, a decompiled .dsl file will be given and vice versa.</li>
 </ul>
 <p><img src="https://cdn.discordapp.com/attachments/683011276938543134/695854856681816144/Screen_Shot_2020-04-03_at_10.38.18_PM.png" alt=""></p>
-<h2 id="windows">Windows</h2>
+<h2 id="windows"><a name="windows" class="plugin-anchor" href="#windows"><i class="fa fa-link" aria-hidden="true"></i></a>Windows</h2>
 <p>Compiling and decompiling on windows is fairly simple though, you will need <a href="https://acpica.org/sites/acpica/files/iasl-win-20180105.zip" target="_blank">iasl.exe</a> and Command Prompt:</p>
 <pre><code class="lang-text">path/to/iasl.exe path/to/DSDT.aml
 </code></pre>
@@ -418,7 +443,7 @@
 <ul>
 <li>If compiled .aml file is provided, a decompiled .dsl file will be given and vice versa.</li>
 </ul>
-<h2 id="linux">Linux</h2>
+<h2 id="linux"><a name="linux" class="plugin-anchor" href="#linux"><i class="fa fa-link" aria-hidden="true"></i></a>Linux</h2>
 <p>Compiling and decompiling with Linux is just as simple, you will need a special copy of <a href="http://amdosx.kellynet.nl/iasl.zip" target="_blank">iasl</a> and terminal:</p>
 <pre><code class="lang-text">path/to/iasl path/to/DSDT.aml
 </code></pre>
@@ -429,6 +454,22 @@
                                 
                                 </section>
                             
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
                         </div>
                     </div>
                 
@@ -452,14 +493,35 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Decompiling and Compiling","level":"2.2","depth":1,"next":{"title":"Embedded Controllers","level":"3.1","depth":1,"path":"Desktops/desktop-ec.md","ref":"Desktops/desktop-ec.md","articles":[]},"previous":{"title":"Dumping the DSDT","level":"2.1","depth":1,"path":"Manual/dump.md","ref":"Manual/dump.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"fontsettings":{"theme":"night","family":"sans","size":2},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","output":"_book","highlight":{},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}}},"theme":"default","pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Manual/compile.md","mtime":"2020-04-13T06:47:27.295Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-13T06:48:19.101Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Decompiling and Compiling","level":"2.2","depth":1,"next":{"title":"Embedded Controllers","level":"3.1","depth":1,"path":"Desktops/desktop-ec.md","ref":"Desktops/desktop-ec.md","articles":[]},"previous":{"title":"Dumping the DSDT","level":"2.1","depth":1,"path":"Manual/dump.md","ref":"Manual/dump.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","github-edit","anchors","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"family":"sans","size":2,"theme":"night"},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Manual/compile.md","mtime":"2020-04-14T01:19:11.813Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T01:21:46.236Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
 
         
+    
     <script src="../gitbook/gitbook.js"></script>
     <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-edit/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-medium-zoom/medium-zoom.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-medium-zoom/plugin.js"></script>
+        
     
         
         <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
@@ -468,6 +530,8 @@
         
         <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
         
+    
+
     
 
     </body>
