@@ -1,9 +1,13 @@
 {
-    "plugins": ["theme-default", "-lunr", "-search"],
+    "plugins": ["theme-default", "-lunr", "-search", "search-plus", "addcssjs", "favicon-plus", "github-edit", "anchors", "last-modified", "medium-zoom"],
     "pluginsConfig": {
         "fontsettings": {
             "theme":  "night",
             "family": "sans"
+        },
+        "github-edit": {
+            "repo": "dortania/Getting-Started-With-ACPI",
+            "branch": "master"
         },
         "favicon": "/icons/favicon.ico",
         "appleTouchIconPrecomposed152": "/icons/appleTouchIconPrecomposed152.png",
@@ -17,6 +21,11 @@
             "weibo": false,
             "all": false
         }
+    },
+    "medium-zoom": {
+      "margin": 24,
+      "background": "#363b40",
+      "scrollOffset": 0
     },
     "pdf": {
         "pageNumbers": false,
