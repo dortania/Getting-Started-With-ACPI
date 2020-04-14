@@ -54,6 +54,8 @@ When this happens you need to figure out which is the main and which is not, it'
 * `_CRS` (Current Resource Settings)
 * `_GPE` (General Purpose Events)
 
+Note if you have an STA Method as well, see below: [STA Edge Case](/Desktops/desktop-ec.md#sta-edge-case)
+
 > What happens if no `PNP0C09` show up?
 
 So what this means: EC faking is not mandatory for booting, instead only **recommended for proper USB power**. 
@@ -99,9 +101,16 @@ Scope (\_SB.PC00.LPC0) <- Rename this
 }
 ```
 
-![](/images/Desktop/ec.png)
+![](/images/Desktops/ec.png)
 
-For those having issues, you can also check `Device Manager -> CPU -> BIOS device Name`. Widows will only report the main EC so will save you some headache on that
+For those having issues, you can also check `Device Manager -> CPU -> BIOS device Name`. Windows will only report the main EC so will save you some headache on that
+
+## STA Edge Case
+
+![Credit to rottenpants466](/images/Desktops/sta.png)
+
+Do note that if your PNP0C09 device has a `Method (_STA` already you can skip down to "What happens if no `PNP0C09` show up?".
+The reason for this is that the real EC is considered disabled already.
 
 ## Correcting USB Power
 
