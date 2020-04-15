@@ -6,7 +6,7 @@
 
 So what are DSDTs and SSDTs? Well, these are tables present in your firmware that outline hardware devices like USB controllers, CPU threads, embedded controllers, system clocks and such. A DSDT(Differentiated System Description Table) can be seen as the body holding most of the info with smaller bits of info being passed by the SSDT(Secondary System Description Table). You can think of the DSDT as the building blueprints with SSDTs being sticky notes outlining extra details to the project
 
-You can read more about ACPI and it's spec here: [ACPI 6.2 Manual](https://uefi.org/sites/default/files/resources/ACPI_6_2.pdf)
+You can read more about ACPI and it's spec here: [ACPI 6.3 Manual](https://uefi.org/sites/default/files/resources/ACPI_6_3_May16.pdf)
 
 > So why do we care about these tables?
 
