@@ -35,5 +35,5 @@
 
 ## Misc
 
-* [Troubleshooting](troubleshooting.md)
-* [Contributing](CONTRIBUTING.md)
+* [Troubleshooting](/troubleshooting.md)
+* [Contributing](/CONTRIBUTING.md)
