@@ -13,12 +13,12 @@ How this works is that we call the `.off` method found on Optimus GPUs, this is 
 
 To start, grab [SSDT-dGPU-Off.dsl](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-dGPU-Off.dsl.zip)
 
-
 Next we need to get on Windows, and head to the following:
 
 ```text
 Device Manager -> Display Adapters -> dGPU -> Properties -> Details > BIOS device name
 ```
+
 * Note some GPUs may be hiding under "BIOS device name"
 
 This should provided you with an ACPI path for your dGPU, most commonly:
@@ -26,8 +26,7 @@ This should provided you with an ACPI path for your dGPU, most commonly:
 * Nvidia dGPU: `\_SB.PCI0.PEG0.PEGP`
 * AMD dGPU: `\_SB.PCI0.PEGP.DGFX`
 
-
-![Credit to 1Revenger1 for the image](https://cdn.discordapp.com/attachments/683011276938543134/695396807739441232/unknown-4.png)
+![Credit to 1Revenger1 for the image](/images/Desktops/nvidia.png)
 
 Now with that, we'll need to change the ACPI path in the SSDT. Main sections:
 
@@ -42,7 +41,6 @@ If (CondRefOf(\_SB.PCI0.PEG0.PEGP._OFF)) { \_SB.PCI0.PEG0.PEGP._OFF() }
 Once adapted to your config, head to the compile section
 
 * For those with sleep issues, you can refer to the original [Rehabman thread](https://www.tonymacx86.com/threads/guide-disabling-discrete-graphics-in-dual-gpu-laptops.163772/)
-
 
 ## Bumblebee Method
 
@@ -79,7 +77,7 @@ If ((CondRefOf (\_SB.PCI0.PEG0.PEGP._DSM) && CondRefOf (\_SB.PCI0.PEG0.PEGP._PS3
 
 ```text
  // Card Off
-\_SB.PCI0.PEG0.PEGP._PS3 () 
+\_SB.PCI0.PEG0.PEGP._PS3 ()
 ```
 
 Once adapted to your config, head to the compile section

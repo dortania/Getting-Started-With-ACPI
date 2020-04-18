@@ -1,6 +1,6 @@
 # Compiling and decompiling ACPI Tables
 
-See [General Troubleshooting](https://dortania.github.io/OpenCore-Desktop-Guide/troubleshooting/troubleshooting) if you have dumping/compiling errors
+See [Troubleshooting](/troubleshooting.md) if you have dumping/compiling errors
 
 * [macOS Compiling and Decompiling](/Manual/compile.md#macos)
 * [Windows Compiling and Decompiling](/Manual/compile.md#windows)
@@ -15,9 +15,10 @@ For those who prefer the command line, grab [iasl-stable](https://github.com/aci
 ```text
 path/to/iasl.exe path/to/DSDT.aml
 ```
+
 * If compiled .aml file is provided, a decompiled .dsl file will be given and vice versa.
 
-![](https://cdn.discordapp.com/attachments/683011276938543134/695854856681816144/Screen_Shot_2020-04-03_at_10.38.18_PM.png)
+![](/images/Manual/compile-md/macos-compile.png)
 
 ## Windows
 
@@ -27,7 +28,7 @@ Compiling and decompiling on windows is fairly simple though, you will need [ias
 path/to/iasl.exe path/to/DSDT.aml
 ```
 
-![](https://i.imgur.com/IY7HMof.png)
+![](/images/Manual/compile-md/windows-compile.png)
 
 * If compiled .aml file is provided, a decompiled .dsl file will be given and vice versa.
 

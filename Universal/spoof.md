@@ -52,8 +52,9 @@ To find the PCI path of a GPU is fairly simple, best way to find it is running W
 * Under the Details Tab, search for "Location Paths"
    * Note some GPUs may be hiding under "BIOS device name"
 
-![](https://cdn.discordapp.com/attachments/456913818467958789/675210740231176212/unknown.png)
-![Credit to 1Revenger1 for the image](https://cdn.discordapp.com/attachments/683011276938543134/695396807739441232/unknown-4.png)
+![](/images/Desktops/amd.png)
+
+![Credit to 1Revenger1 for the image](/images/Desktops/nvidia.png)
 
 
 The second "ACPI" is what we care about:

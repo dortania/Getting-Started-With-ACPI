@@ -36,8 +36,7 @@ Device (_SB.PCI0.SBUS.BUS0) <- Rename this
 ```
 To find the correct pathing for your devices, grab [Hackintool](https://www.tonymacx86.com/threads/release-hackintool-v3-x-x.254559/) ([Github link](https://github.com/headkaze/Hackintool)) and head to the PCI tab:
 
-![](https://cdn.discordapp.com/attachments/683011276938543134/694592079728214024/Screen_Shot_2020-03-31_at_10.58.36_AM.png)
-
+![](/images/Universal/smbus-md/pci.png)
 Look for the SMBus device under Subclass, then look beside and you'll see the ACPI path(under IOReg Name). To convert , omit `@...`
 
 * `/PC00@0/SMBS@1F,4` -> `PC00.SMBS`

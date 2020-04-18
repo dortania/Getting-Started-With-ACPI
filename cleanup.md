@@ -13,8 +13,7 @@ Users of `FixHPET` will also need to merge oc_patches.plist into their config.pl
 
 Steps to do this:
 
-* Open both files, 
+* Open both files,
 * Delete the `ACPI -> Patch` section from config.plist
 * Copy the `ACPI -> Patch` section from patches.plist
 * Paste into where old patches were in config.plist
-

@@ -1,11 +1,10 @@
 # Fixing Embedded Controller (Laptop)
 
-
 To fix the ECs found in laptops, we'll be renaming them to look like the ones macOS expects. The reason for this is that many laptops break when you turn off their EC with an SSDT. So this is why we can't use the fancy SSDTTime to make a patch for us.
 
 To find out what EC you have, open your decompiled DSDT and search for `PNP0C09`. This should give you a result like this:
 
-![](https://i.imgur.com/lQ4kpb9.png)
+![](/images/Laptops/laptop-ec-md/dsdt-pnp.png)
 
 As you can see our `PNP0C09` is found within the `Device (EC0)` meaning this is the device we want to rename.
 
@@ -19,14 +18,13 @@ When this happens you need to figure out which is the main and which is not, it'
 
 Note that only the main EC needs renaming, if you only have one `PNP0C09` then it is automatically your main regardless of properties.
 
-
 > What if my main `PNP0C09` device is already called `Device (EC)`?
 
-Mainly relevant for Lenovo and a few other OEMs, when this happens that means that your Embedded Controller is ready to use in macOS! Do make sure that this `Device (EC)` is actually your main EC and not a secondary one. 
+Mainly relevant for Lenovo and a few other OEMs, when this happens that means that your Embedded Controller is ready to use in macOS! Do make sure that this `Device (EC)` is actually your main EC and not a secondary one.
 
 **And please verify that the DSDT hasn't already been patched by Clover or OpenCore**, please dump it without booting either of them to be sure or triple check that there aren't any EC renames in your config already
 
-![](/images/Laptops/ec.png)
+![](/images/Laptops/laptop-ec-md/ec.png)
 
 For those having issues, you can also check `Device Manager -> Embedded Controller -> BIOS device Name`. Widows will only report the main EC so will save you some headache on that
 
@@ -41,7 +39,7 @@ As you can see from the table below, we'll be renaming our EC listed in the DSDT
 |change ECDV to EC|45434456|45435f5f|
 |change PGEC to EC|50474543|45435f5f|
 
-## Inside your config:
+## Inside your config
 
 | Comment | String | Change XXXX to EC |
 | :--- | :--- | :--- |
@@ -51,5 +49,4 @@ As you can see from the table below, we'll be renaming our EC listed in the DSDT
 | Find | Data | xxxxxxxx |
 | Replace | Data | xxxxxxxx |
 
-![](https://cdn.discordapp.com/attachments/456913818467958789/668667268254793728/Screen_Shot_2020-01-19_at_9.04.50_PM.png)
-
+![](/images/Laptops/laptop-ec-md/config.png)

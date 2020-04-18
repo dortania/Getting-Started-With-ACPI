@@ -32,3 +32,8 @@
 ## Cleanup
 
 * [Cleanup](cleanup.md)
+
+## Misc
+
+* [Troubleshooting](troubleshooting.md)
+* [Contributing](CONTRIBUTING.md)
