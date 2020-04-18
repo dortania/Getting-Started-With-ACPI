@@ -383,6 +383,39 @@
     
 
     
+        
+        <li class="header">Misc</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="troubleshooting.html">
+            
+                <a href="troubleshooting.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="CONTRIBUTING.html">
+            
+                <a href="CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -427,7 +460,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Wed Apr 15 2020 14:14:15 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Sat Apr 18 2020 19:30:16 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="getting-started-with-acpi"><a name="getting-started-with-acpi" class="plugin-anchor" href="#getting-started-with-acpi"><i class="fa fa-link" aria-hidden="true"></i></a>Getting started with ACPI</h1>
 <p><img src="images/README-md/acpi-logo.png" width="512"></p>
@@ -476,113 +509,184 @@
 <h2 id="what-ssdts-do-each-platform-need"><a name="what-ssdts-do-each-platform-need" class="plugin-anchor" href="#what-ssdts-do-each-platform-need"><i class="fa fa-link" aria-hidden="true"></i></a>What SSDTs do each platform need</h2>
 <p>Please see the <strong>specific ACPI section of your config.plist</strong>, all SSDTs needed are covered there with a breif explainer. But here&apos;s a very quick TL;DR:</p>
 <h3 id="desktop"><a name="desktop" class="plugin-anchor" href="#desktop"><i class="fa fa-link" aria-hidden="true"></i></a>Desktop</h3>
-<p><strong>Ivy Bridge:</strong></p>
-<ul>
-<li><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></li>
-</ul>
-<p><strong>Haswell:</strong></p>
-<ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></li>
-</ul>
-<p><strong>Skylake:</strong></p>
-<ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
-</ul>
-<p><strong>Kabylake:</strong></p>
-<ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
-</ul>
-<p><strong>Coffeelake:</strong></p>
-<ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT AWAC</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></li>
-</ul>
-<p><strong>AMD:</strong></p>
-<ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SSDT</th>
+<th style="text-align:left">IvyBridge</th>
+<th style="text-align:left">Haswell/Broadwell</th>
+<th style="text-align:left">Skylake</th>
+<th style="text-align:left">KabyLake</th>
+<th style="text-align:left">CoffeeLake</th>
+<th style="text-align:left">CometLake</th>
+<th>AMD(15/16/17h)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left"><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>EC</strong></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>AWAC</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></td>
+<td>N/A</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>NVRAM</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
 <h3 id="high-end-desktop"><a name="high-end-desktop" class="plugin-anchor" href="#high-end-desktop"><i class="fa fa-link" aria-hidden="true"></i></a>High End Desktop</h3>
-<p><strong>Haswell-E:</strong></p>
-<ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></li>
-</ul>
-<p><strong>Broadwell-E:</strong></p>
-<ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></li>
-</ul>
-<p><strong>Skylake-X:</strong></p>
-<ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SSDT</th>
+<th style="text-align:left">IvyBridge-E</th>
+<th style="text-align:left">Haswell-E</th>
+<th style="text-align:left">Broadwell-E</th>
+<th style="text-align:left">Skylake-X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left"><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>EC</strong></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>AWAC</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></td>
+</tr>
+</tbody>
+</table>
 <h3 id="laptop"><a name="laptop" class="plugin-anchor" href="#laptop"><i class="fa fa-link" aria-hidden="true"></i></a>Laptop</h3>
-<p><strong>Ivy Bridge:</strong></p>
-<ul>
-<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
-<li><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a></li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
-<li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></li>
-<li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></li>
-</ul>
-<p><strong>Haswell:</strong></p>
-<ul>
-<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
-<li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></li>
-<li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></li>
-</ul>
-<p><strong>Broadwell:</strong></p>
-<ul>
-<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
-<li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></li>
-<li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></li>
-</ul>
-<p><strong>Skylake:</strong></p>
-<ul>
-<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
-<li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></li>
-<li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></li>
-</ul>
-<p><strong>Kabylake:</strong></p>
-<ul>
-<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
-<li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></li>
-<li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></li>
-</ul>
-<p><strong>Coffeelake(8th Gen):</strong></p>
-<ul>
-<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
-<li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></li>
-<li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></li>
-</ul>
-<p><strong>Coffeelake(9th Gen):</strong></p>
-<ul>
-<li><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT AWAC</a></li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></li>
-<li><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></li>
-<li><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></li>
-<li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SSDT</th>
+<th style="text-align:left">IvyBridge</th>
+<th style="text-align:left">Haswell</th>
+<th style="text-align:left">Broadwell</th>
+<th style="text-align:left">Skylake</th>
+<th style="text-align:left">KabyLake</th>
+<th style="text-align:left">CoffeeLake(8thGen)</th>
+<th>Coffee/Comet/IceLake(9/10thGen)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left"><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>EC</strong></td>
+<td style="text-align:left"><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></td>
+<td style="text-align:left"><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></td>
+<td style="text-align:left"><a href="Laptops/laptop-ec.html">EC ACPI Patch</a></td>
+<td style="text-align:left"><a href="Laptops/laptop-ec.html">EC ACPI Patch</a> + <a href="https://github.com/khronokernel/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml" target="_blank">SSDT-USBX</a></td>
+<td style="text-align:left"><a href="Laptops/laptop-ec.html">EC ACPI Patch</a> + <a href="https://github.com/khronokernel/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml" target="_blank">SSDT-USBX</a></td>
+<td style="text-align:left"><a href="Laptops/laptop-ec.html">EC ACPI Patch</a> + <a href="https://github.com/khronokernel/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml" target="_blank">SSDT-USBX</a></td>
+<td><a href="Laptops/laptop-ec.html">EC ACPI Patch</a> + <a href="https://github.com/khronokernel/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml" target="_blank">SSDT-USBX</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Backlight</strong></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://i.applelife.ru/2019/12/463488_SSDT-PNLFCFL.aml.zip" target="_blank">SSDT-PNLF-CFL</a></td>
+<td><a href="https://i.applelife.ru/2019/12/463488_SSDT-PNLFCFL.aml.zip" target="_blank">SSDT-PNLF-CFL</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>I2C TrackPad</strong></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>AWAC</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>NVRAM</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>IRQ Patch</strong></td>
+<td style="text-align:left"><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></td>
+<td style="text-align:left"><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></td>
+<td style="text-align:left"><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -622,7 +726,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"next":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2020-04-15T14:14:15.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-15T14:15:13.522Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"next":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"README.md","mtime":"2020-04-18T19:30:16.254Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-18T19:31:05.383Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

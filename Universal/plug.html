@@ -385,6 +385,39 @@
     
 
     
+        
+        <li class="header">Misc</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../troubleshooting.html">
+            
+                <a href="../troubleshooting.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../CONTRIBUTING.html">
+            
+                <a href="../CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -429,11 +462,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Wed Apr 15 2020 14:14:15 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Sat Apr 18 2020 19:30:16 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="fixing-power-management"><a name="fixing-power-management" class="plugin-anchor" href="#fixing-power-management"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing Power Management</h1>
 <p>CPU naming is fairly easy to figure out as well, open your decompiled DSDT and search for <code>Processor</code>. This should give you a result like this:</p>
-<p><img src="https://i.imgur.com/U3xffjU.png" alt=""></p>
+<p><img src="../images/Universal/plug-md/processor.png" alt=""></p>
 <p>As we can see, the first processor in our list is <code>PR00</code>. This is what we&apos;ll be applying the <code>plugin-type=1</code> property too. Now grab <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a> and replace the default <code>CPU0</code> with our <code>PR00</code>. There&apos;s a couple things to note:</p>
 <ul>
 <li>There&apos;s 2 mentions of CPU0 to change</li>
@@ -441,9 +474,9 @@
 </ul>
 <p>So in our final example, we&apos;d have <code>_SB_.PR00</code> and <code>\_SB.PR00</code></p>
 <p>There are also some edge cases with <code>Processor</code>, specifically on HEDT series like X79, X99 and X299. This edge case is that the ACPI path is much longer and not so obvious:</p>
-<p><img src="https://i.imgur.com/HzOmbx2.png" alt=""></p>
+<p><img src="../images/Universal/plug-md/processor-2.png" alt=""></p>
 <p>If we then search for instances of <code>CP00</code> we find that it&apos;s ACPI path is <code>SB.SCK0.CP00</code>:</p>
-<p><img src="https://i.imgur.com/CtL6Csn.png" alt=""></p>
+<p><img src="../images/Universal/plug-md/cp00.png" alt=""></p>
 <p>So for this X299 board, we&apos;d change <code>\_PR.CPU0</code> with <code>\_SB.SCK0.CP00</code> and <code>External (_PR_.CPU0, ProcessorObj)</code> with <code>External (_SB_.SCK0.CP00, ProcessorObj)</code></p>
 <pre><code class="lang-text">External (_PR_.CPU0, ProcessorObj) &lt;- Rename this
 
@@ -502,7 +535,7 @@ Scope (\_PR.CPU0) &lt;- Rename this
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Plugin type","level":"5.1","depth":1,"next":{"title":"AWAC vs RTC","level":"5.2","depth":1,"path":"Universal/awac.md","ref":"Universal/awac.md","articles":[]},"previous":{"title":"Disabling laptop dGPUs","level":"4.4","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/plug.md","mtime":"2020-04-15T14:14:15.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-15T14:15:13.522Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Plugin type","level":"5.1","depth":1,"next":{"title":"AWAC vs RTC","level":"5.2","depth":1,"path":"Universal/awac.md","ref":"Universal/awac.md","articles":[]},"previous":{"title":"Disabling laptop dGPUs","level":"4.4","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/plug.md","mtime":"2020-04-18T19:30:16.254Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-18T19:31:05.383Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

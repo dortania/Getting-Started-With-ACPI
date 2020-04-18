@@ -385,6 +385,39 @@
     
 
     
+        
+        <li class="header">Misc</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../troubleshooting.html">
+            
+                <a href="../troubleshooting.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../CONTRIBUTING.html">
+            
+                <a href="../CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -429,7 +462,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Wed Apr 15 2020 14:14:15 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Sat Apr 18 2020 19:30:16 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="fixing-system-clocks"><a name="fixing-system-clocks" class="plugin-anchor" href="#fixing-system-clocks"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing System Clocks</h1>
 <p><strong>For Intel 300 series chipsets and newer</strong>, this also includes X299 refreshes and Icelake laptops. Common machines:</p>
@@ -439,17 +472,17 @@
 <li>B365</li>
 <li>H310</li>
 <li>H370</li>
-<li>Z370 (Gigabtye and AsRock boards with newer BIOS versions)</li>
+<li>Z370 (Gigabyte and AsRock boards with newer BIOS versions)</li>
 <li>Z390</li>
 <li>400 series (Cometlake)</li>
 <li>495 series (Icelake) </li>
 </ul>
-<p>So on newer Intel 300 series motherboards, manufactueres started pushing for a new type of system clock: <strong>AWAC</strong>( <strong>A</strong> <strong>W</strong>eird <strong>A</strong>ss <strong>C</strong>lock). One small problem, macOS doesn&apos;t know what the hell an AWAC clock is instead only familiar with the legacy <strong>RTC</strong>(<strong>R</strong>eal <strong>T</strong>ime <strong>C</strong>lock). So we need to figure out how to bring back the old clock, thats where <code>SSDT-AWAC</code> and <code>SSDT-RTC0</code> come in:</p>
+<p>So on newer Intel 300 series motherboards, manufactures started pushing for a new type of system clock: <strong>AWAC</strong>( <strong>A</strong> <strong>W</strong>eird <strong>A</strong>ss <strong>C</strong>lock). One small problem, macOS doesn&apos;t know what the hell an AWAC clock is instead only familiar with the legacy <strong>RTC</strong>(<strong>R</strong>eal <strong>T</strong>ime <strong>C</strong>lock). So we need to figure out how to bring back the old clock, thats where <code>SSDT-AWAC</code> and <code>SSDT-RTC0</code> come in:</p>
 <ul>
 <li><p><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></p>
 <ul>
 <li>Disables AWAC and enables RTC</li>
-<li>In your DSDT, there&apos;s a varaible called <code>STAS</code> used for holding either a <code>One</code> or <code>Zero</code> to determine which clock to use(<code>One</code> for RTC and <code>Zero</code> for AWAC)</li>
+<li>In your DSDT, there&apos;s a variable called <code>STAS</code> used for holding either a <code>One</code> or <code>Zero</code> to determine which clock to use(<code>One</code> for RTC and <code>Zero</code> for AWAC)</li>
 </ul>
 </li>
 <li><p><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a></p>
@@ -467,11 +500,11 @@
 <li>If <strong>nothing shows up</strong> then no need to continue and <strong>no need for this SSDT</strong> as you have no AWAC. <strong>Otherwise, continue on!</strong></li>
 <li>If you get a result then you have an <code>AWAC</code> system clock present, then continue with the <strong>next search for <code>STAS</code></strong>:</li>
 </ul>
-<p><img src="https://i.imgur.com/uuUF857.png" alt=""></p>
+<p><img src="../images/Universal/awac-md/stas.png" alt=""></p>
 <p>As you can see we found the <code>STAS</code> in our DSDT, this means we&apos;re able to force enable our Legacy RTC. In this case, <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a> will be used As-Is with no modifications required. Just need to compile. Note that <code>STAS</code> may be found in AWAC first instead of RTC like in our example, this is normal.</p>
 <p>For systems where <strong>no <code>STAS</code></strong> shows up <strong>but</strong> you do have <code>AWAC</code>, you can use <a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl" target="_blank">SSDT-RTC0</a> though you will need to check the naming of LPC in your DSDT</p>
 <p>By default the SSDT uses <code>LPCB</code>, you can check what your system uses by just searching for <code>Name (_ADR, 0x001F0000)</code>. This address is used for Low Pin Count devices(LPC) but the device name can vary between <code>LPCB</code>, <code>LBC</code> or <code>LBC0</code>:</p>
-<p><img src="https://cdn.discordapp.com/attachments/456913818467958789/675169950108876852/Screen_Shot_2020-02-06_at_7.43.24_PM.png" alt=""></p>
+<p><img src="../images/Universal/awac-md/lpc.png" alt=""></p>
 <h2 id="now-youre-ready-to-compile-the-ssdt"><a name="now-youre-ready-to-compile-the-ssdt" class="plugin-anchor" href="#now-youre-ready-to-compile-the-ssdt"><i class="fa fa-link" aria-hidden="true"></i></a><a href="../Manual/compile.html">Now you&apos;re ready to compile the SSDT!</a></h2>
 
                                 
@@ -516,7 +549,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"AWAC vs RTC","level":"5.2","depth":1,"next":{"title":"NVRAM PMC","level":"5.3","depth":1,"path":"Universal/nvram.md","ref":"Universal/nvram.md","articles":[]},"previous":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/awac.md","mtime":"2020-04-15T14:14:15.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-15T14:15:13.522Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"AWAC vs RTC","level":"5.2","depth":1,"next":{"title":"NVRAM PMC","level":"5.3","depth":1,"path":"Universal/nvram.md","ref":"Universal/nvram.md","articles":[]},"previous":{"title":"Plugin type","level":"5.1","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/awac.md","mtime":"2020-04-18T19:30:16.254Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-18T19:31:05.383Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -385,6 +385,39 @@
     
 
     
+        
+        <li class="header">Misc</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../troubleshooting.html">
+            
+                <a href="../troubleshooting.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../CONTRIBUTING.html">
+            
+                <a href="../CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -429,12 +462,12 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Wed Apr 15 2020 14:14:15 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Sat Apr 18 2020 19:30:16 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="fixing-embedded-controller-desktop"><a name="fixing-embedded-controller-desktop" class="plugin-anchor" href="#fixing-embedded-controller-desktop"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing Embedded Controller (Desktop)</h1>
 <p>What we&apos;ll be doing is hiding our actual EC and creating a fake Embedded Comtroller for macOS to play with.</p>
 <p>To find out what EC you have, open your decompiled DSDT and search for <code>PNP0C09</code>. This should give you a result like this:</p>
-<p><img src="https://i.imgur.com/lQ4kpb9.png" alt=""></p>
+<p><img src="../images/Desktops/pnp.png" alt=""></p>
 <p>As you can see our <code>PNP0C09</code> is found within the <code>Device (EC0)</code> meaning this is the device we want to hide from macOS(others may find <code>H_EC</code>, <code>ECDV</code>, etc, everyone&apos;s systems will be different). Now grab our SSDT-EC and uncomment the EC0 function(remove the <code>/*</code> and <code>*/</code> around it):</p>
 <ul>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a><ul>
@@ -450,7 +483,7 @@
 External (_SB_.PCI0.LPCB.EC0, DeviceObj) &lt;- Rename this
 
    Scope (\_SB.PCI0.LPCB.EC0) &lt;- Rename this
-   {   
+   {
       Method (_STA, 0, NotSerialized) // _STA: Status
       {
          If (_OSI (&quot;Darwin&quot;)) // Darwin = macOS
@@ -467,12 +500,12 @@ External (_SB_.PCI0.LPCB.EC0, DeviceObj) &lt;- Rename this
 </code></pre>
 <p>But looking back at the screenshot above we notice something, our ACPI path is different: <code>PC00.LPC0</code> vs <code>PCI0.LPCB</code>. This is very important especially when you&apos;re dealing with Intel consumer vs Intel HEDT vs AMD, <code>PC00.LPC0</code> is common on Intel HEDT while <code>PCI0.SBRG</code> is common on AMD. And they even come with name variation such as  <code>EC0</code>, <code>H_EC</code>, <code>PGEC</code> and <code>ECDV</code>, so there can&apos;t be a one size fits all SSDT, <strong>always verify your path and device. DO NOT ASSUME</strong>.</p>
 <ul>
-<li>Finding the LowPinCount path: <ul>
+<li>Finding the LowPinCount path:<ul>
 <li>Intel: Search <code>Name (_ADR, 0x001F0000)</code></li>
 <li>AMD: Search <code>Name (_ADR, 0x00140003)</code></li>
 </ul>
 </li>
-<li>Finding the PCI path: <ul>
+<li>Finding the PCI path:<ul>
 <li>Intel: Search <code>PNP0A08</code> (If multiple show up, use the first one)</li>
 <li>AMD: Assume <code>PCI0</code>(most AMD DSDTs don&apos;t declare the PCI path directly)</li>
 </ul>
@@ -492,7 +525,7 @@ External (_SB_.PCI0.LPCB.EC0, DeviceObj) &lt;- Rename this
 <blockquote>
 <p>What happens if no <code>PNP0C09</code> show up?</p>
 </blockquote>
-<p>So what this means: EC faking is not mandatory for booting, instead only <strong>recommended for proper USB power</strong>. </p>
+<p>So what this means: EC faking is not mandatory for booting, instead only <strong>recommended for proper USB power</strong>.</p>
 <p>So how do I make an SSDT without an EC? Well we&apos;ll only create a Fake EC for macOS to play with, this allows for AppleBusPowerController to load and handle our USB properly. To make the actual SSDT, its <em>almost</em> plug and play as no uncommenting needed. The main thing that needs to be changed:</p>
 <ul>
 <li>LowPinCount path</li>
@@ -500,18 +533,18 @@ External (_SB_.PCI0.LPCB.EC0, DeviceObj) &lt;- Rename this
 </ul>
 <p>We want to make sure the SSDT hooks into our DSDT correctly so we need to make sure the ACPI path is correct:</p>
 <ul>
-<li>Finding the LowPinCount path: <ul>
+<li>Finding the LowPinCount path:<ul>
 <li>Intel: Search <code>Name (_ADR, 0x001F0000)</code></li>
 <li>AMD: Search <code>Name (_ADR, 0x00140003)</code></li>
 </ul>
 </li>
-<li>Finding the PCI path: <ul>
+<li>Finding the PCI path:<ul>
 <li>Intel: Search <code>PNP0A08</code> (If multiple show up, use the first one)</li>
 <li>AMD: Assume <code>PCI0</code>(most AMD DSDTs don&apos;t declare the PCI path directly)</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://cdn.discordapp.com/attachments/456913818467958789/670148514197667840/Screen_Shot_2020-01-23_at_11.08.30_PM.png" alt=""></p>
+<p><img src="../images/Desktops/lpc.png" alt=""></p>
 <p>Once you find out, change <code>PCI0.LPCB</code> to your correct path:</p>
 <pre><code class="lang-text">Scope (\_SB.PC00.LPC0) &lt;- Rename this
 {
@@ -587,7 +620,7 @@ The reason for this is that the real EC is considered disabled already.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Embedded Controllers","level":"3.1","depth":1,"next":{"title":"Disabling desktop dGPUs","level":"3.2","depth":1,"path":"Desktops/desktop-disable.md","ref":"Desktops/desktop-disable.md","articles":[]},"previous":{"title":"Decompiling and Compiling","level":"2.2","depth":1,"path":"Manual/compile.md","ref":"Manual/compile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Desktops/desktop-ec.md","mtime":"2020-04-15T14:14:15.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-15T14:15:13.522Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Embedded Controllers","level":"3.1","depth":1,"next":{"title":"Disabling desktop dGPUs","level":"3.2","depth":1,"path":"Desktops/desktop-disable.md","ref":"Desktops/desktop-disable.md","articles":[]},"previous":{"title":"Decompiling and Compiling","level":"2.2","depth":1,"path":"Manual/compile.md","ref":"Manual/compile.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Desktops/desktop-ec.md","mtime":"2020-04-18T19:30:16.254Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-18T19:31:05.383Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

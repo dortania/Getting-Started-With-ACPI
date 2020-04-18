@@ -385,6 +385,39 @@
     
 
     
+        
+        <li class="header">Misc</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../troubleshooting.html">
+            
+                <a href="../troubleshooting.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../CONTRIBUTING.html">
+            
+                <a href="../CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -429,14 +462,14 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Wed Apr 15 2020 14:14:15 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Sat Apr 18 2020 19:30:16 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="fixing-trackpads"><a name="fixing-trackpads" class="plugin-anchor" href="#fixing-trackpads"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing Trackpads</h1>
 <p>This SSDT is used to force enable our GPI0 for VoodooI2C to connect onto.</p>
 <p>With most modern laptop DSDTs, there&apos;s a variable called <code>GPEN</code> or <code>GPHD</code> which are used for setting the status of the GPI0 device. For us, we want to enable the device.</p>
 <h2 id="finding-our-gpi0"><a name="finding-our-gpi0" class="plugin-anchor" href="#finding-our-gpi0"><i class="fa fa-link" aria-hidden="true"></i></a>Finding our GPI0</h2>
 <p>So first things we need to do is find out what variable is used to enable our GPI0 device, lets open up our decompiled SSDT and search for <code>Device (GPI0)</code>. Should give you a desult similar to this:</p>
-<p><img src="https://media.discordapp.net/attachments/456913818467958789/677279455525208096/Screen_Shot_2020-02-12_at_3.25.27_PM.png?width=1674&amp;height=1256" alt=""></p>
+<p><img src="../images/Laptops/trackpad-md/gpi0.png" alt=""></p>
 <p>What we care about from this is the <code>_STA</code> method:</p>
 <pre><code>Method (_STA, 0, NotSerialized)
 {
@@ -450,8 +483,8 @@
 </code></pre><p>What we want is for this to always return <code>0x0F</code> when booting macOS, so we want to make an SSDT that will return <code>GPHD == Zero</code> in macOS.</p>
 <p><strong>NOTE that you may have the other way around where GPHD needs to be set as <code>One</code> to return <code>0x0F</code></strong>. And your device name may also be different, don&apos;t throw random SSDTs in thinking it&apos;ll work</p>
 <p>Once you found the variable and what it should be set to, grab a copy of <a href="https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPI0.dsl" target="_blank">SSDT-GPI0.dsl</a> and make the required edits. Then clean up with compiling it</p>
-<h2 id="more-examples"><a name="more-examples" class="plugin-anchor" href="#more-examples"><i class="fa fa-link" aria-hidden="true"></i></a>More examples:</h2>
-<p><img src="https://media.discordapp.net/attachments/456913818467958789/677283983322775572/Screen_Shot_2020-02-12_at_3.34.26_PM.png?width=1674&amp;height=1704" alt=""></p>
+<h2 id="more-examples"><a name="more-examples" class="plugin-anchor" href="#more-examples"><i class="fa fa-link" aria-hidden="true"></i></a>More examples</h2>
+<p><img src="../images/Laptops/trackpad-md/gpi0-2.png" alt=""></p>
 <p>With this example, we can see that we need both <code>SBRG</code> and <code>GPEN</code> to return <code>One</code>. If only one is present, it&apos;ll create some issues so in our SSDT we&apos;ll want to have both of them return <code>One</code>:</p>
 <pre><code>DefinitionBlock(&quot;&quot;, &quot;SSDT&quot;, 2, &quot;ACDT&quot;, &quot;GPI0&quot;, 0)
 {
@@ -510,7 +543,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Trackpad GPI0","level":"4.3","depth":1,"next":{"title":"Disabling laptop dGPUs","level":"4.4","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"previous":{"title":"Backlight PNLF","level":"4.2","depth":1,"path":"Laptops/backlight.md","ref":"Laptops/backlight.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/trackpad.md","mtime":"2020-04-15T14:14:15.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-15T14:15:13.522Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Trackpad GPI0","level":"4.3","depth":1,"next":{"title":"Disabling laptop dGPUs","level":"4.4","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"previous":{"title":"Backlight PNLF","level":"4.2","depth":1,"path":"Laptops/backlight.md","ref":"Laptops/backlight.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/trackpad.md","mtime":"2020-04-18T19:30:16.254Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-18T19:31:05.383Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

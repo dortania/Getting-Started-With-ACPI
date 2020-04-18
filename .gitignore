@@ -3,6 +3,7 @@
 icons/.DS_Store
 icons/.DS_Store
 icons/.DS_Store
+_book/
 _book/.gitattributes
 _book/.travis.yml
 _book/Universal/xosi.md
@@ -13326,3 +13327,8 @@ node_modules/yargs/lib/validation.js
 node_modules/yargs/LICENSE
 node_modules/yargs/package.json
 node_modules/yargs/README.md
+*.html
+_book/images/Manual/compile-md/macos-compile.png
+_book/images/Manual/compile-md/windows-compile.png
+_book/images/troubleshooting-md/decompile-error.png
+_book/images/troubleshooting-md/invalid-parse.png

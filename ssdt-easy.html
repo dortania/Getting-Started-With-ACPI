@@ -385,6 +385,39 @@
     
 
     
+        
+        <li class="header">Misc</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="troubleshooting.html">
+            
+                <a href="troubleshooting.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="CONTRIBUTING.html">
+            
+                <a href="CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
 
     <li class="divider"></li>
 
@@ -429,7 +462,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Wed Apr 15 2020 14:14:15 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Sat Apr 18 2020 19:30:16 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="ssdts-the-easy-way"><a name="ssdts-the-easy-way" class="plugin-anchor" href="#ssdts-the-easy-way"><i class="fa fa-link" aria-hidden="true"></i></a>SSDTs: The easy way</h1>
 <p>So here we&apos;ll be using a super simple tool made by CorpNewt: <a href="https://github.com/corpnewt/SSDTTime" target="_blank">SSDTTime</a></p>
@@ -462,14 +495,14 @@
 </ul>
 </li>
 <li><strong>USBX SSDT</strong>: <ul>
-<li>This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a prebuilt here: <a href="https://github.com/dortania/Opencore-Desktop-Guide/blob//master/extra-files/SSDT-USBX.aml" target="_blank">SSDT-USBX.aml</a></li>
+<li>This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a prebuilt here: <a href="https://github.com/dortania/Opencore-Desktop-Guide/blob/master/extra-files/SSDT-USBX.aml" target="_blank">SSDT-USBX.aml</a></li>
 </ul>
 </li>
 </ul>
 <p>For users who don&apos;t have all the options avaible to them in SSDTTime, you can follow the &quot;SSDTs: The long way&quot; section. You can still use SSDTTime for SSDTs it support for you.</p>
 <h2 id="running-ssdttime"><a name="running-ssdttime" class="plugin-anchor" href="#running-ssdttime"><i class="fa fa-link" aria-hidden="true"></i></a>Running SSDTTime</h2>
 <p>Run the <code>SSDTTime.bat</code> file as Admin on the target machine and you should see something like this:</p>
-<p><img src="https://cdn.discordapp.com/attachments/456913818467958789/669260286007705623/unknown.png" alt=""></p>
+<p><img src="images/ssdt-easy-md/ssdttime.png" alt=""></p>
 <p>What are all these options?:</p>
 <ul>
 <li><code>1. FixHPET    - Patch out IRQ Conflicts</code><ul>
@@ -493,7 +526,7 @@
 <blockquote>
 <p>What about USBX?</p>
 </blockquote>
-<p>For Skylake and newer plus AMD, you can grab a prebuilt file here: <a href="https://github.com/dortania/Opencore-Desktop-Guide/blob//master/extra-files/SSDT-USBX.aml" target="_blank">SSDT-USBX.aml</a>. This file is plug and play and requires no device configuration, <strong>do not use on Broadwell and older</strong>.</p>
+<p>For Skylake and newer plus AMD, you can grab a prebuilt file here: <a href="https://github.com/dortania/Opencore-Desktop-Guide/blob/master/extra-files/SSDT-USBX.aml" target="_blank">SSDT-USBX.aml</a>. This file is plug and play and requires no device configuration, <strong>do not use on Broadwell and older</strong>.</p>
 <p><strong>Troubleshooting note</strong>: See <a href="https://dortania.github.io/OpenCore-Desktop-Guide/troubleshooting/troubleshooting.html" target="_blank">General Troubleshooting</a> if you&apos;re having issues running SSDTTime</p>
 <h2 id="adding-to-opencore"><a name="adding-to-opencore" class="plugin-anchor" href="#adding-to-opencore"><i class="fa fa-link" aria-hidden="true"></i></a>Adding to OpenCore</h2>
 <p>Don&apos;t forget that SSDTs need to be added to Opencore, reminder that .aml is complied, .dsl is code. <strong>Add only the .aml file</strong>:</p>
@@ -553,7 +586,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"next":{"title":"SSDTs: Long Way","level":"1.3","depth":1,"path":"ssdt-long.md","ref":"ssdt-long.md","articles":[]},"previous":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"ssdt-easy.md","mtime":"2020-04-15T14:14:15.753Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-15T14:15:13.522Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"next":{"title":"SSDTs: Long Way","level":"1.3","depth":1,"path":"ssdt-long.md","ref":"ssdt-long.md","articles":[]},"previous":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"ssdt-easy.md","mtime":"2020-04-18T19:30:16.346Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-18T19:31:05.383Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
