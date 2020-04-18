@@ -15,7 +15,7 @@ So to spoof the GPU, we need to find a couple things:
 
 * Suitable PCI ID for the GPU
 * ACPI Path of the GPU
-* [SSDT-GPU-SPOOF](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip)
+* [SSDT-GPU-SPOOF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip)
 
 
 ## Finding a suitable PCI ID
@@ -71,7 +71,7 @@ And voila! We've found our ACPI path, now that we have everything we're ready to
 
 ## Making the SSDT
 
-To start grab our [SSDT-GPU-SPOOF](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip) and open it up. Here there's a couple things to change:
+To start grab our [SSDT-GPU-SPOOF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip) and open it up. Here there's a couple things to change:
 
 ```
 External (_SB_.PCI0, DeviceObj)

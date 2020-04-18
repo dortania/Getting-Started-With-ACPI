@@ -28,7 +28,7 @@ What we want is for this to always return `0x0F` when booting macOS, so we want 
 
 **NOTE that you may have the other way around where GPHD needs to be set as `One` to return `0x0F`**. And your device name may also be different, don't throw random SSDTs in thinking it'll work
 
-Once you found the variable and what it should be set to, grab a copy of [SSDT-GPI0.dsl](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPI0.dsl) and make the required edits. Then clean up with compiling it
+Once you found the variable and what it should be set to, grab a copy of [SSDT-GPI0.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPI0.dsl) and make the required edits. Then clean up with compiling it
 
 ## More examples
 

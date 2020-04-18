@@ -11,7 +11,7 @@ Note that this is not needed for install, but recommended for post-install
 
 How this works is that we call the `.off` method found on Optimus GPUs, this is the expected way to power off a GPU but some may find their dGPU will power back up later on. Mainly seen in Lenovo's, the Optimus method should work for most users:
 
-To start, grab [SSDT-dGPU-Off.dsl](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-dGPU-Off.dsl.zip)
+To start, grab [SSDT-dGPU-Off.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-dGPU-Off.dsl.zip)
 
 Next we need to get on Windows, and head to the following:
 
@@ -46,7 +46,7 @@ Once adapted to your config, head to the compile section
 
 With some machines, the simple `.off` call won't keep the card off properly, that's where the Bumblebee method comes in. This SSDT will actually send the dGPU into D3 state being the lowest power state a device can support. Credit to Mameo for the original adaptation.
 
-To start, grab [SSDT-NoHybGfx.dsl](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-NoHybGfx.dsl.zip)
+To start, grab [SSDT-NoHybGfx.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-NoHybGfx.dsl.zip)
 
 Next we need to get on Windows, and head to the following:
 

@@ -4,7 +4,7 @@ So what this SSDT does is create a PNLF device for macOS to play with, specifica
 
 No configuration required for most, just drop the prebuilt file into your EFI:
 
-* [SSDT-PNLF](https://github.com/khronokernel/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PNLF.aml)
+* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PNLF.aml)
   * For most users
 * [SSDT-PNLFCFL](https://i.applelife.ru/2019/12/463488_SSDT-PNLFCFL.aml.zip)
   * For Coffee Lake and newer
