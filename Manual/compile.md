@@ -34,7 +34,7 @@ path/to/iasl.exe path/to/DSDT.aml
 
 ## Linux
 
-Compiling and decompiling with Linux is just as simple, you will need a special copy of [iasl](http://amdosx.kellynet.nl/iasl.zip) and terminal:
+Compiling and decompiling with Linux is just as simple, you will need a copy of [iasl](http://amdosx.kellynet.nl/iasl.zip) and terminal(note iasl from any package manager will do fine as well):
 
 ```text
 path/to/iasl path/to/DSDT.aml
