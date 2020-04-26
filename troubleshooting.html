@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>SSDTs: Long Way · GitBook</title>
+        <title>Troubleshooting · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -71,10 +71,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Manual/dump.html" />
+    <link rel="next" href="CONTRIBUTING.html" />
     
     
-    <link rel="prev" href="ssdt-easy.html" />
+    <link rel="prev" href="cleanup.html" />
     
 
     <style>
@@ -140,7 +140,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="ssdt-long.html">
+        <li class="chapter " data-level="1.3" data-path="ssdt-long.html">
             
                 <a href="ssdt-long.html">
             
@@ -377,7 +377,7 @@
         
         
     
-        <li class="chapter " data-level="7.1" data-path="troubleshooting.html">
+        <li class="chapter active" data-level="7.1" data-path="troubleshooting.html">
             
                 <a href="troubleshooting.html">
             
@@ -433,7 +433,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >SSDTs: Long Way</a>
+        <a href="." >Troubleshooting</a>
     </h1>
 </div>
 
@@ -451,15 +451,57 @@
                                 <blockquote>
 <p><em>Last modified: Sun Apr 26 2020 03:05:41 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
-<h1 id="ssdts-the-long-way"><a name="ssdts-the-long-way" class="plugin-anchor" href="#ssdts-the-long-way"><i class="fa fa-link" aria-hidden="true"></i></a>SSDTs: The long way</h1>
-<p>Well sadly some things are not handled by SSDTTime, well have no fear as making SSDTs is super easy. The basic process:</p>
+<h1 id="troubleshooting"><a name="troubleshooting" class="plugin-anchor" href="#troubleshooting"><i class="fa fa-link" aria-hidden="true"></i></a>Troubleshooting</h1>
 <ul>
-<li>Dump DSDT(the one SSDTTime did for use will work)</li>
-<li>Decompile DSDT</li>
-<li>Make SSDTs based of of it(You&apos;ll need either MaciASL or a text editor for this)</li>
-<li>Compile SSDTs</li>
+<li><a href="troubleshooting.html#fixing-ssdttime-could-not-locate-or-download-iasl">Fixing SSDTTime: <code>Could not locate or download iasl!</code></a></li>
+<li><a href="troubleshooting.html#cant-run-acpidumpefi-from-opencore">Can&apos;t run <code>acpidump.efi</code></a></li>
+<li><a href="troubleshooting.html#iasl-warning--unresolved">iASL warning, # unresolved</a></li>
+<li><a href="troubleshooting.html#decompiling-error">Decompiling Error</a></li>
+<li><a href="troubleshooting.html#invalid-character-0x3d-expecting-asl-keyword-or-name">Invalid character (0x3D), expecting ASL keyword or name</a></li>
+<li><a href="troubleshooting.html#syntax-error-unexpected-parseopone-expecting-">Syntax error, unexpected PARSEOP_ONE, expecting &apos;(&apos;</a></li>
 </ul>
-<p>Now continue forth and master the ways of ACPI!</p>
+<h2 id="fixing-ssdttime-could-not-locate-or-download-iasl"><a name="fixing-ssdttime-could-not-locate-or-download-iasl" class="plugin-anchor" href="#fixing-ssdttime-could-not-locate-or-download-iasl"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing SSDTTime: <code>Could not locate or download iasl!</code></h2>
+<p>This is usually due to an outdated version of Python, try either updating Python or add iasl to the scripts folder for SSDTTime:</p>
+<ul>
+<li><a href="https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip" target="_blank">iasl macOS version</a></li>
+<li><a href="https://acpica.org/sites/acpica/files/iasl-win-20180105.zip" target="_blank">iasl Windows version</a></li>
+<li><a href="http://amdosx.kellynet.nl/iasl.zip" target="_blank">iasl Linux version</a></li>
+</ul>
+<h2 id="cant-run-acpidumpefi-from-opencore"><a name="cant-run-acpidumpefi-from-opencore" class="plugin-anchor" href="#cant-run-acpidumpefi-from-opencore"><i class="fa fa-link" aria-hidden="true"></i></a>Can&apos;t run <code>acpidump.efi</code> from OpenCore</h2>
+<p>Grab <a href="https://github.com/acidanthera/OpenCorePkg/releases" target="_blank">OpenShell</a> and add it to EFI/OC/Tools and config.plist -&gt; Misc -&gt; Tools.</p>
+<p>Next, call upon OpenCore shell and enter the following:</p>
+<pre><code class="lang-text">shell&gt; fs0: //replace with proper drive
+
+fs0:\&gt; dir //to verify this is the right directory
+
+  Directory of fs0:\
+
+   01/01/01 3:30p  EFI
+
+fs0:\&gt; cd EFI\OC\Tools //note that its with forward slashes
+
+fs0:\EFI\OC\Tools&gt; acpidump.efi -b -n DSDT -z
+</code></pre>
+<h2 id="iasl-warning--unresolved"><a name="iasl-warning--unresolved" class="plugin-anchor" href="#iasl-warning--unresolved"><i class="fa fa-link" aria-hidden="true"></i></a>iASL warning, # unresolved</h2>
+<p>If you try to decompile your DSDT and get an error similar to this:</p>
+<pre><code class="lang-text">iASL Warning: There were 19 external control methods found during disassembly, but only 0 were resolved (19 unresolved)
+</code></pre>
+<p>This happens when one ACPI table requires the rest for proper referencing, it does not accept the creation of DSDTs as we&apos;re only using it for creating a select few SSDTs. For those who are worried, you can run the following:</p>
+<pre><code class="lang-text">iasl * [insert all ACPI files here]
+</code></pre>
+<h2 id="decompiling-error"><a name="decompiling-error" class="plugin-anchor" href="#decompiling-error"><i class="fa fa-link" aria-hidden="true"></i></a>Decompiling Error</h2>
+<p><img src="images/troubleshooting-md/decompile-error.png" alt=""></p>
+<pre><code class="lang-text">Loading Acpi table from file iASLAwjHrs.aml
+Acpi table [DSDT] successfully installed and loaded
+Pass 1 parse of [DSDT]
+</code></pre>
+<p>This is a common error on DSDTs that have methods that aren&apos;t supported by maciASL, the easiest way is to delete maciASL and make sure you grab it from Acidanthera&apos;s repo: <a href="https://github.com/acidanthera/MaciASL/releases" target="_blank">maciASL</a></p>
+<h2 id="invalid-character-0x3d-expecting-asl-keyword-or-name"><a name="invalid-character-0x3d-expecting-asl-keyword-or-name" class="plugin-anchor" href="#invalid-character-0x3d-expecting-asl-keyword-or-name"><i class="fa fa-link" aria-hidden="true"></i></a>Invalid character (0x3D), expecting ASL keyword or name</h2>
+<p><img src="images/troubleshooting-md/invalid-parse.png" alt=""></p>
+<p>Similar to the above error, you&apos;re running an outdated copy of maciASL. Make sure you&apos;re using the latest from Acidanthera&apos;s repo: <a href="https://github.com/acidanthera/MaciASL/releases" target="_blank">maciASL</a></p>
+<h2 id="syntax-error-unexpected-parseopone-expecting-"><a name="syntax-error-unexpected-parseopone-expecting-" class="plugin-anchor" href="#syntax-error-unexpected-parseopone-expecting-"><i class="fa fa-link" aria-hidden="true"></i></a>Syntax error, unexpected PARSEOP_ONE, expecting &apos;(&apos;</h2>
+<p><img src="images/troubleshooting-md/invalid-parse.png" alt=""></p>
+<p>Similar to the above 2 errors, you&apos;re running an outdated copy of maciASL. Make sure you&apos;re using the latest from Acidanthera&apos;s repo: <a href="https://github.com/acidanthera/MaciASL/releases" target="_blank">maciASL</a></p>
 
                                 
                                 </section>
@@ -487,12 +529,12 @@
 
             
                 
-                <a href="ssdt-easy.html" class="navigation navigation-prev " aria-label="Previous page: SSDTs: Easy Way">
+                <a href="cleanup.html" class="navigation navigation-prev " aria-label="Previous page: Cleanup">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Manual/dump.html" class="navigation navigation-next " aria-label="Next page: Dumping the DSDT">
+                <a href="CONTRIBUTING.html" class="navigation navigation-next " aria-label="Next page: Contributing">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -503,7 +545,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SSDTs: Long Way","level":"1.3","depth":1,"next":{"title":"Dumping the DSDT","level":"2.1","depth":1,"path":"Manual/dump.md","ref":"Manual/dump.md","articles":[]},"previous":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"ssdt-long.md","mtime":"2020-04-26T03:05:41.766Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T03:06:34.621Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Troubleshooting","level":"7.1","depth":1,"next":{"title":"Contributing","level":"7.2","depth":1,"path":"CONTRIBUTING.md","ref":"CONTRIBUTING.md","articles":[]},"previous":{"title":"Cleanup","level":"6.1","depth":1,"path":"cleanup.md","ref":"cleanup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"troubleshooting.md","mtime":"2020-04-26T03:05:41.770Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T03:06:34.621Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>NVRAM PMC · GitBook</title>
+        <title>Embedded Controller  · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -71,10 +71,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="irq.html" />
+    <link rel="next" href="plug.html" />
     
     
-    <link rel="prev" href="awac.html" />
+    <link rel="prev" href="../Laptops/laptop-disable.html" />
     
 
     <style>
@@ -259,7 +259,7 @@
         
         
     
-        <li class="chapter " data-level="5.1" data-path="ec-fix.html">
+        <li class="chapter active" data-level="5.1" data-path="ec-fix.html">
             
                 <a href="ec-fix.html">
             
@@ -298,7 +298,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="5.4" data-path="nvram.html">
+        <li class="chapter " data-level="5.4" data-path="nvram.html">
             
                 <a href="nvram.html">
             
@@ -433,7 +433,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >NVRAM PMC</a>
+        <a href=".." >Embedded Controller </a>
     </h1>
 </div>
 
@@ -451,29 +451,144 @@
                                 <blockquote>
 <p><em>Last modified: Sun Apr 26 2020 03:05:41 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
-<h1 id="fixing-nvram"><a name="fixing-nvram" class="plugin-anchor" href="#fixing-nvram"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing NVRAM</h1>
-<p>This SSDT is required for all &quot;true&quot; 300 series motherboards and newer(Z370 is excluded), it specifically brings back NVRAM support and requires very little configuration for the end user.</p>
+<h1 id="fixing-embedded-controller"><a name="fixing-embedded-controller" class="plugin-anchor" href="#fixing-embedded-controller"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing Embedded Controller</h1>
+<p>What we&apos;ll be doing is creating a fake Embedded Controller (EC) to satisfy macOS Catalina&apos;s EC addiction, and disabling the EC on desktops to prevent panics and crashes.</p>
+<p>You&apos;ll want to begin by grabbing either one of these uncompiled SSDT files:</p>
 <ul>
-<li>B360</li>
-<li>B365</li>
-<li>H310</li>
-<li>H370</li>
-<li>Z390</li>
-<li>400 series (Cometlake)</li>
-<li>495 series (Icelake) </li>
+<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a><ul>
+<li>For Skylake and newer and all AMD systems</li>
 </ul>
-<p>By default it uses <code>PCI0.LPCB</code> for the PCI and LowPinCount path. The device names can vary between <code>PC00</code> and <code>PCI0</code> for PCI path and <code>LPCB</code>, <code>LBC</code> and <code>LBC0</code> for  LowPinCount path. To see what you have:</p>
+</li>
+<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a><ul>
+<li>For Broadwell and older</li>
+</ul>
+</li>
+</ul>
+<h3 id="fixing-the-path"><a name="fixing-the-path" class="plugin-anchor" href="#fixing-the-path"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing the Path</h3>
+<p>For Intel systems, the path is <em>likely</em> correct, though it&apos;s worth double checking. You will want to find your current EC by opening your decompiled DSDT and searching for <code>PNP0C09</code>. You should get a result similar to this:</p>
+<p><img src="../images/Desktops/pnp.png" alt=""></p>
+<blockquote>
+<p>Note: If your EC device happens to already be named <code>EC</code> in your DSDT, you do not need SSDT-EC at all and can move on.</p>
+</blockquote>
+<p>As you can see, <code>PNP0C09</code> is found under the <code>EC0</code> device and <code>_SB.PC00.LPC0</code> scope. Looking at the SSDT though, this differs from the path <code>_SB_.PCI0.LPCB</code> seen within. This will need to be corrected in the SSDT to match what is found in the DSDT. Using the above image, you should get something similar to this:</p>
+<pre><code class="lang-text">Scope (\_SB.PC00.LPC0) &lt;- Rename this
+{
+    Device (EC) &lt;- DO NOT RENAME THIS
+    {
+        Name (_HID, &quot;ACID0001&quot;)  // _HID: Hardware ID
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI (&quot;Darwin&quot;))
+            {
+                Return (0x0F) // Enable our Fake EC only when in macOS
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+    }
+}
+</code></pre>
+<p>Generally, <code>PC00.LPC0</code> is most common on Intel HEDT while <code>PCI0.SBRG</code> is most common on AMD. <strong>Always verify your path and device. DO NOT ASSUME</strong>.
+If you are having issues finding the Scope, you can use the below Hardware IDs or Addresses:</p>
 <ul>
-<li>Finding the LowPinCount path: <ul>
+<li>Finding the LowPinCount path:<ul>
 <li>Intel: Search <code>Name (_ADR, 0x001F0000)</code></li>
+<li>AMD: Search <code>Name (_ADR, 0x00140003)</code></li>
 </ul>
 </li>
-<li>Finding the PCI path: <ul>
+<li>Finding the PCI path:<ul>
 <li>Intel: Search <code>PNP0A08</code> (If multiple show up, use the first one)</li>
+<li>AMD: Assume <code>PCI0</code>(most AMD DSDTs don&apos;t declare the PCI path directly)</li>
 </ul>
 </li>
 </ul>
-<p><img src="../images/Universal/nvram-md/lpc.png" alt=""></p>
+<p><strong>Make sure that you do not rename <code>Device (EC)</code>. This is what macOS Catalina looks for to boot!</strong></p>
+<p><strong>Desktop users, continue down below to disabling your actual EC</strong></p>
+<h3 id="disabling-real-ec-desktops-only"><a name="disabling-real-ec-desktops-only" class="plugin-anchor" href="#disabling-real-ec-desktops-only"><i class="fa fa-link" aria-hidden="true"></i></a>Disabling real EC (Desktops only)</h3>
+<p>For desktops, it&apos;s preferable to disable the actual Embedded Controller as it is not supported by macOS 100% and is known to sometimes cause panics. If we use the screenshot above, we&apos;ll see that the device name is <code>EC0</code>. Other common names for ECs are <code>H_EC</code>, <code>ECDV</code>, and <code>EC0</code>. You&apos;ll want to grab your SSDT again and uncomment the <code>_STA</code> method to disable it (remove the <code>/*</code> and <code>*/</code> around it):</p>
+<pre><code class="lang-text">/* &lt;- REMOVE THIS
+External (_SB_.PCI0.LPCB.EC0, DeviceObj) &lt;- Rename this
+
+   Scope (\_SB.PCI0.LPCB.EC0) &lt;- Rename this
+   {
+      Method (_STA, 0, NotSerialized) // _STA: Status
+      {
+         If (_OSI (&quot;Darwin&quot;)) // Darwin = macOS
+         {
+            Return (0) // Hides our real EC only when in macOS
+         }
+         Else
+      {
+      Return (0x0F)
+     }
+  }
+}
+*/ &lt;- REMOVE THIS
+</code></pre>
+<p>Like above, make sure the path is correct for the External and Scope field.</p>
+<h3 id="what-happens-if-device-in-the-dsdt-is-already-named-ec"><a name="what-happens-if-device-in-the-dsdt-is-already-named-ec" class="plugin-anchor" href="#what-happens-if-device-in-the-dsdt-is-already-named-ec"><i class="fa fa-link" aria-hidden="true"></i></a>What happens if device in the DSDT is already named <code>EC</code></h3>
+<p>For laptops, you don&apos;t need SSDT-EC at all.</p>
+<h3 id="what-happens-if-multiple-pnp0c09-show-up"><a name="what-happens-if-multiple-pnp0c09-show-up" class="plugin-anchor" href="#what-happens-if-multiple-pnp0c09-show-up"><i class="fa fa-link" aria-hidden="true"></i></a>What happens if multiple <code>PNP0C09</code> show up</h3>
+<p>When this happens you need to figure out which is the main and which is not, it&apos;s fairly easy to figure out. Check each controller for the following properties:</p>
+<ul>
+<li><code>_HID</code> (Hardware ID)</li>
+<li><code>_CRS</code> (Current Resource Settings)</li>
+<li><code>_GPE</code> (General Purpose Events)</li>
+</ul>
+<p>Note if you have an STA Method as well, see below: <a href="../Desktops/desktop-ec.md#sta-edge-case">STA Edge Case</a></p>
+<h3 id="what-happens-if-no-pnp0c09-show-up"><a name="what-happens-if-no-pnp0c09-show-up" class="plugin-anchor" href="#what-happens-if-no-pnp0c09-show-up"><i class="fa fa-link" aria-hidden="true"></i></a>What happens if no <code>PNP0C09</code> show up?</h3>
+<p>This means you only need to fake an Embedded Controller rather so that AppleBusPowerController will load and handle USB power properly and continue booting. To make the actual SSDT, its <em>almost</em> plug and play as no uncommenting needed. The main thing that needs to be changed:</p>
+<ul>
+<li>LowPinCount path</li>
+<li>PCI path</li>
+</ul>
+<p>We want to make sure the SSDT hooks into our DSDT correctly so we need to make sure the ACPI path is correct:</p>
+<ul>
+<li>Finding the LowPinCount path:<ul>
+<li>Intel: Search <code>Name (_ADR, 0x001F0000)</code></li>
+<li>AMD: Search <code>Name (_ADR, 0x00140003)</code></li>
+</ul>
+</li>
+<li>Finding the PCI path:<ul>
+<li>Intel: Search <code>PNP0A08</code> (If multiple show up, use the first one)</li>
+<li>AMD: Assume <code>PCI0</code>(most AMD DSDTs don&apos;t declare the PCI path directly)</li>
+</ul>
+</li>
+</ul>
+<p><img src="../images/Desktops/lpc.png" alt=""></p>
+<p>Once you find out, change <code>PCI0.LPCB</code> to your correct path:</p>
+<pre><code class="lang-text">Scope (\_SB.PC00.LPC0) &lt;- Rename this
+{
+    Device (EC) &lt;- DO NOT RENAME THIS
+    {
+        Name (_HID, &quot;ACID0001&quot;)  // _HID: Hardware ID
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI (&quot;Darwin&quot;))
+            {
+                Return (0x0F) // Enable our Fake EC only when in macOS
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+    }
+}
+</code></pre>
+<p><img src="../images/Desktops/ec.png" alt=""></p>
+<p>For those having issues, you can also check <code>Device Manager -&gt; CPU -&gt; BIOS device Name</code>. Windows will only report the main EC so will save you some headache on that</p>
+<h3 id="sta-edge-case"><a name="sta-edge-case" class="plugin-anchor" href="#sta-edge-case"><i class="fa fa-link" aria-hidden="true"></i></a>STA Edge Case</h3>
+<p><img src="../images/Desktops/sta.png" alt="Credit to rottenpants466"></p>
+<p>Do note that if your PNP0C09 device has a <code>Method (_STA</code> already you can skip down to &quot;What happens if no <code>PNP0C09</code> show up?&quot;.
+The reason for this is that the real EC is considered disabled already.</p>
+<h3 id="correcting-usb-power"><a name="correcting-usb-power" class="plugin-anchor" href="#correcting-usb-power"><i class="fa fa-link" aria-hidden="true"></i></a>Correcting USB Power</h3>
+<blockquote>
+<p>Hey what about USBX? Do I need to do anything?</p>
+</blockquote>
+<p>USBX is universal across all systems, it just creates a USBX device that forces USB power properties. This is crucial for fixing Mics, DACs, Webcams, Bluetooth Dongles and other high power draw devices. This is not mandatory to boot but should be added in post-install if not before. Note that it requires the EC functioning correctly and that USBX is only used on skylake+ systems - those on Broadwell and older can ignore.</p>
 <h2 id="now-youre-ready-to-compile-the-ssdt"><a name="now-youre-ready-to-compile-the-ssdt" class="plugin-anchor" href="#now-youre-ready-to-compile-the-ssdt"><i class="fa fa-link" aria-hidden="true"></i></a><a href="../Manual/compile.html">Now you&apos;re ready to compile the SSDT!</a></h2>
 
                                 
@@ -502,12 +617,12 @@
 
             
                 
-                <a href="awac.html" class="navigation navigation-prev " aria-label="Previous page: AWAC vs RTC">
+                <a href="../Laptops/laptop-disable.html" class="navigation navigation-prev " aria-label="Previous page: Disabling laptop dGPUs">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="irq.html" class="navigation navigation-next " aria-label="Next page: IRQ Fix">
+                <a href="plug.html" class="navigation navigation-next " aria-label="Next page: Plugin type">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -518,7 +633,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"NVRAM PMC","level":"5.4","depth":1,"next":{"title":"IRQ Fix","level":"5.5","depth":1,"path":"Universal/irq.md","ref":"Universal/irq.md","articles":[]},"previous":{"title":"AWAC vs RTC","level":"5.3","depth":1,"path":"Universal/awac.md","ref":"Universal/awac.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/nvram.md","mtime":"2020-04-26T03:05:41.670Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T03:06:34.621Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Embedded Controller ","level":"5.1","depth":1,"next":{"title":"Plugin type","level":"5.2","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Disabling laptop dGPUs","level":"4.3","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/ec-fix.md","mtime":"2020-04-26T03:05:41.670Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T03:06:34.621Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

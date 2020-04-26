@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>SSDTs: Long Way · GitBook</title>
+        <title>Contributing · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -71,10 +71,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Manual/dump.html" />
     
-    
-    <link rel="prev" href="ssdt-easy.html" />
+    <link rel="prev" href="troubleshooting.html" />
     
 
     <style>
@@ -140,7 +138,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="ssdt-long.html">
+        <li class="chapter " data-level="1.3" data-path="ssdt-long.html">
             
                 <a href="ssdt-long.html">
             
@@ -390,7 +388,7 @@
             
         </li>
     
-        <li class="chapter " data-level="7.2" data-path="CONTRIBUTING.html">
+        <li class="chapter active" data-level="7.2" data-path="CONTRIBUTING.html">
             
                 <a href="CONTRIBUTING.html">
             
@@ -433,7 +431,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >SSDTs: Long Way</a>
+        <a href="." >Contributing</a>
     </h1>
 </div>
 
@@ -451,15 +449,81 @@
                                 <blockquote>
 <p><em>Last modified: Sun Apr 26 2020 03:05:41 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
-<h1 id="ssdts-the-long-way"><a name="ssdts-the-long-way" class="plugin-anchor" href="#ssdts-the-long-way"><i class="fa fa-link" aria-hidden="true"></i></a>SSDTs: The long way</h1>
-<p>Well sadly some things are not handled by SSDTTime, well have no fear as making SSDTs is super easy. The basic process:</p>
+<h1 id="supporting-the-guides"><a name="supporting-the-guides" class="plugin-anchor" href="#supporting-the-guides"><i class="fa fa-link" aria-hidden="true"></i></a>Supporting the guides</h1>
+<p><strong>Note</strong>: This is a community run guide which is not officially endorsed by Acidanthera. Please do not bug Acidanthera with issues about this guide.</p>
+<p>Want to help support the guide? Well there&apos;s some ways you can help!</p>
 <ul>
-<li>Dump DSDT(the one SSDTTime did for use will work)</li>
-<li>Decompile DSDT</li>
-<li>Make SSDTs based of of it(You&apos;ll need either MaciASL or a text editor for this)</li>
-<li>Compile SSDTs</li>
+<li><a href="CONTRIBUTING.html#contributing-via-issues">Contributing via Issues</a></li>
+<li><a href="CONTRIBUTING.html#contributing-via-prs">Contributing via PRs</a></li>
 </ul>
-<p>Now continue forth and master the ways of ACPI!</p>
+<p>Note: For those wanting to contribute financially, we seriously appreciate it but we&apos;re a non-profit organization. We do this to teach, not to make money. If you have some money left over we highly recommend donating it to a charity. <a href="https://crohnsandcolitis.donorportal.ca/Donation/DonationDetails.aspx?L=en-CA&amp;G=159&amp;F=1097&amp;T=GENER" target="_blank">Crohn&apos;s and Colitis Canada</a> is one we recommend if you have none on mind.</p>
+<h2 id="contributing-via-issues"><a name="contributing-via-issues" class="plugin-anchor" href="#contributing-via-issues"><i class="fa fa-link" aria-hidden="true"></i></a>Contributing via Issues</h2>
+<p> Contributing via Issues is pretty simple but there are some rules:</p>
+<ul>
+<li>Keep issues tab dedicated to guides issues only, <strong>no personal hackintosh issues</strong>. It is not a place to discuss installation issues.</li>
+<li>If for a typo or better clarification, please indicate what page it was on. Would appreciate not going for a scavenger hunt on where these issues are.</li>
+</ul>
+<p>You can find the issues tab here: <a href="https://github.com/dortania/Getting-Started-With-ACPI/issues" target="_blank">Getting Started With ACPI Issues</a></p>
+<h2 id="contributing-via-prs"><a name="contributing-via-prs" class="plugin-anchor" href="#contributing-via-prs"><i class="fa fa-link" aria-hidden="true"></i></a>Contributing via PRs</h2>
+<p>Some guidelines when contributing via PRs:</p>
+<ul>
+<li>Use your brain (please).</li>
+<li>Proofread your submissions.</li>
+<li>Pull Requests can be denied if we feel it does not fit or has inaccurate information. We will generally tell you why it is rejected though or ask for revisions.<ul>
+<li>We would also appreciate sources for any bigger commits to make it easier on us to verify the info your provide is valid</li>
+</ul>
+</li>
+<li>Images must be hosted locally in the repo under the <code>/images/</code> folder</li>
+<li>Your PR must be run through a markdown lint and have all issues fixed.</li>
+<li>In general, try to avoid using &quot;non-Acidanthera&quot; tools when possible. Generally we want to avoid use of third-party tools  - though if it&apos;s impossible otherwise, then you can link it.<ul>
+<li>Tools explicitly banned:<ul>
+<li>UniBeast, MultiBeast and KextBeast<ul>
+<li>More info can be found here: <a href="https://github.com/khronokernel/Tonymcx86-stance" target="_blank">Tonymacx86-stance</a></li>
+</ul>
+</li>
+<li>Transmac<ul>
+<li>Know for creating borked USB drives</li>
+</ul>
+</li>
+<li>Niresh Installers<ul>
+<li>We&apos;d like to avoid piracy with the guides</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-to-contribute"><a name="how-to-contribute" class="plugin-anchor" href="#how-to-contribute"><i class="fa fa-link" aria-hidden="true"></i></a>How to Contribute</h3>
+<p>Best way to test your commits and make sure they are formatted correctly is downloading <code>nodejs</code> and getting the <a href="https://github.com/GitbookIO/gitbook-cli" target="_blank">gitbook-cli</a> and <a href="https://github.com/igorshubovych/markdownlint-cli" target="_blank">markdownlint-cli</a> tools. When you run <code>gitbook serve</code>, it will set up a local webserver which you can connect to view the changes you made. <code>markdownlint *</code> will throw any errors at you about formatting as well, and <code>markdownlint -f *</code> will attempt to fix these.</p>
+<ul>
+<li><a href="https://github.com/dortania/Getting-Started-With-ACPI/fork/" target="_blank">Fork this repo</a></li>
+<li>Install the required tools:<ul>
+<li><code>npm install -g markdownlint-cli</code></li>
+<li><code>npm install -g gitbook-cli</code></li>
+</ul>
+</li>
+<li>Make your changes.</li>
+<li>Build the site:<ul>
+<li><code>gitbook install</code> (To install all the required gitbook plugins)</li>
+<li><code>gitbook serve</code> (Preview the site)<ul>
+<li>Can be found at <code>http://localhost:4000</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Check markdown format:<ul>
+<li><code>markdownlint -f *</code> (To fix any potential issues)</li>
+</ul>
+</li>
+</ul>
+<h3 id="tips"><a name="tips" class="plugin-anchor" href="#tips"><i class="fa fa-link" aria-hidden="true"></i></a>Tips</h3>
+<p>Some tools that make contributing a bit easier:</p>
+<ul>
+<li><a href="https://typora.io" target="_blank">Typora</a> for real time markdown rendering.</li>
+<li><a href="https://macromates.com" target="_blank">TextMate</a> for easy and powerful mass find/replace.</li>
+<li><a href="https://desktop.github.com" target="_blank">Github Desktop</a> for more user friendly GUI.</li>
+</ul>
 
                                 
                                 </section>
@@ -487,14 +551,10 @@
 
             
                 
-                <a href="ssdt-easy.html" class="navigation navigation-prev " aria-label="Previous page: SSDTs: Easy Way">
+                <a href="troubleshooting.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Troubleshooting">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="Manual/dump.html" class="navigation navigation-next " aria-label="Next page: Dumping the DSDT">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -503,7 +563,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"SSDTs: Long Way","level":"1.3","depth":1,"next":{"title":"Dumping the DSDT","level":"2.1","depth":1,"path":"Manual/dump.md","ref":"Manual/dump.md","articles":[]},"previous":{"title":"SSDTs: Easy Way","level":"1.2","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"ssdt-long.md","mtime":"2020-04-26T03:05:41.766Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T03:06:34.621Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Contributing","level":"7.2","depth":1,"previous":{"title":"Troubleshooting","level":"7.1","depth":1,"path":"troubleshooting.md","ref":"troubleshooting.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"CONTRIBUTING.md","mtime":"2020-04-26T03:05:41.670Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T03:06:34.621Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
