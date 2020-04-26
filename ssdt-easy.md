@@ -33,7 +33,7 @@ Run the `SSDTTime.bat` file as Admin on the target machine and you should see so
 What are all these options?:
 
 * `1. FixHPET    - Patch out IRQ Conflicts`
-   * IRQ patching, mainly needed for X79, X99 and laptop users
+   * IRQ patching, mainly needed for X79, X99 and laptop users(use option `C` to omit conflicting legacy IRQs)
 * `2. FakeEC     - OS-aware Fake EC`
    * This is the SSDT-EC, required for Catalina users
 * `3. PluginType - Sets plugin-type = 1 on CPU0/PR00`
