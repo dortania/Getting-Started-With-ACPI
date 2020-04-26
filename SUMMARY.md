@@ -10,18 +10,17 @@
 
 ## Desktop
 
-* [Embedded Controllers](/Desktops/desktop-ec.md)
 * [Disabling desktop dGPUs](/Desktops/desktop-disable.md)
 
 ## Laptop
 
-* [Embedded Controllers](/Laptops/laptop-ec.md)
 * [Backlight PNLF](/Laptops/backlight.md)
 * [Trackpad GPI0](/Laptops/trackpad.md)
 * [Disabling laptop dGPUs](/Laptops/laptop-disable.md)
 
 ## Universal
 
+* [Embedded Controller](/Universal/desktop-ec.md)
 * [Plugin type](/Universal/plug.md)
 * [AWAC vs RTC](/Universal/awac.md)
 * [NVRAM PMC](/Universal/nvram.md)
