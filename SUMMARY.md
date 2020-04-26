@@ -20,7 +20,7 @@
 
 ## Universal
 
-* [Embedded Controller](/Universal/ec-fix.md)
+* [Embedded Controller ](/Universal/ec-fix.md)
 * [Plugin type](/Universal/plug.md)
 * [AWAC vs RTC](/Universal/awac.md)
 * [NVRAM PMC](/Universal/nvram.md)
