@@ -2,7 +2,7 @@
 
 **Work in progress**
 
-So this is mainly needed for GPUs that are not natively supported OOB due to their odd VBIOS, most commonly:
+So this is mainly needed for GPUs that are not natively supported out of the box due to their odd VBIOS, most commonly:
 
 * XFX
 * PowerColor
