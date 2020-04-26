@@ -1,6 +1,6 @@
 # Renaming GPUs
 
-So this is mainly needed for GPUs that are not natively supported OOB due to their names, most commonly:
+So this is mainly needed for GPUs that are not natively supported out of the box due to their names, most commonly:
 
 * R9 290/390
 * R9 280/380
