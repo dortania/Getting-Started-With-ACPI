@@ -4,7 +4,8 @@ cache:
   npm: false
 before_script:
 - npm install -g gitbook-cli
-script: 
+script:
+- ls Universal
 - gitbook install
 - gitbook build
 - cp icons/* _book/gitbook/images
