@@ -449,7 +449,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Sun Apr 26 2020 03:28:47 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Mon Apr 27 2020 19:57:31 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="fixing-trackpads"><a name="fixing-trackpads" class="plugin-anchor" href="#fixing-trackpads"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing Trackpads</h1>
 <p>This SSDT is used to force enable our GPI0 for VoodooI2C to connect onto.</p>
@@ -487,7 +487,51 @@
         }
     }
 }
-</code></pre>
+</code></pre><h2 id="gpio-troubleshooting"><a name="gpio-troubleshooting" class="plugin-anchor" href="#gpio-troubleshooting"><i class="fa fa-link" aria-hidden="true"></i></a>GPIO Troubleshooting</h2>
+<p>So if you&apos;re still having issues enabling your trackpad in macOS, you can try removing SSDT-GPIO and instead swap for the following. Note that using these 2 will most likely break Windows and Linux so only use XOSI when troubleshooting:</p>
+<ul>
+<li><p><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml" target="_blank">SSDT-XOSI</a></p>
+</li>
+<li><p>XOSI Rename:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Comment</th>
+<th style="text-align:left">String</th>
+<th style="text-align:left">Change _OSI to XOSI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Enabled</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left">YES</td>
+</tr>
+<tr>
+<td style="text-align:left">Count</td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Limit</td>
+<td style="text-align:left">Nuber</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Find</td>
+<td style="text-align:left">Data</td>
+<td style="text-align:left">5f4f5349</td>
+</tr>
+<tr>
+<td style="text-align:left">Replace</td>
+<td style="text-align:left">Data</td>
+<td style="text-align:left">584f5349</td>
+</tr>
+</tbody>
+</table>
+
                                 
                                 </section>
                             
@@ -530,7 +574,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Trackpad GPI0","level":"4.2","depth":1,"next":{"title":"Disabling laptop dGPUs","level":"4.3","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"previous":{"title":"Backlight PNLF","level":"4.1","depth":1,"path":"Laptops/backlight.md","ref":"Laptops/backlight.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/trackpad.md","mtime":"2020-04-26T03:28:47.795Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T03:29:42.099Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Trackpad GPI0","level":"4.2","depth":1,"next":{"title":"Disabling laptop dGPUs","level":"4.3","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"previous":{"title":"Backlight PNLF","level":"4.1","depth":1,"path":"Laptops/backlight.md","ref":"Laptops/backlight.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Laptops/trackpad.md","mtime":"2020-04-27T19:57:31.376Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-27T19:58:24.824Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
