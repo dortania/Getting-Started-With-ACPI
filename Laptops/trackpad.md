@@ -52,3 +52,19 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "GPI0", 0)
     }
 }
 ```
+
+## GPIO Troubleshooting
+
+So if you're still having issues enabling your trackpad in macOS, you can try removing SSDT-GPIO and instead swap for the following. Note that using these 2 will most likely break Windows and Linux so only use XOSI when troubleshooting:
+
+* [SSDT-XOSI](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml)
+
+* XOSI Rename:
+
+| Comment | String | Change _OSI to XOSI |
+| :--- | :--- | :--- |
+| Enabled | Boolean | YES |
+| Count | Number | 0 |
+| Limit | Nuber | 0 |
+| Find | Data | 5f4f5349 |
+| Replace | Data | 584f5349 |
