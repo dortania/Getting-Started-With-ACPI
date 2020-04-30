@@ -1,6 +1,6 @@
 # Fixing Embedded Controller (Laptop)
 
-## You'll want to go to [SSDT-EC under the Universal tab](/Universal/desktop-ec.md) for the new SSDT-EC page.
+## You'll want to go to [SSDT-EC under the Universal tab](/Universal/desktop-ec.md) for the new SSDT-EC page
 
 To fix the ECs found in laptops, we'll be renaming them to look like the ones macOS expects. The reason for this is that many laptops break when you turn off their EC with an SSDT. So this is why we can't use the fancy SSDTTime to make a patch for us.
 

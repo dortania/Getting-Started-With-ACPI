@@ -264,7 +264,7 @@
                 <a href="ec-fix.html">
             
                     
-                    Embedded Controller 
+                    Embedded Controller
             
                 </a>
             
@@ -449,7 +449,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Mon Apr 27 2020 19:57:31 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Thu Apr 30 2020 15:41:14 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="renaming-gpus"><a name="renaming-gpus" class="plugin-anchor" href="#renaming-gpus"><i class="fa fa-link" aria-hidden="true"></i></a>Renaming GPUs</h1>
 <p>So this is mainly needed for GPUs that are not natively supported out of the box due to their names, most commonly:</p>
@@ -485,7 +485,7 @@ Buffer (0x04)
 </code></pre><p>As you can see, the bytes are swapped in pairs. Keep this in mind when we make our SSDT</p>
 <p>The specifics are due to <a href="https://en.wikipedia.org/wiki/Endianness" target="_blank">Endianness</a> for those who are curious</p>
 <h2 id="finding-the-acpi-path-of-the-gpu"><a name="finding-the-acpi-path-of-the-gpu" class="plugin-anchor" href="#finding-the-acpi-path-of-the-gpu"><i class="fa fa-link" aria-hidden="true"></i></a>Finding the ACPI Path of the GPU</h2>
-<p>To find the PCI path of a GPU is fairly simple, best way to find it is running Windows: </p>
+<p>To find the PCI path of a GPU is fairly simple, best way to find it is running Windows:</p>
 <ul>
 <li>Open Device Manager</li>
 <li>Select Display Adapters, then right click your GPU and select Properties</li>
@@ -525,7 +525,7 @@ Buffer ()
 {
     &quot;AMD Radeon R9 390&quot;
 }
-</code></pre><p><code>&quot;device-id&quot;</code> will be set to our PCI ID that we found in &quot;Finding a suitable PCI ID&quot; and <code>&quot;model&quot;</code> is mainly cosmetic </p>
+</code></pre><p><code>&quot;device-id&quot;</code> will be set to our PCI ID that we found in &quot;Finding a suitable PCI ID&quot; and <code>&quot;model&quot;</code> is mainly cosmetic</p>
 <h2 id="now-youre-ready-to-compile-the-ssdt"><a name="now-youre-ready-to-compile-the-ssdt" class="plugin-anchor" href="#now-youre-ready-to-compile-the-ssdt"><i class="fa fa-link" aria-hidden="true"></i></a><a href="../Manual/compile.html">Now you&apos;re ready to compile the SSDT!</a></h2>
 
                                 
@@ -570,7 +570,7 @@ Buffer ()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GPU Spoof","level":"5.6","depth":1,"next":{"title":"Fixing SMBus Support","level":"5.7","depth":1,"path":"Universal/smbus.md","ref":"Universal/smbus.md","articles":[]},"previous":{"title":"IRQ Fix","level":"5.5","depth":1,"path":"Universal/irq.md","ref":"Universal/irq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/spoof.md","mtime":"2020-04-27T19:57:31.376Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-27T19:58:24.824Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"GPU Spoof","level":"5.6","depth":1,"next":{"title":"Fixing SMBus Support","level":"5.7","depth":1,"path":"Universal/smbus.md","ref":"Universal/smbus.md","articles":[]},"previous":{"title":"IRQ Fix","level":"5.5","depth":1,"path":"Universal/irq.md","ref":"Universal/irq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/spoof.md","mtime":"2020-04-30T15:41:14.923Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T15:42:03.539Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
