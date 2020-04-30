@@ -8,14 +8,14 @@ This SSDT is required for all "true" 300 series motherboards and newer(Z370 is e
 * H370
 * Z390
 * 400 series (Cometlake)
-* 495 series (Icelake) 
+* 495 series (Icelake)
 
 By default it uses `PCI0.LPCB` for the PCI and LowPinCount path. The device names can vary between `PC00` and `PCI0` for PCI path and `LPCB`, `LBC` and `LBC0` for  LowPinCount path. To see what you have:
 
-* Finding the LowPinCount path: 
-   * Intel: Search `Name (_ADR, 0x001F0000)`
-* Finding the PCI path: 
-   * Intel: Search `PNP0A08` (If multiple show up, use the first one)
+* Finding the LowPinCount path:
+  * Intel: Search `Name (_ADR, 0x001F0000)`
+* Finding the PCI path:
+  * Intel: Search `PNP0A08` (If multiple show up, use the first one)
 
 ![](/images/Universal/nvram-md/lpc.png)
 

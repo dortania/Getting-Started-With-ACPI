@@ -10,18 +10,17 @@
 * Z370 (Gigabyte and AsRock boards with newer BIOS versions)
 * Z390
 * 400 series (Cometlake)
-* 495 series (Icelake) 
+* 495 series (Icelake)
 
 So on newer Intel 300 series motherboards, manufactures started pushing for a new type of system clock: **AWAC**( **A** **W**eird **A**ss **C**lock). One small problem, macOS doesn't know what the hell an AWAC clock is instead only familiar with the legacy **RTC**(**R**eal **T**ime **C**lock). So we need to figure out how to bring back the old clock, thats where `SSDT-AWAC` and `SSDT-RTC0` come in:
 
 * [SSDT-AWAC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl)
-   * Disables AWAC and enables RTC
-   * In your DSDT, there's a variable called `STAS` used for holding either a `One` or `Zero` to determine which clock to use(`One` for RTC and `Zero` for AWAC)
-   
-* [SSDT-RTC0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl)
-   * Used for creating a fake RTC device for macOS to play with
-   * In very rare circumstances, some DSDTs may not have a legacy RTC to fall back on. When this happens, we'll want to create a fake device to make macOS happy
+  * Disables AWAC and enables RTC
+  * In your DSDT, there's a variable called `STAS` used for holding either a `One` or `Zero` to determine which clock to use(`One` for RTC and `Zero` for AWAC)
 
+* [SSDT-RTC0](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl)
+  * Used for creating a fake RTC device for macOS to play with
+  * In very rare circumstances, some DSDTs may not have a legacy RTC to fall back on. When this happens, we'll want to create a fake device to make macOS happy
 
 Note: AWAC actually stands for ACPI Wake Alarm Counter/Clock for those curious, though I'll forever know it as A Weird Ass Clock ;p
 
@@ -42,6 +41,5 @@ For systems where **no `STAS`** shows up **but** you do have `AWAC`, you can use
 By default the SSDT uses `LPCB`, you can check what your system uses by just searching for `Name (_ADR, 0x001F0000)`. This address is used for Low Pin Count devices(LPC) but the device name can vary between `LPCB`, `LBC` or `LBC0`:
 
 ![](/images/Universal/awac-md/lpc.png)
-
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)

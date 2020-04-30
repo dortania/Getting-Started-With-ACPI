@@ -96,7 +96,7 @@ When this happens you need to figure out which is the main and which is not, it'
 
 Note if you have an STA Method as well, see below: [STA Edge Case](/Desktops/desktop-ec.md#sta-edge-case)
 
-### What happens if no `PNP0C09` show up?
+### What happens if no `PNP0C09` show up
 
 This means you only need to fake an Embedded Controller rather so that AppleBusPowerController will load and handle USB power properly and continue booting. To make the actual SSDT, its *almost* plug and play as no uncommenting needed. The main thing that needs to be changed:
 

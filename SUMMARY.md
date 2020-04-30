@@ -5,6 +5,7 @@
 * [SSDTs: Long Way](ssdt-long.md)
 
 ## Manual
+
 * [Dumping the DSDT](/Manual/dump.md)
 * [Decompiling and Compiling](/Manual/compile.md)
 
@@ -20,7 +21,7 @@
 
 ## Universal
 
-* [Embedded Controller ](/Universal/ec-fix.md)
+* [Embedded Controller](/Universal/ec-fix.md)
 * [Plugin type](/Universal/plug.md)
 * [AWAC vs RTC](/Universal/awac.md)
 * [NVRAM PMC](/Universal/nvram.md)

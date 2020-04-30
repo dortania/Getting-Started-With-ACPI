@@ -17,7 +17,6 @@ So to spoof the GPU, we need to find a couple things:
 * ACPI Path of the GPU
 * [SSDT-GPU-SPOOF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip)
 
-
 ## Finding a suitable PCI ID
 
 To find a suitable PCI ID, we'll be using [PCI ID Repository](https://pci-ids.ucw.cz/read/PC/1002) which has a full database of all AMD GPUs. For this example, we'll be creating a Spoof SSDT for the R9 390. For a full list of supported GPUs, please see the [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/). The closest match to this GPU would be the 390X, and looking on that site near the top gives us this:
@@ -25,6 +24,7 @@ To find a suitable PCI ID, we'll be using [PCI ID Repository](https://pci-ids.uc
 ```
 Vendor 1002 -> Device 1002:67b0
 ```
+
 Now lets break this down into a device ID we can use:
 
 * `1002`: The vendor ID, all AMD devices have this ID
@@ -39,25 +39,26 @@ Buffer (0x04)
      0xB0, 0x67, 0x00, 0x00
 },
 ```
+
 As you can see, the bytes are swapped in pairs. Keep this in mind when we make our SSDT
 
 The specifics are due to [Endianness](https://en.wikipedia.org/wiki/Endianness) for those who are curious
 
 ## Finding the ACPI Path of the GPU
 
-To find the PCI path of a GPU is fairly simple, best way to find it is running Windows: 
+To find the PCI path of a GPU is fairly simple, best way to find it is running Windows:
 
 * Open Device Manager
 * Select Display Adapters, then right click your GPU and select Properties
 * Under the Details Tab, search for "Location Paths"
-   * Note some GPUs may be hiding under "BIOS device name"
+  * Note some GPUs may be hiding under "BIOS device name"
 
 ![](/images/Desktops/amd.png)
 
 ![Credit to 1Revenger1 for the image](/images/Desktops/nvidia.png)
 
-
 The second "ACPI" is what we care about:
+
 ```
 ACPI(_SB_)#ACPI(PC02)#ACPI(BR2A)#ACPI(PEGP)#PCI(0000)#PCI(0000)
 ```
@@ -67,6 +68,7 @@ Now converting this to an ACPI path is quite simple, remove the `#ACPI` and `#PC
 ```
 `_SB_.PC02.BR2A.PEGP
 ```
+
 And voila! We've found our ACPI path, now that we have everything we're ready to get cooking
 
 ## Making the SSDT
@@ -77,6 +79,7 @@ To start grab our [SSDT-GPU-SPOOF](https://github.com/dortania/Getting-Started-W
 External (_SB_.PCI0, DeviceObj)
 External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
 ```
+
 For our example, we'll change all mentions of :
 
 * `PCI0` with `PC02`
@@ -89,6 +92,7 @@ Now that the ACPI pathing is correct, we can finally apply our fake ID!!!
 So the 2 parts we want to change:
 
 **device ID**:
+
 ```
 "device-id",
 Buffer (0x04)
@@ -98,6 +102,7 @@ Buffer (0x04)
 ```
 
 **Model**:
+
 ```
 "model",
 Buffer ()
@@ -106,8 +111,6 @@ Buffer ()
 }
 ```
 
-`"device-id"` will be set to our PCI ID that we found in "Finding a suitable PCI ID" and `"model"` is mainly cosmetic 
-
+`"device-id"` will be set to our PCI ID that we found in "Finding a suitable PCI ID" and `"model"` is mainly cosmetic
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)
-

@@ -2,17 +2,15 @@
 
 This section of the guide refers to fixing AppleSMBus support in macOS, what is AppleSMBus? Well this mainly handles the System Management Bus, which has many functions like:
 
-
 * AppleSMBusController
-   * Aids with correct temperature, fan, voltage, ICH, etc readings
+  * Aids with correct temperature, fan, voltage, ICH, etc readings
 * AppleSMBusPCI
-   * Same idea as AppleSMBusController except for low bandwidth PCI devices
+  * Same idea as AppleSMBusController except for low bandwidth PCI devices
 * Memory Reporting
-   * Aids in proper memory reporting and can aid in getting better kernel panic details if memory related
-* Other things SMBus does: [SMBus wiki](https://en.wikipedia.org/wiki/System_Management_Bus)   
+  * Aids in proper memory reporting and can aid in getting better kernel panic details if memory related
+* Other things SMBus does: [SMBus wiki](https://en.wikipedia.org/wiki/System_Management_Bus)
 
 For install purposes, this SSDT isn't needed but for post-install it's recommended to put the final touches on your hack.
-
 
 So to get started, we'll want to grab our SMBus SSDT:
 
@@ -34,6 +32,7 @@ Scope (_SB.PCI0) <- Rename this
 
 Device (_SB.PCI0.SBUS.BUS0) <- Rename this
 ```
+
 To find the correct pathing for your devices, grab [Hackintool](https://www.tonymacx86.com/threads/release-hackintool-v3-x-x.254559/) ([Github link](https://github.com/headkaze/Hackintool)) and head to the PCI tab:
 
 ![](/images/Universal/smbus-md/pci.png)
@@ -41,14 +40,13 @@ Look for the SMBus device under Subclass, then look beside and you'll see the AC
 
 * `/PC00@0/SMBS@1F,4` -> `PC00.SMBS`
 
-
 Once finished, it'll look something like this:
 
 ```text
 External (_SB_.PC00, DeviceObj) <- Renamed
 External (_SB_.PC00.SMBS.BUS0, DeviceObj) <- Renamed
 
-Scope (_SB.PC00) 
+Scope (_SB.PC00)
 {
     Device (MCHC)
     {
@@ -64,6 +62,5 @@ Device (_SB.PC00.SMBS.BUS0) <- Renamed
 For those having issues, you can also check Device Manager -> CPU -> BIOS device Name
 
 **Note**: The MCHC is actually the DRAM controller, similar idea to SMBus for fixing memory reporting
-
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)
