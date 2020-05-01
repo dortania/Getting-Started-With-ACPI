@@ -1,7 +1,7 @@
 /*
  * XCPM power management compatibility table.
  */
-DefinitionBlock ("", "SSDT", 2, "Dortania", "CpuPlug", 0x00003000)
+DefinitionBlock ("", "SSDT", 2, "DRTNIA", "CpuPlug", 0x00003000)
 {
     External (_PR_.CPU0, ProcessorObj) // Rename this
 
