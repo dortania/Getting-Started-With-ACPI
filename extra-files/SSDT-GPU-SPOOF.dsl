@@ -1,6 +1,6 @@
 // Based off of WhateverGreen's sample.dsl
 // https://github.com/acidanthera/WhateverGreen/blob/master/Manual/Sample.dsl
-DefinitionBlock ("", "SSDT", 2, "Slav", "AMDGPU", 0x00001000)
+DefinitionBlock ("", "SSDT", 2, "DRTNIA", "AMDGPU", 0x00001000)
 {
     External (_SB_.PCI0, DeviceObj)
     External (_SB_.PCI0.PEG0.PEGP, DeviceObj)

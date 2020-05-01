@@ -1,5 +1,5 @@
 // Used for disabling unsupported GPUs in macOS
-DefinitionBlock ("", "SSDT", 2, "Slav", "spoof", 0x00000000)
+DefinitionBlock ("", "SSDT", 2, "DRTNIA", "spoof", 0x00000000)
 {
     External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
 
