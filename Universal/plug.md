@@ -1,5 +1,13 @@
 # Fixing Power Management
 
+## Easy Way
+
+With CPU Power Management, it's a simple as taking [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl) provided by Acidanthera and compiling it yourself.  You can find a prebuilt of the file here: [SSDT-PLUG-DRTNIA.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PLUG-DRTNIA.aml)
+
+* Note: This file has a bit of extra bloat as it includes checks for all common CPU names, if you wish to clean this up, either remove unused names or follow the guide below.
+
+## Long Way(For those who want to learn)
+
 CPU naming is fairly easy to figure out as well, open your decompiled DSDT and search for `Processor`. This should give you a result like this:
 
 ![](/images/Universal/plug-md/processor.png)

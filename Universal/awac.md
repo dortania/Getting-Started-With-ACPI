@@ -42,4 +42,26 @@ By default the SSDT uses `LPCB`, you can check what your system uses by just sea
 
 ![](/images/Universal/awac-md/lpc.png)
 
+## _INI Edge Cases
+
+Mainly seen on X299 refresh boards, there's already a `Scope (_SB) { Method (_INI...` in your DSDT. This means our SSDT-AWAC will conflict with the one found in our DSDT. For these situations, you'll want to remove `Method (_INI, 0, NotSerialized) {}` from the SSDT. You'll be left this this in the end:
+
+```
+DefinitionBlock ("", "SSDT", 2, "DRTNIA", "AWAC", 0x00000000)
+{
+    External (STAS, IntObj)
+
+    Scope (_SB)
+    {
+        If (_OSI ("Darwin"))
+        {
+            STAS = One
+        }
+    }
+}
+```
+
+You can find a prebuilt of this here: [SSDT-AWAC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-AWAC.aml)
+
+
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)
