@@ -29,6 +29,7 @@ macOS can be very picky about the devices present in the DSDT and so our job is 
   * Used for rerouting OSI calls to this SSDT, mainly used for tricking our hardware into thinking its booting Windows so we get better trackpad support. This is a very hacky solution known for breaking Windows boot, use the GPIO SSDT instead. Usage of XOSI will not be covered in this guide
 * IRQ SSDT and ACPI patches
   * Needed for fixing IRQ conflicts within the DSDT, for laptops mainly. SSDTTime exclusive
+  * Note Skylake and newer systems rarely have IRQ conflicts, this is mainly prevalent on Broadwell and older
 
 ## What SSDTs do each platform need
 
