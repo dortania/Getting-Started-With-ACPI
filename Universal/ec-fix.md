@@ -3,12 +3,23 @@
 
 What we'll be doing is creating a fake Embedded Controller (EC) to satisfy macOS Catalina's EC addiction, and disabling the EC on desktops to prevent panics and crashes.
 
-You'll want to begin by grabbing either one of these uncompiled SSDT files:
+For desktops, you'll want to begin by grabbing either one of these uncompiled SSDT files:
 
 * [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
   * For Skylake and newer and all AMD systems
 * [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
   * For Broadwell and older
+
+For laptops, you'll can actually use the pre-builts:
+
+* [SSDT-EC-USBX-LAPTOP.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-USBX-LAPTOP.aml)
+  * For Skylake and newer
+* [SSDT-EC-LAPTOP.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-LAPTOP.aml)
+  * For Broadwell and older
+
+With laptops it's a simple as that, all this does is check for an existing `EC__` and if one doesn't appear then create a fake EC to make macOS happy.
+
+Desktops however will need to follow below on creating a proper SSDT.
 
 ### Fixing the Path
 
