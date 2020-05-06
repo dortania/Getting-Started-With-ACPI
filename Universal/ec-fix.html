@@ -449,11 +449,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Tue May 05 2020 00:31:08 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Wed May 06 2020 04:52:37 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="fixing-embedded-controller"><a name="fixing-embedded-controller" class="plugin-anchor" href="#fixing-embedded-controller"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing Embedded Controller</h1>
 <p>What we&apos;ll be doing is creating a fake Embedded Controller (EC) to satisfy macOS Catalina&apos;s EC addiction, and disabling the EC on desktops to prevent panics and crashes.</p>
-<p>You&apos;ll want to begin by grabbing either one of these uncompiled SSDT files:</p>
+<p>For desktops, you&apos;ll want to begin by grabbing either one of these uncompiled SSDT files:</p>
 <ul>
 <li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a><ul>
 <li>For Skylake and newer and all AMD systems</li>
@@ -464,6 +464,19 @@
 </ul>
 </li>
 </ul>
+<p>For laptops, you&apos;ll can actually use the pre-builts:</p>
+<ul>
+<li><a href="https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-USBX-LAPTOP.aml" target="_blank">SSDT-EC-USBX-LAPTOP.aml</a><ul>
+<li>For Skylake and newer</li>
+</ul>
+</li>
+<li><a href="https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-LAPTOP.aml" target="_blank">SSDT-EC-LAPTOP.aml</a><ul>
+<li>For Broadwell and older</li>
+</ul>
+</li>
+</ul>
+<p>With laptops it&apos;s a simple as that, all this does is check for an existing <code>EC__</code> and if one doesn&apos;t appear then create a fake EC to make macOS happy.</p>
+<p>Desktops however will need to follow below on creating a proper SSDT.</p>
 <h3 id="fixing-the-path"><a name="fixing-the-path" class="plugin-anchor" href="#fixing-the-path"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing the Path</h3>
 <p>For Intel systems, the path is <em>likely</em> correct, though it&apos;s worth double checking. You will want to find your current EC by opening your decompiled DSDT and searching for <code>PNP0C09</code>. You should get a result similar to this:</p>
 <p><img src="../images/Desktops/pnp.png" alt=""></p>
@@ -633,7 +646,7 @@ The reason for this is that the real EC is considered disabled already.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Embedded Controller","level":"5.1","depth":1,"next":{"title":"Plugin type","level":"5.2","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Disabling laptop dGPUs","level":"4.3","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/ec-fix.md","mtime":"2020-05-05T00:31:08.240Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-05T00:31:57.440Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Embedded Controller","level":"5.1","depth":1,"next":{"title":"Plugin type","level":"5.2","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Disabling laptop dGPUs","level":"4.3","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/ec-fix.md","mtime":"2020-05-06T04:52:37.288Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-06T04:53:33.021Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
