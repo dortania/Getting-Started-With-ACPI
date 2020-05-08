@@ -3,23 +3,34 @@
 
 What we'll be doing is creating a fake Embedded Controller (EC) to satisfy macOS Catalina's EC addiction, and disabling the EC on desktops to prevent panics and crashes.
 
-For desktops, you'll want to begin by grabbing either one of these uncompiled SSDT files:
+## Quick Fix
 
-* [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
+What quick fix refers to is a fancy little SSDT that actually determines what EC needs to be turned off and creates a fake EC. The problem with this SSDT is it has a lot of bloat and can result in extra time in booting, so for this guide we **highly** recommends creating your own SSDT.
+
+For desktops, you can grab either one of these pre-compiled SSDT files:
+
+* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-USBX-DESKTOP.aml)
   * For Skylake and newer and all AMD systems
-* [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
+* [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-DESKTOP.aml)
   * For Broadwell and older
 
-For laptops, you'll can actually use the pre-builts:
+For laptops, you'll can use one of these pre-builts:
 
 * [SSDT-EC-USBX-LAPTOP.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-USBX-LAPTOP.aml)
   * For Skylake and newer
 * [SSDT-EC-LAPTOP.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-LAPTOP.aml)
   * For Broadwell and older
 
-With laptops it's a simple as that, all this does is check for an existing `EC__` and if one doesn't appear then create a fake EC to make macOS happy.
+## Proper Fix
 
-Desktops however will need to follow below on creating a proper SSDT.
+To properly patch your EC, we're gonna need some files:
+
+* [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
+  * For Skylake and newer and all AMD systems
+* [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
+  * For Broadwell and older
+  
+And with these 2, you can continue below
 
 ### Fixing the Path
 
@@ -64,7 +75,7 @@ If you are having issues finding the Scope, you can use the below Hardware IDs o
 
 **Make sure that you do not rename `Device (EC)`. This is what macOS Catalina looks for to boot!**
 
-**Desktop users, continue down below to disabling your actual EC**
+**Desktop users, continue down below to disabling your actual EC. Laptops should not diable their EC**. Laptop users should follow [What happens if no `PNP0C09` show up](#what-happens-if-no-pnp0c09-show-up)
 
 ### Disabling real EC (Desktops only)
 
