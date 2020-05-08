@@ -449,22 +449,24 @@
                                 <section class="normal markdown-section">
                                 
                                 <blockquote>
-<p><em>Last modified: Wed May 06 2020 04:52:37 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Fri May 08 2020 17:41:32 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="fixing-embedded-controller"><a name="fixing-embedded-controller" class="plugin-anchor" href="#fixing-embedded-controller"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing Embedded Controller</h1>
 <p>What we&apos;ll be doing is creating a fake Embedded Controller (EC) to satisfy macOS Catalina&apos;s EC addiction, and disabling the EC on desktops to prevent panics and crashes.</p>
-<p>For desktops, you&apos;ll want to begin by grabbing either one of these uncompiled SSDT files:</p>
+<h2 id="quick-fix"><a name="quick-fix" class="plugin-anchor" href="#quick-fix"><i class="fa fa-link" aria-hidden="true"></i></a>Quick Fix</h2>
+<p>What quick fix refers to is a fancy little SSDT that actually determines what EC needs to be turned off and creates a fake EC. The problem with this SSDT is it has a lot of bloat and can result in extra time in booting, so for this guide we <strong>highly</strong> recommends creating your own SSDT.</p>
+<p>For desktops, you can grab either one of these pre-compiled SSDT files:</p>
 <ul>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a><ul>
+<li><a href="https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-USBX-DESKTOP.aml" target="_blank">SSDT-EC-USBX-DESKTOP</a><ul>
 <li>For Skylake and newer and all AMD systems</li>
 </ul>
 </li>
-<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a><ul>
+<li><a href="https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-DESKTOP.aml" target="_blank">SSDT-EC-DESKTOP</a><ul>
 <li>For Broadwell and older</li>
 </ul>
 </li>
 </ul>
-<p>For laptops, you&apos;ll can actually use the pre-builts:</p>
+<p>For laptops, you&apos;ll can use one of these pre-builts:</p>
 <ul>
 <li><a href="https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-EC-USBX-LAPTOP.aml" target="_blank">SSDT-EC-USBX-LAPTOP.aml</a><ul>
 <li>For Skylake and newer</li>
@@ -475,8 +477,19 @@
 </ul>
 </li>
 </ul>
-<p>With laptops it&apos;s a simple as that, all this does is check for an existing <code>EC__</code> and if one doesn&apos;t appear then create a fake EC to make macOS happy.</p>
-<p>Desktops however will need to follow below on creating a proper SSDT.</p>
+<h2 id="proper-fix"><a name="proper-fix" class="plugin-anchor" href="#proper-fix"><i class="fa fa-link" aria-hidden="true"></i></a>Proper Fix</h2>
+<p>To properly patch your EC, we&apos;re gonna need some files:</p>
+<ul>
+<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a><ul>
+<li>For Skylake and newer and all AMD systems</li>
+</ul>
+</li>
+<li><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a><ul>
+<li>For Broadwell and older</li>
+</ul>
+</li>
+</ul>
+<p>And with these 2, you can continue below</p>
 <h3 id="fixing-the-path"><a name="fixing-the-path" class="plugin-anchor" href="#fixing-the-path"><i class="fa fa-link" aria-hidden="true"></i></a>Fixing the Path</h3>
 <p>For Intel systems, the path is <em>likely</em> correct, though it&apos;s worth double checking. You will want to find your current EC by opening your decompiled DSDT and searching for <code>PNP0C09</code>. You should get a result similar to this:</p>
 <p><img src="../images/Desktops/pnp.png" alt=""></p>
@@ -518,7 +531,7 @@ If you are having issues finding the Scope, you can use the below Hardware IDs o
 </li>
 </ul>
 <p><strong>Make sure that you do not rename <code>Device (EC)</code>. This is what macOS Catalina looks for to boot!</strong></p>
-<p><strong>Desktop users, continue down below to disabling your actual EC</strong></p>
+<p><strong>Desktop users, continue down below to disabling your actual EC. Laptops should not diable their EC</strong>. Laptop users should follow <a href="#what-happens-if-no-pnp0c09-show-up">What happens if no <code>PNP0C09</code> show up</a></p>
 <h3 id="disabling-real-ec-desktops-only"><a name="disabling-real-ec-desktops-only" class="plugin-anchor" href="#disabling-real-ec-desktops-only"><i class="fa fa-link" aria-hidden="true"></i></a>Disabling real EC (Desktops only)</h3>
 <p>For desktops, it&apos;s preferable to disable the actual Embedded Controller as it is not supported by macOS 100% and is known to sometimes cause panics. If we use the screenshot above, we&apos;ll see that the device name is <code>EC0</code>. Other common names for ECs are <code>H_EC</code>, <code>ECDV</code>, and <code>EC0</code>. You&apos;ll want to grab your SSDT again and uncomment the <code>_STA</code> method to disable it (remove the <code>/*</code> and <code>*/</code> around it):</p>
 <pre><code class="lang-text">/* &lt;- REMOVE THIS
@@ -646,7 +659,7 @@ The reason for this is that the real EC is considered disabled already.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Embedded Controller","level":"5.1","depth":1,"next":{"title":"Plugin type","level":"5.2","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Disabling laptop dGPUs","level":"4.3","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/ec-fix.md","mtime":"2020-05-06T04:52:37.288Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-06T04:53:33.021Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Embedded Controller","level":"5.1","depth":1,"next":{"title":"Plugin type","level":"5.2","depth":1,"path":"Universal/plug.md","ref":"Universal/plug.md","articles":[]},"previous":{"title":"Disabling laptop dGPUs","level":"4.3","depth":1,"path":"Laptops/laptop-disable.md","ref":"Laptops/laptop-disable.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/ec-fix.md","mtime":"2020-05-08T17:41:32.432Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-08T17:42:27.357Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
