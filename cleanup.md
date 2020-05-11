@@ -9,6 +9,11 @@ The 2 main locations:
 
 You can save yourself some work with the config.plist by running Cmd/Ctrl+R in ProperTree. **Reminder do not add your DSDT.aml to your EFI**
 
+For those who do not yet have a config.plist, you'll want to next head back to your respective OpenCore guides and create the config.plist:
+
+* [OpenCore Desktop guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
+* [OpenCore Laptop Guide](https://dortania.github.io/vanilla-laptop-guide/)
+
 Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
 
 Steps to do this:

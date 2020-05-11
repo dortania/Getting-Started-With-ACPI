@@ -10,7 +10,8 @@ What this tool does is dumps your DSDT from your firmware, and then creates SSDT
    * The ACPI is odd on these platforms so manual work is required
    * This includes X79, X99 and X299 systems
 * **Laptop EC fix**: 
-   * This is because you need to use an ACPI rename over an SSDT on laptops
+   * This is because you do not want the EC powered off
+   * Prebuilt can be found here: [Embedded Controller](/Universal/ec-fix.md)
 * **SSDT-PNLF**: 
    * Need to be configured to your system
 * **SSDT-GPI0**: 
@@ -22,7 +23,7 @@ What this tool does is dumps your DSDT from your firmware, and then creates SSDT
 * **USBX SSDT**: 
    * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml)
 
-For users who don't have all the options avaible to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it support for you.
+For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it support for you. 
 
 ## Running SSDTTime
 
@@ -57,6 +58,11 @@ Don't forget that SSDTs need to be added to Opencore, reminder that .aml is comp
 * config.plist -> ACPI -> Add
 
 Reminder that Cmd/Crtl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. **Do not add your DSDT to OpenCore, its already in your firmware**. If you are unsure what this is referring to, go back to the OpenCore guide and select your config based of the architecture of your CPU.
+
+For those who do not yet have a config.plist, you'll want to next head back to your respective OpenCore guides and create the config.plist:
+
+* [OpenCore Desktop guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
+* [OpenCore Laptop Guide](https://dortania.github.io/vanilla-laptop-guide/)
 
 Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
 
