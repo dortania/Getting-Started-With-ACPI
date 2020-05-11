@@ -1,0 +1,746 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Choosing the SSDTs · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search-plus/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-medium-zoom/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+        <link rel="stylesheet" href="styles/website.css">
+        
+    
+
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ssdt-easy.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Getting Started With ACPI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2" data-path="ssdt-platform.html">
+            
+                <a href="ssdt-platform.html">
+            
+                    
+                    Choosing the SSDTs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Methods</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="ssdt-easy.html">
+            
+                <a href="ssdt-easy.html">
+            
+                    
+                    SSDTs: Easy Way
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="ssdt-long.html">
+            
+                <a href="ssdt-long.html">
+            
+                    
+                    SSDTs: Long Way
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Manual</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="Manual/dump.html">
+            
+                <a href="Manual/dump.html">
+            
+                    
+                    Dumping the DSDT
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="Manual/compile.html">
+            
+                <a href="Manual/compile.html">
+            
+                    
+                    Decompiling and Compiling
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Desktop</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="Desktops/desktop-disable.html">
+            
+                <a href="Desktops/desktop-disable.html">
+            
+                    
+                    Disabling desktop dGPUs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Laptop</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="Laptops/backlight.html">
+            
+                <a href="Laptops/backlight.html">
+            
+                    
+                    Backlight PNLF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="Laptops/trackpad.html">
+            
+                <a href="Laptops/trackpad.html">
+            
+                    
+                    Trackpad GPI0
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="Laptops/laptop-disable.html">
+            
+                <a href="Laptops/laptop-disable.html">
+            
+                    
+                    Disabling laptop dGPUs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Universal</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="Universal/ec-fix.html">
+            
+                <a href="Universal/ec-fix.html">
+            
+                    
+                    Embedded Controller
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.2" data-path="Universal/plug.html">
+            
+                <a href="Universal/plug.html">
+            
+                    
+                    Plugin type
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.3" data-path="Universal/awac.html">
+            
+                <a href="Universal/awac.html">
+            
+                    
+                    AWAC vs RTC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.4" data-path="Universal/nvram.html">
+            
+                <a href="Universal/nvram.html">
+            
+                    
+                    NVRAM PMC
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.5" data-path="Universal/irq.html">
+            
+                <a href="Universal/irq.html">
+            
+                    
+                    IRQ Fix
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.6" data-path="Universal/spoof.html">
+            
+                <a href="Universal/spoof.html">
+            
+                    
+                    GPU Spoof
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.7" data-path="Universal/smbus.html">
+            
+                <a href="Universal/smbus.html">
+            
+                    
+                    Fixing SMBus Support
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Cleanup</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="cleanup.html">
+            
+                <a href="cleanup.html">
+            
+                    
+                    Cleanup
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Misc</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="troubleshooting.html">
+            
+                <a href="troubleshooting.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="CONTRIBUTING.html">
+            
+                <a href="CONTRIBUTING.html">
+            
+                    
+                    Contributing
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Choosing the SSDTs</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div class="search-plus" id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p><em>Last modified: Mon May 11 2020 01:31:14 GMT+0000 (Coordinated Universal Time)</em></p>
+</blockquote>
+<h1 id="what-ssdts-do-each-platform-need"><a name="what-ssdts-do-each-platform-need" class="plugin-anchor" href="#what-ssdts-do-each-platform-need"><i class="fa fa-link" aria-hidden="true"></i></a>What SSDTs do each platform need</h1>
+<p>Please see the <strong>specific ACPI section of your config.plist</strong>, all SSDTs needed are covered there with a brief explainer. But here&apos;s a very quick TL;DR:</p>
+<ul>
+<li><a href="#desktop">Desktop</a></li>
+<li><a href="#high-end-desktop">High End Desktop</a></li>
+<li><a href="#laptop">Laptop</a></li>
+</ul>
+<h2 id="desktop"><a name="desktop" class="plugin-anchor" href="#desktop"><i class="fa fa-link" aria-hidden="true"></i></a>Desktop</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SSDT</th>
+<th style="text-align:left">IvyBridge</th>
+<th style="text-align:left">Haswell/Broadwell</th>
+<th style="text-align:left">Skylake</th>
+<th style="text-align:left">KabyLake</th>
+<th style="text-align:left">CoffeeLake</th>
+<th style="text-align:left">CometLake</th>
+<th style="text-align:left">AMD(15/16/17h)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left"><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left">N/A</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>EC</strong></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>AWAC</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></td>
+<td style="text-align:left">N/A</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>NVRAM</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></td>
+<td style="text-align:left">N/A</td>
+</tr>
+</tbody>
+</table>
+<h2 id="high-end-desktop"><a name="high-end-desktop" class="plugin-anchor" href="#high-end-desktop"><i class="fa fa-link" aria-hidden="true"></i></a>High End Desktop</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SSDT</th>
+<th style="text-align:left">IvyBridge-E</th>
+<th style="text-align:left">Haswell-E</th>
+<th style="text-align:left">Broadwell-E</th>
+<th style="text-align:left">Skylake-X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left"><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>EC</strong></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>AWAC</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="laptop"><a name="laptop" class="plugin-anchor" href="#laptop"><i class="fa fa-link" aria-hidden="true"></i></a>Laptop</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">SSDT</th>
+<th style="text-align:left">IvyBridge</th>
+<th style="text-align:left">Haswell</th>
+<th style="text-align:left">Broadwell</th>
+<th style="text-align:left">Skylake</th>
+<th style="text-align:left">KabyLake</th>
+<th style="text-align:left">CoffeeLake(8thGen)</th>
+<th style="text-align:left">Coffee/Comet/IceLake(9/10thGen)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>CPU</strong></td>
+<td style="text-align:left"><a href="https://github.com/Piker-Alpha/ssdtPRGen.sh" target="_blank">CPU-PM</a>(Run in Post-Install)</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl" target="_blank">SSDT-PLUG</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>EC</strong></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl" target="_blank">SSDT-EC</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl" target="_blank">SSDT-EC-USBX</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Backlight</strong></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl" target="_blank">SSDT-PNLF</a></td>
+<td style="text-align:left"><a href="https://i.applelife.ru/2019/12/463488_SSDT-PNLFCFL.aml.zip" target="_blank">SSDT-PNLF-CFL</a></td>
+<td style="text-align:left"><a href="https://i.applelife.ru/2019/12/463488_SSDT-PNLFCFL.aml.zip" target="_blank">SSDT-PNLF-CFL</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>I2C TrackPad</strong></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+<td style="text-align:left"><a href="https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-GPIO.aml" target="_blank">SSDT-GPI0</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>AWAC</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl" target="_blank">SSDT-AWAC</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>NVRAM</strong></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left"><a href="https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl" target="_blank">SSDT-PMC</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>IRQ Patch</strong></td>
+<td style="text-align:left"><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></td>
+<td style="text-align:left"><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></td>
+<td style="text-align:left"><a href="https://github.com/corpnewt/SSDTTime" target="_blank">IRQ SSDT</a></td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+<td style="text-align:left">N/A</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Getting Started With ACPI">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ssdt-easy.html" class="navigation navigation-next " aria-label="Next page: SSDTs: Easy Way">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Choosing the SSDTs","level":"1.2","depth":1,"next":{"title":"SSDTs: Easy Way","level":"2.1","depth":1,"path":"ssdt-easy.md","ref":"ssdt-easy.md","articles":[]},"previous":{"title":"Getting Started With ACPI","level":"1.1","depth":1,"path":"README.md","ref":"README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"ssdt-platform.md","mtime":"2020-05-11T01:31:14.260Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-11T01:32:07.813Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search-plus/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-medium-zoom/medium-zoom.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-medium-zoom/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    
+
+    </body>
+</html>
+
