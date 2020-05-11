@@ -9,6 +9,7 @@ What this tool does is dumps your DSDT from your firmware, and then creates SSDT
 * **HEDT SSDTs**: 
    * The ACPI is odd on these platforms so manual work is required
    * This includes X79, X99 and X299 systems
+   * Prebuilt can be found here: [Embedded Controller](/Universal/ec-fix.md)
 * **Laptop EC fix**: 
    * This is because you do not want the EC powered off
    * Prebuilt can be found here: [Embedded Controller](/Universal/ec-fix.md)
@@ -20,6 +21,7 @@ What this tool does is dumps your DSDT from your firmware, and then creates SSDT
    * 300 series Intel boards will also need to figure his out(Z390 systems are most common for requiring this but some Gigabyte Z370 do as well)
 * **PMC SSDT**: 
    * For fixing 300 series Intel NVRAM
+   * Prebuilt can be found here: [NVRAM PMC](/Universal/nvram.md)
 * **USBX SSDT**: 
    * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml)
 

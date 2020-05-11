@@ -1,6 +1,9 @@
 # Table of contents
 
 * [Getting Started With ACPI](README.md)
+* [Choosing the SSDTs](ssdt-platform.md)
+
+## Methods
 * [SSDTs: Easy Way](ssdt-easy.md)
 * [SSDTs: Long Way](ssdt-long.md)
 
