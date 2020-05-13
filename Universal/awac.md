@@ -2,13 +2,15 @@
 
 **For Intel 300 series chipsets and newer**, this also includes X299 refreshes and Icelake laptops. Common machines:
 
-* X299X (10th Gen refresh)
+* X299X (10th Gen refresh, AsRock and Asus don't use the -x naming so you'll need to double check)
 * B360
 * B365
 * H310
 * H370
 * Z370 (Gigabyte and AsRock boards with newer BIOS versions)
 * Z390
+* B460
+* Z490
 * 400 series (Cometlake)
 * 495 series (Icelake)
 

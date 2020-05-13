@@ -64,3 +64,13 @@ For those having issues, you can also check Device Manager -> CPU -> BIOS device
 **Note**: The MCHC is actually the DRAM controller, similar idea to SMBus for fixing memory reporting
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)
+
+## Verify it's working
+
+To check if the SSDT is working correctly, run the following in terminal:
+
+```
+kextstat | grep -E "AppleSMBusController|AppleSMBusPCI"
+```
+
+![](/images/Universal/smbus-md/verify.png)
