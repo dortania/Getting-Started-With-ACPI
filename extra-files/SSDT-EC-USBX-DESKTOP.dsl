@@ -1,6 +1,5 @@
 /*
  * What this mess of an SSDT tries to accomplish is this:
- *  - Find ECs(Device = 0x06) 
  *  - Disable valid ECs, they will have the following properties:
  *      - _HID
  *      - _CRS
@@ -60,7 +59,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
     
     
     // Let the AMD Trash being(and glorious Core2)
-    If ((ObjectType (\_SB.PCI0.SBRG.EC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.SBRG.EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.SBRG.EC._HID) && CondRefOf (\_SB.PCI0.SBRG.EC._CRS)) && CondRefOf (\_SB.PCI0.SBRG.EC._GPE
             )) && !CondRefOf (\_SB.PCI0.SBRG.EC._STA)))
@@ -82,7 +81,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.SBRG.EC0) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.SBRG.EC0)))
     {
         If ((((CondRefOf (\_SB.PCI0.SBRG.EC0._HID) && CondRefOf (\_SB.PCI0.SBRG.EC0._CRS)) && CondRefOf (\_SB.PCI0.SBRG.EC0._GPE
             )) && !CondRefOf (\_SB.PCI0.SBRG.EC0._STA)))
@@ -104,7 +103,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.SBRG.H_EC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.SBRG.H_EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.SBRG.H_EC._HID) && CondRefOf (\_SB.PCI0.SBRG.H_EC._CRS)) && CondRefOf (\_SB.PCI0.SBRG.H_EC._GPE
             )) && !CondRefOf (\_SB.PCI0.SBRG.H_EC._STA)))
@@ -126,7 +125,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.SBRG.ECDV) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.SBRG.ECDV)))
     {
         If ((((CondRefOf (\_SB.PCI0.SBRG.ECDV._HID) && CondRefOf (\_SB.PCI0.SBRG.ECDV._CRS)) && CondRefOf (\_SB.PCI0.SBRG.ECDV._GPE
             )) && !CondRefOf (\_SB.PCI0.SBRG.ECDV._STA)))
@@ -148,7 +147,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.SBRG.PGEC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.SBRG.PGEC)))
     {
         If (((((CondRefOf (\_SB.PCI0.SBRG.PGEC._HID)) && CondRefOf (
             \_SB.PCI0.SBRG.PGEC._CRS)) && CondRefOf (\_SB.PCI0.SBRG.PGEC._GPE)) && !CondRefOf (\_SB.PCI0.SBRG.PGEC._STA)))
@@ -172,7 +171,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
 
     // Now we go to consumer
     
-    If ((ObjectType (\_SB.PCI0.LPCB.EC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPCB.EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPCB.EC._HID) && CondRefOf (\_SB.PCI0.LPCB.EC._CRS)) && CondRefOf (\_SB.PCI0.LPCB.EC._GPE
             )) && !CondRefOf (\_SB.PCI0.LPCB.EC._STA)))
@@ -194,7 +193,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPCB.EC0) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPCB.EC0)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPCB.EC0._HID) && CondRefOf (\_SB.PCI0.LPCB.EC0._CRS)) && CondRefOf (\_SB.PCI0.LPCB.EC0._GPE
             )) && !CondRefOf (\_SB.PCI0.LPCB.EC0._STA)))
@@ -216,7 +215,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPCB.H_EC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPCB.H_EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPCB.H_EC._HID) && CondRefOf (\_SB.PCI0.LPCB.H_EC._CRS)) && CondRefOf (\_SB.PCI0.LPCB.H_EC._GPE
             )) && !CondRefOf (\_SB.PCI0.LPCB.H_EC._STA)))
@@ -238,7 +237,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPCB.ECDV) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPCB.ECDV)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPCB.ECDV._HID) && CondRefOf (\_SB.PCI0.LPCB.ECDV._CRS)) && CondRefOf (\_SB.PCI0.LPCB.ECDV._GPE
             )) && !CondRefOf (\_SB.PCI0.LPCB.ECDV._STA)))
@@ -260,7 +259,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPCB.PGEC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPCB.PGEC)))
     {
         If (((((CondRefOf (\_SB.PCI0.LPCB.PGEC._HID)) && CondRefOf (
             \_SB.PCI0.LPCB.PGEC._CRS)) && CondRefOf (\_SB.PCI0.LPCB.PGEC._GPE)) && !CondRefOf (\_SB.PCI0.LPCB.PGEC._STA)))
@@ -283,7 +282,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
     }    
     // Laptop trash
     
-    If ((ObjectType (\_SB.PCI0.LPC.EC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC.EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPC.EC._HID) && CondRefOf (\_SB.PCI0.LPC.EC._CRS)) && CondRefOf (\_SB.PCI0.LPC.EC._GPE
             )) && !CondRefOf (\_SB.PCI0.LPC.EC._STA)))
@@ -305,7 +304,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPC.EC0) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC.EC0)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPC.EC0._HID) && CondRefOf (\_SB.PCI0.LPC.EC0._CRS)) && CondRefOf (\_SB.PCI0.LPC.EC0._GPE
             )) && !CondRefOf (\_SB.PCI0.LPC.EC0._STA)))
@@ -327,7 +326,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPC.H_EC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC.H_EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPC.H_EC._HID) && CondRefOf (\_SB.PCI0.LPC.H_EC._CRS)) && CondRefOf (\_SB.PCI0.LPC.H_EC._GPE
             )) && !CondRefOf (\_SB.PCI0.LPC.H_EC._STA)))
@@ -349,7 +348,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPC.ECDV) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC.ECDV)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPC.ECDV._HID) && CondRefOf (\_SB.PCI0.LPC.ECDV._CRS)) && CondRefOf (\_SB.PCI0.LPC.ECDV._GPE
             )) && !CondRefOf (\_SB.PCI0.LPC.ECDV._STA)))
@@ -371,7 +370,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPC.PGEC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC.PGEC)))
     {
         If (((((CondRefOf (\_SB.PCI0.LPC.PGEC._HID)) && CondRefOf (
             \_SB.PCI0.LPC.PGEC._CRS)) && CondRefOf (\_SB.PCI0.LPC.PGEC._GPE)) && !CondRefOf (\_SB.PCI0.LPC.PGEC._STA)))
@@ -395,7 +394,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
     
     // X79 and X99 trash
     
-    If ((ObjectType (\_SB.PCI0.LPC0.EC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC0.EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPC0.EC._HID) && CondRefOf (\_SB.PCI0.LPC0.EC._CRS)) && CondRefOf (\_SB.PCI0.LPC0.EC._GPE
             )) && !CondRefOf (\_SB.PCI0.LPC0.EC._STA)))
@@ -417,7 +416,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPC0.EC0) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC0.EC0)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPC0.EC0._HID) && CondRefOf (\_SB.PCI0.LPC0.EC0._CRS)) && CondRefOf (\_SB.PCI0.LPC0.EC0._GPE
             )) && !CondRefOf (\_SB.PCI0.LPC0.EC0._STA)))
@@ -439,7 +438,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPC0.H_EC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC0.H_EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPC0.H_EC._HID) && CondRefOf (\_SB.PCI0.LPC0.H_EC._CRS)) && CondRefOf (\_SB.PCI0.LPC0.H_EC._GPE
             )) && !CondRefOf (\_SB.PCI0.LPC0.H_EC._STA)))
@@ -461,7 +460,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPC0.ECDV) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC0.ECDV)))
     {
         If ((((CondRefOf (\_SB.PCI0.LPC0.ECDV._HID) && CondRefOf (\_SB.PCI0.LPC0.ECDV._CRS)) && CondRefOf (\_SB.PCI0.LPC0.ECDV._GPE
             )) && !CondRefOf (\_SB.PCI0.LPC0.ECDV._STA)))
@@ -483,7 +482,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PCI0.LPC0.PGEC) == 0x06))
+    If ((CondRefOf (\_SB.PCI0.LPC0.PGEC)))
     {
         If (((((CondRefOf (\_SB.PCI0.LPC0.PGEC._HID)) && CondRefOf (
             \_SB.PCI0.LPC0.PGEC._CRS)) && CondRefOf (\_SB.PCI0.LPC0.PGEC._GPE)) && !CondRefOf (\_SB.PCI0.LPC0.PGEC._STA)))
@@ -507,7 +506,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         
     // Cursed X299
     
-    If ((ObjectType (\_SB.PC00.LPC0.EC) == 0x06))
+    If ((CondRefOf (\_SB.PC00.LPC0.EC)))
     {
         If ((((CondRefOf (\_SB.PC00.LPC0.EC._HID) && CondRefOf (\_SB.PC00.LPC0.EC._CRS)) && CondRefOf (\_SB.PC00.LPC0.EC._GPE
             )) && !CondRefOf (\_SB.PC00.LPC0.EC._STA)))
@@ -529,7 +528,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PC00.LPC0.EC0) == 0x06))
+    If ((CondRefOf (\_SB.PC00.LPC0.EC0)))
     {
         If ((((CondRefOf (\_SB.PC00.LPC0.EC0._HID) && CondRefOf (\_SB.PC00.LPC0.EC0._CRS)) && CondRefOf (\_SB.PC00.LPC0.EC0._GPE
             )) && !CondRefOf (\_SB.PC00.LPC0.EC0._STA)))
@@ -551,7 +550,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PC00.LPC0.H_EC) == 0x06))
+    If ((CondRefOf (\_SB.PC00.LPC0.H_EC)))
     {
         If ((((CondRefOf (\_SB.PC00.LPC0.H_EC._HID) && CondRefOf (\_SB.PC00.LPC0.H_EC._CRS)) && CondRefOf (\_SB.PC00.LPC0.H_EC._GPE
             )) && !CondRefOf (\_SB.PC00.LPC0.H_EC._STA)))
@@ -573,7 +572,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PC00.LPC0.ECDV) == 0x06))
+    If ((CondRefOf (\_SB.PC00.LPC0.ECDV)))
     {
         If ((((CondRefOf (\_SB.PC00.LPC0.ECDV._HID) && CondRefOf (\_SB.PC00.LPC0.ECDV._CRS)) && CondRefOf (\_SB.PC00.LPC0.ECDV._GPE
             )) && !CondRefOf (\_SB.PC00.LPC0.ECDV._STA)))
@@ -595,7 +594,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
         }
     }
 
-    If ((ObjectType (\_SB.PC00.LPC0.PGEC) == 0x06))
+    If ((CondRefOf (\_SB.PC00.LPC0.PGEC)))
     {
         If (((((CondRefOf (\_SB.PC00.LPC0.PGEC._HID)) && CondRefOf (
             \_SB.PC00.LPC0.PGEC._CRS)) && CondRefOf (\_SB.PC00.LPC0.PGEC._GPE)) && !CondRefOf (\_SB.PC00.LPC0.PGEC._STA)))
