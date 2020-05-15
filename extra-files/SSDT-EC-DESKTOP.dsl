@@ -37,6 +37,15 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
     External (_SB_.PCI0.LPC.ECDV, DeviceObj)
     External (_SB_.PCI0.LPC.PGEC, DeviceObj)
     
+    // Cursed X58
+    
+    External (_SB_.PCI0.PX40, DeviceObj)
+    External (_SB_.PCI0.PX40.EC, DeviceObj)
+    External (_SB_.PCI0.PX40.EC0, DeviceObj)
+    External (_SB_.PCI0.PX40.H_EC, DeviceObj)
+    External (_SB_.PCI0.PX40.ECDV, DeviceObj)
+    External (_SB_.PCI0.PX40.PGEC, DeviceObj)
+    
     // Cursed X79 and X99
     
     External (_SB_.PCI0.LPC0, DeviceObj)
@@ -58,7 +67,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
     
     
     
-// Let the AMD Trash being(and glorious Core2)
+    // Let the AMD Trash being(and glorious Core2)
     If ((CondRefOf (\_SB.PCI0.SBRG.EC)))
     {
         If ((((CondRefOf (\_SB.PCI0.SBRG.EC._HID) && CondRefOf (\_SB.PCI0.SBRG.EC._CRS)) && CondRefOf (\_SB.PCI0.SBRG.EC._GPE
@@ -376,6 +385,118 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "SsdtEC", 0x00001000)
             \_SB.PCI0.LPC.PGEC._CRS)) && CondRefOf (\_SB.PCI0.LPC.PGEC._GPE)) && !CondRefOf (\_SB.PCI0.LPC.PGEC._STA)))
         {
             Scope (\_SB.PCI0.LPC.PGEC)
+            {
+                Method (_STA, 0, NotSerialized)  // _STA: Status
+                {
+                    If (_OSI ("Darwin"))
+                    {
+                        Return (Zero)
+                    }
+                    Else
+                    {
+                        Return (0x0F)
+                    }
+                }
+            }
+        }
+    }
+    
+    // X58 trash
+    
+    If ((CondRefOf (\_SB.PCI0.PX40.EC)))
+    {
+        If ((((CondRefOf (\_SB.PCI0.PX40.EC._HID) && CondRefOf (\_SB.PCI0.PX40.EC._CRS)) && CondRefOf (\_SB.PCI0.PX40.EC._GPE
+            )) && !CondRefOf (\_SB.PCI0.PX40.EC._STA)))
+        {
+            Scope (\_SB.PCI0.PX40.EC)
+            {
+                Method (_STA, 0, NotSerialized)  // _STA: Status
+                {
+                    If (_OSI ("Darwin"))
+                    {
+                        Return (Zero)
+                    }
+                    Else
+                    {
+                        Return (0x0F)
+                    }
+                }
+            }
+        }
+    }
+
+    If ((CondRefOf (\_SB.PCI0.PX40.EC0)))
+    {
+        If ((((CondRefOf (\_SB.PCI0.PX40.EC0._HID) && CondRefOf (\_SB.PCI0.PX40.EC0._CRS)) && CondRefOf (\_SB.PCI0.PX40.EC0._GPE
+            )) && !CondRefOf (\_SB.PCI0.PX40.EC0._STA)))
+        {
+            Scope (\_SB.PCI0.PX40.EC0)
+            {
+                Method (_STA, 0, NotSerialized)  // _STA: Status
+                {
+                    If (_OSI ("Darwin"))
+                    {
+                        Return (Zero)
+                    }
+                    Else
+                    {
+                        Return (0x0F)
+                    }
+                }
+            }
+        }
+    }
+
+    If ((CondRefOf (\_SB.PCI0.PX40.H_EC)))
+    {
+        If ((((CondRefOf (\_SB.PCI0.PX40.H_EC._HID) && CondRefOf (\_SB.PCI0.PX40.H_EC._CRS)) && CondRefOf (\_SB.PCI0.PX40.H_EC._GPE
+            )) && !CondRefOf (\_SB.PCI0.PX40.H_EC._STA)))
+        {
+            Scope (\_SB.PCI0.PX40.H_EC)
+            {
+                Method (_STA, 0, NotSerialized)  // _STA: Status
+                {
+                    If (_OSI ("Darwin"))
+                    {
+                        Return (Zero)
+                    }
+                    Else
+                    {
+                        Return (0x0F)
+                    }
+                }
+            }
+        }
+    }
+
+    If ((CondRefOf (\_SB.PCI0.PX40.ECDV)))
+    {
+        If ((((CondRefOf (\_SB.PCI0.PX40.ECDV._HID) && CondRefOf (\_SB.PCI0.PX40.ECDV._CRS)) && CondRefOf (\_SB.PCI0.PX40.ECDV._GPE
+            )) && !CondRefOf (\_SB.PCI0.PX40.ECDV._STA)))
+        {
+            Scope (\_SB.PCI0.PX40.ECDV)
+            {
+                Method (_STA, 0, NotSerialized)  // _STA: Status
+                {
+                    If (_OSI ("Darwin"))
+                    {
+                        Return (Zero)
+                    }
+                    Else
+                    {
+                        Return (0x0F)
+                    }
+                }
+            }
+        }
+    }
+
+    If ((CondRefOf (\_SB.PCI0.PX40.PGEC)))
+    {
+        If (((((CondRefOf (\_SB.PCI0.PX40.PGEC._HID)) && CondRefOf (
+            \_SB.PCI0.PX40.PGEC._CRS)) && CondRefOf (\_SB.PCI0.PX40.PGEC._GPE)) && !CondRefOf (\_SB.PCI0.PX40.PGEC._STA)))
+        {
+            Scope (\_SB.PCI0.PX40.PGEC)
             {
                 Method (_STA, 0, NotSerialized)  // _STA: Status
                 {
