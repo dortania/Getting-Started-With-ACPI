@@ -8,4 +8,3 @@ Well sadly some things are not handled by SSDTTime, well have no fear as making 
 * Compile SSDTs
 
 Now continue forth and master the ways of ACPI!
-

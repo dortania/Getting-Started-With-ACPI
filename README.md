@@ -31,7 +31,6 @@ macOS can be very picky about the devices present in the DSDT and so our job is 
   * Needed for fixing IRQ conflicts within the DSDT, for laptops mainly. SSDTTime exclusive
   * Note Skylake and newer systems rarely have IRQ conflicts, this is mainly prevalent on Broadwell and older
 
-
 Now head to the next page on what SSDTs do your systems need:
 
 ## [Choosing the SSDTs](ssdt-platform.md)

@@ -19,6 +19,6 @@ By default it uses `PCI0.LPCB` for the PCI and LowPinCount path. The device name
 
 ![](/images/Universal/nvram-md/lpc.png)
 
-A pre-built can be found here if you have issues: [SSDT-PMC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PMC.aml) 
+A pre-built can be found here if you have issues: [SSDT-PMC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PMC.aml)
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)

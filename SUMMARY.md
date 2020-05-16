@@ -4,8 +4,11 @@
 * [Choosing the SSDTs](ssdt-platform.md)
 
 ## Methods
-* [SSDTs: Easy Way](ssdt-easy.md)
-* [SSDTs: Long Way](ssdt-long.md)
+
+* [How to create SSDTs](/ssdt-methods/ssdt-methods.md)
+  * [SSDTs: Prebuilt](/ssdt-methods/ssdt-prebuilt.md)
+  * [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
+  * [SSDTs: Long Way](/ssdt-methods/ssdt-long.md)
 
 ## Manual
 
