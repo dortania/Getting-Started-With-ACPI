@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>GPU Spoof · GitBook</title>
+        <title>How to create SSDTs · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -71,10 +71,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="smbus.html" />
+    <link rel="next" href="ssdt-prebuilt.html" />
     
     
-    <link rel="prev" href="irq.html" />
+    <link rel="prev" href="../ssdt-platform.html" />
     
 
     <style>
@@ -147,9 +147,9 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="../ssdt-methods/ssdt-methods.html">
+        <li class="chapter active" data-level="2.1" data-path="ssdt-methods.html">
             
-                <a href="../ssdt-methods/ssdt-methods.html">
+                <a href="ssdt-methods.html">
             
                     
                     How to create SSDTs
@@ -161,9 +161,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="../ssdt-methods/ssdt-prebuilt.html">
+        <li class="chapter " data-level="2.1.1" data-path="ssdt-prebuilt.html">
             
-                <a href="../ssdt-methods/ssdt-prebuilt.html">
+                <a href="ssdt-prebuilt.html">
             
                     
                     SSDTs: Prebuilt
@@ -174,9 +174,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="../ssdt-methods/ssdt-easy.html">
+        <li class="chapter " data-level="2.1.2" data-path="ssdt-easy.html">
             
-                <a href="../ssdt-methods/ssdt-easy.html">
+                <a href="ssdt-easy.html">
             
                     
                     SSDTs: Easy Way
@@ -187,9 +187,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.1.3" data-path="../ssdt-methods/ssdt-long.html">
+        <li class="chapter " data-level="2.1.3" data-path="ssdt-long.html">
             
-                <a href="../ssdt-methods/ssdt-long.html">
+                <a href="ssdt-long.html">
             
                     
                     SSDTs: Long Way
@@ -311,9 +311,9 @@
         
         
     
-        <li class="chapter " data-level="6.1" data-path="ec-fix.html">
+        <li class="chapter " data-level="6.1" data-path="../Universal/ec-fix.html">
             
-                <a href="ec-fix.html">
+                <a href="../Universal/ec-fix.html">
             
                     
                     Embedded Controller
@@ -324,9 +324,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.2" data-path="plug.html">
+        <li class="chapter " data-level="6.2" data-path="../Universal/plug.html">
             
-                <a href="plug.html">
+                <a href="../Universal/plug.html">
             
                     
                     Plugin type
@@ -337,9 +337,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.3" data-path="awac.html">
+        <li class="chapter " data-level="6.3" data-path="../Universal/awac.html">
             
-                <a href="awac.html">
+                <a href="../Universal/awac.html">
             
                     
                     AWAC vs RTC
@@ -350,9 +350,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.4" data-path="nvram.html">
+        <li class="chapter " data-level="6.4" data-path="../Universal/nvram.html">
             
-                <a href="nvram.html">
+                <a href="../Universal/nvram.html">
             
                     
                     NVRAM PMC
@@ -363,9 +363,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.5" data-path="irq.html">
+        <li class="chapter " data-level="6.5" data-path="../Universal/irq.html">
             
-                <a href="irq.html">
+                <a href="../Universal/irq.html">
             
                     
                     IRQ Fix
@@ -376,9 +376,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="6.6" data-path="spoof.html">
+        <li class="chapter " data-level="6.6" data-path="../Universal/spoof.html">
             
-                <a href="spoof.html">
+                <a href="../Universal/spoof.html">
             
                     
                     GPU Spoof
@@ -389,9 +389,9 @@
             
         </li>
     
-        <li class="chapter " data-level="6.7" data-path="smbus.html">
+        <li class="chapter " data-level="6.7" data-path="../Universal/smbus.html">
             
-                <a href="smbus.html">
+                <a href="../Universal/smbus.html">
             
                     
                     Fixing SMBus Support
@@ -485,7 +485,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >GPU Spoof</a>
+        <a href=".." >How to create SSDTs</a>
     </h1>
 </div>
 
@@ -503,82 +503,22 @@
                                 <blockquote>
 <p><em>Last modified: Sat May 16 2020 17:37:12 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
-<h1 id="renaming-gpus"><a name="renaming-gpus" class="plugin-anchor" href="#renaming-gpus"><i class="fa fa-link" aria-hidden="true"></i></a>Renaming GPUs</h1>
-<p>So this is mainly needed for GPUs that are not natively supported out of the box due to their names, most commonly:</p>
+<h1 id="how-to-create-ssdts"><a name="how-to-create-ssdts" class="plugin-anchor" href="#how-to-create-ssdts"><i class="fa fa-link" aria-hidden="true"></i></a>How to create SSDTs</h1>
+<p>Creating SSDTs mainly fall into 3 camps:</p>
 <ul>
-<li>R9 290/390</li>
-<li>R9 280/380</li>
-<li>R7 270/370</li>
-<li>R9 260/360</li>
-<li>R7 250</li>
-<li>R7 240</li>
+<li>Prebuilt SSDTs<ul>
+<li>They work but not perfect</li>
 </ul>
-<p>Instead, these GPUs need to be &quot;spoofed&quot; or faked into a model that closely matches theirs, generally this will be the &quot;X&quot; variant of the card. For some reason Apple never bothered adding the PCI IDs for these other cards even though their GPU cores are supported by the driver.</p>
-<p>So to spoof the GPU, we need to find a couple things:</p>
-<ul>
-<li>Suitable PCI ID for the GPU</li>
-<li>ACPI Path of the GPU</li>
-<li><a href="https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip" target="_blank">SSDT-GPU-SPOOF</a></li>
+</li>
+<li>Automated tools<ul>
+<li>Mainly seen with SSDTTime, work much better though can&apos;t cover all situations</li>
 </ul>
-<h2 id="finding-a-suitable-pci-id"><a name="finding-a-suitable-pci-id" class="plugin-anchor" href="#finding-a-suitable-pci-id"><i class="fa fa-link" aria-hidden="true"></i></a>Finding a suitable PCI ID</h2>
-<p>To find a suitable PCI ID, we&apos;ll be using <a href="https://pci-ids.ucw.cz/read/PC/1002" target="_blank">PCI ID Repository</a> which has a full database of all AMD GPUs. For this example, we&apos;ll be creating a Spoof SSDT for the R9 390. For a full list of supported GPUs, please see the <a href="https://dortania.github.io/GPU-Buyers-Guide/" target="_blank">GPU Buyers Guide</a>. The closest match to this GPU would be the 390X, and looking on that site near the top gives us this:</p>
-<pre><code>Vendor 1002 -&gt; Device 1002:67b0
-</code></pre><p>Now lets break this down into a device ID we can use:</p>
-<ul>
-<li><code>1002</code>: The vendor ID, all AMD devices have this ID</li>
-<li><code>67B0</code>: The device ID, this is what we care about</li>
-</ul>
-<p>So how do we convert this to a fake ID? Well the format of a fake ID:</p>
-<pre><code>&quot;device-id&quot;,
-Buffer (0x04)
-{
-     0xB0, 0x67, 0x00, 0x00
-},
-</code></pre><p>As you can see, the bytes are swapped in pairs. Keep this in mind when we make our SSDT</p>
-<p>The specifics are due to <a href="https://en.wikipedia.org/wiki/Endianness" target="_blank">Endianness</a> for those who are curious</p>
-<h2 id="finding-the-acpi-path-of-the-gpu"><a name="finding-the-acpi-path-of-the-gpu" class="plugin-anchor" href="#finding-the-acpi-path-of-the-gpu"><i class="fa fa-link" aria-hidden="true"></i></a>Finding the ACPI Path of the GPU</h2>
-<p>To find the PCI path of a GPU is fairly simple, best way to find it is running Windows:</p>
-<ul>
-<li>Open Device Manager</li>
-<li>Select Display Adapters, then right click your GPU and select Properties</li>
-<li>Under the Details Tab, search for &quot;Location Paths&quot;<ul>
-<li>Note some GPUs may be hiding under &quot;BIOS device name&quot;</li>
+</li>
+<li>Manually creating them<ul>
+<li>Will always work, be much cleaner and get to learn about the process</li>
 </ul>
 </li>
 </ul>
-<p><img src="../images/Desktops/amd.png" alt=""></p>
-<p><img src="../images/Desktops/nvidia.png" alt="Credit to 1Revenger1 for the image"></p>
-<p>The second &quot;ACPI&quot; is what we care about:</p>
-<pre><code>ACPI(_SB_)#ACPI(PC02)#ACPI(BR2A)#ACPI(PEGP)#PCI(0000)#PCI(0000)
-</code></pre><p>Now converting this to an ACPI path is quite simple, remove the <code>#ACPI</code> and <code>#PCI(0000)</code>:</p>
-<pre><code>`_SB_.PC02.BR2A.PEGP
-</code></pre><p>And voila! We&apos;ve found our ACPI path, now that we have everything we&apos;re ready to get cooking</p>
-<h2 id="making-the-ssdt"><a name="making-the-ssdt" class="plugin-anchor" href="#making-the-ssdt"><i class="fa fa-link" aria-hidden="true"></i></a>Making the SSDT</h2>
-<p>To start grab our <a href="https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-SPOOF.dsl.zip" target="_blank">SSDT-GPU-SPOOF</a> and open it up. Here there&apos;s a couple things to change:</p>
-<pre><code>External (_SB_.PCI0, DeviceObj)
-External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
-</code></pre><p>For our example, we&apos;ll change all mentions of :</p>
-<ul>
-<li><code>PCI0</code> with <code>PC02</code></li>
-<li><code>PEG0</code> with <code>BR2A</code></li>
-</ul>
-<p>Hint: If your ACPI path is a bit shorter than the example, this is fine. Just make sure the ACPI paths are correct to your device.</p>
-<p>Now that the ACPI pathing is correct, we can finally apply our fake ID!!!</p>
-<p>So the 2 parts we want to change:</p>
-<p><strong>device ID</strong>:</p>
-<pre><code>&quot;device-id&quot;,
-Buffer (0x04)
-{
-    0xB0, 0x67, 0x00, 0x00
-},
-</code></pre><p><strong>Model</strong>:</p>
-<pre><code>&quot;model&quot;,
-Buffer ()
-{
-    &quot;AMD Radeon R9 390&quot;
-}
-</code></pre><p><code>&quot;device-id&quot;</code> will be set to our PCI ID that we found in &quot;Finding a suitable PCI ID&quot; and <code>&quot;model&quot;</code> is mainly cosmetic</p>
-<h2 id="now-youre-ready-to-compile-the-ssdt"><a name="now-youre-ready-to-compile-the-ssdt" class="plugin-anchor" href="#now-youre-ready-to-compile-the-ssdt"><i class="fa fa-link" aria-hidden="true"></i></a><a href="../Manual/compile.html">Now you&apos;re ready to compile the SSDT!</a></h2>
 
                                 
                                 </section>
@@ -606,12 +546,12 @@ Buffer ()
 
             
                 
-                <a href="irq.html" class="navigation navigation-prev " aria-label="Previous page: IRQ Fix">
+                <a href="../ssdt-platform.html" class="navigation navigation-prev " aria-label="Previous page: Choosing the SSDTs">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="smbus.html" class="navigation navigation-next " aria-label="Next page: Fixing SMBus Support">
+                <a href="ssdt-prebuilt.html" class="navigation navigation-next " aria-label="Next page: SSDTs: Prebuilt">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -622,7 +562,7 @@ Buffer ()
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"GPU Spoof","level":"6.6","depth":1,"next":{"title":"Fixing SMBus Support","level":"6.7","depth":1,"path":"Universal/smbus.md","ref":"Universal/smbus.md","articles":[]},"previous":{"title":"IRQ Fix","level":"6.5","depth":1,"path":"Universal/irq.md","ref":"Universal/irq.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Universal/spoof.md","mtime":"2020-05-16T17:37:12.556Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-16T17:38:05.724Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"How to create SSDTs","level":"2.1","depth":1,"next":{"title":"SSDTs: Prebuilt","level":"2.1.1","depth":2,"path":"ssdt-methods/ssdt-prebuilt.md","ref":"ssdt-methods/ssdt-prebuilt.md","articles":[]},"previous":{"title":"Choosing the SSDTs","level":"1.2","depth":1,"path":"ssdt-platform.md","ref":"ssdt-platform.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"ssdt-methods/ssdt-methods.md","mtime":"2020-05-16T17:37:12.648Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-16T17:38:05.724Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
