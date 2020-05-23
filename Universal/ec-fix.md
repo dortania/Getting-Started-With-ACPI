@@ -174,6 +174,8 @@ The reason for this is that the real EC is considered disabled already.
 
 > Hey what about USBX? Do I need to do anything?
 
-USBX is universal across all systems, it just creates a USBX device that forces USB power properties. This is crucial for fixing Mics, DACs, Webcams, Bluetooth Dongles and other high power draw devices. This is not mandatory to boot but should be added in post-install if not before. Note that it requires the EC functioning correctly and that USBX is only used on skylake+ systems - those on Broadwell and older can ignore.
+USBX is universal across all systems, it just creates a USBX device that forces USB power properties. This is crucial for fixing Mics, DACs, Webcams, Bluetooth Dongles and other high power draw devices. This is not mandatory to boot but should be added in post-install if not before. 
+
+Note that it requires a device named EC to function correctly(Which is done with our SSDT-EC) and that USBX is only used on skylake+ systems - those on Broadwell and older can ignore as Apple already suppiles USB power properties.
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)
