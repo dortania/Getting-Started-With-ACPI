@@ -2,7 +2,7 @@
 
 So here we'll be using a super simple tool made by CorpNewt: [SSDTTime](https://github.com/corpnewt/SSDTTime)
 
-What this tool does is dumps your DSDT from your firmware, and then creates SSDTs based off your DSDT. **This must be done on the target machine running either Windows or Linux**
+What this tool does is, it dumps your DSDT from your firmware, and then creates SSDTs based off your DSDT. **This must be done on the target machine running either Windows or Linux**
 
 ## So what **can't** SSDTTime do
 
@@ -18,14 +18,14 @@ What this tool does is dumps your DSDT from your firmware, and then creates SSDT
 * **SSDT-GPI0**:
   * Need to be configured to your system
 * **AWAC and RTC0 SSDTs**:
-  * 300 series Intel boards will also need to figure his out(Z390 systems are most common for requiring this but some Gigabyte Z370 do as well)
+  * 300 series Intel boards will also need to figure this out (Z390 systems are most common for requiring this but some Gigabyte Z370 do as well)
 * **PMC SSDT**:
   * For fixing 300 series Intel NVRAM
   * Prebuilt can be found here: [NVRAM PMC](/Universal/nvram.md)
 * **USBX SSDT**:
   * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml)
 
-For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it support for you.
+For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it does support.
 
 ## Running SSDTTime
 
