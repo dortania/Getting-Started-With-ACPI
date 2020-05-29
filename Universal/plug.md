@@ -2,7 +2,7 @@
 
 ## Easy Way
 
-With CPU Power Management, it's a simple as taking [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl) provided by Acidanthera and compiling it yourself.  You can find a prebuilt of the file here: [SSDT-PLUG-DRTNIA.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PLUG-DRTNIA.aml)
+With CPU Power Management, it's a simple as taking [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl) provided by Acidanthera and compiling it yourself.  You can find a prebuilt of the file here: [SSDT-PLUG-DRTNIA.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 
 * Note: This file has a bit of extra bloat as it includes checks for all common CPU names, if you wish to clean this up, either remove unused names or follow the guide below.
 
@@ -12,7 +12,7 @@ CPU naming is fairly easy to figure out as well, open your decompiled DSDT and s
 
 ![](/images/Universal/plug-md/processor.png)
 
-As we can see, the first processor in our list is `PR00`. This is what we'll be applying the `plugin-type=1` property too. Now grab [SSDT-PLUG](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PLUG.dsl.zip) and replace the default `CPU0` with our `PR00`. There's a couple things to note:
+As we can see, the first processor in our list is `PR00`. This is what we'll be applying the `plugin-type=1` property too. Now grab [SSDT-PLUG](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-PLUG.dsl.zip) and replace the default `CPU0` with our `PR00`. There's a couple things to note:
 
 * There's 2 mentions of CPU0 to change
 * The `PR` path may need to be changed, in our example we can see that our `PR00` has `SB` in front.

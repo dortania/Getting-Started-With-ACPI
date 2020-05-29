@@ -5,7 +5,7 @@ So this is mainly needed for GPUs that are not supported in macOS, mainly this w
 So to disable a specific GPU, we need to find a couple things:
 
 * ACPI Path of the GPU
-* [SSDT-GPU-DISABLE](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-DISABLE.dsl.zip)
+* [SSDT-GPU-DISABLE](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPU-DISABLE.dsl.zip)
 
 ## Finding the ACPI Path of the GPU
 
@@ -36,7 +36,7 @@ And voila! We've found our ACPI path, now that we have everything we're ready to
 
 ## Making the SSDT
 
-To start grab our [SSDT-GPU-DISABLE](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPU-DISABLE.dsl.zip) and open it up. Here there's a couple things to change:
+To start grab our [SSDT-GPU-DISABLE](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPU-DISABLE.dsl.zip) and open it up. Here there's a couple things to change:
 
 ```
 External (_SB_.PCI0.PEG0.PEGP, DeviceObj)

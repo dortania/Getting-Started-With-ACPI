@@ -4,9 +4,9 @@ So what this SSDT does is create a PNLF device for macOS to play with, specifica
 
 No configuration required for most, just drop the pre-built file into your EFI:
 
-* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PNLF.aml)
+* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
   * For most users
-* [SSDT-PNLF-CFL](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-PNLF-CFL.aml)
+* [SSDT-PNLF-CFL](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF-CFL.aml)
   * For Coffee Lake and newer
 
 Note: there are some rare cases where the iGPU is called `GPU0` or `VID`in the DSDT, you can double check by searching for `PCI0.GFX0`, `PCI0.VID` and `PCI0.GPU0`. Whichever shows up is your device
