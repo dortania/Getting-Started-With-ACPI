@@ -63,6 +63,6 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "AWAC", 0x00000000)
 }
 ```
 
-You can find a prebuilt of this here: [SSDT-AWAC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-AWAC.aml)
+You can find a prebuilt of this here: [SSDT-AWAC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
 
 ## [Now you're ready to compile the SSDT!](/Manual/compile.md)

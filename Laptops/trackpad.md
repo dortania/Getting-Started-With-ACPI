@@ -28,7 +28,7 @@ What we want is for this to always return `0x0F` when booting macOS, so we want 
 
 **NOTE that you may have the other way around where GPHD needs to be set as `One` to return `0x0F`**. And your device name may also be different, don't throw random SSDTs in thinking it'll work
 
-Once you found the variable and what it should be set to, grab a copy of [SSDT-GPI0.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/SSDT-GPI0.dsl) and make the required edits. Then clean up with compiling it
+Once you found the variable and what it should be set to, grab a copy of [SSDT-GPI0.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPI0.dsl) and make the required edits. Then clean up with compiling it
 
 ## More examples
 
@@ -57,7 +57,7 @@ DefinitionBlock("", "SSDT", 2, "ACDT", "GPI0", 0)
 
 So if you're still having issues enabling your trackpad in macOS, you can try removing SSDT-GPIO and instead swap for the following. Note that using these 2 will most likely break Windows and Linux so only use XOSI when troubleshooting:
 
-* [SSDT-XOSI](https://github.com/hackintosh-guides/vanilla-laptop-guide/tree/master/Misc-files/SSDT-XOSI.aml)
+* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
 * XOSI Rename:
 
@@ -65,6 +65,6 @@ So if you're still having issues enabling your trackpad in macOS, you can try re
 | :--- | :--- | :--- |
 | Enabled | Boolean | YES |
 | Count | Number | 0 |
-| Limit | Nuber | 0 |
+| Limit | Number | 0 |
 | Find | Data | 5f4f5349 |
 | Replace | Data | 584f5349 |
