@@ -2,31 +2,54 @@
 
 So to start, we'll need to get a copy of your DSDT from your firmware. The easiest way is grabbing the DSDT.aml SSDTTime dumped for us earlier but here are some other options:
 
+
+
+
+**From Windows**:
+
 * [SSDTTime](https://github.com/corpnewt/SSDTTime)
   * Supports both Windows and Linux for DSDT dumping
   * `4. Dump DSDT - Automatically dump the system DSDT`
-* [MaciASL](https://github.com/acidanthera/MaciASL/releases)
-  * Open the app on the target machine(must already be running macOS) and the system's DSDT will show, then File -&gt; SaveAs `System DSDT`. Make sure the file format is ACPI Machine Language Binary(.AML), this will require the machine to be running macOS
-  * Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT
 * [acpidump.exe](https://acpica.org/sites/acpica/files/iasl-win-20180105.zip)
   * In command prompt run `path/to/acpidump.exe -b -n DSDT -z`, this will dump your DSDT as a .dat file. Rename this to DSDT.aml
+  
+* Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above 2 methods
+  
+**From Linux**:
+
+* [SSDTTime](https://github.com/corpnewt/SSDTTime)
+  * Supports both Windows and Linux for DSDT dumping
+  * `4. Dump DSDT - Automatically dump the system DSDT`
+* Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above method
+
+**From Clover**:
+
+For those with Clover installed previously, this is a simple way to get your ACPI tables:
+
 * F4 in Clover Boot menu
   * DSDT can be found in `EFI/CLOVER/ACPI/origin`, the folder **must** exist before dumping
-* [`acpidump.efi`](https://github.com/dortania/OpenCore-Desktop-Guide/tree/master/extra-files/acpidump.efi.zip)
-  * Add this to `EFI/OC/Tools` and in your config under `Misc -> Tools` with the argument: `-b -n DSDT -z` and select this option in OpenCore's picker. Rename the DSDT.dat to DSDT.aml. Tool is provided by [acpica](https://github.com/acpica/acpica/tree/master/source/tools/acpidump)
 
-If OpenCore is having issues running acpidump, you can call it from the shell with [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases)(reminder to add to both `EFI/OC/Tools` and in your config under `Misc -> Tools` ):
+**From OpenCore**:
 
-```text
-shell> fs0: // replace with proper drive
+With OpenCore 0.5.9, we have a new quirk called SysReport which will actually dump our DSDT automatically when hitting the boot screen. The main issues are:
 
-fs0:\> dir // to verify this is the right directory
+* You already need a bootable OpenCore USB to get this dump
+* This also requires a DEBUG version of 0.5.9
 
-Directory of fs0:\
+For the latter, you just need to replace the following files with [DEBUG version](https://github.com/acidanthera/OpenCorePkg/releases):
 
-01/01/01 3:30p EFI
+  * EFI/BOOT/
+    * `BOOTx64.efi`
+  * EFI/OC/Bootstrap/
+    * `Bootstrap.efi`
+  * EFI/OC/Drivers/
+    * `OpenRuntime.efi`
+  * EFI/OC/
+    * `OpenCore.efi`
 
-fs0:\> cd EFI\OC\Tools
+For the former, you can actually skip the ACPI section, return to the OpenCore guide([Desktop](https://dortania.github.io/OpenCore-Desktop-Guide/), [Laptop](https://dortania.github.io/vanilla-laptop-guide/)) and finish making the USB. Once booted to the picker, you can shut off the PC and check your USB:
 
-fs0:\EFI\OC\Tools> acpidump.efi -b -n DSDT -z
-```
+![](/images/Manual/dump-md/sysreport.png)
+
+And voila! You have a DSDT! Now you can continue on with making SSDTs
+
