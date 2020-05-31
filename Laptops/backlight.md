@@ -1,22 +1,15 @@
-# Fixing Backlight
+# Fixing Backlight (SSDT-PNLF)
 
-So what this SSDT does is create a PNLF device for macOS to play with, specifically one with a hardware ID of `APP0002`. WhateverGreen will handle the rest of the work
+* [What this SSDT does](#what-this-ssdt-does)
+* [Methods to make this SSDT](#methods-to-make-this-ssdt)
 
-No configuration required for most, just drop the pre-built file into your EFI:
+## What this SSDT does
 
-* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
-  * For most users
-* [SSDT-PNLF-CFL](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF-CFL.aml)
-  * For Coffee Lake and newer
+The purpose of this SSDT is to create a PNLF device for macOS to play with, specifically one with a hardware ID of `APP0002`. Luckily WhateverGreen will handle the rest of the work for us.
 
-Note: there are some rare cases where the iGPU is called `GPU0` or `VID`in the DSDT, you can double check by searching for `PCI0.GFX0`, `PCI0.VID` and `PCI0.GPU0`. Whichever shows up is your device
+## Methods to make this SSDT
 
-If Windows has been installed on the device, you can also do the following:
+For the backlight fix, there are 2 methods you can choose from:
 
-```text
-Device Manager -> Display Adapters -> Properties -> Details > BIOS device name
-```
-
-* Note some GPUs may be hiding under "BIOS device name"
-
-![Credit to 1Revenger1 for the image](/images/Desktops/nvidia.png)
+* [Prebuilt](/Laptops/backlight-methods/prebuilt.md)
+* [Manual](/Laptops/backlight-methods/manual.md)

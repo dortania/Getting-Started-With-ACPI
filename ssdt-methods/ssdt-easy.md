@@ -4,7 +4,7 @@ So here we'll be using a super simple tool made by CorpNewt: [SSDTTime](https://
 
 What this tool does is, it dumps your DSDT from your firmware, and then creates SSDTs based off your DSDT. **This must be done on the target machine running either Windows or Linux**
 
-## So what **can't** SSDTTime do
+## So what **CAN'T** SSDTTime do
 
 * **HEDT SSDTs**:
   * The ACPI is odd on these platforms so manual work is required

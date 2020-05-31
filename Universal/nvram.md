@@ -1,4 +1,9 @@
-# Fixing NVRAM
+# Fixing NVRAM (SSDT-PMC)
+
+* [What this SSDT does](#what-this-ssdt-does)
+* [Methods to make this SSDT](#methods-to-make-this-ssdt)
+ 
+## What this SSDT does
 
 This SSDT is required for all "true" 300 series motherboards and newer(Z370 is excluded), it specifically brings back NVRAM support and requires very little configuration for the end user.
 
@@ -10,15 +15,11 @@ This SSDT is required for all "true" 300 series motherboards and newer(Z370 is e
 * 400 series (Cometlake)
 * 495 series (Icelake)
 
-By default it uses `PCI0.LPCB` for the PCI and LowPinCount path. The device names can vary between `PC00` and `PCI0` for PCI path and `LPCB`, `LBC` and `LBC0` for  LowPinCount path. To see what you have:
+Oddly enough, desktop Z490 boards **DO NOT** need this SSDT. NVRAM just works out of the box for most users, if there's issues though it's recommended to try this SSDT
 
-* Finding the LowPinCount path:
-  * Intel: Search `Name (_ADR, 0x001F0000)`
-* Finding the PCI path:
-  * Intel: Search `PNP0A08` (If multiple show up, use the first one)
+## Methods to make this SSDT
 
-![](/images/Universal/nvram-md/lpc.png)
+The main ways to make this SSDT:
 
-A pre-built can be found here if you have issues: [SSDT-PMC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PMC.aml)
-
-## [Now you're ready to compile the SSDT!](/Manual/compile.md)
+* [Prebuilt](/Universal/nvram-methods/prebuilt.md)
+* [Manual](/Universal/nvram-methods/manual.md)

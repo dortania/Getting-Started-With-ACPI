@@ -82,6 +82,8 @@ The biggest issue with this prebuilt is that we're just guessing you both have a
 
 Needed to bring back NVRAM support for Z390 and newer, **DO NOT USE ON Z370 or older**
 
+Note: Desktop Z490 boards seem to not need this, though if you're having NVRAM issues you can try this SSDT.
+
 * [SSDT-PMC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PMC.aml)
 
 Reminder only the following need this SSDT:

@@ -1,4 +1,4 @@
-# Renaming GPUs
+# Renaming GPUs (SSDT-GPU-SPOOF)
 
 So this is mainly needed for GPUs that are not natively supported out of the box due to their names, most commonly:
 
