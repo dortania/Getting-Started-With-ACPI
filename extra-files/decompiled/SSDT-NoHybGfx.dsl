@@ -3,7 +3,7 @@
 * >> https://github.com/Bumblebee-Project/Bumblebee/wiki/ACPI-for-Developers#acpi-and-the-nvidia-card
 * ---
 * Important: Change all ACPI paths accordingly.
-* Credit to Maemo for original idea and midi1996 for the SSDT
+* Credit to Maemo for original idea and the SSDT
 */
 DefinitionBlock ("", "SSDT", 2, "DRTNIA", "NoHybGfx", 0x00000000)
 {
