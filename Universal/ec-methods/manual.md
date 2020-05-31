@@ -65,6 +65,39 @@ Now that we have our ACPI path, lets grab our SSDT and get to work:
   * For Skylake and newer and all AMD systems
 * [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
   * For Broadwell and older
+  
+  
+Now when opening this SSDT, you'll notice a few things. Mainly:
+
+* Some code is commented out
+  * This is code for disabling our EC
+  * Laptops users **SHOULD NOT** uncomment this
+* There's a new EC called `Device (EC)`
+  * **DO NOT RENAME THIS**, this will be the EC we give to macOS
+  
+**Before**:
+
+```
+External (_SB_.PCI0.LPCB, DeviceObj) <- Rename this
+
+Scope (_SB.PCI0.LPCB) <- Rename this
+```
+
+![](/images/Desktops/ssdt-before.png)
+
+Following the example pathing we found, the SSDT should look something like this:
+
+**After**:
+
+```
+External (_SB_.PC00.LPC0, DeviceObj) <- Renamed
+
+Scope (_SB.PC00.LPC0) <- Renamed
+```
+
+![](/images/Desktops/ssdt-after.png)
+
+
 
 ## Edge Cases
 
