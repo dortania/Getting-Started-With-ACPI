@@ -22,7 +22,7 @@ path/to/iasl.exe path/to/DSDT.aml
 
 ## Windows
 
-Compiling and decompiling on windows is fairly simple though, you will need [iasl.exe](https://acpica.org/sites/acpica/files/iasl-win-20180105.zip) and Command Prompt:
+Compiling and decompiling on windows is fairly simple though, you will need [iasl.exe](https://acpica.org/downloads/binary-tools) and Command Prompt:
 
 ```text
 path/to/iasl.exe path/to/DSDT.aml

@@ -12,7 +12,7 @@
 This is usually due to an outdated version of Python, try either updating Python or add iasl to the scripts folder for SSDTTime:
 
 * [iasl macOS version](https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip)
-* [iasl Windows version](https://acpica.org/sites/acpica/files/iasl-win-20180105.zip)
+* [iasl Windows version](https://acpica.org/downloads/binary-tools)
 * [iasl Linux version](http://amdosx.kellynet.nl/iasl.zip)
 
 ## Can't run `acpidump.efi` from OpenCore
