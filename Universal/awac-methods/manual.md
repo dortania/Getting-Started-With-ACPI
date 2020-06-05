@@ -18,6 +18,7 @@ Next search for `ACPI000E`. You should get something similar:
 The above tells us a few things:
 
 * We in fact do have an AWAC clock
+  * If nothing shows up, you don't need to do anything for AWAC or RTC
 * It can be easily disabled with STAS(if not, you can skip to here: [RTC0 Method](#rtc0-method))
   * `_STA` is the device status, with `Zero` meaning it won't show up
   
