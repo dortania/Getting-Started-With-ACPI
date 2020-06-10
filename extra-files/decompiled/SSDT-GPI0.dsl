@@ -2,6 +2,7 @@
 DefinitionBlock("", "SSDT", 2, "DRTNIA", "GPI0", 0)
 {
     External(GPEN, FieldUnitObj)
+    External(SBRG, FieldUnitObj)
     
     Scope (\)
     {
