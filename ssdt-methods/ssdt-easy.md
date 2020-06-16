@@ -24,6 +24,8 @@ What this tool does is, it dumps your DSDT from your firmware, and then creates 
   * Prebuilt can be found here: [NVRAM PMC](/Universal/nvram.md)
 * **USBX SSDT**:
   * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml)
+* **RHUB SSDT**:
+  * if you have a 10th gen CPU, you'll need to either use the prebuilt or manually create it.
 
 For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it does support.
 

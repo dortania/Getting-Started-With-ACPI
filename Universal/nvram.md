@@ -5,17 +5,15 @@
  
 ## What this SSDT does
 
-This SSDT is required for all "true" 300 series motherboards and newer(Z370 is excluded), it specifically brings back NVRAM support and requires very little configuration for the end user.
+This SSDT is required for all "true" 300 series motherboards(Z370 is excluded), it specifically brings back NVRAM support and requires very little configuration for the end user.
 
 * B360
 * B365
 * H310
 * H370
 * Z390
-* 400 series (Cometlake)
-* 495 series (Icelake)
 
-Oddly enough, desktop Z490 boards **DO NOT** need this SSDT. NVRAM just works out of the box for most users, if there's issues though it's recommended to try this SSDT
+10th gen motherboards **do not** need this SSDT, NVRAM's native on these platforms.
 
 ## Methods to make this SSDT
 

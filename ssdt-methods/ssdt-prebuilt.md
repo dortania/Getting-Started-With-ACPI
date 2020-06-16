@@ -95,3 +95,9 @@ Reminder only the following need this SSDT:
 * Z390
 * 400 series (Comet Lake)
 * 495 series (Icelake)
+
+## USB(RHUB)
+
+Needed for 10th gen CPUs, Gigabyte and AsRock motherboards don't need this
+
+* [SSDT-RHUB.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)

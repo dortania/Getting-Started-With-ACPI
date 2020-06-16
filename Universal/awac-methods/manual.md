@@ -28,7 +28,7 @@ But to double check, next search for `PNP0B00`:
 
 And looks at that, we can in fact disable our AWAC and enable the RTC! If not skip to here: [RTC0 Method](#rtc0-method)
 
-Now it's as simple as grabbing [SSDt-AWAC.dsl]() and [compile](#compiling-the-ssdt), no changes needed You can also use the below SSDT to the same effect:
+Now it's as simple as grabbing [SSDT-AWAC.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) and [compile](#compiling-the-ssdt), no changes needed You can also use the below SSDT to the same effect:
 
 * [SSDT-AWAC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
 
