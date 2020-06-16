@@ -6,36 +6,31 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "AMDGPU", 0x00001000)
     External (_SB_.PCI0.PEG0.PEGP, DeviceObj)
 
 
-    Scope (\_SB.PCI0.PEG0.PEGP)
+    Scope (\_SB_.PCI0.PEG0.PEGP)
     {
-      
-        Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+        if (_OSI ("Darwin"))
         {
-          If (_OSI ("Darwin"))
-          {
-            Store (Package ()
+            Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
             {
-                // Where we shove our FakeID
-                "device-id",
-                Buffer (0x04)
+                Local0 = Package (0x04)
                 {
-                    0xB0, 0x67, 0x00, 0x00
-                },
+                    // Where we shove our FakeID
+                    "device-id",
+                    Buffer (0x04)
+                    {
+                        0xB0, 0x67, 0x00, 0x00
+                    },
 
-                // Changing the name of the GPU reported, mainly cosmetic
-                "model",
-                Buffer ()
-                {
-                    "AMD Radeon R9 390"
+                    // Changing the name of the GPU reported, mainly cosmetic
+                    "model",
+                    Buffer ()
+                    {
+                        "AMD Radeon R9 390"
+                    }
                 }
-                        
-             }, Local0)
-             DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
-             Return (Local0)
-           }
-          Else
-          {
-          }
+                DTGP (Arg0, Arg1, Arg2, Arg3, RefOf (Local0))
+                Return (Local0)
+            }
         }
     }
     Scope (\_SB.PCI0)
