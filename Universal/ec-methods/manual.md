@@ -1,12 +1,17 @@
 # Fixing Embedded Controllers: Manual
 
-* [Finding the ACPI path](#finding-the-acpi-path)
-  * [DSDT](#DSDT)
-  * [DeviceManager](#devicemanager)
-* [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-* [Edge Cases](#edge-cases)
-* [Compiling the SSDT](#compiling-the-ssdt)
-* [Wrapping up](#wrapping-up)
+- [Fixing Embedded Controllers: Manual](#fixing-embedded-controllers-manual)
+  - [Finding the ACPI path](#finding-the-acpi-path)
+    - [DSDT](#dsdt)
+    - [DeviceManager](#devicemanager)
+  - [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
+  - [Edge Cases](#edge-cases)
+    - [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
+    - [No PNP0C09 show up](#no-pnp0c09-show-up)
+    - [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
+    - [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
+  - [Compiling the SSDT](#compiling-the-ssdt)
+  - [Wrapping up](#wrapping-up)
 
 TO-DO:
 
@@ -38,10 +43,18 @@ But now we get into edge case territory, what fun!
 
 The main ones to check for are:
 
-* [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
-* [No PNP0C09 show up](#no-pnp0c09-show-up)
-* [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-* [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-sta-method)
+- [Fixing Embedded Controllers: Manual](#fixing-embedded-controllers-manual)
+  - [Finding the ACPI path](#finding-the-acpi-path)
+    - [DSDT](#dsdt)
+    - [DeviceManager](#devicemanager)
+  - [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
+  - [Edge Cases](#edge-cases)
+    - [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
+    - [No PNP0C09 show up](#no-pnp0c09-show-up)
+    - [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
+    - [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
+  - [Compiling the SSDT](#compiling-the-ssdt)
+  - [Wrapping up](#wrapping-up)
 
 If none of the above apply to you, you're ready for the next section:
 

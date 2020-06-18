@@ -1,7 +1,8 @@
 # Fixing Embedded Controller (SSDT-EC/USBX)
 
-* [What this SSDT does](#what-this-ssdt-does)
-* [Methods to make this SSDT](#methods-to-make-this-ssdt)
+- [Fixing Embedded Controller (SSDT-EC/USBX)](#fixing-embedded-controller-ssdt-ecusbx)
+  - [What this SSDT does](#what-this-ssdt-does)
+  - [Methods to make this SSDT](#methods-to-make-this-ssdt)
 
 ## What this SSDT does
 
@@ -24,6 +25,8 @@ So TL;DR:
 For the EC fix, there are 3 methods you can choose from:
 
 * [Prebuilt](/Universal/ec-methods/prebuilt.md)
+  * The prebuilt for desktops are very bloated. It's recommended to use the two methods below.
+  * The Laptop prebuilts are easily usable.
 * [SSDTTime](/Universal/ec-methods/ssdttime.md)
   * Note this method does not support **laptops**, **servers** or **HEDT systems**
 * [Manual](/Universal/ec-methods/manual.md)
