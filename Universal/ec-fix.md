@@ -17,7 +17,7 @@ So TL;DR:
 
 * EC is embedded controller
 * Desktops will want real EC off, and a fake EC created
-* Laptops will just want an additional fale EC present
+* Laptops will just want an additional fake EC present
 * Skylake and newer devices will want USBX as well
 
 ## Methods to make this SSDT
