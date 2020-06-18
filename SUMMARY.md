@@ -35,7 +35,7 @@
   * [Prebuilt](/Universal/ec-methods/prebuilt.md)
   * [SSDTTime](/Universal/ec-methods/ssdttime.md)
   * [Manual](/Universal/ec-methods/manual.md)
-* [Plugin type](/Universal/plug.md)
+* [CPU Power Management](/Universal/plug.md)
   * [Prebuilt](/Universal/plug-methods/prebuilt.md)
   * [SSDTTime](/Universal/plug-methods/ssdttime.md)
   * [Manual](/Universal/plug-methods/manual.md)
