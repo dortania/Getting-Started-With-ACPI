@@ -63,6 +63,6 @@ Device(_SB.PCI0.GPU0.PNLF) <- Renamed
 
 ## Wrapping up
 
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to warp up:
+Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
 
 * [**Cleanup**](/cleanup.md)
