@@ -1,60 +1,72 @@
 # Fixing USB: Manual
 
-* [Finding the ACPI path](#finding-the-acpi-path)
-* [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
+* [Finding the ACPI table](#finding-the-acpi-table)
+* [Edits to the sample SSDT](#edits-to-the-ssdt)
 * [Compiling the SSDT](#compiling-the-ssdt)
 * [Wrapping up](#wrapping-up)
 
-## Finding the ACPI path
+## Finding the ACPI table
 
-Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+So unlike the previous SSDT creations, we're not going to be working with the DSDT, instead we're gonna be looking through the entire ACPI dump and trying to find the bad table. 
 
-Next, search for the `Device (RHUB)`
+So to get these tables:
 
-You should get something like the following show up:
+* Run DEBUG version of OpenCore with `SysReport` enables
+* **or** running [acpidump.exe](https://acpica.org/downloads/binary-tools) in Windows
+  * note that the files dumped will need to be renamed from `.dat` to `.aml`
+  
+  
+Once you've done that, you should have a full folder similar to the below:
 
-![](/images/Universal/rhub-md/rhub-path.png)
+![](/images/Universal/rhub-md/acpi-dump.png)
 
-From the above, we can see that the full ACPI pathing for RHUB is `PCI0.XHC.RHUB`. If it's not as clear you can search for what those device paths are for your system:
 
-* Finding the PCI path:
-  * Search `PNP0A08` (If multiple show up, use the first one)
-* Finding XHCI path
-  * Search for `XHC`, `XHCI` and `XHC1`, and yours is whichever shows up.
+As you can see, we've got a bunch of ACPI tables that we need to decompile first. To make things a bit simpler, we only need to decompile the SSDTs. The rest of the tables are unneeded.
 
-Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-
-## Edits to the sample SSDT
-
-Now that we have our ACPI path, lets grab our SSDT and get to work:
-
-* [SSDT-RHUB.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-RHUB.dsl)
-
-By default, this uses `PCI0.XHC_.RHUB` for the pathing. you'll want to rename accordingly.
-
-Following the example from above, we'll be renaming it to `PCI0.XHC1.RHUB`:
-
-**Before**:
+To run a mass decompile:
 
 ```
-External (_SB_.PCI0.XHC_.RHUB, DeviceObj) <- Rename this
-
-Scope (_SB.PCI0.XHC_.RHUB) <- Rename this
+/path/to/iasl/ /path/to/SSDT-1 /path/to/SSDT-2 ...
 ```
 
-![](/images/Universal/rhub-md/ssdt-before.png)
+![](/images/Universal/rhub-md/iasl.png)
 
-Following the example pathing we found, the SSDT should look something like this:
+And so on... Don't worry about any compiler warning's, we won't be recompiling most of those files.
 
-**After**:
+Once done, you should get something like the following:
 
-```
-External (_SB.PCI0.XHC1.RHUB, DeviceObj) <- Renamed
+![](/images/Universal/rhub-md/acpi-dump-decompiled.png)
 
-Scope (_SB.PCI0.XHC1.RHUB) <- Renamed
-```
+Now comes the fun part: Finding our bad SSDT
 
-![](/images/Universal/rhub-md/ssdt-after.png)
+As per Intel's engineering sample SSDTs, the OEM table ID will generally start with `xh_` with some string after it(in Intel's example, they use `"xh_nccrb"`):
+
+![](/images/Universal/rhub-md/sample-driver.png)
+
+So we'll want to search for `xh_` inside the `DefinitionBlock` of the SSDTs, luckily they will **only** be in the SSDTs so makes searching far shorter. 
+
+For our example, we'll be using an Asus ROG MAXIMUS XII EXTREME as our example. For a quick search, we've found our SSDT with `xh_` is SSDT-6! Specifically `"xh_cmsd4"`
+ 
+![](/images/Universal/rhub-md/asus-stock.png)
+
+
+## Edits to the SSDT
+
+Now comes the fun part, writing our own custom SSDT. For this we'll first want to grab a modified copy of Intel's engineering SSDT:
+
+* [SSDT-XHCI.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-XHCI.dsl.zip)
+
+Now once you open it up, you should get the following:
+
+![]()
+
+
+
+
+
+
+
+
 
 ## Compiling the SSDT
 

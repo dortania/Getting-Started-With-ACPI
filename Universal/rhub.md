@@ -5,7 +5,14 @@
 
 ## What this SSDT does
 
-So on 400 series motherboards, certain OEMs have broken the ACPI spec and this results in issues when booting into macOS. To fix this, we'll want to turn off the RHUB device and force macOS to manually rebuild the ports.
+So on 400 series motherboards, certain OEMs have broken the ACPI spec and this results in issues when booting into macOS. To fix this, we have a few ways to fix it:
+
+* Turn off the RHUB and force macOS to rebuild the port
+  * Quick and dirty, not recommended long term
+* Fix the bad ACPI table
+  * Proper fix
+
+Ideally, we'd want to always go #2 but we'll still go over how to to do both methods.
 
 The following platforms will require fixing:
 
