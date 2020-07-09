@@ -9,13 +9,16 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
 
     Scope (_SB.PCI0.XHC1.RHUB) // Full pathing to RHUB, change to yours
         {
-            If (_OSI ("Darwin"))
-                    {
-                        Return (Zero) // This disables the device only in macOS
-                    }
-                    Else
-                    {
-                    }
+            Method (_STA, 0, NotSerialized)
+            {
+               If (_OSI ("Darwin"))
+                       {
+                          Return (Zero) // This disables the device only in macOS
+                     }
+                     Else
+                     {
+                     }
+           }                    
         }  
 }
 
