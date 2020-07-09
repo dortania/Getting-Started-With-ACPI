@@ -15,13 +15,17 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
     {
         Scope (_SB.PCI0.XHC_.RHUB)
         {
-            If (_OSI ("Darwin"))
-                    {
-                        Return (Zero)
-                    }
-                    Else
-                    {
-                    }
+            
+            Method (_STA, 0, NotSerialized)
+            {
+               If (_OSI ("Darwin"))
+                       {
+                          Return (Zero) // This disables the device only in macOS
+                     }
+                     Else
+                     {
+                     }
+           } 
         }  
     }
     
@@ -29,13 +33,17 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
     {
         Scope (_SB.PCI0.XHCI.RHUB)
         {
-            If (_OSI ("Darwin"))
-                    {
-                        Return (Zero)
-                    }
-                    Else
-                    {
-                    }
+            
+            Method (_STA, 0, NotSerialized)
+            {
+               If (_OSI ("Darwin"))
+                       {
+                          Return (Zero) // This disables the device only in macOS
+                     }
+                     Else
+                     {
+                     }
+           } 
         }  
     }
     
@@ -43,13 +51,17 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
     {
         Scope (_SB.PCI0.XHC1.RHUB)
         {
-            If (_OSI ("Darwin"))
-                    {
-                        Return (Zero)
-                    }
-                    Else
-                    {
-                    }
+            
+            Method (_STA, 0, NotSerialized)
+            {
+               If (_OSI ("Darwin"))
+                       {
+                          Return (Zero) // This disables the device only in macOS
+                     }
+                     Else
+                     {
+                     }
+           } 
         }  
     }
     
