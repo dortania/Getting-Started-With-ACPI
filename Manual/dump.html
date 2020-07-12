@@ -783,11 +783,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <html><head></head><body><blockquote>
-<p><em>Last modified: Fri Jun 26 2020 02:16:12 GMT+0000 (Coordinated Universal Time)</em></p>
+<p><em>Last modified: Sun Jul 12 2020 22:20:55 GMT+0000 (Coordinated Universal Time)</em></p>
 </blockquote>
 <h1 id="getting-a-copy-of-our-dsdt"><a name="getting-a-copy-of-our-dsdt" class="plugin-anchor" href="#getting-a-copy-of-our-dsdt"><i class="fa fa-link" aria-hidden="true"></i></a>Getting a copy of our DSDT</h1>
 <p>So to start, we&apos;ll need to get a copy of your DSDT from your firmware. The easiest way is grabbing the DSDT.aml SSDTTime dumped for us earlier but here are some other options:</p>
-<p><strong>From Windows</strong>:</p>
+<h2 id="from-windows"><a name="from-windows" class="plugin-anchor" href="#from-windows"><i class="fa fa-link" aria-hidden="true"></i></a>From Windows</h2>
 <ul>
 <li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">SSDTTime</a><ul>
 <li>Supports both Windows and Linux for DSDT dumping</li>
@@ -802,7 +802,7 @@
 <li><p>Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above 2 methods</p>
 </li>
 </ul>
-<p><strong>From Linux</strong>:</p>
+<h2 id="from-linux"><a name="from-linux" class="plugin-anchor" href="#from-linux"><i class="fa fa-link" aria-hidden="true"></i></a>From Linux</h2>
 <ul>
 <li><a href="https://github.com/corpnewt/SSDTTime" target="_blank">SSDTTime</a><ul>
 <li>Supports both Windows and Linux for DSDT dumping</li>
@@ -811,7 +811,7 @@
 </li>
 <li>Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above method</li>
 </ul>
-<p><strong>From Clover</strong>:</p>
+<h2 id="from-clover"><a name="from-clover" class="plugin-anchor" href="#from-clover"><i class="fa fa-link" aria-hidden="true"></i></a>From Clover</h2>
 <p>For those with Clover installed previously, this is a simple way to get your ACPI tables:</p>
 <ul>
 <li>F4 in Clover Boot menu<ul>
@@ -819,7 +819,13 @@
 </ul>
 </li>
 </ul>
-<p><strong>From OpenCore</strong>:</p>
+<h2 id="from-opencore"><a name="from-opencore" class="plugin-anchor" href="#from-opencore"><i class="fa fa-link" aria-hidden="true"></i></a>From OpenCore</h2>
+<p>With OpenCore, we have 2 options:</p>
+<ul>
+<li><a href="#sysreport-quirk">SysReport Quirk</a></li>
+<li><a href="#uefi-shell">UEFI Shell</a></li>
+</ul>
+<h3 id="sysreport-quirk"><a name="sysreport-quirk" class="plugin-anchor" href="#sysreport-quirk"><i class="fa fa-link" aria-hidden="true"></i></a>SysReport Quirk</h3>
 <p>With OpenCore 0.5.9, we have a new quirk called SysReport which will actually dump our DSDT automatically when hitting the boot screen. The main issues are:</p>
 <ul>
 <li>You already need a bootable OpenCore USB to get this dump</li>
@@ -847,6 +853,17 @@
 <p>For the former, you can actually skip the ACPI section, return to the OpenCore guide(<a href="https://dortania.github.io/OpenCore-Desktop-Guide/" target="_blank">Desktop</a>, <a href="https://dortania.github.io/vanilla-laptop-guide/" target="_blank">Laptop</a>) and finish making the USB. Once booted to the picker, you can shut off the PC and check your USB:</p>
 <p><img src="../images/Manual/dump-md/sysreport.png" alt=""></p>
 <p>And voila! You have a DSDT! Now you can continue on with making SSDTs</p>
+<h3 id="uefi-shell"><a name="uefi-shell" class="plugin-anchor" href="#uefi-shell"><i class="fa fa-link" aria-hidden="true"></i></a>UEFI Shell</h3>
+<p>For this, we&apos;ll want ti grab <a href="https://github.com/dortania/OpenCore-Desktop-Guide/tree/master/extra-files/acpidump.efi.zip" target="_blank"><code>acpidump.efi</code></a> and add this to <code>EFI/OC/Tools</code> and in your config under <code>Misc -&gt; Tools</code> with the argument: <code>-b -n DSDT -z</code> and select this option in OpenCore&apos;s picker. </p>
+<p>If OpenCore is having issues running acpidump.efi from the boot picker, you can call it from the shell with <a href="https://github.com/acidanthera/OpenCorePkg/releases" target="_blank">OpenShell</a>(reminder to add to both <code>EFI/OC/Tools</code> and in your config under <code>Misc -&gt; Tools</code> ):</p>
+<pre><code class="lang-text">shell&gt; fs0: // replace with proper drive
+fs0:\&gt; dir  // to verify this is the right directory
+   Directory of fs0:\
+   01/01/01 3:30p EFI
+fs0:\&gt; cd EFI\OC\Tools
+fs0:\EFI\OC\Tools&gt; acpidump.efi -b -n DSDT -z
+</code></pre>
+<p> Once done, you should find your DSDT in the EFI/OC/Tools folder with a <code>.dat</code> extension. Rename this DSDT.dat file to DSDT.aml to help us down the line</p>
 </body></html>
                                 
                                 </section>
@@ -890,7 +907,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dumping the DSDT","level":"3.1","depth":1,"next":{"title":"Decompiling and Compiling","level":"3.2","depth":1,"path":"Manual/compile.md","ref":"Manual/compile.md","articles":[]},"previous":{"title":"SSDTs: Long Way","level":"2.1.3","depth":2,"path":"ssdt-methods/ssdt-long.md","ref":"ssdt-methods/ssdt-long.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom","table-cell-merge"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"table-cell-merge":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Manual/dump.md","mtime":"2020-06-26T02:16:12.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-26T02:17:09.496Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Dumping the DSDT","level":"3.1","depth":1,"next":{"title":"Decompiling and Compiling","level":"3.2","depth":1,"path":"Manual/compile.md","ref":"Manual/compile.md","articles":[]},"previous":{"title":"SSDTs: Long Way","level":"2.1.3","depth":2,"path":"ssdt-methods/ssdt-long.md","ref":"ssdt-methods/ssdt-long.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-lunr","-search","search-plus","addcssjs","favicon-plus","anchors","github-buttons","last-modified","medium-zoom","table-cell-merge"],"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"},"pluginsConfig":{"last-modified":{},"output":"_book","intopic-toc":{"label":"Navigation"},"addcssjs":{"css":[],"js":[]},"medium-zoom":{},"table-cell-merge":{},"fontsettings":{"theme":"night","family":"sans","size":2},"favicon-plus":{"appleTouchIconPrecomposed152":"","favicon":"","output":"_book"},"highlight":{},"github-edit":{"repo":"dortania/Getting-Started-With-ACPI","branch":"master"},"favicon":"/icons/favicon.ico","appleTouchIconPrecomposed152":"/icons/appleTouchIconPrecomposed152.png","github-buttons":{"buttons":[{"user":"dortania","repo":"Getting-Started-With-ACPI","type":"star","size":"large"}]},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":[]},"theme-default":{"showLevel":false,"styles":{"ebook":"styles/ebook.css","epub":"styles/epub.css","mobi":"styles/mobi.css","pdf":"styles/pdf.css","print":"styles/print.css","website":"styles/website.css"}},"anchors":{},"search-plus":{}},"theme":"default","medium-zoom":{"margin":24,"background":"#363b40","scrollOffset":0},"pdf":{"pageBreaksBefore":"/","headerTemplate":null,"paperSize":"a4","margin":{"right":62,"left":62,"top":36,"bottom":36},"fontSize":12,"fontFamily":"Arial","footerTemplate":null,"chapterMark":"pagebreak","pageNumbers":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"google":false,"facebook":false,"twitter":false,"weibo":false,"all":false}},"gitbook":"*"},"file":{"path":"Manual/dump.md","mtime":"2020-07-12T22:20:55.244Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-12T22:21:46.458Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
