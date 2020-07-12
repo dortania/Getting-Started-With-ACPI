@@ -5,7 +5,7 @@ So to start, we'll need to get a copy of your DSDT from your firmware. The easie
 
 
 
-**From Windows**:
+## From Windows
 
 * [SSDTTime](https://github.com/corpnewt/SSDTTime)
   * Supports both Windows and Linux for DSDT dumping
@@ -15,21 +15,28 @@ So to start, we'll need to get a copy of your DSDT from your firmware. The easie
   
 * Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above 2 methods
   
-**From Linux**:
+## From Linux
 
 * [SSDTTime](https://github.com/corpnewt/SSDTTime)
   * Supports both Windows and Linux for DSDT dumping
   * `4. Dump DSDT - Automatically dump the system DSDT`
 * Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above method
 
-**From Clover**:
+## From Clover
 
 For those with Clover installed previously, this is a simple way to get your ACPI tables:
 
 * F4 in Clover Boot menu
   * DSDT can be found in `EFI/CLOVER/ACPI/origin`, the folder **must** exist before dumping
 
-**From OpenCore**:
+## From OpenCore
+
+With OpenCore, we have 2 options:
+
+* [SysReport Quirk](#sysreport-quirk)
+* [UEFI Shell](#uefi-shell)
+
+### SysReport Quirk
 
 With OpenCore 0.5.9, we have a new quirk called SysReport which will actually dump our DSDT automatically when hitting the boot screen. The main issues are:
 
@@ -53,3 +60,19 @@ For the former, you can actually skip the ACPI section, return to the OpenCore g
 
 And voila! You have a DSDT! Now you can continue on with making SSDTs
 
+### UEFI Shell
+
+For this, we'll want ti grab [`acpidump.efi`](https://github.com/dortania/OpenCore-Desktop-Guide/tree/master/extra-files/acpidump.efi.zip) and add this to `EFI/OC/Tools` and in your config under `Misc -> Tools` with the argument: `-b -n DSDT -z` and select this option in OpenCore's picker. 
+   
+If OpenCore is having issues running acpidump.efi from the boot picker, you can call it from the shell with [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases)(reminder to add to both `EFI/OC/Tools` and in your config under `Misc -> Tools` ):
+
+```text
+shell> fs0: // replace with proper drive
+fs0:\> dir  // to verify this is the right directory
+   Directory of fs0:\
+   01/01/01 3:30p EFI
+fs0:\> cd EFI\OC\Tools
+fs0:\EFI\OC\Tools> acpidump.efi -b -n DSDT -z		
+ ```
+ 
+ Once done, you should find your DSDT in the EFI/OC/Tools folder with a `.dat` extension. Rename this DSDT.dat file to DSDT.aml to help us down the line
