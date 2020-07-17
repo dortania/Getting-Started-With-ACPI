@@ -1,6 +1,6 @@
 # Getting started with ACPI
 
-<img src="images/README-md/acpi-logo.png" width="512">
+<img src="acpi-logo.png" width="512">
 
 ## A quick explainer on ACPI
 

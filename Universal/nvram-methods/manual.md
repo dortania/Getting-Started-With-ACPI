@@ -20,7 +20,7 @@ You should get something like the following show up:
 
 LPC Pathing          |  PCI Pathing
 :-------------------------:|:-------------------------:
-![](/images/Universal/nvram-md/lpc.png)  |  ![](/images/Universal/nvram-md/pci0.png)
+![](../../images/Universal/nvram-md/lpc.png)  |  ![](../../images/Universal/nvram-md/pci0.png)
 
 Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 
@@ -42,7 +42,7 @@ External (_SB_.PCI0.LPCB, DeviceObj) <- Rename this
 Scope (_SB.PCI0.LPCB) <- Rename this
 ```
 
-![](/images/Universal/nvram-md/ssdt-before.png)
+![](../../images/Universal/nvram-md/ssdt-before.png)
 
 Following the example pathing we found, the SSDT should look something like this:
 
@@ -54,7 +54,7 @@ External (_SB_.PCI0.LPC, DeviceObj) <- Renamed
 Scope (_SB.PCI0.LPC) <- Renamed
 ```
 
-![](/images/Universal/nvram-md/ssdt-after.png)
+![](../../images/Universal/nvram-md/ssdt-after.png)
 
 ## Compiling the SSDT
 

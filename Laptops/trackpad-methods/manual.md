@@ -12,7 +12,7 @@ Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT
 
 Next search for `Device (GPI0)`. Should give you a result similar to this:
 
-![](/images/Laptops/trackpad-md/gpi0.png)
+![](../../images/Laptops/trackpad-md/gpi0.png)
 
 What we care about from this is the `_STA` method:
 
@@ -34,7 +34,7 @@ What we want is for this to always return `0x0F` when booting macOS, so we want 
 
 Here's some more examples:
 
-![](/images/Laptops/trackpad-md/gpi0-2.png)
+![](../../images/Laptops/trackpad-md/gpi0-2.png)
 
 With this example, we can see that we need both `SBRG` and `GPEN` to return `One`. If only one is present, it'll create some issues so in our SSDT we'll want to have both of them return `One`:
 
@@ -57,7 +57,7 @@ If (_OSI ("Darwin"))
 	}
 ```
 
-![](/images/Laptops/trackpad-md/ssdt-before.png)
+![](../../images/Laptops/trackpad-md/ssdt-before.png)
 
 Following the example pathing we found, the SSDT should look something like this:
 
@@ -70,7 +70,7 @@ If (_OSI ("Darwin"))
         }
 ```
 
-![](/images/Laptops/trackpad-md/ssdt-after.png)
+![](../../images/Laptops/trackpad-md/ssdt-after.png)
 
 ## Compiling the SSDT
 

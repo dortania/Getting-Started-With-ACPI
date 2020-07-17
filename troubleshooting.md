@@ -21,7 +21,7 @@ Grab [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases) and add it
 
 Next, call upon OpenCore shell and enter the following:
 
-```text
+```
 shell> fs0: //replace with proper drive
 
 fs0:\> dir //to verify this is the right directory
@@ -39,21 +39,21 @@ fs0:\EFI\OC\Tools> acpidump.efi -b -n DSDT -z
 
 If you try to decompile your DSDT and get an error similar to this:
 
-```text
+```
 iASL Warning: There were 19 external control methods found during disassembly, but only 0 were resolved (19 unresolved)
 ```
 
 This happens when one ACPI table requires the rest for proper referencing, it does not accept the creation of DSDTs as we're only using it for creating a select few SSDTs. For those who are worried, you can run the following:
 
-```text
+```
 iasl * [insert all ACPI files here]
 ```
 
 ## Decompiling Error
 
-![](/images/troubleshooting-md/decompile-error.png)
+![](../images/troubleshooting-md/decompile-error.png)
 
-```text
+```
 Loading Acpi table from file iASLAwjHrs.aml
 Acpi table [DSDT] successfully installed and loaded
 Pass 1 parse of [DSDT]
@@ -63,12 +63,12 @@ This is a common error on DSDTs that have methods that aren't supported by maciA
 
 ## Invalid character (0x3D), expecting ASL keyword or name
 
-![](/images/troubleshooting-md/invalid-parse.png)
+![](../images/troubleshooting-md/invalid-parse.png)
 
 Similar to the above error, you're running an outdated copy of maciASL. Make sure you're using the latest from Acidanthera's repo: [maciASL](https://github.com/acidanthera/MaciASL/releases)
 
 ## Syntax error, unexpected PARSEOP_ONE, expecting '('
 
-![](/images/troubleshooting-md/invalid-parse.png)
+![](../images/troubleshooting-md/invalid-parse.png)
 
 Similar to the above 2 errors, you're running an outdated copy of maciASL. Make sure you're using the latest from Acidanthera's repo: [maciASL](https://github.com/acidanthera/MaciASL/releases)

@@ -33,7 +33,7 @@ For users who don't have all the options available to them in SSDTTime, you can 
 
 Run the `SSDTTime.bat` file as Admin on the target machine and you should see something like this:
 
-![](/images/ssdt-easy-md/ssdttime.png)
+![](../images/ssdt-easy-md/ssdttime.png)
 
 What are all these options?:
 
@@ -65,8 +65,7 @@ Reminder that Cmd/Crtl+R with ProperTree pointed at your OC folder will add all 
 
 For those who do not yet have a config.plist, you'll want to next head back to your respective OpenCore guides and create the config.plist:
 
-* [OpenCore Desktop guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
-* [OpenCore Laptop Guide](https://dortania.github.io/vanilla-laptop-guide/)
+* [OpenCore Install guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
 
 Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
 

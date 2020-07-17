@@ -18,7 +18,7 @@ So to find the ACPI pathing of our SMBus, we've got 2 methods:
 
 To find the correct pathing for your devices, grab [Hackintool](https://www.tonymacx86.com/threads/release-hackintool-v3-x-x.254559/) ([Github link](https://github.com/headkaze/Hackintool)) and head to the PCI tab:
 
-![](/images/Universal/smbus-md/pci.png)
+![](../../images/Universal/smbus-md/pci.png)
 
 Look for the SMBus device under Subclass, then look beside and you'll see the ACPI path(under IOReg Name). To convert , omit `@...`
 
@@ -32,7 +32,7 @@ If you already have Windows installed on this machine, finding the SMBus pathing
 
 Start by opening up Device Manager in Windows and looking for a device named `SMBUS`. Once found, click on it and select the `BIOS device Name` entry. You should get something like this:
 
-![](/images/Universal/smbus-md/smbus.png)
+![](../../images/Universal/smbus-md/smbus.png)
 
 From the above example, we can see the SMBus is located at:
 
@@ -52,7 +52,7 @@ So the important parts we care about are:
 
 **Before**:
 
-```text
+```
 External (_SB_.PCI0, DeviceObj) <- Rename this
 External (_SB_.PCI0.SBUS.BUS0, DeviceObj) <- Rename this
 
@@ -67,13 +67,13 @@ Scope (_SB.PCI0) <- Rename this
 Device (_SB.PCI0.SBUS.BUS0) <- Rename this
 ```
 
-![](/images/Universal/smbus-md/before-rename.png)
+![](../../images/Universal/smbus-md/before-rename.png)
 
 Following the example SMBus pathing we found, the SSDT should look something like this:
 
 **After**:
 
-```text
+```
 External (_SB_.PC00, DeviceObj) <- Renamed
 External (_SB_.PC00.SMBS.BUS0, DeviceObj) <- Renamed
 
@@ -88,7 +88,7 @@ Scope (_SB.PC00) <- Renamed
 Device (_SB.PC00.SMBS.BUS0) <- Renamed
 ```
 
-![](/images/Universal/smbus-md/after-rename.png)
+![](../../images/Universal/smbus-md/after-rename.png)
 
 # Compiling the SSDT
 
@@ -108,4 +108,4 @@ Once you've installed macOS, you can actually check whether your SSDT-SBUS-MCHC 
 kextstat | grep -E "AppleSMBusController|AppleSMBusPCI"
 ```
 
-![](/images/Universal/smbus-md/verify.png)
+![](../../images/Universal/smbus-md/verify.png)

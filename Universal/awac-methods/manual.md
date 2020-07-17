@@ -13,7 +13,7 @@ Finding which SSDT you need is quite easy actually, first open your decompiled D
 
 Next search for `ACPI000E`. You should get something similar:
 
-![](/images/Universal/awac-md/ACPI000E.png)
+![](../../images/Universal/awac-md/ACPI000E.png)
 
 The above tells us a few things:
 
@@ -24,7 +24,7 @@ The above tells us a few things:
   
 But to double check, next search for `PNP0B00`:
 
-![](/images/Universal/awac-md/PNP0B00.png)
+![](../../images/Universal/awac-md/PNP0B00.png)
 
 And looks at that, we can in fact disable our AWAC and enable the RTC! If not skip to here: [RTC0 Method](#rtc0-method)
 
@@ -68,7 +68,7 @@ You should get something like the following show up:
 
 LPC Pathing          |  PCI Pathing
 :-------------------------:|:-------------------------:
-![](/images/Universal/nvram-md/lpc.png)  |  ![](/images/Universal/nvram-md/pci0.png)
+![](../../images/Universal/nvram-md/lpc.png)  |  ![](../../images/Universal/nvram-md/pci0.png)
 
 From the above, we can see we have both `PCI0` and `LPC`. Now we can head to the next stage
 
@@ -90,7 +90,7 @@ External (_SB_.PCI0.LPCB, DeviceObj) <- Rename this
 Scope (_SB.PCI0.LPCB) <- Rename this
 ```
 
-![](/images/Universal/awac-md/ssdt-before.png)
+![](../../images/Universal/awac-md/ssdt-before.png)
 
 Following the example pathing we found, the SSDT should look something like this:
 
@@ -102,7 +102,7 @@ External (_SB_.PCI0.LPC, DeviceObj) <- Renamed
 Scope (_SB.PCI0.LPC) <- Renamed
 ```
 
-![](/images/Universal/awac-md/ssdt-after.png)
+![](../../images/Universal/awac-md/ssdt-after.png)
 
 ### Compiling the SSDT
 
