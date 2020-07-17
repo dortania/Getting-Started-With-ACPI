@@ -39,7 +39,9 @@ module.exports = {
 
 	markdown: {
 		extendMarkdown: md => {
-			md.use(require('markdown-it-multimd-table'))
+			md.use(require('markdown-it-multimd-table'), {
+				rowspan: true,
+			});
 		}
 	},
 
@@ -256,8 +258,8 @@ module.exports = {
 				['CONTRIBUTING', 'Contributing'],
             ]
         },
-    ],
-},
+    	],
+    },
     /**
      * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
      */
