@@ -128,7 +128,7 @@ What these signify is whether this PNP0C09 device is real or not, as per the [AC
 
 ### No PNP0C09 show up
 
-When this happens, you'll only need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC.
+When this happens, you'll only need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX.
 
 ### PNP0C09 already named `EC`
 
@@ -138,7 +138,7 @@ Prebuilt can be grabbed here: [SSDT-USBX.aml](https://github.com/dortania/USB-Ma
 
 ### PNP0C09 already has an `_STA` method
 
-This is the equivalent of not having an EC as we can't control it with our SSDT-EC, instead we'll need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC. 
+This is the equivalent of not having an EC as we can't control it with our SSDT-EC, instead we'll need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX. 
 
 Example of an EC with STA already:
 

@@ -26,7 +26,7 @@ For Haswell and newer:
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 
-For Ivy Bridge and older, see the [Optimizing Power Management page](https://dortania.github.io/OpenCore-Desktop-Guide/post-install/pm.html). This will be done *after* install. AMD CPU users **do not** need any SSDTs for power management.
+For Ivy Bridge and older, see the [Optimizing Power Management page](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html). This will be done *after* install. AMD CPU users **do not** need any SSDTs for power management.
 
 ## Embedded Controllers
 
