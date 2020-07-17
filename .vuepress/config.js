@@ -71,7 +71,7 @@ module.exports = {
             },
             {
                 text: 'OpenCore Install Guide',
-                link: 'https://dortania.github.io/OpenCore-Desktop-Guide/'
+                link: 'https://dortania.github.io/OpenCore-Install-Guide/'
             },
             {
                 text: 'OpenCore Post-Install',
@@ -94,7 +94,7 @@ module.exports = {
             /*
               {
                 text: 'Github',
-                link: 'https://github.com/dortania/OpenCore-Desktop-Guide'
+                link: 'https://github.com/dortania/OpenCore-Install-Guide'
               }
             */
         ],
