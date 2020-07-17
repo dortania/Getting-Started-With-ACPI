@@ -11,7 +11,7 @@ You can save yourself some work with the config.plist by running Cmd/Ctrl+R in P
 
 For those who do not yet have a config.plist, you'll want to next head back to your respective OpenCore guides and create the config.plist:
 
-* [OpenCore Install guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
+* [OpenCore Install guide](https://dortania.github.io/OpenCore-Install-Guide/)
 
 Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
 
