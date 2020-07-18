@@ -33,7 +33,7 @@ For users who don't have all the options available to them in SSDTTime, you can 
 
 Run the `SSDTTime.bat` file as Admin on the target machine and you should see something like this:
 
-![](/images/ssdt-easy-md/ssdttime.png)
+![](../images/ssdt-easy-md/ssdttime.png)
 
 What are all these options?:
 
@@ -52,7 +52,7 @@ What we want to do is select option `4. Dump DSDT` first, then select the approp
 
 For Skylake and newer plus AMD, you can grab a pre-built file here: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Broadwell and older**.
 
-**Troubleshooting note**: See [General Troubleshooting](https://dortania.github.io/OpenCore-Desktop-Guide/troubleshooting/troubleshooting.html) if you're having issues running SSDTTime
+**Troubleshooting note**: See [General Troubleshooting](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/troubleshooting.html) if you're having issues running SSDTTime
 
 ## Adding to OpenCore
 
@@ -65,8 +65,7 @@ Reminder that Cmd/Crtl+R with ProperTree pointed at your OC folder will add all 
 
 For those who do not yet have a config.plist, you'll want to next head back to your respective OpenCore guides and create the config.plist:
 
-* [OpenCore Desktop guide](https://dortania.github.io/OpenCore-Desktop-Guide/)
-* [OpenCore Laptop Guide](https://dortania.github.io/vanilla-laptop-guide/)
+* [OpenCore Install guide](https://dortania.github.io/OpenCore-Install-Guide/)
 
 Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
 

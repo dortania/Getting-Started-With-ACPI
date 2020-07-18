@@ -54,19 +54,19 @@ For the latter, you just need to replace the following files with [DEBUG version
   * EFI/OC/
     * `OpenCore.efi`
 
-For the former, you can actually skip the ACPI section, return to the OpenCore guide([Desktop](https://dortania.github.io/OpenCore-Desktop-Guide/), [Laptop](https://dortania.github.io/vanilla-laptop-guide/)) and finish making the USB. Once booted to the picker, you can shut off the PC and check your USB:
+For the former, you can actually skip the ACPI section, return to the [OpenCore guide](https://dortania.github.io/OpenCore-Install-Guide/) and finish making the USB. Once booted to the picker, you can shut off the PC and check your USB:
 
-![](/images/Manual/dump-md/sysreport.png)
+![](../images/Manual/dump-md/sysreport.png)
 
 And voila! You have a DSDT! Now you can continue on with making SSDTs
 
 ### UEFI Shell
 
-For this, we'll want ti grab [`acpidump.efi`](https://github.com/dortania/OpenCore-Desktop-Guide/tree/master/extra-files/acpidump.efi.zip) and add this to `EFI/OC/Tools` and in your config under `Misc -> Tools` with the argument: `-b -n DSDT -z` and select this option in OpenCore's picker. 
+For this, we'll want ti grab [`acpidump.efi`](https://github.com/dortania/OpenCore-Install-Guide/tree/master/extra-files/acpidump.efi.zip) and add this to `EFI/OC/Tools` and in your config under `Misc -> Tools` with the argument: `-b -n DSDT -z` and select this option in OpenCore's picker. 
    
 If OpenCore is having issues running acpidump.efi from the boot picker, you can call it from the shell with [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases)(reminder to add to both `EFI/OC/Tools` and in your config under `Misc -> Tools` ):
 
-```text
+```
 shell> fs0: // replace with proper drive
 fs0:\> dir  // to verify this is the right directory
    Directory of fs0:\

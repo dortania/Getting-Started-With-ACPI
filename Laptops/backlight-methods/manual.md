@@ -11,13 +11,13 @@ For this guide, we're gonna assume Windows is already on this laptop, as otherwi
 
 Now open DeviceManager, and head to the following:
 
-```text
+```
 Device Manager -> Display Adapters -> Properties -> Details > BIOS device name
 ```
 
 * Note some GPU ACPI pathing may be hiding under "BIOS device name"
 
-![Credit to 1Revenger1 for the image](/images/Laptops/backlight-md/devicemanager.png)
+![Credit to 1Revenger1 for the image](../../images/Laptops/backlight-md/devicemanager.png)
 
 From the above example, we can see our display is hooked up to `PCI0.GFX0`
 
@@ -41,7 +41,7 @@ Scope (_SB.PCI0.GFX0) <- Rename this
 Device(_SB.PCI0.GFX0.PNLF) <- Rename this
 ```
 
-![](/images/Laptops/backlight-md/ssdt-before.png)
+![](../../images/Laptops/backlight-md/ssdt-before.png)
 
 Following the example pathing we found, the SSDT should look something like this:
 
@@ -55,7 +55,7 @@ Scope (_SB.PCI0.GPU0) <- Renamed
 Device(_SB.PCI0.GPU0.PNLF) <- Renamed
 ```
 
-![](/images/Laptops/backlight-md/ssdt-after.png)
+![](../../images/Laptops/backlight-md/ssdt-after.png)
 
 ## Compiling the SSDT
 

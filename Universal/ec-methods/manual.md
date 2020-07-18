@@ -30,7 +30,7 @@ Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT
 
 Next, search for `PNP0C09`. You should get something similar:
 
-![](/images/Desktops/pnp.png)
+![](../../images/Desktops/pnp.png)
 
 From the above example we see 2 main things:
 
@@ -64,7 +64,7 @@ If you already have Windows installed on this machine, finding the EC pathing is
 
 Start by opening up Device Manager in Windows and looking for a device named `Embedded Controller`. Once found, click on it and select the `BIOS device Name` entry. You should get something like this:
 
-![](/images/Desktops/ec.png)
+![](../../images/Desktops/ec.png)
 
 From the above, we can see that our pathing is `SB.PC00.LPC0.EC0`
 
@@ -96,7 +96,7 @@ External (_SB_.PCI0.LPCB, DeviceObj) <- Rename this
 Scope (_SB.PCI0.LPCB) <- Rename this
 ```
 
-![](/images/Desktops/ssdt-before.png)
+![](../../images/Desktops/ssdt-before.png)
 
 Following the example pathing we found, the SSDT should look something like this:
 
@@ -108,7 +108,7 @@ External (_SB_.PC00.LPC0, DeviceObj) <- Renamed
 Scope (_SB.PC00.LPC0) <- Renamed
 ```
 
-![](/images/Desktops/ssdt-after.png)
+![](../../images/Desktops/ssdt-after.png)
 
 
 
@@ -128,7 +128,7 @@ What these signify is whether this PNP0C09 device is real or not, as per the [AC
 
 ### No PNP0C09 show up
 
-When this happens, you'll only need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC.
+When this happens, you'll only need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX.
 
 ### PNP0C09 already named `EC`
 
@@ -138,11 +138,11 @@ Prebuilt can be grabbed here: [SSDT-USBX.aml](https://github.com/dortania/USB-Ma
 
 ### PNP0C09 already has an `_STA` method
 
-This is the equivalent of not having an EC as we can't control it with our SSDT-EC, instead we'll need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC. 
+This is the equivalent of not having an EC as we can't control it with our SSDT-EC, instead we'll need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX. 
 
 Example of an EC with STA already:
 
-![Credit to rottenpants466](/images/Desktops/sta.png)
+![Credit to rottenpants466](../../images/Desktops/sta.png)
 
 ## Compiling the SSDT
 

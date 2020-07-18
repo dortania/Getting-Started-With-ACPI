@@ -20,7 +20,7 @@ CPU naming is fairly easy to figure out, first open your decompiled DSDT you got
 
 Next search for `Processor`. This should give you a result like this:
 
-![](/images/Universal/plug-md/processor.png)
+![](../../images/Universal/plug-md/processor.png)
 
 As we can see, the first processor in our list is `SB.PR00`. This is what we'll be applying the `plugin-type=1` property too.
 
@@ -28,11 +28,11 @@ As we can see, the first processor in our list is `SB.PR00`. This is what we'll 
 
 Due to the different DSDT structure of these systems, you'll need to to actually check in multiple places as the pathing isn't as obvious:
 
-![](/images/Universal/plug-md/processor-2.png)
+![](../../images/Universal/plug-md/processor-2.png)
 
 If we then search for instances of `CP00` we find that its full ACPI pathing is `SB.SCK0.CP00`:
 
-![](/images/Universal/plug-md/cp00.png)
+![](../../images/Universal/plug-md/cp00.png)
 
 Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 
@@ -42,7 +42,7 @@ If you already have Windows installed on this machine, finding the CPU pathing i
 
 Start by opening up Device Manager in Windows and looking for a device named `Processor`. Once found, click on it and select the `BIOS device Name` entry. You should get something like this:
 
-![](/images/Universal/plug-md/plug-bios.png)
+![](../../images/Universal/plug-md/plug-bios.png)
 
 From the above, we can see that our pathing is `PR.CPU0`. Pay close attention to the start as `PR` is important for creating the SSDT
 
@@ -50,7 +50,7 @@ From the above, we can see that our pathing is `PR.CPU0`. Pay close attention to
 
 Odd quirk of DeviceManager in Windows is that the Processor's order does not actually match the ACPI path, instead giving something like `SB.SCK0.CP10`:
 
-![](/images/Universal/plug-md/plug-x299.png)
+![](../../images/Universal/plug-md/plug-x299.png)
 
 When this happens, you can either:
 
@@ -75,7 +75,7 @@ For the below example, we'll be using the X299 example(`SB.SCK0.CP00`)
 
 Original          |  Cleaned Up
 :-------------------------:|:-------------------------:
-![](/images/Universal/plug-md/ssdt-mess.png)  |  ![](/images/Universal/plug-md/ssdt-clean.png)
+![](../../images/Universal/plug-md/ssdt-mess.png)  |  ![](../../images/Universal/plug-md/ssdt-clean.png)
 
 ## Compiling the SSDT
 
