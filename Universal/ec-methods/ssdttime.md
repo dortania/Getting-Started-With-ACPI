@@ -15,7 +15,7 @@ The main things to note with this method:
 * Doesn't work on Laptops
   * Just like with HEDT, you will need to either use the [Prebuilt](#prebuilts) or [Manual](#manual) method
 * Doesn't provide you the USBX property to fix power
-  * This can easily be fixed by using this prebuilt file in addition to SSDT-EC: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml)
+  * This can easily be fixed by using this prebuilt file in addition to SSDT-EC: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
   * Note USBX is only needed for Skylake and newer
 * Doesn't really teach you anything
   * For most, this doesn't matter. But to some knowing what makes your hackintosh tick is part of the journey
