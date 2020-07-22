@@ -23,7 +23,7 @@ What this tool does is, it dumps your DSDT from your firmware, and then creates 
   * For fixing 300 series Intel NVRAM
   * Prebuilt can be found here: [NVRAM PMC](/Universal/nvram.md)
 * **USBX SSDT**:
-  * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml)
+  * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 * **RHUB SSDT**:
   * if you have a 10th gen CPU, you'll need to either use the prebuilt or manually create it.
 
@@ -50,7 +50,7 @@ What we want to do is select option `4. Dump DSDT` first, then select the approp
 
 > What about USBX?
 
-For Skylake and newer plus AMD, you can grab a pre-built file here: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Broadwell and older**.
+For Skylake and newer plus AMD, you can grab a pre-built file here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml). This file is plug and play and requires no device configuration, **do not use on Broadwell and older**.
 
 **Troubleshooting note**: See [General Troubleshooting](https://dortania.github.io/OpenCore-Install-Guide/troubleshooting/troubleshooting.html) if you're having issues running SSDTTime
 
