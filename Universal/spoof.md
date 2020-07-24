@@ -66,7 +66,7 @@ ACPI(_SB_)#ACPI(PC02)#ACPI(BR2A)#ACPI(PEGP)#PCI(0000)#PCI(0000)
 Now converting this to an ACPI path is quite simple, remove the `#ACPI` and `#PCI(0000)`:
 
 ```
-`_SB_.PC02.BR2A.PEGP
+_SB_.PC02.BR2A.PEGP
 ```
 
 And voila! We've found our ACPI path, now that we have everything we're ready to get cooking
