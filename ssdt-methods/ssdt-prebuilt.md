@@ -7,11 +7,11 @@
 * [System Clock(AWAC)](#system-clockawac)
 * [NVRAM(PMC)](#nvrampmc)
 
-This is mainly for users who are having troubles either compiling, decompiling or understanding the overal process of ACPI. The main reasons you'd want to avoid is for the following:
+This is mainly for users who are having troubles either compiling, decompiling or understanding the overall process of ACPI. The main reasons you'd want to avoid is for the following:
 
 * Slowing down the boot process
   * Mainly because these SSDTs have to go through every possible pathing
-  * Fun fact: the prebuilt SSDT-EC-DESKTOP is 42 times larger than making the file yourself
+  * At most, this only adds 2 seconds to the boot process, and does not affect macOS itself
 * Doesn't always work
   * The SSDTs provided can only handle so many situations, and some may in fact not work
   * Mainly seen with SSDT-AWAC, as it assumes there is a way the RTC can be easily enabled
@@ -46,7 +46,9 @@ For laptops:
 
 ## Trackpad
 
-Used for enabling Windows only features in macOS, do note that the below patches will more than likely break Windows booting via OpenCore. I **highly** encourage you to make one yourself to prevent any issues down the line: [Trackpad GPI0](/Laptops/trackpad.md)
+Used for enabling Windows only features in macOS with I2C trackpads, do note that the below patches will more than likely break Windows booting via OpenCore(this issue is mitigated if booting by BIOS instead). We **highly** encourage you to make one yourself to prevent any issues down the line: [Trackpad GPI0](/Laptops/trackpad.md)
+
+Note that PS2 keyboards and trackpads shouldn't need this SSDT+Patch.
 
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
@@ -72,7 +74,7 @@ For laptops and all-in-one desktops, fixies brightness control support
   
 ## System Clock(AWAC)
 
-Mainly needed for newer systems running AWAC based system clocks, mainly relavant for Z390 and newer(Gigabyte and AsRock however did backport it to Z370 with a BIOS update)
+Mainly needed for newer systems running AWAC based system clocks, mainly relevant for Z390 and newer(Gigabyte and AsRock however did back-port it to Z370 with a BIOS update)
 
 * [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
 
@@ -80,7 +82,7 @@ The biggest issue with this prebuilt is that we're just guessing you both have a
 
 ## NVRAM(PMC)
 
-Needed to bring back NVRAM support for Z390 and newer, **DO NOT USE ON Z370 or older**
+Needed to bring back NVRAM support for Z390 , **DO NOT USE ON Z370 or older or Z490 and newer**
 
 Note: Desktop Z490 boards seem to not need this, though if you're having NVRAM issues you can try this SSDT.
 
@@ -93,11 +95,9 @@ Reminder only the following need this SSDT:
 * H310
 * H370
 * Z390
-* 400 series (Comet Lake)
-* 495 series (Icelake)
 
 ## USB(RHUB)
 
-Needed for 10th gen CPUs, Gigabyte and AsRock motherboards don't need this
+Needed for 10th gen Asus motherboards, Gigabyte and AsRock motherboards don't need this:
 
 * [SSDT-RHUB.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
