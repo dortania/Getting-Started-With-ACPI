@@ -13,7 +13,7 @@ So compiling DSDTs and SSDTs are quite easy with macOS, all you need is [MaciASL
 For those who prefer the command line, grab [iasl-stable](https://github.com/acidanthera/MaciASL/blob/master/Dist/iasl-stable) and run the following:
 
 ```
-path/to/iasl.exe path/to/DSDT.aml
+path/to/iasl path/to/DSDT.aml
 ```
 
 * If compiled .aml file is provided, a decompiled .dsl file will be given and vice versa.
