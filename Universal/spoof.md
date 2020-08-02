@@ -19,6 +19,8 @@ So to spoof the GPU, we need to find a couple things:
 
 ## Finding a suitable PCI ID
 
+### Web
+
 To find a suitable PCI ID, we'll be using [PCI ID Repository](https://pci-ids.ucw.cz/read/PC/1002) which has a full database of all AMD GPUs. For this example, we'll be creating a Spoof SSDT for the R9 390. For a full list of supported GPUs, please see the [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/). The closest match to this GPU would be the 390X, and looking on that site near the top gives us this:
 
 ```
@@ -44,7 +46,29 @@ As you can see, the bytes are swapped in pairs. Keep this in mind when we make o
 
 The specifics are due to [Endianness](https://en.wikipedia.org/wiki/Endianness) for those who are curious
 
+### Linux
+
+If you can run Linux, use command `lspci -vmmnnD -d 1002::0300`
+```
+$ lspci -vmmnnD -d 1002::0300
+Slot:	0000:01:00.0
+Class:	VGA compatible controller [0300]
+Vendor:	Advanced Micro Devices, Inc. [AMD/ATI] [1002]
+Device:	Oland [Radeon HD 8570 / R7 240/340 / Radeon 520 OEM] [6611]
+SVendor:	Micro-Star International Co., Ltd. [MSI] [1462]
+SDevice:	Device [3740]
+Rev:	87
+```
+
+You can easily get
+- Slot ID `0000:01:00.0`, we need it later
+- Vendor ID `1002`, all AMD devices have this ID
+- Device ID `6611`, this is what we care about
+- Device name `Radeon HD 8570 / R7 240/340 / Radeon 520 OEM`, mainly cosmetic
+
 ## Finding the ACPI Path of the GPU
+
+### Windows
 
 To find the PCI path of a GPU is fairly simple, best way to find it is running Windows:
 
@@ -66,7 +90,16 @@ ACPI(_SB_)#ACPI(PC02)#ACPI(BR2A)#ACPI(PEGP)#PCI(0000)#PCI(0000)
 Now converting this to an ACPI path is quite simple, remove the `#ACPI` and `#PCI(0000)`:
 
 ```
-`_SB_.PC02.BR2A.PEGP
+\_SB_.PC02.BR2A.PEGP
+```
+
+### Linux
+
+Substitute your SLOTID found above into command `cat /sys/bus/pci/devices/SLOTID/firmware_node/path`, you cat get
+
+```
+$ cat /sys/bus/pci/devices/0000:01:00.0/firmware_node/path
+\_SB_.PCI0.PEG0.PEGP
 ```
 
 And voila! We've found our ACPI path, now that we have everything we're ready to get cooking
