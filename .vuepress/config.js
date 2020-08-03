@@ -239,6 +239,7 @@ module.exports = {
 		        },
                 ['/Universal/irq', 'IRQ Fix'],
 				['/Universal/spoof', 'GPU Spoof'],
+				['/Universal/apic', 'APIC Patching'],
             ]
         },
         {
