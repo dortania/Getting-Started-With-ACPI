@@ -6,7 +6,7 @@ An odd issue some HEDT users may experience is a kernel panic relating to more c
 panic(cpu 0 caller 0x......): "x86_validate topology() 32 threads but 33 registered from MADT~0/...
 ```
 
-The reason for this kernel panic is due to macOS's assumption that the first CPU in ACPI is always enabled, which on servers and HEDT systems may not always true.
+The reason for this kernel panic is due to macOS's assumption that the first CPU in ACPI is always enabled, which on servers and HEDT systems may not be always true.
 
 To get around this, we want to patch our APIC table to point the first CPU entry to an active CPU.
 
