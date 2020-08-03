@@ -13,7 +13,7 @@ To get around this, we want to patch our APIC table to point the first CPU entry
 
 ## Dumping your DSDT and APIC tables
 
-Dumping your DSDT and APIC table is quite easy, however some of the methods mentioned in [Getting a copy of our DSDT](../Manual/dumpmd) may not provide you will all the needed files. Methods that will provide a full dump:
+Dumping your DSDT and APIC table is quite easy, however some of the methods mentioned in [Getting a copy of our DSDT](../Manual/dump.md) may not provide you will all the needed files. Methods that will provide a full dump:
 
 * acpidump.exe
   * Just run the program, don't give any specific arguments
