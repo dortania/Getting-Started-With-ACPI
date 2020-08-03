@@ -66,6 +66,6 @@ Processor (ProcessorName, ProcessorID, PBlockAddress, PblockLength)
 ```
 
 
-Now if we look at the `ProcessorID` section, we notice it's `0x80`, but this doesn't match up with the first entry in our APIC table(`00`). Now we can get a clearer idea of what's wrong with out APIC table and why it kernel panics.
+Now if we look at the `ProcessorID` section, we notice it's `0x80`, but this doesn't match up with the first entry in our APIC table (`00`). Now we can get a clearer idea of what's wrong with out APIC table and why it kernel panics.
 
 ## Patching the APIC table
