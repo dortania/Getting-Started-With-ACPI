@@ -174,7 +174,7 @@ module.exports = {
         {
             title: 'Universal',
             collapsable: false,
-            sidebarDepth: 0,
+            sidebarDepth: 1,
             children: [
                 ['/Universal/ec-fix', 'Embedded Controller'],
 		        {
