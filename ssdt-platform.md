@@ -18,8 +18,8 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Skylake | ^^ | [SSDT-EC-USBX](/Universal/ec-fix.html) | ^^ | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Coffee Lake | ^^ | ^^ | [SSDT-AWAC](/Universal/awac.html) | [SSDT-PMC](/Universal/nvram.html) | ^^ |
-| Comet Lake | ^^ | ^^ | ^^ | ^^ | [SSDT-RHUB](/Universal/rhub.html) |
-| AMD (15/16/17h) | N/A | ^^ | N/A | N/A | N/A |
+| Comet Lake | ^^ | ^^ | ^^ | N/A | [SSDT-RHUB](/Universal/rhub.html) |
+| AMD (15/16/17h) | N/A | ^^ | N/A | ^^ | N/A |
 
 ## High End Desktop
 
