@@ -1,6 +1,7 @@
 # Pre-Built SSDTs
 
 * [Power Management](#power-management)
+  * [B550 fix](#b550-fix)
 * [Embedded Controllers](#embedded-controllers)
 * [Trackpad](#trackpad)
 * [Backlight](#backlight)
@@ -27,6 +28,14 @@ For Haswell and newer:
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 
 For Ivy Bridge and older, see the [Optimizing Power Management page](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html). This will be done *after* install. AMD CPU users **do not** need any SSDTs for power management.
+
+### B550 Fix
+
+For AMD B550 users, you **must** include this SSDT to boot:
+
+* [SSDT-CPUR](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml)
+
+Note that X570 and older boards do not need this SSDT.
 
 ## Embedded Controllers
 
