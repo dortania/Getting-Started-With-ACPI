@@ -19,13 +19,14 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
             Method (_STA, 0, NotSerialized)
             {
                If (_OSI ("Darwin"))
-                       {
+                     {
                           Return (Zero) // This disables the device only in macOS
                      }
                      Else
                      {
+                         Return (0x0F) // Re-enables it for Windows
                      }
-           } 
+           }
         }  
     }
     
@@ -37,13 +38,14 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
             Method (_STA, 0, NotSerialized)
             {
                If (_OSI ("Darwin"))
-                       {
+                     {
                           Return (Zero) // This disables the device only in macOS
                      }
                      Else
                      {
+                         Return (0x0F) // Re-enables it for Windows
                      }
-           } 
+           }
         }  
     }
     
@@ -55,14 +57,15 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
             Method (_STA, 0, NotSerialized)
             {
                If (_OSI ("Darwin"))
-                       {
+                     {
                           Return (Zero) // This disables the device only in macOS
                      }
                      Else
                      {
+                         Return (0x0F) // Re-enables it for Windows
                      }
-           } 
-        }  
+           }
+        }
     }
     
 }
