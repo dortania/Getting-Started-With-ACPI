@@ -2,9 +2,13 @@
 
 The second involves using SSDTTime which automates most of the process. See here on how to use it: [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
 
-To get the SSDT-PLUG, run the following:
+To get the SSDT-PLUG on desktops, run the following:
 
-* `4. Dump DSDT` then run `2. FakeEC`
+* `7. Dump DSDT` then run `2. FakeEC`
+
+To get the SSDT-PLUG on laptops, run the following:
+
+* `7. Dump DSDT` then run `3.  FakeEC Laptop`
 
 This will provide you with some files, the main one you care about is SSDT-EC**.aml**. The DSDT and .dsl are only left for referencing or verification.
 
