@@ -6,7 +6,7 @@ To get the SSDT-PLUG, run the following:
 
 * `7. Dump DSDT` then run `3. PluginType`
 
-This will provide you with some files, the main one you care about is SSDT-PLUG**.aml**. The DSDT and .dsl are only left for referencing or verification.
+This will provide you with some files, the main one you care about is SSDT-PLUG.**aml**. The DSDT and .dsl are only left for referencing or verification.
 
 The main things to note with this method:
 

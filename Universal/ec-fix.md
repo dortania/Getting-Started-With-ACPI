@@ -28,5 +28,5 @@ For the EC fix, there are 3 methods you can choose from:
   * The prebuilt for desktops are very bloated. It's recommended to use the two methods below.
   * The Laptop prebuilts are easily usable.
 * [SSDTTime](/Universal/ec-methods/ssdttime.md)
-  * Note this method does not support **laptops**, **servers** or **HEDT systems**
+
 * [Manual](/Universal/ec-methods/manual.md)

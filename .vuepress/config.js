@@ -205,6 +205,7 @@ module.exports = {
 		            sidebarDepth: 2,
 		            children: [
 		                ['/Universal/awac-methods/prebuilt', 'Prebuilt'],
+		                ['/Universal/awac-methods/ssdttime', 'SSDTTime'],
 		                ['/Universal/awac-methods/manual', 'Manual'],
 		            ]
 		        },
@@ -215,6 +216,7 @@ module.exports = {
 		            sidebarDepth: 2,
 		            children: [
 		                ['/Universal/nvram-methods/prebuilt', 'Prebuilt'],
+		                ['/Universal/nvram-methods/ssdttime', 'SSDTTime'],
 		                ['/Universal/nvram-methods/manual', 'Manual'],
 		            ]
 		        },
@@ -226,6 +228,16 @@ module.exports = {
 		            children: [
 		                ['/Universal/rhub-methods/prebuilt', 'Prebuilt'],
 		                ['/Universal/rhub-methods/manual', 'Manual'],
+		            ]
+		        },
+                ['/Universal/imei', 'IMEI'],
+		        {
+					title: 'Methods',
+		            collapsable: true,
+		            sidebarDepth: 2,
+		            children: [
+		                ['/Universal/imei-methods/prebuilt', 'Prebuilt'],
+		                ['/Universal/imei-methods/manual', 'Manual'],
 		            ]
 		        },
                 ['/Universal/smbus', 'Fixing SMBus Support'],

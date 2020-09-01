@@ -4,7 +4,7 @@ So you've made all your SSDTs but now there's one thing left: Adding them to Ope
 
 The 2 main locations:
 
-* EFI/OC/ACPI (Only **.aml** files, reminder to [compile your SSDTs](/Manual/compile.md))
+* EFI/OC/ACPI (Only .**aml** files, reminder to [compile your SSDTs](/Manual/compile.md))
 * config.plist -> ACPI -> Add
 
 You can save yourself some work with the config.plist by running Cmd/Ctrl+R in ProperTree. **Reminder do not add your DSDT.aml to your EFI**

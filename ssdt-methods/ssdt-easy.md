@@ -6,10 +6,6 @@ What this tool does is, it dumps your DSDT from your firmware, and then creates 
 
 ## So what **CAN'T** SSDTTime do
 
-* **HEDT SSDTs**:
-  * The ACPI is odd on these platforms so manual work is required
-  * This includes X79, X99 and X299 systems
-  * Prebuilt can be found here: [Embedded Controller](/Universal/ec-fix.md)
 * **SSDT-PNLF**:
   * Need to be configured to your system
 * **SSDT-GPI0**:
@@ -17,7 +13,9 @@ What this tool does is, it dumps your DSDT from your firmware, and then creates 
 * **USBX SSDT**:
   * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 * **RHUB SSDT**:
-  * if you have a 10th gen CPU, you'll need to either use the prebuilt or manually create it.
+  * If you have a 10th gen CPU, you'll need to either use the prebuilt or manually create it.
+* **IMEI SSDT**:
+  * If you have either a Sandy bridge CPU with 7 series motherboard or Ivy Bridge with 6 series motherboard, you'll need to either use the prebuilt or manually create it.
 
 For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it does support.
 
