@@ -33,11 +33,11 @@ What are all these options?:
   * This is the SSDT-EC, required for Catalina users
 * `3. FakeEC Laptop		- OS-aware Fake EC`
   * This is the SSDT-EC, but the laptop version only Builds Fake EC and leaves the existing EC devices untouched, again required for Catalina users
-* `4. PluginType - Sets plugin-type = 1 on CPU0/PR00`
+* `4. PluginType - Sets plugin-type = 1 on First ProcessorObj`
   * This is the SSDT-PLUG, for Intel only
 * `5. PMC - Sets Power Management controller status`
   * This is the SSDT-PMC, for Intel true 300+ series only, this device is missing from ACPI in recent boards and helps to bring back NVRAM support.
-* `6. PluginType - Sets plugin-type = 1 on CPU0/PR00`
+* `6. AWAC - Context-Aware AWAC Disable and RTC Fake`
   * This is the SSDT-AWAC/RTC0, its purpose  is to fix the system clocks found on newer hardware
 * `7. Dump DSDT  - Automatically dump the system DSDT`
   * Dumps your DSDT from your firmware
