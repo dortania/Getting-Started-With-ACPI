@@ -7,6 +7,8 @@
 * [Backlight](#backlight)
 * [System Clock(AWAC)](#system-clockawac)
 * [NVRAM(PMC)](#nvrampmc)
+* [USB(RHUB)](#usbrhub)
+* [IMEI](#imei)
 
 This is mainly for users who are having troubles either compiling, decompiling or understanding the overall process of ACPI. The main reasons you'd want to avoid is for the following:
 
@@ -29,9 +31,9 @@ For Haswell and newer:
 
 For Ivy Bridge and older, see the [Optimizing Power Management page](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html). This will be done *after* install. AMD CPU users **do not** need any SSDTs for power management.
 
-### B550 Fix
+### B550 and A520 Fix
 
-For AMD B550 users, you **must** include this SSDT to boot:
+For AMD B550 and A520 users, you **must** include this SSDT to boot:
 
 * [SSDT-CPUR](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml)
 
@@ -93,7 +95,7 @@ The biggest issue with this prebuilt is that we're just guessing you both have a
 
 Needed to bring back NVRAM support for Z390 , **DO NOT USE ON Z370 or older or Z490 and newer**
 
-Note: Desktop Z490 boards seem to not need this, though if you're having NVRAM issues you can try this SSDT.
+Note: Comet Lake, Ice Lake and newer do not need this.
 
 * [SSDT-PMC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PMC.aml)
 
@@ -110,3 +112,18 @@ Reminder only the following need this SSDT:
 Needed for 10th gen Asus motherboards, Gigabyte and AsRock motherboards don't need this:
 
 * [SSDT-RHUB.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
+
+
+## IMEI
+
+Required when pairing either:
+
+* Sandy Bridge CPU with 7 series motherboard
+  * ie. B75, Q75, Z75, H77, Q77, Z77
+
+* Ivy Bridge CPU with 6 series motherboard
+  * ie. H61, B65, Q65, P67, H67, Q67, Z68
+  
+Simply grab the following SSDT:
+
+* [SSDT-IMEI.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI.aml)

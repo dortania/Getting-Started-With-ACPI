@@ -16,5 +16,4 @@ For SSDT-PLUG, there are 3 methods you can choose from:
 
 * [Prebuilt](/Universal/plug-methods/prebuilt.md)
 * [SSDTTime](/Universal/plug-methods/ssdttime.md)
-  * Note this method does not support **servers** or **HEDT systems**
 * [Manual](/Universal/plug-methods/manual.md)

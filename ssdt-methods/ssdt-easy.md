@@ -6,26 +6,16 @@ What this tool does is, it dumps your DSDT from your firmware, and then creates 
 
 ## So what **CAN'T** SSDTTime do
 
-* **HEDT SSDTs**:
-  * The ACPI is odd on these platforms so manual work is required
-  * This includes X79, X99 and X299 systems
-  * Prebuilt can be found here: [Embedded Controller](/Universal/ec-fix.md)
-* **Laptop EC fix**:
-  * This is because you do not want the EC powered off
-  * Prebuilt can be found here: [Embedded Controller](/Universal/ec-fix.md)
 * **SSDT-PNLF**:
   * Need to be configured to your system
 * **SSDT-GPI0**:
   * Need to be configured to your system
-* **AWAC and RTC0 SSDTs**:
-  * 300 series Intel boards will also need to figure this out (Z390 systems are most common for requiring this but some Gigabyte Z370 do as well)
-* **PMC SSDT**:
-  * For fixing 300 series Intel NVRAM
-  * Prebuilt can be found here: [NVRAM PMC](/Universal/nvram.md)
 * **USBX SSDT**:
   * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 * **RHUB SSDT**:
-  * if you have a 10th gen CPU, you'll need to either use the prebuilt or manually create it.
+  * If you have a 10th gen CPU, you'll need to either use the prebuilt or manually create it.
+* **IMEI SSDT**:
+  * If you have either a Sandy bridge CPU with 7 series motherboard or Ivy Bridge with 6 series motherboard, you'll need to either use the prebuilt or manually create it.
 
 For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it does support.
 
@@ -41,10 +31,17 @@ What are all these options?:
   * IRQ patching, mainly needed for X79, X99 and laptop users(use option `C` to omit conflicting legacy IRQs)
 * `2. FakeEC     - OS-aware Fake EC`
   * This is the SSDT-EC, required for Catalina users
-* `3. PluginType - Sets plugin-type = 1 on CPU0/PR00`
+* `3. FakeEC Laptop		- OS-aware Fake EC`
+  * This is the SSDT-EC, but the laptop version only Builds Fake EC and leaves the existing EC devices untouched, again required for Catalina users
+* `4. PluginType - Sets plugin-type = 1 on CPU0/PR00`
   * This is the SSDT-PLUG, for Intel only
-* `4. Dump DSDT  - Automatically dump the system DSDT`
+* `5. PMC - Sets Power Management controller status`
+  * This is the SSDT-PMC, for Intel true 300+ series only, this device is missing from ACPI in recent boards and helps to bring back NVRAM support.
+* `6. PluginType - Sets plugin-type = 1 on CPU0/PR00`
+  * This is the SSDT-AWAC/RTC0, its purpose  is to fix the system clocks found on newer hardware
+* `7. Dump DSDT  - Automatically dump the system DSDT`
   * Dumps your DSDT from your firmware
+
 
 What we want to do is select option `4. Dump DSDT` first, then select the appropriate option(s) for your system.
 
