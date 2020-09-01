@@ -43,7 +43,8 @@ Best way to test your commits and make sure they are formatted correctly is down
 
 * [Fork this repo](https://github.com/dortania/Getting-Started-With-ACPI/fork/)
 * Install the required tools:
-  * `brew install yarn`
+  * [Node.js 10+](https://nodejs.org/en/)
+  * [Yarn Classic](https://classic.yarnpkg.com/en/) or `brew install yarn` if you have installed HomeBrew
   * `npm install -g markdownlint-cli`
 * Make your changes.
 * Build the site:
