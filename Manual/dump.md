@@ -9,7 +9,7 @@ So to start, we'll need to get a copy of your DSDT from your firmware. The easie
 
 * [SSDTTime](https://github.com/corpnewt/SSDTTime)
   * Supports both Windows and Linux for DSDT dumping
-  * `4. Dump DSDT - Automatically dump the system DSDT`
+  * `7. Dump DSDT - Automatically dump the system DSDT`
 * [acpidump.exe](https://acpica.org/downloads/binary-tools)
   * In command prompt run `path/to/acpidump.exe -b -n DSDT -z`, this will dump your DSDT as a .dat file. Rename this to DSDT.aml
   
