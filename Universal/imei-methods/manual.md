@@ -1,4 +1,4 @@
-# Fixing USB: Manual
+# Fixing IMEI: Manual
 
 * [Finding the ACPI device](#finding-the-acpi-device)
 * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
