@@ -99,7 +99,7 @@ Substitute your SLOTID found above into command `cat /sys/bus/pci/devices/SLOTID
 
 ```
 $ cat /sys/bus/pci/devices/0000:01:00.0/firmware_node/path
-\_SB_.PCI0.PEG0.PEGP
+\_SB_.PC02.BR2A.PEGP
 ```
 
 And voila! We've found our ACPI path, now that we have everything we're ready to get cooking
