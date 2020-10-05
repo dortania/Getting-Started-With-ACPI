@@ -128,7 +128,11 @@ What these signify is whether this PNP0C09 device is real or not, as per the [AC
 
 ### No PNP0C09 show up
 
-When this happens, you'll only need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX.
+When this happens, you'll only need to create a "dummy" EC for macOS.
+
+Try searching for any devices named: "LPCB", "LPC0", "LPC", "SBRG", "PX40". If you have any of these, try using the LPC pathing of each of those device in place of the Embedded Controller's pathing.
+
+Note that **DO NOT** uncomment the EC disaling code as there are no devices that are considered "EC" in your machine.
 
 ### PNP0C09 already named `EC`
 
