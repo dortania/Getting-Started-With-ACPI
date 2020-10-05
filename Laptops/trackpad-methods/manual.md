@@ -51,10 +51,9 @@ From the second example, we'll want to set both GPEN and SBRG to `One` to allow 
 
 ```
 If (_OSI ("Darwin"))
-        {
-            GPEN = One <- Change to the right variables
-            SBRG = One <- Change to the right variables
-	}
+{
+    GPEN = One <- Proper variables
+}
 ```
 
 ![](../../images/Laptops/trackpad-md/ssdt-before.png)
@@ -65,9 +64,10 @@ Following the example pathing we found, the SSDT should look something like this
 
 ```
 If (_OSI ("Darwin"))
-        {
-            GPEN = One <- Proper variables
-        }
+{
+    GPEN = One <- Change to the right variables
+    SBRG = One <- Change to the right variables
+}
 ```
 
 ![](../../images/Laptops/trackpad-md/ssdt-after.png)
