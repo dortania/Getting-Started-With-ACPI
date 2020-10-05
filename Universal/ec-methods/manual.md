@@ -132,7 +132,7 @@ When this happens, you'll only need to create a "dummy" EC for macOS.
 
 Try searching for any devices named: "LPCB", "LPC0", "LPC", "SBRG", "PX40". If you have any of these, try using the LPC pathing of each of those device in place of the Embedded Controller's pathing.
 
-Note that **DO NOT** uncomment the EC disaling code as there are no devices that is considered "EC" in your machine.
+Note that **DO NOT** uncomment the EC disaling code as there are no devices that are considered "EC" in your machine.
 
 ### PNP0C09 already named `EC`
 
