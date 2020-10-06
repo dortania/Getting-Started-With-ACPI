@@ -138,7 +138,7 @@ Note that **DO NOT** uncomment the EC disaling code as there are no devices that
 
 Congrats! No need to create an SSDT-EC! However you will still want USBX if you're skylake or newer.
 
-Prebuilt can be grabbed here: [SSDT-USBX.aml](https://github.com/dortania/USB-Map-Guide/blob/master/extra-files/SSDT-USBX.aml)
+Prebuilt can be grabbed here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 
 ### PNP0C09 already has an `_STA` method
 
