@@ -2,11 +2,11 @@
 
 The second involves using SSDTTime which automates most of the process. See here on how to use it: [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
 
-To get the SSDT-PLUG on desktops, run the following:
+To get the SSDT-EC on desktops, run the following:
 
 * `7. Dump DSDT` then run `2. FakeEC`
 
-To get the SSDT-PLUG on laptops, run the following:
+To get the SSDT-EC on laptops, run the following:
 
 * `7. Dump DSDT` then run `3.  FakeEC Laptop`
 
