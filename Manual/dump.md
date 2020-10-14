@@ -62,7 +62,7 @@ And voila! You have a DSDT! Now you can continue on with making SSDTs
 
 ### UEFI Shell
 
-For this, we'll want ti grab [`acpidump.efi`](https://github.com/dortania/OpenCore-Install-Guide/tree/master/extra-files/acpidump.efi.zip) and add this to `EFI/OC/Tools` and in your config under `Misc -> Tools` with the argument: `-b -n DSDT -z` and select this option in OpenCore's picker. 
+For this, we'll want to grab [`acpidump.efi`](https://github.com/dortania/OpenCore-Install-Guide/tree/master/extra-files/acpidump.efi.zip) and add this to `EFI/OC/Tools` and in your config under `Misc -> Tools` with the argument: `-b -n DSDT -z` and select this option in OpenCore's picker. 
    
 If OpenCore is having issues running acpidump.efi from the boot picker, you can call it from the shell with [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases)(reminder to add to both `EFI/OC/Tools` and in your config under `Misc -> Tools` ):
 
