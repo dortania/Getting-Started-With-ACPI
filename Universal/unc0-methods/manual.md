@@ -9,7 +9,7 @@
 
 Super simple, just grab the SSDT and compile:
 
-* [SSDT-UNC0.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-UNC0.dsl)
+* [SSDT-UNC.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-UNC0.dsl)
 
 
 See here how to compile: [Compiling ACPI](/Manual/compile.md)
