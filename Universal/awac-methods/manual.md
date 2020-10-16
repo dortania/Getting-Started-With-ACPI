@@ -9,6 +9,8 @@
 
 ## Determining which SSDT you need
 
+* **Note**: X99 and X299 see [here](../awac-methods/manual-hedt.md)
+
 Finding which SSDT you need is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 Next search for `ACPI000E`. You should get something similar:
@@ -31,25 +33,6 @@ And looks at that, we can in fact disable our AWAC and enable the RTC! If not sk
 Now it's as simple as grabbing [SSDT-AWAC.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) and [compile](#compiling-the-ssdt), no changes needed You can also use the below SSDT to the same effect:
 
 * [SSDT-AWAC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
-
-### _INI Edge Cases
-
-Mainly seen on X299 refresh boards, there's already a `Scope (_SB) { Method (_INI...` in your DSDT. This means our SSDT-AWAC will conflict with the one found in our DSDT. For these situations, you'll want to remove `Method (_INI, 0, NotSerialized) {}` from the SSDT. You'll be left this this in the end:
-
-```
-DefinitionBlock ("", "SSDT", 2, "DRTNIA", "AWAC", 0x00000000)
-{
-    External (STAS, IntObj)
-
-    Scope (_SB)
-    {
-        If (_OSI ("Darwin"))
-        {
-            STAS = One
-        }
-    }
-}
-```
 
 ## RTC0 Method
 

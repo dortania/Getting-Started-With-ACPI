@@ -12,10 +12,10 @@ What this tool does is, it dumps your DSDT from your firmware, and then creates 
   * Need to be configured to your system
 * **USBX SSDT**:
   * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
-* **RHUB SSDT**:
-  * If you have a 10th gen CPU, you'll need to either use the prebuilt or manually create it.
 * **IMEI SSDT**:
   * If you have either a Sandy bridge CPU with 7 series motherboard or Ivy Bridge with 6 series motherboard, you'll need to either use the prebuilt or manually create it.
+* **RTC0 RANGE SSDT**:
+  If you have X99 or X299, you'll need to configure it to your system
 
 For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it does support.
 
@@ -39,7 +39,9 @@ What are all these options?:
   * This is the SSDT-PMC, for Intel true 300+ series only, this device is missing from ACPI in recent boards and helps to bring back NVRAM support.
 * `6. AWAC - Context-Aware AWAC Disable and RTC Fake`
   * This is the SSDT-AWAC/RTC0, its purpose  is to fix the system clocks found on newer hardware
-* `7. Dump DSDT  - Automatically dump the system DSDT`
+* `7. USB Reset     - Reset USB controllers to allow hardware mapping`
+  * This is SSDT-RHUB, used for resetting USB ports in macOS for Asus's Z490 motherboards
+* `8. Dump DSDT  - Automatically dump the system DSDT`
   * Dumps your DSDT from your firmware
 
 

@@ -17,7 +17,8 @@ The purpose of SSDT-AWAC/RTC0 is to fix the system clocks found on newer hardwar
 * Z490
 * 400 series (Comet Lake, including Z490)
 * 495 series (Icelake)
-* X299X (10th Gen refresh, AsRock and Asus don't use the -x naming so you'll need to double check)
+* X99
+* X299
 
 SSDT-AWAC tries to re-enable the old RTC clock that is compatible with macOS, while SSDT-RTC0 will instead create a "fake" RTC clock if there is no legacy one to enable.
 
@@ -27,4 +28,8 @@ For the RTC fix, there are 3 methods you can choose from:
 
 * [Prebuilt](/Universal/awac-methods/prebuilt.md)
 * [SSDTTime](/Universal/awac-methods/ssdttime.md)
+  * **Does not support HEDT**
 * [Manual](/Universal/awac-methods/manual.md)
+  * For most users
+* [Manual-HEDT](/Universal/awac-methods/manual-hedt.md)
+  * For X99 and X299 users

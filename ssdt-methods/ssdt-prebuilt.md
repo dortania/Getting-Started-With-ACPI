@@ -1,129 +1,684 @@
 # Pre-Built SSDTs
 
-* [Power Management](#power-management)
-  * [B550 fix](#b550-fix)
-* [Embedded Controllers](#embedded-controllers)
-* [Trackpad](#trackpad)
-* [Backlight](#backlight)
-* [System Clock(AWAC)](#system-clockawac)
-* [NVRAM(PMC)](#nvrampmc)
-* [USB(RHUB)](#usbrhub)
-* [IMEI](#imei)
+Simply select your hardware type and generation, then download the associated files. Once downloaded, place them in your EFI under EFI/OC/ACPI and head back to [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
-This is mainly for users who are having troubles either compiling, decompiling or understanding the overall process of ACPI. The main reasons you'd want to avoid is for the following:
+* [Intel Desktop SSDTs](#intel-desktop-ssdts)
+  * [Penryn, Lynnfield and Clarkdale](#desktop-penryn-lynnfield-and-clarkdale)
+  * [Sandy and Ivy Bridge](#desktop-sandy-and-ivy-bridge)
+  * [Haswell and Broadwell](#desktop-haswell-and-broadwell)
+  * [Skylake and Kaby Lake](#desktop-skylake-and-kaby-lake)
+  * [Coffee Lake](#desktop-coffee-lake)
+  * [Comet Lake](#desktop-comet-lake)
+* [Intel Laptop SSDTs](#intel-laptop-ssdts)
+  * [Clarksfield and Arrandale](#laptop-clarksfield-and-arrandale)
+  * [Sandy and Ivy Bridge](#laptop-sandy-and-ivy-bridge)
+  * [Haswell and Broadwell](#laptop-haswell-and-broadwell)
+  * [Skylake and Kaby Lake](#laptop-skylake-and-kaby-lake)
+  * [Coffee Lake(8th gen)](#laptop-coffee-lake8th-gen)
+  * [Coffee and Comet Lake(9th and 10th gen)](#laptop-coffee-and-comet-lake-9th-and-10th-gen)
+  * [Ice Lake](#laptop-ice-lake)
+* [Intel HEDT SSDTs](#intel-hedt-ssdts)
+  * [Nehalem and Westmere](#nehalem-and-westmere)
+  * [Sandy and Ivy Bridge-E](#sandy-and-ivy-bridge-e)
+  * [Haswell and Broadwell-E](#haswell-and-broadwell-e)
+  * [Skylake and Cascade Lake-X/W](#skylake-and-cascade-lake-x-w)
+* [AMD SSDTs](#amd-ssdts)
+  * [Bulldozer/Jaguar](#amd-bulldozer-jaguar)
+  * [Zen](#amd-zen)
 
-* Slowing down the boot process
-  * Mainly because these SSDTs have to go through every possible pathing
-  * At most, this only adds 2 seconds to the boot process, and does not affect macOS itself
-* Doesn't always work
-  * The SSDTs provided can only handle so many situations, and some may in fact not work
-  * Mainly seen with SSDT-AWAC, as it assumes there is a way the RTC can be easily enabled
-* Teaches nothing
-  * This is the **biggest** issue as you have no real idea on how to troubleshoot or how to make these files down the line
+## Intel Desktop SSDTs
 
-Please refer to [Choosing the SSDTs](/ssdt-platform.md) page for which your system needs.
+* [Penryn, Lynnfield and Clarkdale](#desktop-penryn-lynnfield-and-clarkdale)
+* [Sandy and Ivy Bridge](#desktop-sandy-and-ivy-bridge)
+* [Haswell and Broadwell](#desktop-haswell-and-broadwell)
+* [Skylake and Kaby Lake](#desktop-skylake-and-kaby-lake)
+* [Coffee Lake](#desktop-coffee-lake)
+* [Comet Lake](#desktop-comet-lake)
 
-## Power Management
+### Desktop Penryn, Lynnfield and Clarkdale
 
-For Haswell and newer:
+::: tip SSDTs required
+
+* [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-EC:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+
+:::
+
+### Desktop Sandy and Ivy Bridge
+
+::: tip SSDTs required
+
+* [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
+* [SSDT-IMEI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI.aml)
+  * Required for Sandy Bridge CPU with 7 series motherboard
+    * ie. B75, Q75, Z75, H77, Q77, Z77
+  * Required Ivy Bridge CPU with 6 series motherboard
+    * ie. H61, B65, Q65, P67, H67, Q67, Z68
+
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+::: details In-depth info on the SSDTs
+
+SSDT-EC:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+
+SSDT-IMEI
+
+* Used for creating an IMEI device when one is not present in ACPI\
+  * Required for Sandy Bridge CPU with 7 series motherboard
+    * ie. B75, Q75, Z75, H77, Q77, Z77
+  * Required Ivy Bridge CPU with 6 series motherboard
+    * ie. H61, B65, Q65, P67, H67, Q67, Z68
+
+:::
+
+### Desktop Haswell and Broadwell
+
+::: tip SSDTs required
 
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
-
-For Ivy Bridge and older, see the [Optimizing Power Management page](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html). This will be done *after* install. AMD CPU users **do not** need any SSDTs for power management.
-
-### B550 and A520 Fix
-
-For AMD B550 and A520 users, you **must** include this SSDT to boot:
-
-* [SSDT-CPUR](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml)
-
-Note that X570 and older boards do not need this SSDT.
-
-## Embedded Controllers
-
-For desktops:
-
-* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
-  * For Skylake and newer and all AMD systems.
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
-  * For Broadwell and older.
 
-For laptops:
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
 
-* [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
-  * For Skylake and newer.
-* [SSDT-EC-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-LAPTOP.aml)
-  * For Broadwell and older.
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
-## Trackpad
+:::
 
-Used for enabling Windows only features in macOS with I2C trackpads, do note that the below patches will more than likely break Windows booting via OpenCore(this issue is mitigated if booting by BIOS instead). We **highly** encourage you to make one yourself to prevent any issues down the line: [Trackpad GPI0](/Laptops/trackpad.md)
+::: details In-depth info on the SSDTs
 
-Note that PS2 keyboards and trackpads shouldn't need this SSDT+Patch.
+SSDT-PLUG:
 
-* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
 
-* [XOSI-Rename.plist](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/XOSI-Rename.plist)
-  * Note you'll need to add this into your config.plist under `ACPI -> Patch`:
+SSDT-EC:
 
-| Comment | String | Change _OSI to XOSI |
-| :--- | :--- | :--- |
-| Enabled | Boolean | YES |
-| Count | Number | 0 |
-| Limit | Number | 0 |
-| Find | Data | 5f4f5349 |
-| Replace | Data | 584f5349 |
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
 
-## Backlight
+:::
 
-For laptops and all-in-one desktops, fixies brightness control support
+### Desktop Skylake and Kaby Lake
 
-* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
-  * For most users.
-* [SSDT-PNLF-CFL](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF-CFL.aml)
-  * For Coffee Lake and newer.
-  
-## System Clock(AWAC)
+::: tip SSDTs required
 
-Mainly needed for newer systems running AWAC based system clocks, mainly relevant for Z390 and newer(Gigabyte and AsRock however did back-port it to Z370 with a BIOS update)
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+:::
+
+### Desktop Coffee Lake
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 * [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
-
-The biggest issue with this prebuilt is that we're just guessing you both have an AWAC clock and that it can be turned off, I **highly** encourage you to make one yourself to really know whether you both need this and if it's going to work: [AWAC vs RTC](/Universal/awac.md)
-
-## NVRAM(PMC)
-
-Needed to bring back NVRAM support for Z390 , **DO NOT USE ON Z370 or older or Z490 and newer**
-
-Note: Comet Lake, Ice Lake and newer do not need this.
-
 * [SSDT-PMC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PMC.aml)
 
-Reminder only the following need this SSDT:
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
 
-* B360
-* B365
-* H310
-* H370
-* Z390
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
-## USB(RHUB)
+:::
 
-Needed for 10th gen Asus motherboards, Gigabyte and AsRock motherboards don't need this:
+::: details In-depth info on the SSDTs
 
-* [SSDT-RHUB.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-AWAC:
+
+* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+
+SSDT-PMC:
+
+* Used to enable native NVRAM on "true" 300 series motherboards
+  * ie. B360, B365, H310, H370, Z390
+  * Note Z370 is not included
+
+:::
+
+### Desktop Comet Lake
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
+* [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
+* [SSDT-RHUB](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
+  * Specifically for Asus's 400 series motherboards, Gigabyte and others do not need SSDT-RHUB
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-AWAC:
+
+* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+
+SSDT-RHUB:
+
+* Used to reset USB controllers on Asus's 400 series motherboards due to poor ACPI implementation from the OEM
+  * Note Gigabyte, MSI, AsRock, etc do not need this SSDT. Only Asus
+
+:::
 
 
-## IMEI
+## Intel Laptop SSDTs
 
-Required when pairing either:
 
-* Sandy Bridge CPU with 7 series motherboard
-  * ie. B75, Q75, Z75, H77, Q77, Z77
+### Laptop Clarksfield and Arrandale
 
-* Ivy Bridge CPU with 6 series motherboard
-  * ie. H61, B65, Q65, P67, H67, Q67, Z68
+::: tip SSDTs required
+
+* [SSDT-EC-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-LAPTOP.aml)
+* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
+* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-EC:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+
+SSDT-PNLF:
+
+* Used for controlling the backlight on internal displays such as AIOs and laptops
+
+SSDT-XOSI:
+
+* Enables many Windows-only functionality in macOS
+  * Requires XOSI patch(covered later on)
+
+:::
+
+### Laptop Sandy and Ivy Bridge
+
+::: tip SSDTs required
+
+* [SSDT-EC-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-LAPTOP.aml)
+* [SSDT-IMEI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI.aml)
+  * Required for Sandy Bridge CPU with 7 series motherboard
+    * ie. B75, Q75, Z75, H77, Q77, Z77
+  * Required Ivy Bridge CPU with 6 series motherboard
+    * ie. H61, B65, Q65, P67, H67, Q67, Z68
+* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
+* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+::: details In-depth info on the SSDTs
+
+SSDT-EC:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+
+SSDT-IMEI
+
+* Used for creating an IMEI device when one is not present in ACPI
+  * Required for Sandy Bridge CPU with 7 series motherboard
+    * ie. B75, Q75, Z75, H77, Q77, Z77
+  * Required Ivy Bridge CPU with 6 series motherboard
+    * ie. H61, B65, Q65, P67, H67, Q67, Z68
+
+SSDT-PNLF:
+
+* Used for controlling the backlight on internal displays such as AIOs and laptops
+
+SSDT-XOSI:
+
+* Enables many Windows-only functionality in macOS
+  * Requires XOSI patch(covered later on)
+
+:::
+
+### Laptop Haswell and Broadwell
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-LAPTOP.aml)
+* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
+* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+
+SSDT-PNLF:
+
+* Used for controlling the backlight on internal displays such as AIOs and laptops
+
+SSDT-XOSI:
+
+* Enables many Windows-only functionality in macOS
+  * Requires XOSI patch(covered later on)
+
+:::
+
+### Laptop Skylake and Kaby Lake
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
+* [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
+* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-PNLF:
+
+* Used for controlling the backlight on internal displays such as AIOs and laptops
+
+SSDT-XOSI:
+
+* Enables many Windows-only functionality in macOS
+  * Requires XOSI patch(covered later on)
+
+:::
+
+### Laptop Coffee Lake(8th gen)
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
+* [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
+* [SSDT-PNLF-CFL](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF-CFL.aml)
+* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-AWAC:
+
+* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+
+SSDT-PNLF:
+
+* Used for controlling the backlight on internal displays such as AIOs and laptops
+
+SSDT-XOSI:
+
+* Enables many Windows-only functionality in macOS
+  * Requires XOSI patch(covered later on)
+
+:::
+
+### Laptop Coffee and Comet Lake(9th and 10th gen)
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
+* [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
+* [SSDT-PMC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PMC.aml)
+  * Only for 9th gen laptops, 10th gen can ignore
+* [SSDT-PNLF-CFL](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF-CFL.aml)
+* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-AWAC:
+
+* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+
+SSDT-PMC:
+
+* Used to enable native NVRAM on "true" 300 series motherboards
+  * Only for 9th gen laptops
   
-Simply grab the following SSDT:
+SSDT-PNLF:
 
-* [SSDT-IMEI.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI.aml)
+* Used for controlling the backlight on internal displays such as AIOs and laptops
+
+SSDT-XOSI:
+
+* Enables many Windows-only functionality in macOS
+  * Requires XOSI patch(covered later on)
+
+:::
+
+### Laptop Ice Lake
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-LAPTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-LAPTOP.aml)
+* [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
+* [SSDT-RHUB](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
+* [SSDT-PNLF-CFL](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF-CFL.aml)
+* [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-AWAC:
+
+* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+
+SSDT-RHUB:
+
+* Used to reset USB controllers on Ice Lake laptops due to poor OEM ACPI implementation
+  * Mainly seen on Dell laptops
+  
+SSDT-PNLF:
+
+* Used for controlling the backlight on internal displays such as AIOs and laptops
+
+SSDT-XOSI:
+
+* Enables many Windows-only functionality in macOS
+  * Requires XOSI patch(covered later on)
+
+
+:::
+
+
+## Intel HEDT SSDTs
+
+### Nehalem and Westmere
+
+::: tip SSDTs required
+
+* [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-EC:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+
+### Sandy and Ivy Bridge-E
+
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
+* [SSDT-UNC0](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-UNC0.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+
+SSDT-UNC0:
+
+* Used to ensure unused or missing uncore bridges are properly disabled, otherwise kernel panic in IOPCIFamily in macOS Big Sur
+
+:::
+
+### Haswell and Broadwell-E
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
+* [SSDT-RTC0-RANGE-HEDT](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RTC0-RANGE-HEDT.aml)
+* [SSDT-UNC0](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-UNC0.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-RTC0-RANGE-HEDT:
+
+* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+  * Added benefit is to resolve early halts in macOS Big Sur's booting due to poor ACPI implementation
+
+SSDT-UNC0:
+
+* Used to ensure unused or missing uncore bridges are properly disabled, otherwise kernel panic in IOPCIFamily in macOS Big Sur
+
+:::
+
+### Skylake and Cascade Lake-X/W
+
+::: tip SSDTs required
+
+* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
+* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
+* [SSDT-RTC0-RANGE-HEDT](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RTC0-RANGE-HEDT.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-PLUG:
+
+* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-RTC0-RANGE-HEDT:
+
+* Used to enable the legacy RTC clock in macOS, as the newer AWAC clock is unsupported
+  * Added benefit is to resolve early halts in macOS Big Sur's booting due to poor ACPI implementation
+
+:::
+
+
+## AMD SSDTs
+
+### AMD Bulldozer/Jaguar
+
+::: tip SSDTs required
+
+* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+:::
+
+### AMD Zen
+
+::: tip SSDTs required
+
+* [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
+* [SSDT-CPUR](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml)
+  * Only required for B550, A520 and newer
+    * X570 and older **DO NOT** need SSDT-CPUR
+    * No threadripper machines need this either
+
+Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+
+* [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
+
+:::
+
+::: details In-depth info on the SSDTs
+
+SSDT-EC-USBX:
+
+* Used for disabling your real Embedded controller and creating a fake one for macOS to play with
+* USBX portion is used for injection USB power properties missing on Skylake and newer
+
+SSDT-CPUR:
+
+* Used for fixing CPU definitions in ACPI, as macOS does not properly support the ACPI used in B550 and newer boards
+
+:::
+
+
+

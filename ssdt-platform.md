@@ -4,8 +4,9 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 
 * [What SSDTs do each platform need](#what-ssdts-do-each-platform-need)
   * [Desktop](#desktop)
+  * [High End Desktop](#high-end-desktop)
   * [Laptop](#laptop)
-  * [SSDT Creation](#ssdt-creation)
+* [SSDT Creation](#ssdt-creation)
 
 ## Desktop
 
@@ -26,13 +27,13 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 
 ## High End Desktop
 
-| Platforms | **CPU** | **EC** | **AWAC** |
-| :-------: | :-----: | :----: | :------: |
-| Nehalem and Westmere | N/A | [SSDT-EC](./Universal/ec-fix) | N/A |
-| Ivy Bridge-E | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ |
-| Haswell-E | ^^ | [SSDT-EC-USBX](./Universal/ec-fix) | ^^ |
-| Broadwell-E | ^^ | ^^ | ^^ |
-| Skylake-X | ^^ | ^^ | [SSDT-AWAC](./Universal/awac) |
+| Platforms | **CPU** | **EC** | **RTC** | **PCI** |
+| :-------: | :-----: | :----: | :-----: | :-----: |
+| Nehalem and Westmere | N/A | [SSDT-EC](./Universal/ec-fix.html) | N/A | N/A |
+| Ivy Bridge-E | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ | [SSDT-UNC](./Universal/unc0) |
+| Haswell-E | ^^ | [SSDT-EC-USBX](./Universal/ec-fix) | [SSDT-RTC0-RANGE](./Universal/awac) | ^^ |
+| Broadwell-E | ^^ | ^^ | ^^ | ^^ |
+| Skylake-X | ^^ | ^^ | ^^ | N/A |
 
 ## Laptop
 

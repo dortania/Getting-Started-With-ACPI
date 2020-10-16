@@ -1,12 +1,12 @@
-# Fixing Power Management: SSDTTime
+# Fixing RHUB: SSDTTime
 
 The second involves using SSDTTime which automates most of the process. See here on how to use it: [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
 
-To get the SSDT-PLUG, run the following:
+To get the SSDT-RHUB, run the following:
 
-* `7. Dump DSDT` then run `3. PluginType`
+* `7. Dump DSDT` then run `7. USB Reset`
 
-This will provide you with some files, the main one you care about is SSDT-PLUG.**aml**. The DSDT and .dsl are only left for referencing or verification.
+This will provide you with some files, the main one you care about is SSDT-USB-Rest.**aml**(Same file as SSDT-RHUB). The DSDT and .dsl are only left for referencing or verification.
 
 The main things to note with this method:
 

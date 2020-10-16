@@ -14,7 +14,8 @@ The following platforms will require fixing:
 
 ## Methods to make this SSDT
 
-For the RHUB fix, there are 2 methods you can choose from:
+For the RHUB fix, there are 3 methods you can choose from:
 
 * [Prebuilt](/Universal/rhub-methods/prebuilt.md)
+* [SSDTTime](/Universal/plug-methods/ssdttime.md)
 * [Manual](/Universal/rhub-methods/manual.md)

@@ -207,6 +207,7 @@ module.exports = {
 		                ['/Universal/awac-methods/prebuilt', 'Prebuilt'],
 		                ['/Universal/awac-methods/ssdttime', 'SSDTTime'],
 		                ['/Universal/awac-methods/manual', 'Manual'],
+						['/Universal/awac-methods/manual-hedt', 'Manual-HEDT'],
 		            ]
 		        },
                 ['/Universal/nvram', 'NVRAM PMC'],
@@ -238,6 +239,16 @@ module.exports = {
 		            children: [
 		                ['/Universal/imei-methods/prebuilt', 'Prebuilt'],
 		                ['/Universal/imei-methods/manual', 'Manual'],
+		            ]
+		        },
+                ['/Universal/unc0', 'Fixing Uncore Bridge'],
+		        {
+					title: 'Methods',
+		            collapsable: true,
+		            sidebarDepth: 2,
+		            children: [
+						['/Universal/unc0-methods/prebuilt', 'Prebuilt'],
+		                ['/Universal/unc0-methods/manual', 'Manual'],
 		            ]
 		        },
                 ['/Universal/smbus', 'Fixing SMBus Support'],

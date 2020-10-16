@@ -14,8 +14,6 @@ This will provide you with some files, the main one you care about is SSDT-EC.**
 
 The main things to note with this method:
 
-* Doesn't work on HEDT and server hardware(ie. X99 and X299)
-  * While the majority following this guide are likely on consumer hardware, those with fancier hardware will need to either use the [Prebuilt](#prebuilts) or [Manual](#manual) method
 * Doesn't provide you the USBX property to fix power
   * This can easily be fixed by using this prebuilt file in addition to SSDT-EC: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
   * Note USBX is only needed for Skylake and newer

@@ -25,8 +25,5 @@ So TL;DR:
 For the EC fix, there are 3 methods you can choose from:
 
 * [Prebuilt](/Universal/ec-methods/prebuilt.md)
-  * The prebuilt for desktops are very bloated. It's recommended to use the two methods below.
-  * The Laptop prebuilts are easily usable.
 * [SSDTTime](/Universal/ec-methods/ssdttime.md)
-
 * [Manual](/Universal/ec-methods/manual.md)

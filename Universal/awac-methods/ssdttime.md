@@ -1,5 +1,7 @@
 # Fixing System Clocks (SSDT-AWAC/RTC0)
 
+* **Reminder**: Does not support HEDT(ie. X99 and X299)
+
 The second involves using SSDTTime which automates most of the process. See here on how to use it: [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
 
 To get the SSDT-PMC, run the following:
