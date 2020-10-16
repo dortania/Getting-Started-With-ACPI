@@ -527,6 +527,9 @@ SSDT-EC:
 
 * Used for disabling your real Embedded controller and creating a fake one for macOS to play with
 
+:::
+
+
 ### Sandy and Ivy Bridge-E
 
 
