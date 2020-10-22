@@ -10,7 +10,7 @@ This SSDT is required for all "true" 300 series motherboards(Z370 is excluded), 
 * B360
 * B365
 * H310
-* H370
+* H370(HM370shouldn't require this)
 * Z390
 
 10th gen motherboards **do not** need this SSDT, NVRAM's native on these platforms.
