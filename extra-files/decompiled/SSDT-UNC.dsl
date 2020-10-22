@@ -13,7 +13,9 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "UNC", 0x00000000)
     {
         Method (_INI, 0, NotSerialized)
         {
-            PRBM = 0
+             If (_OSI ("Darwin")) {
+                 PRBM = 0
+             }
         }
     }
 }
