@@ -23,7 +23,7 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Coffee Lake | ^^ | ^^ | [SSDT-AWAC](./Universal/awac) | [SSDT-PMC](./Universal/nvram) | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | N/A | [SSDT-RHUB](./Universal/rhub) |
 | AMD (15/16h) | N/A | ^^ | N/A | ^^ | N/A |
-| AMD (17h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | N/A | ^^ | N/A |
+| AMD (17h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
 
 ## High End Desktop
 
@@ -46,8 +46,8 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Skylake | ^^ | [SSDT-EC-USBX](./Universal/ec-fix) | ^^ | ^^ | ^^ | ^^ | N/A |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | [SSDT-PNLF-CFL](./Laptops/backlight) | ^^ | ^^ | ^^ | ^^ |
-| Coffee Lake (9th Gen) | ^^ | ^^ | ^^ | ^^ | [SSDT-AWAC](./Universal/awac) | ^^ | ^^ |
+| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | [SSDT-PNLF-CFL](./Laptops/backlight) | ^^ | [SSDT-AWAC](./Universal/awac) | ^^ | ^^ |
+| Coffee Lake (9th Gen) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ice Lake | ^^ | ^^ | ^^ | ^^ | ^^ | [SSDT-RHUB](./Universal/rhub) | ^^ |
 
