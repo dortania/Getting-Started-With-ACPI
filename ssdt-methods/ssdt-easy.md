@@ -45,7 +45,7 @@ What are all these options?:
   * Dumps your DSDT from your firmware
 
 
-What we want to do is select option `4. Dump DSDT` first, then select the appropriate option(s) for your system.
+What we want to do is select option `8. Dump DSDT` first, then select the appropriate option(s) for your system.
 
 > What about USBX?
 
