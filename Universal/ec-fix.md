@@ -6,7 +6,7 @@
 
 ## What this SSDT does
 
-The purpose of SSDT-EC/UBX is a couple things:
+The purpose of SSDT-EC/USBX is a couple things:
 
 * On desktops, the EC(or better known as the embedded controller) isn't compatible with AppleACPIEC driver, to get around this we disable this device when running macOS
 * AppleBusPowerController will look for a device named `EC`, so we will want to create a fake device for this kext to load onto
