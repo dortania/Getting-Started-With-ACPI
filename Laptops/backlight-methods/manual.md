@@ -26,7 +26,7 @@ From the above example, we can see our display is hooked up to `PCI0.GFX0`
 Now that we have our ACPI path, lets grab our SSDT and get to work:
 
 * [SSDT-PNLF.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
-* [SSDT-PNLF-CFL.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-PNLF-CFL.dsl.zip)
+* [SSDT-PNLFCFL.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLFCFL.dsl)
   * For Coffee Lake and newer
 
 By default, this uses `PCI0.GFX0` for the pathing. you'll want to rename accordingly. For this example, we'll assume your pathing is `PCI0.GPU0`:
