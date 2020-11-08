@@ -4,10 +4,10 @@
  */
 DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
 {
-    External (_SB_.PCI0.XHC1.RHUB, DeviceObj) // Full pathing to RHUB, change to yours
+    External (_SB_.PCI0.XHC.RHUB, DeviceObj) // Full pathing to RHUB, change to yours
 
 
-    Scope (_SB.PCI0.XHC1.RHUB) // Full pathing to RHUB, change to yours
+    Scope (_SB.PCI0.XHC.RHUB) // Full pathing to RHUB, change to yours
         {
             Method (_STA, 0, NotSerialized)
             {

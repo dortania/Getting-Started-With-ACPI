@@ -30,16 +30,16 @@ Now that we have our ACPI path, lets grab our SSDT and get to work:
 
 * [SSDT-RHUB.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-RHUB.dsl)
 
-By default, this uses `PCI0.XHC_.RHUB` for the pathing. you'll want to rename accordingly.
+By default, this uses `PCI0.XHC1.RHUB` for the pathing. you'll want to rename accordingly.
 
-Following the example from above, we'll be renaming it to `PCI0.XHC1.RHUB`:
+Following the example from above, we'll be renaming it to `PCI0.XHC.RHUB`:
 
 **Before**:
 
 ```
-External (_SB_.PCI0.XHC_.RHUB, DeviceObj) <- Rename this
+External (_SB_.PCI0.XHC1.RHUB, DeviceObj) <- Rename this
 
-Scope (_SB.PCI0.XHC_.RHUB) <- Rename this
+Scope (_SB.PCI0.XHC1.RHUB) <- Rename this
 ```
 
 ![](../../images/Universal/rhub-md/ssdt-before.png)
@@ -49,9 +49,9 @@ Following the example pathing we found, the SSDT should look something like this
 **After**:
 
 ```
-External (_SB.PCI0.XHC1.RHUB, DeviceObj) <- Renamed
+External (_SB.PCI0.XHC.RHUB, DeviceObj) <- Renamed
 
-Scope (_SB.PCI0.XHC1.RHUB) <- Renamed
+Scope (_SB.PCI0.XHC.RHUB) <- Renamed
 ```
 
 ![](../../images/Universal/rhub-md/ssdt-after.png)

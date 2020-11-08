@@ -228,6 +228,7 @@ module.exports = {
 		            sidebarDepth: 2,
 		            children: [
 		                ['/Universal/rhub-methods/prebuilt', 'Prebuilt'],
+						['/Universal/rhub-methods/ssdttime', 'SSDTTime'],
 		                ['/Universal/rhub-methods/manual', 'Manual'],
 		            ]
 		        },
