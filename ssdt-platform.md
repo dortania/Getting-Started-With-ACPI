@@ -30,7 +30,8 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Platforms | **CPU** | **EC** | **RTC** | **PCI** |
 | :-------: | :-----: | :----: | :-----: | :-----: |
 | Nehalem and Westmere | N/A | [SSDT-EC](./Universal/ec-fix.html) | N/A | N/A |
-| Ivy Bridge-E | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ | [SSDT-UNC](./Universal/unc0) |
+| Sandy Bridge-E | ^^ | ^^ | ^^ | [SSDT-UNC](./Universal/unc0) |
+| Ivy Bridge-E | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ | ^^ |
 | Haswell-E | ^^ | [SSDT-EC-USBX](./Universal/ec-fix) | [SSDT-RTC0-RANGE](./Universal/awac) | ^^ |
 | Broadwell-E | ^^ | ^^ | ^^ | ^^ |
 | Skylake-X | ^^ | ^^ | ^^ | N/A |
