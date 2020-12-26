@@ -1,28 +1,11 @@
-/*
- * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20190509 (64-bit version)
- * Copyright (c) 2000 - 2019 Intel Corporation
- * 
- * Disassembling to symbolic ASL+ operators
- *
- * Disassembly of iASLYWTc6v.aml, Thu May 28 19:06:11 2020
- *
- * Original Table Header:
- *     Signature        "SSDT"
- *     Length           0x00000143 (323)
- *     Revision         0x02
- *     Checksum         0x6C
- *     OEM ID           "DRTNIA"
- *     OEM Table ID     "XOSI"
- *     OEM Revision     0x00001000 (4096)
- *     Compiler ID      "INTL"
- *     Compiler Version 0x20190509 (538510601)
- */
 DefinitionBlock ("", "SSDT", 2, "DRTNIA", "XOSI", 0x00001000)
 {
     Method (XOSI, 1, NotSerialized)
     {
-        Local0 = Package (0x11)
+        // Based off of https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi
+        // Add OSes from the above list as needed, most only check up to Windows 2015
+        // but check what your DSDT looks for
+        Local0 = Package (0x13)
             {
                 "Windows 2001", 
                 "Windows 2001.1", 
@@ -33,7 +16,10 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "XOSI", 0x00001000)
                 "Windows 2006 SP1", 
                 "Windows 2009", 
                 "Windows 2012", 
-                "Windows 2013", 
+                "Windows 2013",
+                "Windows 2015",
+                "Windows 2016",
+                "Windows 2017",  
                 "Microsoft Windows NT", 
                 "Microsoft Windows", 
                 "Microsoft WindowsME: Millennium Edition"

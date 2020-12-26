@@ -9,11 +9,6 @@ DefinitionBlock("", "SSDT", 2, "DRTNIA", "GPI0", 0)
         If (_OSI ("Darwin"))
         {
             GPEN = One
-            SBRG = One
-        }
-        Else
-        {
-            
         }
     }
 }
