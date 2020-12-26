@@ -14,7 +14,7 @@ The first thing which should be checked is the GPI0 device, which is required fo
 
 Here, we can see that VoodooI2C is attached to GPI0 so no edits are needed for GPI0 and you can skip to the next section.
 
-If VoodooI2C isn't attached, then you may need to set `GPEN` or other variable to make sure GPI0 is enabled. In that case, you will need to find the GPI0 device in ACPI.
+If VoodooI2C isn't attached, then you may need to modify the `_STA` method in the `GPI0` device. In that case, you will need to find the GPI0 device in ACPI.
 
 First open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
@@ -39,8 +39,9 @@ Method (_STA, 0, NotSerialized)
 
     Return (0x0F)
 }
+```
 
-We want the value of _STA to be 0x0F, as 0x00 (Zero) would disable the device. This checks two values, `SBRG` and `GPEN`. If either `SBRG` or `GPEN` is equal to zero, then zero will be returned. Generally, `SBRG` should not be modified as it will be correct already, and modifying it can break the `GPI0` device. If `GPI0` needs to be enabled, only modify the `GPEN` value.
+We want the value returned from _STA to be 0x0F, as 0x00 (Zero) would disable the device. `_STA` currently checks both `SBRG` and `GPEN`. If either `SBRG` or `GPEN` is equal to zero, then zero will be returned. Generally, `SBRG` should not be modified, as modifying it can break the `GPI0` device. Only modify the `GPEN` value if you need to enable the `GPI0` device.
 
 Here's some more examples:
 ![](../../images/Laptops/trackpad-md/gpi0.png)
@@ -83,6 +84,45 @@ If (_OSI ("Darwin"))
 You will want to test the SSDT at this point by [compiling the SSDT!](/Manual/compile.md) and adding it to your config.plist. VoodooI2C should now be attached to the GPI0 device as shown at the top of the GPI0 section.
 
 ## Enabling Trackpad
+
+Often times, the I2C devices check to see if they are running in Windows before enabling themselves. Similarly to the `GPI0` device, these devices contain a `_STA` method. For example, this is the I2C1 device below:
+
+The part we care about is the `_STA` method:
+
+```
+Method (_STA, 0, NotSerialized)  // _STA: Status
+{
+    Return (LSTA (SMD1))
+}
+```
+
+In this case, `_STA` is referring to another method, `LSTA`. If we search for `Method (LSTA`, we'll see the below:
+
+```
+Method (LSTA, 1, Serialized)
+{
+    If (((Arg0 == 0x00) || (Arg0 == 0x03)))
+    {
+        Return (0x00)
+    }
+
+    If (CondRefOf (OSYS))
+    {
+        If ((OSYS < 0x07DC))
+        {
+            Return (0x00)
+        }
+    }
+
+    Return (0x0F)
+}
+```
+
+`LSTA` checks `Arg0` and `OSYS`. `Arg0` is the value passed in from where it's called. In this example, `_STA` passes in `SMD1` as Arg0. This value should already be correct. The value which we should check is `OSYS`, which is a value which stores information about the current OS running. We will want to look for any place in which `OSYS` is set (`OSYS = 0x07DC` for example). In this DSDT, this is set under `\_SB.PCI0._INI` as shown below:
+
+![]()
+
+There are various checks for many different versions of Windows, but there is no check for `Darwin`. We generally want to set `OSYS` to the value for the latest version of Windows in order to enable the most capabilities.
 
 ## Wrapping up
 
