@@ -5,16 +5,15 @@
 * [Compiling the SSDT](#compiling-the-ssdt)
 * [Wrapping up](#wrapping-up)
 
-
 ## Checking GPI0
 
 The first thing which should be checked is the GPI0 device, which is required for VoodooI2C. The best way to check this is working is to use IORegistryViewer.
 
-![]()
+![](../../images/Laptops/trackpad-md/gpio-enabled.png)
 
-Here, we can see that VoodooI2C is attached to GPI0 so no edits are needed for GPI0 and you can skip to the next section.
+Here, we can see that VoodooGPIO is attached to GPI0 so no edits are needed for GPI0 and you can skip to the next section.
 
-If VoodooI2C isn't attached, then you may need to modify the `_STA` method in the `GPI0` device. In that case, you will need to find the GPI0 device in ACPI.
+If VoodooGPIO isn't attached, then you may need to modify the `_STA` method in the `GPI0` device. In that case, you will need to find the GPI0 device in ACPI.
 
 First open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
@@ -41,7 +40,7 @@ Method (_STA, 0, NotSerialized)
 }
 ```
 
-We want the value returned from _STA to be 0x0F, as 0x00 (Zero) would disable the device. `_STA` currently checks both `SBRG` and `GPEN`. If either `SBRG` or `GPEN` is equal to zero, then zero will be returned. Generally, `SBRG` should not be modified, as modifying it can break the `GPI0` device. Only modify the `GPEN` value if you need to enable the `GPI0` device.
+We want the value returned from _STA to be 0x0F to enable the `GPI0` device. If either `SBRG` or `GPEN` is equal to zero, then zero will be returned and `GPI0` will be disabled. Generally, `SBRG` should not be modified, as modifying it can break the `GPI0` device. Only modify the `GPEN` value if you need to enable the `GPI0` device.
 
 Here's some more examples:
 ![](../../images/Laptops/trackpad-md/gpi0.png)
@@ -73,13 +72,12 @@ Now that we have our ACPI path, lets grab our SSDT and get to work:
 From the first example, we'll want to set GPEN to `One` to allow it to operate in macOS:
 
 ```
+// This is likely already set in the SSDT-GPIO you just downloaded
 If (_OSI ("Darwin"))
 {
-    GPEN = One <- Proper variables
+    GPEN = One
 }
 ```
-
-![](../../images/Laptops/trackpad-md/ssdt-after.png)
 
 You will want to test the SSDT at this point by [compiling the SSDT!](/Manual/compile.md) and adding it to your config.plist. VoodooI2C should now be attached to the GPI0 device as shown at the top of the GPI0 section.
 
@@ -120,9 +118,28 @@ Method (LSTA, 1, Serialized)
 
 `LSTA` checks `Arg0` and `OSYS`. `Arg0` is the value passed in from where it's called. In this example, `_STA` passes in `SMD1` as Arg0. This value should already be correct. The value which we should check is `OSYS`, which is a value which stores information about the current OS running. We will want to look for any place in which `OSYS` is set (`OSYS = 0x07DC` for example). In this DSDT, this is set under `\_SB.PCI0._INI` as shown below:
 
-![]()
+![](../../images/Laptops/trackpad-md/ini.png)
 
-There are various checks for many different versions of Windows, but there is no check for `Darwin`. We generally want to set `OSYS` to the value for the latest version of Windows in order to enable the most capabilities.
+There are various checks for many different versions of Windows, but there is no check for `Darwin` (which Apple's ACPI usually checks for). We generally want to set `OSYS` to the value for the latest version of Windows in order to enable the most features. In this case, the latest version of Windows is "Windows 2015", or [Windows 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems). This means that we should set OSYS to `0x07DF`. Notice that this value is greater than the `OSYS < 0x07DC` value being checked for earlier, which means that the check in LSTA should return `0x0F` now.
+
+**Before:**
+```
+If (_OSI ("Darwin"))
+{
+    GPEN = One
+}
+```
+
+**After:**
+```
+If (_OSI ("Darwin"))
+{
+    GPEN = One
+    OSYS = 0x07DF
+}
+```
+
+Note that Windows will also return true for checks of earlier versions of the OS. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, `WNTF = 0x01` allows DYTC thermal management to work on newer Thinkpads, though this only gets set in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used.
 
 ## Wrapping up
 
