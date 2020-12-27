@@ -79,6 +79,14 @@ If (_OSI ("Darwin"))
 }
 ```
 
+For the second example, you'd want to remove GPEN and use the below:
+```
+If (_OSI ("Darwin"))
+{
+    GPHD = Zero
+}
+```
+
 You will want to test the SSDT at this point by [compiling the SSDT!](/Manual/compile.md) and adding it to your config.plist. VoodooI2C should now be attached to the GPI0 device as shown at the top of the GPI0 section.
 
 ## Enabling Trackpad
