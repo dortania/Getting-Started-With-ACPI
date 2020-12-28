@@ -5,7 +5,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "XOSI", 0x00001000)
         // Based off of https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi
         // Add OSes from the above list as needed, most only check up to Windows 2015
         // but check what your DSDT looks for
-        Local0 = Package (0x13)
+        Local0 = Package ()
             {
                 "Windows 2001", 
                 "Windows 2001.1", 
