@@ -31,7 +31,7 @@ What are all these options?:
   * IRQ patching, mainly needed for X79, X99 and laptop users(use option `C` to omit conflicting legacy IRQs)
 * `2. FakeEC     - OS-aware Fake EC`
   * This is the SSDT-EC, required for Catalina users
-* `3. FakeEC Laptop		- OS-aware Fake EC`
+* `3. FakeEC Laptop  - OS-aware Fake EC`
   * This is the SSDT-EC, but the laptop version only Builds Fake EC and leaves the existing EC devices untouched, again required for Catalina users
 * `4. PluginType - Sets plugin-type = 1 on First ProcessorObj`
   * This is the SSDT-PLUG, for Intel only
@@ -44,7 +44,6 @@ What are all these options?:
 * `8. Dump DSDT  - Automatically dump the system DSDT`
   * Dumps your DSDT from your firmware
 
-
 What we want to do is select option `8. Dump DSDT` first, then select the appropriate option(s) for your system.
 
 > What about USBX?
@@ -55,12 +54,12 @@ For Skylake and newer plus AMD, you can grab a pre-built file here: [SSDT-USBX.a
 
 ## Adding to OpenCore
 
-Don't forget that SSDTs need to be added to Opencore, reminder that .aml is complied, .dsl is code. **Add only the .aml file**:
+Don't forget that SSDTs need to be added to OpenCore, reminder that .aml is complied, .dsl is code. **Add only the .aml file**:
 
 * EFI/OC/ACPI
 * config.plist -> ACPI -> Add
 
-Reminder that Cmd/Crtl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. **Do not add your DSDT to OpenCore, its already in your firmware**. If you are unsure what this is referring to, go back to the OpenCore guide and select your config based of the architecture of your CPU.
+Reminder that Cmd/Ctrl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. **Do not add your DSDT to OpenCore, its already in your firmware**. If you are unsure what this is referring to, go back to the OpenCore guide and select your config based of the architecture of your CPU.
 
 For those who do not yet have a config.plist, you'll want to next head back to your respective OpenCore guides and create the config.plist:
 

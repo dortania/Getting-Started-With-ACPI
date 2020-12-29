@@ -7,7 +7,7 @@
 
 ## Finding the ACPI device
 
-Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 Next, search for the following devices:
 
@@ -21,7 +21,6 @@ If none of the 3 show up, you'll need to create an SSDT-IMEI.
 
 The rest of this page will however assume none of those 3 devices showed up.
 
-
 ## Compiling the SSDT
 
 So there's actually no edits required to SSDT-IMEI, you can either grab the source code and compile yourself or use the prebuilt
@@ -29,7 +28,6 @@ So there's actually no edits required to SSDT-IMEI, you can either grab the sour
 * [Prebuilt SSDT-IMEI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI-S.aml)
 
 * [SSDT-IMEI's source code](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-IMEI.dsl)
-
 
 With the SSDT done, you're now [ready to compile the SSDT!](/Manual/compile.md)
 

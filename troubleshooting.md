@@ -59,16 +59,16 @@ Acpi table [DSDT] successfully installed and loaded
 Pass 1 parse of [DSDT]
 ```
 
-This is a common error on DSDTs that have methods that aren't supported by maciASL, the easiest way is to delete maciASL and make sure you grab it from Acidanthera's repo: [maciASL](https://github.com/acidanthera/MaciASL/releases)
+This is a common error on DSDTs that have methods that aren't supported by MaciASL, the easiest way is to delete MaciASL and make sure you grab it from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
 
 ## Invalid character (0x3D), expecting ASL keyword or name
 
 ![](/troubleshooting-md/invalid-parse.png)
 
-Similar to the above error, you're running an outdated copy of maciASL. Make sure you're using the latest from Acidanthera's repo: [maciASL](https://github.com/acidanthera/MaciASL/releases)
+Similar to the above error, you're running an outdated copy of MaciASL. Make sure you're using the latest from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
 
 ## Syntax error, unexpected PARSEOP_ONE, expecting '('
 
 ![](/troubleshooting-md/invalid-parse.png)
 
-Similar to the above 2 errors, you're running an outdated copy of maciASL. Make sure you're using the latest from Acidanthera's repo: [maciASL](https://github.com/acidanthera/MaciASL/releases)
+Similar to the above 2 errors, you're running an outdated copy of MaciASL. Make sure you're using the latest from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)

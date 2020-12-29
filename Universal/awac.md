@@ -31,5 +31,5 @@ For the RTC fix, there are 3 methods you can choose from:
   * **Does not support HEDT**
 * [Manual](/Universal/awac-methods/manual.md)
   * For most users
-* [Manual-HEDT](/Universal/awac-methods/manual-hedt.md)
+* [Manual HEDT](/Universal/awac-methods/manual-hedt.md)
   * For X99 and X299 users

@@ -2,7 +2,7 @@
 
 * [What this SSDT does](#what-this-ssdt-does)
 * [Methods to make this SSDT](#methods-to-make-this-ssdt)
- 
+
 ## What this SSDT does
 
 This SSDT is required for all "true" 300 series motherboards(Z370 is excluded), it specifically brings back NVRAM support and requires very little configuration for the end user.
@@ -10,7 +10,7 @@ This SSDT is required for all "true" 300 series motherboards(Z370 is excluded), 
 * B360
 * B365
 * H310
-* H370(HM370shouldn't require this)
+* H370 (HM370 shouldn't require this)
 * Z390
 
 10th gen motherboards **do not** need this SSDT, NVRAM's native on these platforms.

@@ -1,4 +1,4 @@
-# Pre-Built SSDTs
+# Prebuilt SSDTs
 
 Simply select your hardware type and generation, then download the associated files. Once downloaded, place them in your EFI under EFI/OC/ACPI and head back to [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -65,7 +65,6 @@ SSDT-EC:
     * ie. B75, Q75, Z75, H77, Q77, Z77
   * Required Ivy Bridge CPU with 6 series motherboard
     * ie. H61, B65, Q65, P67, H67, Q67, Z68
-
 
 Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
 
@@ -215,9 +214,7 @@ SSDT-RHUB:
 
 :::
 
-
 ## Intel Laptop SSDTs
-
 
 ### Laptop Clarksfield and Arrandale
 
@@ -503,9 +500,7 @@ SSDT-XOSI:
 * Enables many Windows-only functionality in macOS
   * Requires XOSI patch(covered later on)
 
-
 :::
-
 
 ## Intel HEDT SSDTs
 
@@ -529,9 +524,7 @@ SSDT-EC:
 
 :::
 
-
 ### Sandy and Ivy Bridge-E
-
 
 ::: tip SSDTs required
 
@@ -632,7 +625,6 @@ SSDT-RTC0-RANGE-HEDT:
 
 :::
 
-
 ## AMD SSDTs
 
 ### AMD Bulldozer/Jaguar
@@ -684,6 +676,3 @@ SSDT-CPUR:
 * Used for fixing CPU definitions in ACPI, as macOS does not properly support the ACPI used in B550 and newer boards
 
 :::
-
-
-

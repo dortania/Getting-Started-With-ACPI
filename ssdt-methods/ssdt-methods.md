@@ -4,7 +4,7 @@ Creating SSDTs mainly fall into 3 camps:
 
 * [Prebuilt SSDTs](../ssdt-methods/ssdt-prebuilt.md)
   * They're universal but don't teach much
-  * For most users, we recommend this as it does not require any compling
+  * For most users, we recommend this as it does not require any compiling
 * [Automated tools](../ssdt-methods/ssdt-easy.md)
   * Mainly seen with SSDTTime, work much better than prebuilts as there's less bloat however doesn't teach you much
 * [Manually creating them](../ssdt-methods/ssdt-long.md)

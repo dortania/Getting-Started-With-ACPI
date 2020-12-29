@@ -32,8 +32,8 @@ Some guidelines when contributing via PRs:
   * Tools explicitly banned:
     * UniBeast, MultiBeast and KextBeast
       * More info can be found here: [Tonymacx86-stance](https://github.com/khronokernel/Tonymcx86-stance)
-    * Transmac
-      * Know for creating borked USB drives
+    * TransMac
+      * Known for creating borked USB drives
     * Niresh Installers
       * We'd like to avoid piracy with the guides
 

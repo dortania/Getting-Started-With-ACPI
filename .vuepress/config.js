@@ -203,7 +203,7 @@ module.exports = {
 		                ['/Universal/awac-methods/prebuilt', 'Prebuilt'],
 		                ['/Universal/awac-methods/ssdttime', 'SSDTTime'],
 		                ['/Universal/awac-methods/manual', 'Manual'],
-						['/Universal/awac-methods/manual-hedt', 'Manual-HEDT'],
+						['/Universal/awac-methods/manual-hedt', 'Manual HEDT'],
 		            ]
 		        },
                 ['/Universal/nvram', 'NVRAM PMC'],

@@ -49,22 +49,24 @@ The specifics are due to [Endianness](https://en.wikipedia.org/wiki/Endianness) 
 ### Linux
 
 If you can run Linux, use command `lspci -vmmnnD -d 1002::0300`
+
 ```
 $ lspci -vmmnnD -d 1002::0300
-Slot:	0000:01:00.0
-Class:	VGA compatible controller [0300]
-Vendor:	Advanced Micro Devices, Inc. [AMD/ATI] [1002]
-Device:	Oland [Radeon HD 8570 / R7 240/340 / Radeon 520 OEM] [6611]
-SVendor:	Micro-Star International Co., Ltd. [MSI] [1462]
-SDevice:	Device [3740]
-Rev:	87
+Slot: 0000:01:00.0
+Class: VGA compatible controller [0300]
+Vendor: Advanced Micro Devices, Inc. [AMD/ATI] [1002]
+Device: Oland [Radeon HD 8570 / R7 240/340 / Radeon 520 OEM] [6611]
+SVendor: Micro-Star International Co., Ltd. [MSI] [1462]
+SDevice: Device [3740]
+Rev: 87
 ```
 
 You can easily get
-- Slot ID `0000:01:00.0`, we need it later
-- Vendor ID `1002`, all AMD devices have this ID
-- Device ID `6611`, this is what we care about
-- Device name `Radeon HD 8570 / R7 240/340 / Radeon 520 OEM`, mainly cosmetic
+
+* Slot ID `0000:01:00.0`, we need it later
+* Vendor ID `1002`, all AMD devices have this ID
+* Device ID `6611`, this is what we care about
+* Device name `Radeon HD 8570 / R7 240/340 / Radeon 520 OEM`, mainly cosmetic
 
 ## Finding the ACPI Path of the GPU
 
