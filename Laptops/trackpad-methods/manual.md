@@ -5,10 +5,9 @@
 * [Compiling the SSDT](#compiling-the-ssdt)
 * [Wrapping up](#wrapping-up)
 
-
 ## Finding the ACPI path
 
-Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 Next search for `Device (GPI0)`. Should give you a result similar to this:
 
@@ -37,7 +36,6 @@ Here's some more examples:
 ![](../../images/Laptops/trackpad-md/gpi0-2.png)
 
 With this example, we can see that we need both `SBRG` and `GPEN` to return `One`. If only one is present, it'll create some issues so in our SSDT we'll want to have both of them return `One`:
-
 
 ## Edits to the sample SSDT
 

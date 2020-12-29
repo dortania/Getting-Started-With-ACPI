@@ -2,8 +2,7 @@
 
 * [What this SSDT does](#what-this-ssdt-does)
 * [Methods to make this SSDT](#methods-to-make-this-ssdt)
-	
-	
+
 ## What this SSDT does
 
 This SSDT is used to force enable our GPI0 for VoodooI2C to connect onto.

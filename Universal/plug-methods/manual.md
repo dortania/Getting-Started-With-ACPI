@@ -16,7 +16,7 @@ To find the ACPI pathing, you have 2 methods:
 
 ### DSDT
 
-CPU naming is fairly easy to figure out, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+CPU naming is fairly easy to figure out, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 Next search for `Processor`. This should give you a result like this:
 
@@ -26,7 +26,7 @@ As we can see, the first processor in our list is `SB.PR00`. This is what we'll 
 
 **X99 and X299 note**:
 
-Due to the different DSDT structure of these systems, you'll need to to actually check in multiple places as the pathing isn't as obvious:
+Due to the different DSDT structure of these systems, you'll need to actually check in multiple places as the pathing isn't as obvious:
 
 ![](../../images/Universal/plug-md/processor-2.png)
 

@@ -2,7 +2,7 @@
 
 * [What this SSDT does](#what-this-ssdt-does)
 * [Methods to make this SSDT](#methods-to-make-this-ssdt)
- 
+
 ## What this SSDT does
 
 This SSDT is required for all X99 and many X79 boards, it specifically disables unused devices in ACPI ensuing IOPCIFamily doesn't kernel panic. This requires very little configuration for the end user.

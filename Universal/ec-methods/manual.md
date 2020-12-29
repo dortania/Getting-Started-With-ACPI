@@ -1,17 +1,17 @@
 # Fixing Embedded Controllers: Manual
 
-- [Fixing Embedded Controllers: Manual](#fixing-embedded-controllers-manual)
-  - [Finding the ACPI path](#finding-the-acpi-path)
-    - [DSDT](#dsdt)
-    - [DeviceManager](#devicemanager)
-  - [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-  - [Edge Cases](#edge-cases)
-    - [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
-    - [No PNP0C09 show up](#no-pnp0c09-show-up)
-    - [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-    - [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
-  - [Compiling the SSDT](#compiling-the-ssdt)
-  - [Wrapping up](#wrapping-up)
+* [Fixing Embedded Controllers: Manual](#fixing-embedded-controllers-manual)
+  * [Finding the ACPI path](#finding-the-acpi-path)
+    * [DSDT](#dsdt)
+    * [DeviceManager](#devicemanager)
+  * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
+  * [Edge Cases](#edge-cases)
+    * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
+    * [No PNP0C09 show up](#no-pnp0c09-show-up)
+    * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
+    * [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
+  * [Compiling the SSDT](#compiling-the-ssdt)
+  * [Wrapping up](#wrapping-up)
 
 TO-DO:
 
@@ -26,7 +26,7 @@ To find the ACPI pathing, you have 2 methods:
 
 ### DSDT
 
-Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 Next, search for `PNP0C09`. You should get something similar:
 
@@ -43,18 +43,18 @@ But now we get into edge case territory, what fun!
 
 The main ones to check for are:
 
-- [Fixing Embedded Controllers: Manual](#fixing-embedded-controllers-manual)
-  - [Finding the ACPI path](#finding-the-acpi-path)
-    - [DSDT](#dsdt)
-    - [DeviceManager](#devicemanager)
-  - [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-  - [Edge Cases](#edge-cases)
-    - [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
-    - [No PNP0C09 show up](#no-pnp0c09-show-up)
-    - [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-    - [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
-  - [Compiling the SSDT](#compiling-the-ssdt)
-  - [Wrapping up](#wrapping-up)
+* [Fixing Embedded Controllers: Manual](#fixing-embedded-controllers-manual)
+  * [Finding the ACPI path](#finding-the-acpi-path)
+    * [DSDT](#dsdt)
+    * [DeviceManager](#devicemanager)
+  * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
+  * [Edge Cases](#edge-cases)
+    * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
+    * [No PNP0C09 show up](#no-pnp0c09-show-up)
+    * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
+    * [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
+  * [Compiling the SSDT](#compiling-the-ssdt)
+  * [Wrapping up](#wrapping-up)
 
 If none of the above apply to you, you're ready for the next section:
 
@@ -78,7 +78,6 @@ Now that we have our ACPI path, lets grab our SSDT and get to work:
   * For Skylake and newer and all AMD systems
 * [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
   * For Broadwell and older
-  
   
 Now when opening this SSDT, you'll notice a few things. Mainly:
 
@@ -110,8 +109,6 @@ Scope (_SB.PC00.LPC0) <- Renamed
 
 ![](../../images/Desktops/ssdt-after.png)
 
-
-
 ## Edge Cases
 
 ### Multiple PNP0C09's show up
@@ -132,17 +129,17 @@ When this happens, you'll only need to create a "dummy" EC for macOS.
 
 Try searching for any devices named: "LPCB", "LPC0", "LPC", "SBRG", "PX40". If you have any of these, try using the LPC pathing of each of those device in place of the Embedded Controller's pathing.
 
-Note that **DO NOT** uncomment the EC disaling code as there are no devices that are considered "EC" in your machine.
+Note that **DO NOT** uncomment the EC disabling code as there are no devices that are considered "EC" in your machine.
 
 ### PNP0C09 already named `EC`
 
-Congrats! No need to create an SSDT-EC! However you will still want USBX if you're skylake or newer.
+Congrats! No need to create an SSDT-EC! However you will still want USBX if you're Skylake or newer.
 
 Prebuilt can be grabbed here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 
 ### PNP0C09 already has an `_STA` method
 
-This is the equivalent of not having an EC as we can't control it with our SSDT-EC, instead we'll need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX. 
+This is the equivalent of not having an EC as we can't control it with our SSDT-EC, instead we'll need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX.
 
 Example of an EC with STA already:
 

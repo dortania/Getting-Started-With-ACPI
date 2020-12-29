@@ -1,6 +1,5 @@
 # Fixing System Clocks on HEDT: Manual
 
-
 * [Finding the ACPI path](#finding-the-acpi-path)
 * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 * [Compiling the SSDT](#compiling-the-ssdt)
@@ -8,7 +7,7 @@
 
 ## Seeing if you need SSDT-RTC0-RANGE
 
-To start, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+To start, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 Now search for `PNP0B00` and look at the `_CRS` entry within it:
 
@@ -23,10 +22,9 @@ Now the problem is that the OEM forgot to mat sections 0x72 and 0x73. Because of
 
 And finally, verify if it has an _STA method as well. This will be used shortly
 
-
 ## Finding the ACPI path
 
-Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+Finding the ACPI pathing is quite easy actually, first open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux(VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 To start, search for the following:
 
@@ -79,8 +77,8 @@ Scope (_SB.PCI0.LPC0.RTC) <- Renamed
 Scope (_SB.PCI0.LPC0) <- Renamed
 
 
-		/* <- Remove if your RTC device didn't have an _STA
-		Scope (RTC)
+  /* <- Remove if your RTC device didn't have an _STA
+  Scope (RTC)
         {
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
@@ -94,7 +92,7 @@ Scope (_SB.PCI0.LPC0) <- Renamed
                 }
             }
         }
-		*/ <- Remove if your RTC device didn't have an _STA
+  */ <- Remove if your RTC device didn't have an _STA
 ```
 
 ![](../../images/Universal/awac-md/ssdt-after-rename-hedt.png)

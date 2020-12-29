@@ -1,6 +1,6 @@
 # Cleanup
 
-So you've made all your SSDTs but now there's one thing left: Adding them to Opencore
+So you've made all your SSDTs but now there's one thing left: Adding them to OpenCore
 
 The 2 main locations:
 

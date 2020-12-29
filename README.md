@@ -13,7 +13,7 @@ You can read more about ACPI and it's spec here: [ACPI 6.3 Manual](https://uefi.
 macOS can be very picky about the devices present in the DSDT and so our job is to correct it. The main devices that need to be corrected for macOS to work properly:
 
 * Embedded controllers(EC)
-  * All semi-modern intel machines have an EC (usually called H\_EC, ECDV, EC0, etc...) exposed in their DSDT, with many AMD systems also having it exposed. These controllers are generally not compatible with macOS and can cause panics, so then need to be hidden from macOS. macOS Catalina requires a device named `EC` to be present though, so a dummy EC is created.
+  * All semi-modern Intel machines have an EC (usually called H\_EC, ECDV, EC0, etc...) exposed in their DSDT, with many AMD systems also having it exposed. These controllers are generally not compatible with macOS and can cause panics, so then need to be hidden from macOS. macOS Catalina requires a device named `EC` to be present though, so a dummy EC is created.
   * With laptops, the actual embedded controller still needs to be enabled for battery and hotkeys to work, and renaming the EC can additionally cause issues with windows, so creating a fake EC without disabling the real embedded controller is preferable.
 * Plugin type
   * This allows the use of XCPM providing native CPU power management on **Intel** Haswell and newer CPUs, the SSDT will connect to the first thread of the CPU. Not meant for AMD

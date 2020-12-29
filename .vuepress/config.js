@@ -3,20 +3,7 @@ const {
 } = require('../package')
 
 module.exports = {
-    /**
-     * Ref：https://v1.vuepress.vuejs.org/config/#title
-     */
     title: 'Getting Started With ACPI',
-    /**
-     * Ref：https://v1.vuepress.vuejs.org/config/#description
-     */
-    description: description,
-
-    /**
-     * Extra tags to be injected to the page HTML `<head>`
-     *
-     * ref：https://v1.vuepress.vuejs.org/config/#head
-     */
     head: [
         ['meta', {
             name: 'theme-color',
@@ -37,6 +24,22 @@ module.exports = {
     ],
     base: '/Getting-Started-With-ACPI/',
 
+	watch: {
+	    $page(newPage, oldPage) {
+	      if (newPage.key !== oldPage.key) {
+	        requestAnimationFrame(() => {
+	          if (this.$route.hash) {
+	            const element = document.getElementById(this.$route.hash.slice(1));
+
+	            if (element && element.scrollIntoView) {
+	              element.scrollIntoView();
+	            }
+	          }
+	        });
+	      }
+	    }
+	  },
+	
 	markdown: {
 		extendMarkdown: md => {
 			md.use(require('markdown-it-multimd-table'), {
@@ -58,10 +61,9 @@ module.exports = {
     themeConfig: {
         lastUpdated: true,
         repo: 'https://github.com/dortania/Getting-Started-With-ACPI',
-        editLinks: false,
-        docsDir: '',
-        editLinkText: '',
-        logo: '/homepage.png',
+        editLinks: true,
+        editLinkText: 'Help us improve this page!',
+        logo: 'homepage.png',
         nav: [{
             text: 'Dortania Guides',
             ariaLabel: 'Language Menu',
@@ -91,12 +93,6 @@ module.exports = {
             },
             ]
         },
-            /*
-              {
-                text: 'Github',
-                link: 'https://github.com/dortania/OpenCore-Install-Guide'
-              }
-            */
         ],
         sidebar: [{
             title: 'Introduction',
@@ -207,7 +203,7 @@ module.exports = {
 		                ['/Universal/awac-methods/prebuilt', 'Prebuilt'],
 		                ['/Universal/awac-methods/ssdttime', 'SSDTTime'],
 		                ['/Universal/awac-methods/manual', 'Manual'],
-						['/Universal/awac-methods/manual-hedt', 'Manual-HEDT'],
+						['/Universal/awac-methods/manual-hedt', 'Manual HEDT'],
 		            ]
 		        },
                 ['/Universal/nvram', 'NVRAM PMC'],
