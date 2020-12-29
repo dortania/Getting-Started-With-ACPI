@@ -1,4 +1,4 @@
-# Getting a copy of our DSDT
+# Getting a copy of your DSDT
 
 So to start, we'll need to get a copy of your DSDT from your firmware. The easiest way is grabbing the DSDT.aml SSDTTime dumped for us earlier but here are some other options:
 
@@ -38,7 +38,7 @@ With OpenCore, we have 2 options:
 
 ### SysReport Quirk
 
-With OpenCore 0.5.9, we have a new quirk called SysReport which will actually dump our DSDT automatically when hitting the boot screen. The main issues are:
+With OpenCore 0.5.9, we have a new quirk called SysReport which will actually dump your DSDT automatically when hitting the boot screen. The main issues are:
 
 * You already need a bootable OpenCore USB to get this dump
 * This also requires a DEBUG version of 0.5.9
