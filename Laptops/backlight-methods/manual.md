@@ -25,8 +25,8 @@ From the above example, we can see our display is hooked up to `PCI0.GFX0`
 
 Now that we have our ACPI path, lets grab our SSDT and get to work:
 
-* [SSDT-PNLF.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLF.dsl)
-* [SSDT-PNLFCFL.dsl](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/SSDT-PNLFCFL.dsl)
+* [SSDT-PNLF.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PNLF.dsl)
+* [SSDT-PNLFCFL.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PNLFCFL.dsl)
   * For Coffee Lake and newer
 
 By default, this uses `PCI0.GFX0` for the pathing. you'll want to rename accordingly. For this example, we'll assume your pathing is `PCI0.GPU0`:
