@@ -30,7 +30,7 @@ But to double check, next search for `PNP0B00`:
 
 And looks at that, we can in fact disable our AWAC and enable the RTC! If not skip to here: [RTC0 Method](#rtc0-method)
 
-Now it's as simple as grabbing [SSDT-AWAC.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-AWAC.dsl) and [compile](#compiling-the-ssdt), no changes needed You can also use the below SSDT to the same effect:
+Now it's as simple as grabbing [SSDT-AWAC.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-AWAC.dsl) and [compile](#compiling-the-ssdt), no changes needed You can also use the below SSDT to the same effect:
 
 * [SSDT-AWAC.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
 
@@ -59,7 +59,7 @@ From the above, we can see we have both `PCI0` and `LPC`. Now we can head to the
 
 Now that we have our ACPI path, lets grab our SSDT and get to work:
 
-* [SSDT-RTC0.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0.dsl)
+* [SSDT-RTC0.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0.dsl)
 
 By default, this uses `PCI0.LPCB` for the pathing. you'll want to rename accordingly.
 

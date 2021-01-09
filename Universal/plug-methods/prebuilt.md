@@ -4,7 +4,7 @@ By far the easiest way to get SSDT-PLUG is just downloading the below file:
 
 * [SSDT-PLUG-DRTNIA.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 
-This prebuilt file is just a precompiled version of [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl) provided by Acidanthera.
+This prebuilt file is just a precompiled version of [SSDT-PLUG](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-PLUG.dsl) provided by Acidanthera.
 
 The main things to note with this method:
 

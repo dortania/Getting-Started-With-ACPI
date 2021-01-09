@@ -47,7 +47,7 @@ From the above, we can see we have `RTC`, `LPC0` and `PCI0`. Now we can head to 
 
 Now that we have our ACPI path, lets grab our SSDT and get to work:
 
-* [SSDT-RTC0-RANGE.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-RTC0-RANGE.dsl)
+* [SSDT-RTC0-RANGE.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-RTC0-RANGE.dsl)
 
 By default, this uses `PC00.LPC0.RTC` for the pathing. you'll want to rename accordingly.
 

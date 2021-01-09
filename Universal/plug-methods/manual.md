@@ -65,7 +65,7 @@ Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-th
 
 Now that we have our ACPI path, lets grab our SSDT and get to work:
 
-* [SSDT-PLUG.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PLUG.dsl)
+* [SSDT-PLUG.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-PLUG.dsl)
 
 From the above SSDT, it's very likely your processor is already there. If so, you can delete all the other entries other than yours and the `Method PMPM` as this is what injects the `plugin-type=1` property into our system.
 

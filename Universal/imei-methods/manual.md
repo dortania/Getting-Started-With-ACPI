@@ -27,7 +27,7 @@ So there's actually no edits required to SSDT-IMEI, you can either grab the sour
 
 * [Prebuilt SSDT-IMEI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-IMEI-S.aml)
 
-* [SSDT-IMEI's source code](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-IMEI.dsl)
+* [SSDT-IMEI's source code](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-IMEI.dsl)
 
 With the SSDT done, you're now [ready to compile the SSDT!](/Manual/compile.md)
 

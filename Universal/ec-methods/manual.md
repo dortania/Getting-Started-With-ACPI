@@ -74,9 +74,9 @@ Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-th
 
 Now that we have our ACPI path, lets grab our SSDT and get to work:
 
-* [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC-USBX.dsl)
+* [SSDT-EC-USBX](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EC-USBX.dsl)
   * For Skylake and newer and all AMD systems
-* [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl)
+* [SSDT-EC](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-EC.dsl)
   * For Broadwell and older
   
 Now when opening this SSDT, you'll notice a few things. Mainly:

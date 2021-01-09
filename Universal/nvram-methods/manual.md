@@ -28,7 +28,7 @@ Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-th
 
 Now that we have our ACPI path, lets grab our SSDT and get to work:
 
-* [SSDT-PMC.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl)
+* [SSDT-PMC.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-PMC.dsl)
 
 By default, this uses `PCI0.LPCB` for the pathing. you'll want to rename accordingly.
 

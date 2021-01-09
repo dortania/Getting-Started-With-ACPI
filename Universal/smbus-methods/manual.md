@@ -46,7 +46,7 @@ With the ACPI pathing, you can now head here: [Edits to the sample SSDT](#edits-
 
 Now that we know the ACPI pathing of the SMBus, we can finally start editing the our SSDT.
 
-* [SSDT-SBUS-MCHC.dsl](https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-SBUS-MCHC.dsl)
+* [SSDT-SBUS-MCHC.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-SBUS-MCHC.dsl)
 
 So the important parts we care about are:
 

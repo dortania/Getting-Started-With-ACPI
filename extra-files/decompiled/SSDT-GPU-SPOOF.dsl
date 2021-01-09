@@ -1,5 +1,5 @@
 // Based off of WhateverGreen's sample.dsl
-// https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/Sample.dsl
+// https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/Sample.dsl
 DefinitionBlock ("", "SSDT", 2, "DRTNIA", "AMDGPU", 0x00001000)
 {
     External (_SB_.PCI0, DeviceObj)
