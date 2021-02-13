@@ -17,7 +17,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "RhubOff", 0x00001000)
                      }
                      Else
                      {
-                        Return (0x0F) // Re-enables it for Windows
+                        Return (0x0F) // Re-enables it for Windows 
                      }
            }                    
         }  
