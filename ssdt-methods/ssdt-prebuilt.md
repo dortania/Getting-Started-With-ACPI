@@ -528,8 +528,6 @@ SSDT-EC:
 
 ::: tip SSDTs required
 
-* [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
-  * Only supported with Ivy Bridge-E
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 * [SSDT-UNC0](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-UNC0.aml)
 
@@ -540,11 +538,6 @@ Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back
 :::
 
 ::: details In-depth info on the SSDTs
-
-SSDT-PLUG:
-
-* Used for enabling Apple's XCPM in macOS, allowing for far better CPU power management
-* Only supported with Ivy Bridge-E
 
 SSDT-EC:
 

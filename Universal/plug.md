@@ -10,8 +10,6 @@ The purpose of SSDT-PLUG is to allow the kernel's XCPM(XNU's CPU Power Managemen
 
 **Note**: SSDT-PLUG is only compatible with Intel's Haswell and newer CPUs, Sandy Bridge and Ivy Bridge will need to follow the [ssdtPRgen method](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management)(in post-install) while AMD users should not use this(unless attempting to attach AGPM which is outside the scope of Dortania's guides)
 
-* Ivy Bridge-E(HEDT/server) however is supported by XCPM
-
 ## Methods to make this SSDT
 
 For SSDT-PLUG, there are 3 methods you can choose from:
