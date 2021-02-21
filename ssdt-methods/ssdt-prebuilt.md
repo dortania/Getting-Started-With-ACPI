@@ -14,7 +14,7 @@ Simply select your hardware type and generation, then download the associated fi
   * [Sandy and Ivy Bridge](#laptop-sandy-and-ivy-bridge)
   * [Haswell and Broadwell](#laptop-haswell-and-broadwell)
   * [Skylake and Kaby Lake](#laptop-skylake-and-kaby-lake)
-  * [Coffee Lake(8th gen)](#laptop-coffee-lake8th-gen)
+  * [Coffee Lake(8th gen)](#laptop-coffee-lake-8th-gen)
   * [Coffee and Comet Lake(9th and 10th gen)](#laptop-coffee-and-comet-lake-9th-and-10th-gen)
   * [Ice Lake](#laptop-ice-lake)
 * [Intel HEDT SSDTs](#intel-hedt-ssdts)

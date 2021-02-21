@@ -6,7 +6,7 @@ To get the SSDT-RHUB, run the following:
 
 * `7. Dump DSDT` then run `7. USB Reset`
 
-This will provide you with some files, the main one you care about is SSDT-USB-Rest.**aml**(Same file as SSDT-RHUB). The DSDT and .dsl are only left for referencing or verification.
+This will provide you with some files, the main one you care about is SSDT-USB-Reset.**aml**(Same file as SSDT-RHUB). The DSDT and .dsl are only left for referencing or verification.
 
 The main things to note with this method:
 

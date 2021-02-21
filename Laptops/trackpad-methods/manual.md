@@ -61,11 +61,17 @@ Following the example pathing we found, the SSDT should look something like this
 **After**:
 
 ```
-If (_OSI ("Darwin"))
+
+External(GPEN, FieldUnitObj) <- Declare the right variables
+External(SBRG, FieldUnitObj) <- Declare the right variables
+
+Scope (\)
 {
-    GPEN = One <- Change to the right variables
-    SBRG = One <- Change to the right variables
-}
+    If (_OSI ("Darwin"))
+    {
+        GPEN = One <- Change to the right variables
+        SBRG = One <- Change to the right variables
+    }
 ```
 
 ![](../../images/Laptops/trackpad-md/ssdt-after.png)
