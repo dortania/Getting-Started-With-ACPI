@@ -4,8 +4,7 @@
   * [Hackintool](#hackintool)
   * [DeviceManager](#devicemanager)
 * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-* [Compiling the SSDT](#compiling-the-ssdt)
-* [Wrapping up](#wrapping-up)
+* [Verify it's working](#verify-its-working)
 
 ## Finding the ACPI path
 
@@ -89,16 +88,6 @@ Device (_SB.PC00.SMBS.BUS0) <- Renamed
 ```
 
 ![](../../images/Universal/smbus-md/after-rename.png)
-
-# Compiling the SSDT
-
- With the SSDT done, you're now [ready to compile the SSDT!](/Manual/compile.md)
-
-# Wrapping up
-
-Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
-
-* [**Cleanup**](/cleanup.md)
 
 # Verify it's working
 
