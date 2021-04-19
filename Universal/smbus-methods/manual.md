@@ -90,17 +90,17 @@ Device (_SB.PC00.SMBS.BUS0) <- Renamed
 
 ![](../../images/Universal/smbus-md/after-rename.png)
 
-# Compiling the SSDT
+## Compiling the SSDT
 
  With the SSDT done, you're now [ready to compile the SSDT!](/Manual/compile.md)
 
-# Wrapping up
+## Wrapping up
 
 Once you're done making your SSDT, either head to the next page to finish the rest of the SSDTs or head here if you're ready to wrap up:
 
 * [**Cleanup**](/cleanup.md)
 
-# Verify it's working
+## Verify it's working
 
 Once you've installed macOS, you can actually check whether your SSDT-SBUS-MCHC is working or not in terminal:
 
