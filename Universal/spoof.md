@@ -19,7 +19,7 @@ So to spoof the GPU, we need to find a couple things:
 
 ## Finding a suitable PCI ID
 
-### Web
+### Find suitable PCI ID on the Internet
 
 To find a suitable PCI ID, we'll be using [PCI ID Repository](https://pci-ids.ucw.cz/read/PC/1002) which has a full database of all AMD GPUs. For this example, we'll be creating a Spoof SSDT for the R9 390. For a full list of supported GPUs, please see the [GPU Buyers Guide](https://dortania.github.io/GPU-Buyers-Guide/). The closest match to this GPU would be the 390X, and looking on that site near the top gives us this:
 
@@ -46,7 +46,7 @@ As you can see, the bytes are swapped in pairs. Keep this in mind when we make o
 
 The specifics are due to [Endianness](https://en.wikipedia.org/wiki/Endianness) for those who are curious
 
-### Linux
+### Find suitable PCI ID on Linux
 
 If you can run Linux, use command `lspci -vmmnnD -d 1002::0300`
 
