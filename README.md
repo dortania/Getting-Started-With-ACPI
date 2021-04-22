@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: icons/apple-touch-icon-precomposed-152.png
+heroImage: acpi-logo.png
 heroText: Getting started with ACPI
 actionText: Let's start→
 actionLink: ssdt-platform.md
