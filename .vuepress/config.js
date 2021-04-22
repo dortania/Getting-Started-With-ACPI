@@ -95,13 +95,10 @@ module.exports = {
         },
         ],
         sidebar: [{
-            title: 'Introduction',
+            title: 'Choosing the SSDTs',
             collapsable: false,
             sidebarDepth: 1,
-            children: [
-                ['', 'Getting Started With ACPI'],
-				['ssdt-platform', 'Choosing the SSDTs'],
-            ]
+            path: 'ssdt-platform'
 
         },
         {
