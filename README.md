@@ -1,6 +1,13 @@
-# Getting started with ACPI
-
-<img src="icons\apple-touch-icon-precomposed-152.png" width="512">
+---
+home: true
+heroImage: icons/apple-touch-icon-precomposed-152.png
+heroText: Getting started with ACPI
+actionText: Let's start→
+actionLink: ssdt-platform.md
+meta:
+- name: description
+  content: Current supported version 0.6.8
+---
 
 ## A quick explainer on ACPI
 
@@ -30,7 +37,3 @@ macOS can be very picky about the devices present in the DSDT and so our job is 
 * IRQ SSDT and ACPI patches
   * Needed for fixing IRQ conflicts within the DSDT, for laptops mainly. SSDTTime exclusive
   * Note Skylake and newer systems rarely have IRQ conflicts, this is mainly prevalent on Broadwell and older
-
-Now head to the next page on what SSDTs do your systems need:
-
-## [Choosing the SSDTs](ssdt-platform.md)
