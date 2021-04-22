@@ -35,7 +35,7 @@
    "devDependencies": {
       "@vuepress/plugin-back-to-top": "^1.7.1",
       "markdown-it-multimd-table": "^4.0.3",
-      "markdown-link-check": "^3.8.5",
+      "markdown-link-check": "^3.8.7",
       "markdownlint-cli": "^0.26.0",
       "run-script-os": "^1.1.4",
       "spellchecker-cli": "^4.4.0",
