@@ -39,7 +39,7 @@
       "markdownlint-cli": "^0.26.0",
       "run-script-os": "^1.1.4",
       "spellchecker-cli": "^4.4.0",
-      "vuepress": "^1.7.1",
+      "vuepress": "^1.8.2",
       "vuepress-plugin-medium-zoom": "^1.1.9",
       "vuepress-plugin-zooming": "^1.1.8",
       "vuepress-theme-book": "0.0.5",
