@@ -1,6 +1,6 @@
 # Getting started with ACPI
 
-<img src="acpi-logo.png" width="512">
+<img src="icons\apple-touch-icon-precomposed-152.png" width="512">
 
 ## A quick explainer on ACPI
 

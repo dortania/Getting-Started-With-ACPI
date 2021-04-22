@@ -1,13 +1,6 @@
 # Disabling desktops unsupported GPUs(SSDT-GPU-DISABLE)
 
-* [What this SSDT does](#what-this-ssdt-does)
-* [Methods to make this SSDT](#methods-to-make-this-ssdt)
-  * [Prebuilt](#prebuilts)
-  * [SSDTTime](#ssdttime)
-  * [Manual](#manual)
-    * [Finding the ACPI path](#finding-the-acpi-path)
-    * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-    * [Compiling the SSDT](#compiling-the-ssdt)
+[[toc]]
 
 So this is mainly needed for GPUs that are not supported in macOS, mainly this will be Nvidia users who wish to pair an AMD GPU for macOS use. While WhateverGreen does support the boot-arg `-wegnoegpu`, this only works when running on iGPU so for the rest of us we'll need to make an SSDT.
 

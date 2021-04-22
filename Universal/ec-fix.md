@@ -1,8 +1,6 @@
 # Fixing Embedded Controller (SSDT-EC/USBX)
 
-* [Fixing Embedded Controller (SSDT-EC/USBX)](#fixing-embedded-controller-ssdt-ecusbx)
-  * [What this SSDT does](#what-this-ssdt-does)
-  * [Methods to make this SSDT](#methods-to-make-this-ssdt)
+[[toc]]
 
 ## What this SSDT does
 
