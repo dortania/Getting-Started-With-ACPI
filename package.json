@@ -36,7 +36,7 @@
       "@vuepress/plugin-back-to-top": "^1.7.1",
       "markdown-it-multimd-table": "^4.0.3",
       "markdown-link-check": "^3.8.5",
-      "markdownlint-cli": "^0.26.0",
+      "markdownlint-cli": "^0.27.1",
       "run-script-os": "^1.1.4",
       "spellchecker-cli": "^4.4.0",
       "vuepress": "^1.7.1",
