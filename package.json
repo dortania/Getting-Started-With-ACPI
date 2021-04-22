@@ -44,7 +44,7 @@
       "vuepress-plugin-zooming": "^1.1.8",
       "vuepress-theme-book": "0.0.5",
       "vuepress-theme-dark-new": "^0.1.2",
-      "vuepress-theme-succinct": "^1.6.4",
+      "vuepress-theme-succinct": "^1.7.2",
       "vuepress-theme-yuu": "^2.3.0"
    },
    "homepage": "https://dortania.github.io/Getting-Started-With-ACPI/"
