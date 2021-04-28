@@ -1,6 +1,7 @@
 # Fixing Power Management (SSDT-PLUG)
 
 [[toc]]
+
 ## What this SSDT does
 
 The purpose of SSDT-PLUG is to allow the kernel's XCPM(XNU's CPU Power Management) to manage our CPU's power management. It's pretty self explanatory why you'd want this.

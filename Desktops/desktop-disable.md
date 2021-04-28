@@ -53,4 +53,5 @@ For our example, we'll change all mentions of :
 Hint: If your ACPI path is a bit shorter than the example, this is fine. Just make sure the ACPI paths are correct to your device, some users may also need to adapt `_SB_` to their path
 
 ## Compiling the SSDT
+
 With the SSDT done, you're now [ready to compile the SSDT!](/Manual/compile.md)
