@@ -154,6 +154,7 @@ Requires the below SSDT and patch
 
 ::: details Dell Machines
 You may need to add the below patch to allow the backlight keys to work. Credit to Rehabman for the below patch:
+Make sure that this patch appears **BEFORE** the previous _OSI to XOSI patch
 
 | Comment | String | Change _OSID to XSID (to avoid match against _OSI patch)
 | :------ | :----- | :-------- |
