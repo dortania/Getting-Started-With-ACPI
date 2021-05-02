@@ -7,11 +7,13 @@
 
 ## Checking GPI0
 
+This page assumes that you have macOS installed as well as [IORegistryExplorer](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-302.zip)
+
 The first thing which should be checked is the GPI0 device, which is required for VoodooI2C. The best way to check this is working is to use IORegistryExplorer.
 
 ![](../../images/Laptops/trackpad-md/gpio-enabled.png)
 
-Here, we can see that VoodooGPIO is attached to GPI0 so no edits are needed for GPI0. If this is the case for you, you can skip to the [next section](#Enabling-Trackpad).
+Here, we can see that VoodooGPIO is attached to GPI0 so no edits are needed for GPI0. If this is the case for you, you can skip to the [next section](#enabling-trackpad).
 
 If VoodooGPIO isn't attached, then you may need to modify the `_STA` method in the `GPI0` device. In that case, you will need to find the GPI0 device in ACPI.
 
