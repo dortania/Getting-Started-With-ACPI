@@ -152,6 +152,18 @@ Requires the below SSDT and patch
 | Find    | Data    | 5f4f5349 |
 | Replace | Data    | 584f5349 |
 
+::: details Dell Machines
+You may need to add the below patch to allow the backlight keys to work. Credit to Rehabman for the below patch:
+
+| Comment | String | Change _OSID to XSID (to avoid match against _OSI patch)
+| :------ | :----- | :-------- |
+| Enabled | Boolean | YES      |
+| Count   | Number  | 0        |
+| Limit   | Number  | 0        |
+| Find    | Data    | 4F534944 |
+| Replace | Data    | 58534944 | 
+:::
+
 ### Create OSYS Variable Under I2C Scope
 
 You will need to find the device path of your I2C device, and add to your SSDT. You will need to add this in whichever scope checks for OSYS, though won't work if you add this under \_SB.PCI0 since this is generally the same scope in which the _INI method will set depending on the running OS.
@@ -165,7 +177,7 @@ If (_OSI("Darwin")) {
 ```
 
 ### Note:
-Windows will also return true for checks of earlier versions of the OS. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, `WNTF = 0x01` allows DYTC thermal management to work on newer Thinkpads, though this only gets set in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compile your SSDT]([compiling the SSDT](/Manual/compile.md)) and see if the trackpad works.
+Windows will also return true for checks of earlier versions of the OS. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, `WNTF = 0x01` allows DYTC thermal management to work on newer Thinkpads, though this only gets set in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compiling the SSDT](/Manual/compile.md) and see if the trackpad works.
 
 ## Further Setup
 
