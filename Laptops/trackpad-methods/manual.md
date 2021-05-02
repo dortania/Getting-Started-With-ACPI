@@ -132,33 +132,38 @@ Method (LSTA, 1, Serialized)
 
 There are various checks for many different versions of Windows, but there is no check for `Darwin` (which Apple's ACPI usually checks for). We generally want to set `OSYS` to the value for the latest version of Windows in order to enable the most features. In this case, the latest version of Windows is "Windows 2015", or [Windows 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems). This means that we should set OSYS to `0x07DF`. Notice that this value is greater than the `OSYS < 0x07DC` value being checked for earlier, which means that the check in LSTA should return `0x0F` now.
 
-**Before:**
-```
-External (\GPEN, FieldUnitObj)
+The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI, or to set the OSYS value just within the scope of the I2CX device. Attempting to set OSYS directly generally fails as _INI sets a default value which will override whatever value you set.
 
-If (_OSI ("Darwin"))
-{
-    GPEN = One
+### _OSI to XOSI
+
+Requires the below SSDT and patch
+
+* [SSDT-XOSI.dsl](/extra-files/decompiled/SSDT-XOSI.dsl) - If you need to edit the supported OSes
+* [SSDT-XOSI.aml](/extra-files/compiled/SSDT-XOSI.aml) - Precompiled
+* XOSI Rename(add this under config.plist -> ACPI -> Patch):
+
+| Comment | String | Change _OSI to XOSI |
+| :------ | :------ | :------- |
+| Enabled | Boolean | YES      |
+| Count   | Number  | 0        |
+| Limit   | Number  | 0        |
+| Find    | Data    | 5f4f5349 |
+| Replace | Data    | 584f5349 |
+
+### Create OSYS Variable Under I2C Scope
+
+You will need to find the device path of your I2C device, and add to your SSDT. You will need to add this in whichever scope checks for OSYS, though won't work if you add this under \_SB.PCI0 since this is generally the same scope in which the _INI method will set depending on the running OS.
+
+```
+If (_OSI("Darwin")) {
+    Scope (\_SB.PCI0.I2C0) { // I2C0 scope
+        Name (OSYS, 0x7DF)
+    }
 }
 ```
 
-**After:**
-```
-// External type doesn't matter that much. If in doubt, IntObj is fine, or even UnknownObj
-// FieldUnitObj as it's part of a Field Object
-External (\GPEN, FieldUnitObj)
-
-// IntObj because it's created w/ Name(OSYS, value)
-External (\OSYS, IntObj)
-
-If (_OSI ("Darwin"))
-{
-    GPEN = One
-    OSYS = 0x07DF
-}
-```
-
-Note that Windows will also return true for checks of earlier versions of the OS. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, `WNTF = 0x01` allows DYTC thermal management to work on newer Thinkpads, though this only gets set in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compile your SSDT]([compiling the SSDT](/Manual/compile.md)) and see if the trackpad works.
+### Note:
+Windows will also return true for checks of earlier versions of the OS. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, `WNTF = 0x01` allows DYTC thermal management to work on newer Thinkpads, though this only gets set in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compile your SSDT]([compiling the SSDT](/Manual/compile.md)) and see if the trackpad works.
 
 ## Further Setup
 

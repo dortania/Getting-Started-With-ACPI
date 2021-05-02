@@ -11,7 +11,6 @@ Common variables which are set are `OSYS`, `WIN8`, and `GPEN`. Often times, GPI0
 
 ## Methods to make this SSDT
 
-For the trackpad fix, there are 2 methods you can choose from:
+For the trackpad fix, there are only one method to choose from:
 
-* [Prebuilt](/Laptops/trackpad-methods/prebuilt.md)
 * [Manual](/Laptops/trackpad-methods/manual.md)
