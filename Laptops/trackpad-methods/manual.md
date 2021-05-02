@@ -17,7 +17,7 @@ Here, we can see that VoodooGPIO is attached to GPI0 so no edits are needed for 
 
 If VoodooGPIO isn't attached, then you may need to modify the `_STA` method in the `GPI0` device. In that case, you will need to find the GPI0 device in ACPI.
 
-First open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either maciASL(if in macOS) or any other text editor if in Windows or Linux (VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+First open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux (VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 Next search for `Device (GPI0)`. You should get a result similar to this:
 
@@ -82,6 +82,7 @@ If (_OSI ("Darwin"))
 ```
 
 For the second example, you'd want to remove GPEN and use the below:
+
 ```
 If (_OSI ("Darwin"))
 {
@@ -134,7 +135,7 @@ Method (LSTA, 1, Serialized)
 
 There are various checks for many different versions of Windows, but there is no check for `Darwin` (which Apple's ACPI usually checks for). We generally want to set `OSYS` to the value for the latest version of Windows in order to enable the most features. In this case, the latest version of Windows is "Windows 2015", or [Windows 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems). This means that we should set OSYS to `0x07DF`. Notice that this value is greater than the `OSYS < 0x07DC` value being checked for earlier, which means that the check in LSTA should return `0x0F` now.
 
-The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI, or to set the OSYS value just within the scope of the I2CX device. Attempting to set OSYS directly generally fails as _INI sets a default value which will override whatever value you set.
+The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI, or to set the OSYS value just within the scope of the I2C device. Attempting to set OSYS directly generally fails as \_INI sets a default value which will override whatever value you set.
 
 ### _OSI to XOSI
 
@@ -144,7 +145,7 @@ Requires the below SSDT and patch
 * [SSDT-XOSI.aml](/extra-files/compiled/SSDT-XOSI.aml) - Precompiled
 * XOSI Rename(add this under config.plist -> ACPI -> Patch):
 
-| Comment | String | Change _OSI to XOSI |
+| Comment | String | Change \_OSI to XOSI |
 | :------ | :------ | :------- |
 | Enabled | Boolean | YES      |
 | Count   | Number  | 0        |
@@ -154,15 +155,15 @@ Requires the below SSDT and patch
 
 ::: details Dell Machines
 You may need to add the below patch to allow the backlight keys to work. Credit to Rehabman for the below patch:
-Make sure that this patch appears **BEFORE** the previous _OSI to XOSI patch
+Make sure that this patch appears **BEFORE** the previous \_OSI to XOSI patch
 
-| Comment | String | Change _OSID to XSID (to avoid match against _OSI patch)
+| Comment | String | Change \_OSID to XSID (to avoid match against _OSI patch)
 | :------ | :----- | :-------- |
 | Enabled | Boolean | YES      |
 | Count   | Number  | 0        |
 | Limit   | Number  | 0        |
 | Find    | Data    | 4F534944 |
-| Replace | Data    | 58534944 | 
+| Replace | Data    | 58534944 |
 :::
 
 ### Create OSYS Variable Under I2C Scope
@@ -177,8 +178,9 @@ If (_OSI("Darwin")) {
 }
 ```
 
-### Note:
-Windows will also return true for checks of earlier versions of the OS. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, `WNTF = 0x01` allows DYTC thermal management to work on newer Thinkpads, though this only gets set in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compiling the SSDT](/Manual/compile.md) and see if the trackpad works.
+### Note
+
+Windows will also return true for checks of earlier versions of the OS. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, `WNTF = 0x01` allows DYTC thermal management to work on newer ThinkPads, though this only gets set in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compiling the SSDT](/Manual/compile.md) and see if the trackpad works.
 
 ## Further Setup
 
