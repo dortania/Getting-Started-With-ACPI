@@ -25,7 +25,6 @@
   * [Prebuilt](/Laptops/backlight-methods/prebuilt.md)
   * [Manual](/Laptops/backlight-methods/manual.md)
 * [Trackpad GPI0](/Laptops/trackpad.md)
-  * [Prebuilt](/Laptops/trackpad-methods/prebuilt.md)
   * [Manual](/Laptops/trackpad-methods/manual.md)
 * [Disabling laptop dGPUs](/Laptops/laptop-disable.md)
 
