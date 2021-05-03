@@ -135,7 +135,7 @@ Method (LSTA, 1, Serialized)
 
 There are various checks for many different versions of Windows, but there is no check for `Darwin` (which Apple's ACPI usually checks for). We generally want to set `OSYS` to the value for the latest version of Windows in order to enable the most features. In this case, the latest version of Windows is "Windows 2015", or [Windows 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems). This means that we should set OSYS to `0x07DF`. Notice that this value is greater than the `OSYS < 0x07DC` value being checked for earlier, which means that the check in LSTA should return `0x0F` now.
 
-The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI, or to set the OSYS value just within the scope of the I2C device. Attempting to set OSYS directly generally fails as \_INI sets a default value which will override whatever value you set.
+The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI, or to set the OSYS value just within the scope of the I2C device. Attempting to set OSYS directly generally fails as \_INI sets a default value which will override any value you set.
 
 ### _OSI to XOSI
 
@@ -155,9 +155,9 @@ Requires the below SSDT and patch
 
 ::: details Dell Machines
 You may need to add the below patch to allow the backlight keys to work. Credit to Rehabman for the below patch:
-Make sure that this patch appears **BEFORE** the previous \_OSI to XOSI patch
+Make sure that this patch appears **BEFORE** the previous \_OSI to XOSI patch in your config.plist
 
-| Comment | String | Change \_OSID to XSID (to avoid match against _OSI patch)
+| Comment | String | Change \_OSID to XSID (to avoid match against \_OSI patch)
 | :------ | :----- | :-------- |
 | Enabled | Boolean | YES      |
 | Count   | Number  | 0        |
@@ -168,7 +168,7 @@ Make sure that this patch appears **BEFORE** the previous \_OSI to XOSI patch
 
 ### Create OSYS Variable Under I2C Scope
 
-You will need to find the device path of your I2C device, and add to your SSDT. You will need to add this in whichever scope checks for OSYS, though won't work if you add this under \_SB.PCI0 since this is generally the same scope in which the _INI method will set depending on the running OS.
+You will need to find the device path where OSYS is checked, then create a new OSYS variable within that scope. This will only change OSYS for devices under this scope, which can allow for finer control over what is enabled. Note that in the example above, `LSTA` exists under `\_SB.PCI0.LSTA`, meaning that both `\_SB.PCI0._INI` and `\_SB.PCI0.LSTA` will control the same OSYS variable. If this is the case, this method will not work.
 
 ```
 If (_OSI("Darwin")) {

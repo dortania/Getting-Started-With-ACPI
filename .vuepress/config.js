@@ -160,7 +160,6 @@ module.exports = {
 		            collapsable: true,
 		            sidebarDepth: 2,
 		            children: [
-		                ['/Laptops/trackpad-methods/prebuilt', 'Prebuilt'],
 		                ['/Laptops/trackpad-methods/manual', 'Manual'],
 		            ]
 		        },
