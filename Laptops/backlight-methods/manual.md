@@ -12,7 +12,7 @@ Unfortunately there is no guidance for this yet. Try on Linux or Windows.
 
 ### On Linux
 These steps work on Ubuntu and may work on other distros. If not then try the procedure for Windows.  
-Use the `lspci` command to get your display adapters 16-bit PCI domain number.  
+Use the `lspci` command to get your display adapters PCI identification number.  
 The output here will be different on your system!
 ```
 # lspci -D
@@ -23,10 +23,10 @@ The output here will be different on your system!
 0000:00:03.0 Ethernet controller: Intel Corporation 82540EM Gigabit Ethernet Controller (rev 02)
 0000:00:04.0 System peripheral: InnoTek Systemberatung GmbH VirtualBox Guest Service
 ```
-Search the output for an entry that looks like your display adapter. E.g: In this example we have `VGA compatible controller` with domain number `0000:00:02.0`. A portion of that number `0000:00` is the PCI bus number.  
+Search the output for an entry that looks like your display adapter. E.g: In this example we have `VGA compatible controller` with PCI number `0000:00:02.0`. The format of this number is `domain:bus:device:function`.  
 
 Now use this command from a Terminal to find the ACPI path for your display adapter  
-`# cat /sys/class/pci_bus/<bus number>/device/<domain number>/firmware_node/path`  
+`# cat /sys/class/pci_bus/<domain:bus>/device/<domain:bus:device:function>/firmware_node/path`  
 
 For example
 ```
