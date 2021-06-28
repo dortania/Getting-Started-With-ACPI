@@ -1,9 +1,6 @@
 # Fixing System Clocks on HEDT: Manual
 
-* [Finding the ACPI path](#finding-the-acpi-path)
-* [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-* [Compiling the SSDT](#compiling-the-ssdt)
-* [Wrapping up](#wrapping-up)
+[[toc]]
 
 ## Seeing if you need SSDT-RTC0-RANGE
 

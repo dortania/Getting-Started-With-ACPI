@@ -48,11 +48,6 @@ module.exports = {
 		}
 	},
 
-    /**
-     * Theme configuration, here is the default theme configuration for VuePress.
-     *
-     * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
-     */
     theme: 'vuepress-theme-succinct',
     globalUIComponents: [
         'ThemeManager'
@@ -95,13 +90,10 @@ module.exports = {
         },
         ],
         sidebar: [{
-            title: 'Introduction',
+            title: 'Choosing the SSDTs',
             collapsable: false,
             sidebarDepth: 1,
-            children: [
-                ['', 'Getting Started With ACPI'],
-				['ssdt-platform', 'Choosing the SSDTs'],
-            ]
+            path: 'ssdt-platform'
 
         },
         {

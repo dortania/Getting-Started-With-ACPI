@@ -2,29 +2,7 @@
 
 Simply select your hardware type and generation, then download the associated files. Once downloaded, place them in your EFI under EFI/OC/ACPI and head back to [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
-* [Intel Desktop SSDTs](#intel-desktop-ssdts)
-  * [Penryn, Lynnfield and Clarkdale](#desktop-penryn-lynnfield-and-clarkdale)
-  * [Sandy and Ivy Bridge](#desktop-sandy-and-ivy-bridge)
-  * [Haswell and Broadwell](#desktop-haswell-and-broadwell)
-  * [Skylake and Kaby Lake](#desktop-skylake-and-kaby-lake)
-  * [Coffee Lake](#desktop-coffee-lake)
-  * [Comet Lake](#desktop-comet-lake)
-* [Intel Laptop SSDTs](#intel-laptop-ssdts)
-  * [Clarksfield and Arrandale](#laptop-clarksfield-and-arrandale)
-  * [Sandy and Ivy Bridge](#laptop-sandy-and-ivy-bridge)
-  * [Haswell and Broadwell](#laptop-haswell-and-broadwell)
-  * [Skylake and Kaby Lake](#laptop-skylake-and-kaby-lake)
-  * [Coffee Lake(8th gen)](#laptop-coffee-lake-8th-gen)
-  * [Coffee and Comet Lake(9th and 10th gen)](#laptop-coffee-and-comet-lake-9th-and-10th-gen)
-  * [Ice Lake](#laptop-ice-lake)
-* [Intel HEDT SSDTs](#intel-hedt-ssdts)
-  * [Nehalem and Westmere](#nehalem-and-westmere)
-  * [Sandy and Ivy Bridge-E](#sandy-and-ivy-bridge-e)
-  * [Haswell and Broadwell-E](#haswell-and-broadwell-e)
-  * [Skylake and Cascade Lake-X/W](#skylake-and-cascade-lake-x-w)
-* [AMD SSDTs](#amd-ssdts)
-  * [Bulldozer/Jaguar](#amd-bulldozer-jaguar)
-  * [Zen](#amd-zen)
+[[toc]]
 
 ## Intel Desktop SSDTs
 

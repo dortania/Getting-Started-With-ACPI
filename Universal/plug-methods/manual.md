@@ -1,11 +1,6 @@
 # Fixing Power Management: Manual
 
-* [Finding the ACPI path](#finding-the-acpi-path)
-  * [DSDT](#DSDT)
-  * [DeviceManager](#devicemanager)
-* [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-* [Compiling the SSDT](#compiling-the-ssdt)
-* [Wrapping up](#wrapping-up)
+[[toc]]
 
 ## Finding the ACPI path
 
@@ -36,7 +31,7 @@ If we then search for instances of `CP00` we find that its full ACPI pathing is 
 
 Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 
-##### DeviceManager
+#### DeviceManager
 
 If you already have Windows installed on this machine, finding the CPU pathing is fairly easy.
 

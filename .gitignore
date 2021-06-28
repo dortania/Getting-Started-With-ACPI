@@ -1,6 +1,5 @@
-_book/
 node_modules/
 .vscode/
 .DS_Store
-yarn.lock
+yarn*
 **/*.swp
