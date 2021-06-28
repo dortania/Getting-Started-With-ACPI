@@ -1,11 +1,6 @@
 # Troubleshooting
 
-* [Fixing SSDTTime: `Could not locate or download iasl!`](/troubleshooting.md#fixing-ssdttime-could-not-locate-or-download-iasl)
-* [Can't run `acpidump.efi`](/troubleshooting.md#cant-run-acpidumpefi-from-opencore)
-* [iASL warning, # unresolved](/troubleshooting.md#iasl-warning--unresolved)
-* [Decompiling Error](/troubleshooting.md#decompiling-error)
-* [Invalid character (0x3D), expecting ASL keyword or name](/troubleshooting.md#invalid-character-0x3d-expecting-asl-keyword-or-name)
-* [Syntax error, unexpected PARSEOP_ONE, expecting '('](/troubleshooting.md#syntax-error-unexpected-parseopone-expecting-)
+[[toc]]
 
 ## Fixing SSDTTime: `Could not locate or download iasl!`
 

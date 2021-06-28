@@ -2,11 +2,7 @@
 
 Please see the **specific ACPI section of your config.plist**, all SSDTs needed are covered there with a brief explainer. But here's a very quick TL;DR:
 
-* [What SSDTs do each platform need](#what-ssdts-do-each-platform-need)
-  * [Desktop](#desktop)
-  * [High End Desktop](#high-end-desktop)
-  * [Laptop](#laptop)
-* [SSDT Creation](#ssdt-creation)
+[[toc]]
 
 ## Desktop
 
