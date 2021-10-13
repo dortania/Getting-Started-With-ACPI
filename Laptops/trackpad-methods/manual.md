@@ -7,23 +7,23 @@
 
 ## Checking GPI0
 
-This page assumes that you have macOS installed as well as [IORegistryExplorer](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-302.zip)
+This page assumes that you have macOS installed as well as [IORegistryExplorer](https://github.com/khronokernel/IORegistryClone/blob/master/ioreg-302.zip).
 
-The first thing which should be checked is the GPI0 device, which is required for VoodooI2C. The best way to check this is working is to use IORegistryExplorer.
+The first thing to check is whether the GPI0 device exists, which is required for VoodooI2C. The best way to check this is working is to use IORegistryExplorer.
 
 ![](../../images/Laptops/trackpad-md/gpio-enabled.png)
 
 Here, we can see that VoodooGPIO is attached to GPI0 so no edits are needed for GPI0. If this is the case for you, you can skip to the [next section](#enabling-trackpad).
 
-If VoodooGPIO isn't attached, then you may need to modify the `_STA` method in the `GPI0` device. In that case, you will need to find the GPI0 device in ACPI.
+If VoodooGPIO isn't attached, then you may need to modify some values to enable the `GPI0` device. In that case, you will need to find the GPI0 device in your DSDT.
 
-First open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL(if in macOS) or any other text editor if in Windows or Linux (VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
+First open your decompiled DSDT you got from [Dumping the DSDT](/Manual/dump.md) and [Decompiling and Compiling](/Manual/compile.md) with either MaciASL (if in macOS) or any other text editor if in Windows or Linux (VSCode has an [ACPI extension](https://marketplace.visualstudio.com/items?itemName=Thog.vscode-asl) that can also help).
 
 Next search for `Device (GPI0)`. You should get a result similar to this:
 
 ![](../../images/Laptops/trackpad-md/gpi0-2.png)
 
-We can see that `_STA` method, which enables or disable the GPI0 device:
+Below is the `_STA` method, which enables or disable the GPI0 device:
 
 ```
 Method (_STA, 0, NotSerialized)
@@ -42,7 +42,7 @@ Method (_STA, 0, NotSerialized)
 }
 ```
 
-We want the value returned from _STA to be 0x0F to enable the `GPI0` device. If either `SBRG` or `GPEN` is equal to zero, then zero will be returned and `GPI0` will be disabled. Generally, `SBRG` should not be modified, as modifying it can break the `GPI0` device. Only modify `GPEN` if you need to enable the `GPI0` device.
+We want the value returned from _STA to be non-zero (0x0F in this case) to enable the `GPI0` device. If either `SBRG` or `GPEN` is equal to zero, then zero will be returned and `GPI0` will be disabled. Generally, `SBRG` should not be modified, as modifying it can break the `GPI0` device. Only modify `GPEN` if you need to enable the `GPI0` device.
 
 Here's some more examples:
 ![](../../images/Laptops/trackpad-md/gpi0.png)
@@ -63,11 +63,9 @@ Method (_STA, 0, NotSerialized)
 
 What we want is for this to always return `0x0F` when booting macOS, so we want to make an SSDT that will return `GPHD == Zero` in macOS.
 
-**NOTE that you may have the other way around where GPHD needs to be set as `One` to return `0x0F`**. And your device name may also be different, don't throw random SSDTs in thinking it'll work
-
 ## Edits to the sample SSDT
 
-Now that we have our ACPI path, lets grab our SSDT and get to work:
+Now that we know what variables need to be changed, lets grab our SSDT and get to work:
 
 * [SSDT-GPI0.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-GPI0.dsl)
 
@@ -94,7 +92,9 @@ You will want to test the SSDT at this point by [compiling the SSDT](/Manual/com
 
 ## Enabling Trackpad
 
-Often times, the I2C devices check to see if they are running in Windows before enabling themselves. Similarly to the `GPI0` device, these devices contain a `_STA` method. For example, this is the I2C1 device below:
+Often times, the I2C devices check to see if they are running in Windows before enabling themselves. Similarly to the `GPI0` device, these devices contain a `_STA` method.
+
+::: details _STA Example (Optional)
 
 ![](../../images/Laptops/trackpad-md/I2C1.png)
 
@@ -129,21 +129,23 @@ Method (LSTA, 1, Serialized)
 }
 ```
 
-`LSTA` checks `Arg0` and `OSYS`. `Arg0` is the value passed in from where it's called. In this example, `_STA` passes in `SMD1` as Arg0. This value should already be correct. The value which we should check is `OSYS`, which is a value which stores information about the current OS running. We will want to look for any place in which `OSYS` is set (`OSYS = 0x07DC` for example). In this DSDT, this is set under `\_SB.PCI0._INI` as shown below:
+The value `OSYS`, stores information about the current OS running. We will want to look for any place in which `OSYS` is set (`OSYS = 0x07DC` for example). In this DSDT, this is set under `\_SB.PCI0._INI` as shown below:
 
 ![](../../images/Laptops/trackpad-md/ini.png)
 
-There are various checks for many different versions of Windows, but there is no check for `Darwin` (which Apple's ACPI usually checks for). We generally want to set `OSYS` to the value for the latest version of Windows in order to enable the most features. In this case, the latest version of Windows is "Windows 2015", or [Windows 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems). This means that we should set OSYS to `0x07DF`. Notice that this value is greater than the `OSYS < 0x07DC` value being checked for earlier, which means that the check in LSTA should return `0x0F` now.
+There are various checks for many different versions of Windows, but there is no check for `Darwin` (which Apple's ACPI usually checks for). We generally want to set `OSYS` to the highest possible value to enable the most features. In this case, the highest value is set when the version of Windows is "Windows 2015", or [Windows 10](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems). This means that we should set `OSYS` to `0x07DF`. Notice that this value is greater than `0x07DC`, which is the value that was checked for earlier. If we set `OSYS` to `0x07DF`, then the check in LSTA should return `0x0F`.
 
-The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI, or to set the OSYS value just within the scope of the I2C device. Attempting to set OSYS directly generally fails as \_INI sets a default value which will override any value you set.
+:::
+
+The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI. You can also set `OSYS` within the scope of the I2C device, though this may not always work (The above example would not work here as LSTA is not within the scope of the I2C device).
 
 ### _OSI to XOSI
 
 Requires the below SSDT and patch
 
-* [SSDT-XOSI.dsl](/extra-files/decompiled/SSDT-XOSI.dsl) - If you need to edit the supported OSes
+* [SSDT-XOSI.dsl](/extra-files/decompiled/SSDT-XOSI.dsl) - If you need to edit [which versions of Windows the SSDT checks for](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems).
 * [SSDT-XOSI.aml](/extra-files/compiled/SSDT-XOSI.aml) - Precompiled
-* XOSI Rename(add this under config.plist -> ACPI -> Patch):
+* XOSI Rename (Add this under ACPI -> Patch in your config.plist):
 
 | Comment | String | Change \_OSI to XOSI |
 | :------ | :------ | :------- |
@@ -154,8 +156,10 @@ Requires the below SSDT and patch
 | Replace | Data    | 584f5349 |
 
 ::: details Dell Machines
-You may need to add the below patch to allow the backlight keys to work. Credit to Rehabman for the below patch:
+
+You may need to add the below patch to allow the backlight keys to work.
 Make sure that this patch appears **BEFORE** the previous \_OSI to XOSI patch in your config.plist
+Credit to Rehabman for the below patch:
 
 | Comment | String | Change \_OSID to XSID (to avoid match against \_OSI patch)
 | :------ | :----- | :-------- |
@@ -164,6 +168,7 @@ Make sure that this patch appears **BEFORE** the previous \_OSI to XOSI patch in
 | Limit   | Number  | 0        |
 | Find    | Data    | 4F534944 |
 | Replace | Data    | 58534944 |
+
 :::
 
 ### Create OSYS Variable Under I2C Scope
@@ -178,9 +183,11 @@ If (_OSI("Darwin")) {
 }
 ```
 
-### Note
+::: tip Multiple Windows Versions
 
-Windows will also return true for checks of earlier versions of the OS. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, `WNTF = 0x01` allows DYTC thermal management to work on newer ThinkPads, though this only gets set in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compiling the SSDT](/Manual/compile.md) and see if the trackpad works.
+Windows will also return true for checks of earlier versions of Windows. For example, Windows 7 would return true for "Windows 2000" through "Windows 2009", but not any version after. This is important as some features are only enabled in earlier Windows checks. For example, DYTC thermal management on newer ThinkPads is only enabled in the check for "Windows 2001". You will need to check your own DSDT and see what values it sets and where they are used. At this point, you should [compiling the SSDT](/Manual/compile.md) and see if the trackpad works.
+
+:::
 
 ## Further Setup
 

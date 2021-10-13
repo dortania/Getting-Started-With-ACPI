@@ -43,7 +43,7 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Clarksfield and Arrandale | N/A | [SSDT-EC](./Universal/ec-fix) | [SSDT-PNLF](./Laptops/backlight) | N/A | N/A | N/A | [IRQ SSDT](./Universal/irq) |
 | SandyBridge | [CPU-PM](https://dortania.github.io/OpenCore-Post-Install/universal/pm.html#sandy-and-ivy-bridge-power-management) (Run in Post-Install) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ivy Bridge | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Haswell | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ | [SSDT-GPI0](./Laptops/trackpad) | ^^ | ^^ | ^^ |
+| Haswell | [SSDT-PLUG](./Universal/plug) | ^^ | ^^ | [SSDT-XOSI/SSDT-GPI0](./Laptops/trackpad) (Run in Post-Install) | ^^ | ^^ | ^^ |
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Skylake | ^^ | [SSDT-EC-USBX](./Universal/ec-fix) | ^^ | ^^ | ^^ | ^^ | N/A |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
