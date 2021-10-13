@@ -1,19 +1,10 @@
 // Source: https://github.com/daliansky/OC-little
 DefinitionBlock("", "SSDT", 2, "DRTNIA", "GPI0", 0)
 {
-    External(GPEN, FieldUnitObj)
-    External(SBRG, FieldUnitObj)
+    External(\GPEN, FieldUnitObj)
     
-    Scope (\)
+    If (_OSI("Darwin"))
     {
-        If (_OSI ("Darwin"))
-        {
-            GPEN = One
-            SBRG = One
-        }
-        Else
-        {
-            
-        }
+        \GPEN = One
     }
 }
