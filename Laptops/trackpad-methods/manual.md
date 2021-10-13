@@ -61,7 +61,7 @@ Method (_STA, 0, NotSerialized)
 }
 ```
 
-What we want is for this to always return `0x0F` when booting macOS, so we want to make an SSDT that will return `GPHD == Zero` in macOS.
+Here we would want to set `GPHD` to `Zero` so that 0x0F is returned.
 
 ## Edits to the sample SSDT
 
