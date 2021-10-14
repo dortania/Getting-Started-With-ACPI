@@ -49,21 +49,17 @@ Open DeviceManager, and head to the following:
 Device Manager -> Display Adapters -> Properties -> Details > BIOS device name
 ```
 
-* Note some GPU ACPI pathing may be hiding under "BIOS device name"
-
 ![Credit to 1Revenger1 for the image](../../images/Laptops/backlight-md/devicemanager.png)
 
-From the above example, we can see our display is hooked up to `PCI0.GFX0`
+From the above example, we can see our display is hooked up to `\_SB.PCI0.GFX0`
 
 ## Edits to the sample SSDT
 
 Now that we have our ACPI path, lets grab our SSDT and get to work:
 
 * [SSDT-PNLF.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-PNLF.dsl)
-* [SSDT-PNLFCFL.dsl](https://github.com/acidanthera/OpenCorePkg/tree/master/Docs/AcpiSamples/Source/SSDT-PNLFCFL.dsl)
-  * For Coffee Lake and newer
 
-By default, this uses `PCI0.GFX0` for the pathing. you'll want to rename accordingly. For this example, we'll assume your pathing is `PCI0.GPU0`:
+By default, this uses `\_SB.PCI0.GFX0` for the pathing. you'll want to rename accordingly. For this example, we'll assume your pathing is `\_SB.PCI0.GPU0`:
 
 **Before**:
 
