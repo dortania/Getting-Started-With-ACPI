@@ -143,8 +143,8 @@ The best way to patch these checks is to use _OSI to XOSI with SSDT-XOSI. You ca
 
 Requires the below SSDT and patch
 
-* [SSDT-XOSI.dsl](/extra-files/decompiled/SSDT-XOSI.dsl) - If you need to edit [which versions of Windows the SSDT checks for](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems).
-* [SSDT-XOSI.aml](/extra-files/compiled/SSDT-XOSI.aml) - Precompiled
+* [SSDT-XOSI.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-XOSI.dsl) - If you need to edit [which versions of Windows the SSDT checks for](https://docs.microsoft.com/en-us/windows-hardware/drivers/acpi/winacpi-osi#_osi-strings-for-windows-operating-systems).
+* [SSDT-XOSI.aml](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml) - Precompiled
 * XOSI Rename (Add this under ACPI -> Patch in your config.plist):
 
 | Comment | String | Change \_OSI to XOSI |
