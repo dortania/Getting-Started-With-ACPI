@@ -22,8 +22,9 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Coffee Lake | ^^ | ^^ | [SSDT-AWAC](./Universal/awac) | [SSDT-PMC](./Universal/nvram) | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | N/A | [SSDT-RHUB](./Universal/rhub) |
-| AMD (15/16h) | N/A | ^^ | N/A | ^^ | N/A |
-| AMD (17h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
+| Alder Lake | [SSDT-PLUG-ALT](PLACEHOLDER) | ^^ | ^^ | ^^ | [SSDT-USBW](PLACEHOLDER) |
+| AMD (15/16h) | N/A | ^^ | N/A | ^^ | ^^ |
+| AMD (17h/19h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
 
 ## High End Desktop
 
