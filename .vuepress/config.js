@@ -193,6 +193,16 @@ module.exports = {
 		                ['/Universal/plug-methods/manual', 'Manual'],
 		            ]
 		        },
+                ['/Universal/plug-alt', 'CPU Power Management and Processor Definition'],
+		        {
+					title: 'Methods',
+		            collapsable: true,
+		            sidebarDepth: 2,
+		            children: [
+		                ['/Universal/plug-alt-methods/prebuilt', 'Prebuilt'],
+		                ['/Universal/plug-alt-methods/manual', 'Manual'],
+		            ]
+		        },
                 ['/Universal/awac', 'AWAC vs RTC'],
 		        {
 					title: 'Methods',
@@ -254,6 +264,15 @@ module.exports = {
 		            sidebarDepth: 2,
 		            children: [
 		                ['/Universal/smbus-methods/manual', 'Manual'],
+		            ]
+		        },
+                ['/Universal/brg0', 'Fixing Property Injection'],
+		        {
+					title: 'Methods',
+		            collapsable: true,
+		            sidebarDepth: 2,
+		            children: [
+		                ['/Universal/brg0-methods/manual', 'Manual'],
 		            ]
 		        },
                 ['/Universal/irq', 'IRQ Fix'],
