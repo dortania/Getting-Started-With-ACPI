@@ -10,7 +10,6 @@ SSDT-USBW is a companion to the [USBWakeFixup kext](https://github.com/osy/USBWa
 
 ## Methods to make this SSDT
 
-For SSDT-USBW, there are 2 methods you can choose from:
+For SSDT-USBW, there are 2 methods you can choose from, both on one page:
 
-* [Prebuilt](/Universal/usbw-methods/prebuilt.md)
-* [Manual](/Universal/usbw-methods/manual.md)
+* [Prebuilt and Manual](/Universal/usbw-methods/prebuilt-manual.md)

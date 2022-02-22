@@ -1,4 +1,12 @@
-# Fixing USB Wake: Prebuilt
+# Fixing USB Wake: Prebuilt and Manual
+
+* [Prebuilt](#prebuilt)
+* [Manual](#manual)
+  * [Grabbing the sample SSDT](#grabbing-the-sample-ssdt)
+  * [Compiling the SSDT](#compiling-the-ssdt)
+* [Wrapping up](#wrapping-up)
+
+## Prebuilt
 
 By far the easiest way to get SSDT-USBW is just downloading the below file:
 
@@ -6,10 +14,15 @@ By far the easiest way to get SSDT-USBW is just downloading the below file:
 
 This prebuilt file is just a precompiled version of [SSDT-USBW](https://raw.githubusercontent.com/osy/USBWakeFixup/master/SSDT-USBW.dsl).
 
-The main thing to note with this method:
+## Manual
 
-* Doesn't really teach you anything
-  * For most, this doesn't matter. But to some knowing what makes your hackintosh tick is part of the journey
+### Grabbing the sample SSDT
+
+[Download SSDT-USBW.dsl here.](https://raw.githubusercontent.com/osy/USBWakeFixup/master/SSDT-USBW.dsl)
+
+### Compiling the SSDT
+
+This SSDT requires no modification, so you're now [ready to compile the SSDT!](/Manual/compile.md)
 
 ## Wrapping up
 
