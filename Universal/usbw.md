@@ -6,7 +6,7 @@
 
 ## What this SSDT does
 
-SSDT-USBW is a companion to the [USBWakeFixup kext](https://github.com/osy/USBWakeFixup/releases/), which addresses USB wake issues on certain Intel platforms. Do not use this SSDT unless you have the USBWakeFixup kext.
+SSDT-USBW is a companion to the [USBWakeFixup kext](https://github.com/osy/USBWakeFixup), which addresses USB wake issues on certain Intel platforms. Do not use this SSDT unless you have the USBWakeFixup kext.
 
 ## Methods to make this SSDT
 
