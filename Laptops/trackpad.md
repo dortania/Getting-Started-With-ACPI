@@ -11,6 +11,7 @@ This section assumes that macOS is already installed. You may need to use a USB 
 
 ## Methods to make this SSDT
 
-For the trackpad fix, there are only one method to choose from:
+For the trackpad fix, there are 2 methods to choose from:
 
 * [Manual](/Laptops/trackpad-methods/manual.md)
+* [SSDTTime](/Laptops/trackpad-methods/SSDTTime.md)
