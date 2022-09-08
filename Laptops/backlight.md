@@ -9,7 +9,7 @@ The purpose of this SSDT is to create a PNLF device for macOS to play with, spec
 
 ## Methods to make this SSDT
 
-For the backlight fix, there are 2 methods you can choose from:
+For the backlight fix, there are 3 methods you can choose from:
 
 * [Prebuilt](/Laptops/backlight-methods/prebuilt.md)
 * [SSDTTime](/Laptops/backlight-methods/SSDTTime.md)
