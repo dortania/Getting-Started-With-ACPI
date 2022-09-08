@@ -13,6 +13,6 @@ This section assumes that macOS is already installed. You may need to use a USB 
 
 For the trackpad fix, there are 3 methods to choose from:
 
-* [Prebuilt](/Laptops/trackpad-methods/Prebuilt.md)
-* [SSDTTime](/Laptops/trackpad-methods/SSDTTime.md)
+* [Prebuilt](/Laptops/trackpad-methods/prebuilt.md)
+* [SSDTTime](/Laptops/trackpad-methods/ssdttime.md)
 * [Manual](/Laptops/trackpad-methods/manual.md)
