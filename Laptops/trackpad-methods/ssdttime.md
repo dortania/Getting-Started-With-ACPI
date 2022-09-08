@@ -4,7 +4,7 @@ The second involves using SSDTTime which automates most of the process. See here
 
 To get the SSDT-EC on desktops, run the following:
 
-* `P. Dump DSDT` then run `A. XOSI`,then, select the version of Windows you have installed now
+* `P. Dump DSDT` then run `A. XOSI`,then, select the version of Windows you have installed now.
 
 This will provide you with some files, the main one you care about is SSDT-GPI0.**aml**. or SSDT-XOSI.**aml**. The DSDT and .dsl are only left for referencing or verification.
 
