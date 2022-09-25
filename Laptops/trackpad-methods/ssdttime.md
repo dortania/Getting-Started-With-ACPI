@@ -12,6 +12,8 @@ The main things to note with this method:
 
 * Doesn't really teach you anything
   * For most, this doesn't matter. But to some knowing what makes your hackintosh tick is part of the journey
+* Can only make SSDT-XOSI
+  * If you need SSDT-GPI0, then you still need to make it manually
 
 ## Wrapping up
 
