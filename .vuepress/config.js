@@ -169,7 +169,7 @@ module.exports = {
         {
             title: 'Universal',
             collapsable: false,
-            sidebarDepth: 0,
+            sidebarDepth: 1,
             children: [
                 ['/Universal/ec-fix', 'Embedded Controller'],
 		        {
@@ -258,6 +258,7 @@ module.exports = {
 		        },
                 ['/Universal/irq', 'IRQ Fix'],
 				['/Universal/spoof', 'GPU Spoof'],
+				['/Universal/apic', 'APIC Patching'],
             ]
         },
         {
