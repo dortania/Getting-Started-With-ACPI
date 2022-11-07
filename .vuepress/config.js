@@ -272,7 +272,7 @@ module.exports = {
 		            collapsable: true,
 		            sidebarDepth: 2,
 		            children: [
-		                ['/Universal/brg0-methods/manual', 'Manual'],
+		                ['/Universal/brg0-methods/ssdttime', 'SSDTTime'],
 		            ]
 		        },
                 ['/Universal/irq', 'IRQ Fix'],

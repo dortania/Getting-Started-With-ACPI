@@ -11,6 +11,6 @@ This SSDT fixes that by defining the bridge device (BRG0) and your GPU under tha
 
 ## Methods to make this SSDT
 
-For SSDT-BRG0, there's only one option:
+For SSDT-BRG0, there's currently only one option:
 
-* [Manual](/Universal/brg0-methods/manual.md)
+* [SSDTTime](/Universal/brg0-methods/ssdttime.md)
