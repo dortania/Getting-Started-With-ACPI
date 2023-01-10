@@ -51,7 +51,7 @@ iasl * [insert all ACPI files here]
 
 ## Decompiling Error
 
-![](/troubleshooting-md/decompile-error.png)
+![](./images/troubleshooting-md/decompile-error.png)
 
 ```
 Loading Acpi table from file iASLAwjHrs.aml
@@ -63,12 +63,12 @@ This is a common error on DSDTs that have methods that aren't supported by MaciA
 
 ## Invalid character (0x3D), expecting ASL keyword or name
 
-![](/troubleshooting-md/invalid-parse.png)
+![](./images/troubleshooting-md/invalid-parse.png)
 
 Similar to the above error, you're running an outdated copy of MaciASL. Make sure you're using the latest from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
 
 ## Syntax error, unexpected PARSEOP_ONE, expecting '('
 
-![](/troubleshooting-md/invalid-parse.png)
+![](./images/troubleshooting-md/invalid-parse.png)
 
 Similar to the above 2 errors, you're running an outdated copy of MaciASL. Make sure you're using the latest from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
