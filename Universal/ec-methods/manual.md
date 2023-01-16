@@ -9,7 +9,7 @@
     * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
     * [No PNP0C09 show up](#no-pnp0c09-show-up)
     * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-    * [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
+    * [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-sta-method)
   * [Compiling the SSDT](#compiling-the-ssdt)
   * [Wrapping up](#wrapping-up)
 
@@ -46,7 +46,7 @@ The main ones to check for are:
 * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
 * [No PNP0C09 show up](#no-pnp0c09-show-up)
 * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-* [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
+* [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-sta-method)
 
 If none of the above apply to you, you're ready for the next section:
 
