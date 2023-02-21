@@ -9,10 +9,11 @@
 
 ## Finding the ACPI path
 
-So to find the ACPI pathing of our SMBus, we've got 2 methods:
+So to find the ACPI pathing of our SMBus, we've got 3 methods:
 
 * [Hackintool](#hackintool)
 * [DeviceManager](#devicemanager)
+* [Linux](#linux)
 
 ### Hackintool
 
@@ -38,6 +39,23 @@ From the above example, we can see the SMBus is located at:
 
 ```
 PC00.SMBS
+```
+
+### Linux
+
+Use `lcpci` to find the PCI path of the SMBus:
+
+```sh
+$ lspci -D | grep SMBus
+0000:00:1f.4 SMBus: Intel Corporation Alder Lake-S PCH SMBus Controller (rev 11)
+```
+
+Make a note of the PCI path of the SMBus controller (`0000:00:1f.4` in my case).
+
+Then use `cat` to get the ACPI path (substituting `[PCI path]` with the path obtained above):
+
+```
+cat /sys/bus/pci/devices/[PCI path]/firmware_node/path
 ```
 
 With the ACPI pathing, you can now head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)

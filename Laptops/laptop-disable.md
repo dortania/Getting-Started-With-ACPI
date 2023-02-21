@@ -7,13 +7,11 @@ So with laptops, we can hide the dGPU from macOS with the little boot-arg called
 
 Note that this is not needed for install, but recommended for post-install
 
-## Optimus Method
+## Finding the ACPI Path
 
-How this works is that we call the `.off` method found on Optimus GPUs, this is the expected way to power off a GPU but some may find their dGPU will power back up later on. Mainly seen in Lenovo's, the Optimus method should work for most users:
+### Windows
 
-To start, grab [SSDT-dGPU-Off.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-dGPU-Off.dsl.zip)
-
-Next we need to get on Windows, and head to the following:
+Head to the following:
 
 ```
 Device Manager -> Display Adapters -> dGPU -> Properties -> Details > BIOS device name
@@ -21,14 +19,43 @@ Device Manager -> Display Adapters -> dGPU -> Properties -> Details > BIOS devic
 
 * Note some GPUs may be hiding under "BIOS device name"
 
-This should provided you with an ACPI path for your dGPU, most commonly:
+This should have provided you with an ACPI path for your dGPU, most commonly:
 
 * Nvidia dGPU: `\_SB.PCI0.PEG0.PEGP`
 * AMD dGPU: `\_SB.PCI0.PEGP.DGFX`
 
 ![Credit to 1Revenger1 for the image](../images/Desktops/nvidia.png)
 
-Now with that, we'll need to change the ACPI path in the SSDT. Main sections:
+### Linux
+
+Use `lcpci` to find the PCI path of your device:
+
+```sh
+$ lspci -D | grep VGA
+0000:00:02.0 VGA compatible controller: Intel Corporation UHD Graphics (rev 05)
+0000:01:00.0 VGA compatible controller: NVIDIA Corporation TU106M [GeForce RTX 2060 Max-Q] (rev a1)
+```
+
+Make a note of the PCI path of the dedicated graphics card (`0000:01:00.0` in my case).
+
+Then use `cat` to get the ACPI path (substituting `[PCI path]` with the path obtained above):
+
+```
+cat /sys/bus/pci/devices/[PCI path]/firmware_node/path
+```
+
+This should have provided you with an ACPI path for your dGPU, most commonly:
+
+* Nvidia dGPU: `\_SB.PCI0.PEG0.PEGP`
+* AMD dGPU: `\_SB.PCI0.PEGP.DGFX`
+
+## Optimus Method
+
+How this works is that we call the `.off` method found on Optimus GPUs, this is the expected way to power off a GPU but some may find their dGPU will power back up later on. Mainly seen in Lenovo's, the Optimus method should work for most users:
+
+To start, grab [SSDT-dGPU-Off.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-dGPU-Off.dsl.zip)
+
+Using the ACPI path you acquired, we'll need to change the ACPI path in the SSDT. Main sections:
 
 ```
 External(_SB.PCI0.PEG0.PEGP._OFF, MethodObj)
@@ -48,18 +75,7 @@ With some machines, the simple `.off` call won't keep the card off properly, tha
 
 To start, grab [SSDT-NoHybGfx.dsl](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/decompiled/SSDT-NoHybGfx.dsl.zip)
 
-Next we need to get on Windows, and head to the following:
-
-```
-Device Manager -> Display Adapters -> dGPU -> Properties -> Details > BIOS device name
-```
-
-This should provided you with an ACPI path for your dGPU, most commonly:
-
-* Nvidia dGPU: `\_SB.PCI0.PEG0.PEGP`
-* AMD dGPU: `\_SB.PCI0.PEGP.DGFX`
-
-Now with that, we'll need to change the ACPI path in the SSDT. Main sections:
+Using the ACPI path you acquired, we'll need to change the ACPI path in the SSDT. Main sections:
 
 ```
 External (_SB_.PCI0.PEG0.PEGP._DSM, MethodObj)    // dGPU ACPI Path
