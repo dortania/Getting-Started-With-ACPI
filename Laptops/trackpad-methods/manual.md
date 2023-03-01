@@ -1,6 +1,6 @@
 # Fixing Trackpads: Manual
 
-* [Checking GPI0](#checking-gpio)
+* [Checking GPI0](#checking-gpi0)
 * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 * [Enabling Trackpad](#enabling-trackpad)
 * [Wrapping up](#wrapping-up)

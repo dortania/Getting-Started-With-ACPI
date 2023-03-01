@@ -1,7 +1,6 @@
 # Fixing IMEI: Manual
 
 * [Finding the ACPI device](#finding-the-acpi-device)
-* [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 * [Compiling the SSDT](#compiling-the-ssdt)
 * [Wrapping up](#wrapping-up)
 

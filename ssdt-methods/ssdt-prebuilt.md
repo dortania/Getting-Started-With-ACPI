@@ -14,16 +14,16 @@ Simply select your hardware type and generation, then download the associated fi
   * [Sandy and Ivy Bridge](#laptop-sandy-and-ivy-bridge)
   * [Haswell and Broadwell](#laptop-haswell-and-broadwell)
   * [Skylake and Kaby Lake](#laptop-skylake-and-kaby-lake)
-  * [Coffee Lake(8th gen)](#laptop-coffee-lake-8th-gen)
-  * [Coffee and Comet Lake(9th and 10th gen)](#laptop-coffee-and-comet-lake-9th-and-10th-gen)
+  * [Coffee Lake (8th gen)](#laptop-coffee-lake-8th-gen)
+  * [Coffee and Comet Lake (9th and 10th gen)](#laptop-coffee-and-comet-lake-9th-and-10th-gen)
   * [Ice Lake](#laptop-ice-lake)
 * [Intel HEDT SSDTs](#intel-hedt-ssdts)
   * [Nehalem and Westmere](#nehalem-and-westmere)
   * [Sandy and Ivy Bridge-E](#sandy-and-ivy-bridge-e)
   * [Haswell and Broadwell-E](#haswell-and-broadwell-e)
-  * [Skylake and Cascade Lake-X/W](#skylake-and-cascade-lake-x-w)
+  * [Skylake and Cascade Lake-X/W](#skylake-and-cascade-lake-x-w) <!-- markdownlint-disable-line MD051 -->
 * [AMD SSDTs](#amd-ssdts)
-  * [Bulldozer/Jaguar](#amd-bulldozer-jaguar)
+  * [Bulldozer/Jaguar](#amd-bulldozer-jaguar) <!-- markdownlint-disable-line MD051 -->
   * [Zen](#amd-zen)
 
 ## Intel Desktop SSDTs
@@ -363,7 +363,7 @@ SSDT-XOSI:
 
 :::
 
-### Laptop Coffee Lake(8th gen)
+### Laptop Coffee Lake (8th gen)
 
 ::: tip SSDTs required
 
@@ -405,7 +405,7 @@ SSDT-XOSI:
 
 :::
 
-### Laptop Coffee and Comet Lake(9th and 10th gen)
+### Laptop Coffee and Comet Lake (9th and 10th gen)
 
 ::: tip SSDTs required
 
