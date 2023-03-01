@@ -9,7 +9,7 @@
     * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
     * [No PNP0C09 show up](#no-pnp0c09-show-up)
     * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-    * [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
+    * [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-a-_sta-method)
   * [Compiling the SSDT](#compiling-the-ssdt)
   * [Wrapping up](#wrapping-up)
 
@@ -21,7 +21,7 @@ TO-DO:
 
 To find the ACPI pathing, you have 2 methods:
 
-* [DSDT](#DSDT)
+* [DSDT](#dsdt)
 * [DeviceManager](#devicemanager)
 
 ### DSDT
@@ -46,7 +46,7 @@ The main ones to check for are:
 * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
 * [No PNP0C09 show up](#no-pnp0c09-show-up)
 * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-* [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-_sta-method)
+* [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-a-_sta-method)
 
 If none of the above apply to you, you're ready for the next section:
 
@@ -113,7 +113,7 @@ When multiple PNP0C09 show up, we need to next check for the following propertie
 
 What these signify is whether this PNP0C09 device is real or not, as per the [ACPI spec](https://uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf). So one's matching the above criteria are the one's we want to disable.
 
-* Note: If _STA shows up as well, you'll need to go here: [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-an-sta-method)
+* Note: If _STA shows up as well, you'll need to go here: [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-a-_sta-method)
 
 ### No PNP0C09 show up
 
@@ -129,7 +129,7 @@ Congrats! No need to create an SSDT-EC! However you will still want USBX if you'
 
 Prebuilt can be grabbed here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 
-### PNP0C09 already has an `_STA` method
+### PNP0C09 already has a `_STA` method
 
 This is the equivalent of not having an EC as we can't control it with our SSDT-EC, instead we'll need to create a "dummy" EC for macOS. You'll still want to find the PCI and LPC pathing for this device. So follow the guide as if you were creating a laptop SSDT-EC/USBX.
 

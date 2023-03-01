@@ -1,18 +1,9 @@
 # Disabling laptop dGPUs (SSDT-dGPU-Off/NoHybGfx)
 
-* [What this SSDT does](#what-this-ssdt-does)
-* [Methods to make this SSDT](#methods-to-make-this-ssdt)
-  * [Prebuilt](#prebuilts)
-  * [SSDTTime](#ssdttime)
-  * [Manual](#manual)
-    * [Finding the ACPI path](#finding-the-acpi-path)
-    * [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
-    * [Compiling the SSDT](#compiling-the-ssdt)
-
 So with laptops, we can hide the dGPU from macOS with the little boot-arg called `-wegnoegpu` from WhateverGreen. But one small problem, the dGPU is still pulling power draining your battery slowly. We'll be going over 2 methods for disabling the dGPU in a laptop:
 
-* [Optimus Method](/Laptops/laptop-disable.md#optimus-method)
-* [Bumblebee Method](/Laptops/laptop-disable.md#bumblebee-method)
+* [Optimus Method](#optimus-method)
+* [Bumblebee Method](#bumblebee-method)
 
 Note that this is not needed for install, but recommended for post-install
 
