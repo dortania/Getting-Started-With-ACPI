@@ -7,6 +7,7 @@
 ## What this SSDT does
 
 On some platforms, the PCI bridge your GPU is connected to is not defined.
+This causes DeviceProperties from your config to fail to inject.
 This SSDT fixes that by defining the bridge device (BRG0) and your GPU under that bridge. 
 
 ## Methods to make this SSDT
