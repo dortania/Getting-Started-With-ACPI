@@ -9,7 +9,7 @@
     * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
     * [No PNP0C09 show up](#no-pnp0c09-show-up)
     * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-    * [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-a-_sta-method)
+    * [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-a-sta-method) <!-- markdownlint-disable-line MD051 -->
   * [Compiling the SSDT](#compiling-the-ssdt)
   * [Wrapping up](#wrapping-up)
 
@@ -46,7 +46,7 @@ The main ones to check for are:
 * [Multiple PNP0C09's show up](#multiple-pnp0c09s-show-up)
 * [No PNP0C09 show up](#no-pnp0c09-show-up)
 * [PNP0C09 already named `EC`](#pnp0c09-already-named-ec)
-* [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-a-_sta-method)
+* [PNP0C09 already has a `_STA` method](#pnp0c09-already-has-a-sta-method) <!-- markdownlint-disable-line MD051 -->
 
 If none of the above apply to you, you're ready for the next section:
 
@@ -113,7 +113,7 @@ When multiple PNP0C09 show up, we need to next check for the following propertie
 
 What these signify is whether this PNP0C09 device is real or not, as per the [ACPI spec](https://uefi.org/sites/default/files/resources/ACPI_6_3_final_Jan30.pdf). So one's matching the above criteria are the one's we want to disable.
 
-* Note: If _STA shows up as well, you'll need to go here: [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-a-_sta-method)
+* Note: If _STA shows up as well, you'll need to go here: [PNP0C09 already has an `_STA` method](#pnp0c09-already-has-a-sta-method)  <!-- markdownlint-disable-line MD051 -->
 
 ### No PNP0C09 show up
 
