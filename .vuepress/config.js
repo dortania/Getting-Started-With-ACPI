@@ -24,35 +24,30 @@ module.exports = {
     ],
     base: '/Getting-Started-With-ACPI/',
 
-	watch: {
-	    $page(newPage, oldPage) {
-	      if (newPage.key !== oldPage.key) {
-	        requestAnimationFrame(() => {
-	          if (this.$route.hash) {
-	            const element = document.getElementById(this.$route.hash.slice(1));
+    watch: {
+        $page(newPage, oldPage) {
+            if (newPage.key !== oldPage.key) {
+                requestAnimationFrame(() => {
+                    if (this.$route.hash) {
+                        const element = document.getElementById(this.$route.hash.slice(1));
 
-	            if (element && element.scrollIntoView) {
-	              element.scrollIntoView();
-	            }
-	          }
-	        });
-	      }
-	    }
-	  },
-	
-	markdown: {
-		extendMarkdown: md => {
-			md.use(require('markdown-it-multimd-table'), {
-				rowspan: true,
-			});
-		}
-	},
+                        if (element && element.scrollIntoView) {
+                            element.scrollIntoView();
+                        }
+                    }
+                });
+            }
+        }
+    },
 
-    /**
-     * Theme configuration, here is the default theme configuration for VuePress.
-     *
-     * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
-     */
+    markdown: {
+        extendMarkdown: md => {
+            md.use(require('markdown-it-multimd-table'), {
+                rowspan: true,
+            });
+        }
+    },
+
     theme: 'vuepress-theme-succinct',
     globalUIComponents: [
         'ThemeManager'
@@ -63,10 +58,9 @@ module.exports = {
         repo: 'https://github.com/dortania/Getting-Started-With-ACPI',
         editLinks: true,
         editLinkText: 'Help us improve this page!',
-        logo: 'homepage.png',
+        logo: '/homepage.png',
         nav: [{
             text: 'Dortania Guides',
-            ariaLabel: 'Language Menu',
             items: [{
                 text: 'Home Site',
                 link: 'https://dortania.github.io/'
@@ -100,7 +94,7 @@ module.exports = {
             sidebarDepth: 1,
             children: [
                 ['', 'Getting Started With ACPI'],
-				['ssdt-platform', 'Choosing the SSDTs'],
+                ['ssdt-platform', 'Choosing the SSDTs'],
             ]
 
         },
@@ -110,16 +104,16 @@ module.exports = {
             sidebarDepth: 2,
             children: [
                 '/ssdt-methods/ssdt-methods',
-		        {
-		            title: 'Methods',
-		            collapsable: false,
-		            sidebarDepth: 2,
-		            children: [
-		                '/ssdt-methods/ssdt-prebuilt',
-						'/ssdt-methods/ssdt-easy',
-						'/ssdt-methods/ssdt-long',
-		            ]
-		        },
+                {
+                    title: 'Methods',
+                    collapsable: false,
+                    sidebarDepth: 2,
+                    children: [
+                        '/ssdt-methods/ssdt-prebuilt',
+                        '/ssdt-methods/ssdt-easy',
+                        '/ssdt-methods/ssdt-long',
+                    ]
+                },
             ]
         },
         {
@@ -145,25 +139,25 @@ module.exports = {
             sidebarDepth: 0,
             children: [
                 ['/Laptops/backlight', 'Fixing Backlight'],
-		        {
-					title: 'Methods',
-		            collapsable: true,
-		            sidebarDepth: 2,
-		            children: [
-		                ['/Laptops/backlight-methods/prebuilt', 'Prebuilt'],
-		                ['/Laptops/backlight-methods/manual', 'Manual'],
-		            ]
-		        },
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Laptops/backlight-methods/prebuilt', 'Prebuilt'],
+                        ['/Laptops/backlight-methods/manual', 'Manual'],
+                    ]
+                },
                 ['/Laptops/trackpad', 'Fixing Trackpad'],
-		        {
-					title: 'Methods',
-		            collapsable: true,
-		            sidebarDepth: 2,
-		            children: [
-		                ['/Laptops/trackpad-methods/manual', 'Manual'],
-		            ]
-		        },
-				['/Laptops/laptop-disable', 'Disabling laptop dGPUs'],
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Laptops/trackpad-methods/manual', 'Manual'],
+                    ]
+                },
+                ['/Laptops/laptop-disable', 'Disabling laptop dGPUs'],
             ]
         },
         {
@@ -172,16 +166,16 @@ module.exports = {
             sidebarDepth: 0,
             children: [
                 ['/Universal/ec-fix', 'Embedded Controller'],
-		        {
-					title: 'Methods',
-		            collapsable: true,
-		            sidebarDepth: 2,
-		            children: [
-		                ['/Universal/ec-methods/prebuilt', 'Prebuilt'],
-						['/Universal/ec-methods/ssdttime', 'SSDTTime'],
-		                ['/Universal/ec-methods/manual', 'Manual'],
-		            ]
-		        },
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Universal/ec-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/ec-methods/ssdttime', 'SSDTTime'],
+                        ['/Universal/ec-methods/manual', 'Manual'],
+                    ]
+                },
                 ['/Universal/plug', 'CPU Power Management'],
 		        {
 					title: 'Methods',
@@ -204,59 +198,59 @@ module.exports = {
 		            ]
 		        },
                 ['/Universal/awac', 'AWAC vs RTC'],
-		        {
-					title: 'Methods',
-		            collapsable: true,
-		            sidebarDepth: 2,
-		            children: [
-		                ['/Universal/awac-methods/prebuilt', 'Prebuilt'],
-		                ['/Universal/awac-methods/ssdttime', 'SSDTTime'],
-		                ['/Universal/awac-methods/manual', 'Manual'],
-						['/Universal/awac-methods/manual-hedt', 'Manual HEDT'],
-		            ]
-		        },
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Universal/awac-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/awac-methods/ssdttime', 'SSDTTime'],
+                        ['/Universal/awac-methods/manual', 'Manual'],
+                        ['/Universal/awac-methods/manual-hedt', 'Manual HEDT'],
+                    ]
+                },
                 ['/Universal/nvram', 'NVRAM PMC'],
-		        {
-					title: 'Methods',
-		            collapsable: true,
-		            sidebarDepth: 2,
-		            children: [
-		                ['/Universal/nvram-methods/prebuilt', 'Prebuilt'],
-		                ['/Universal/nvram-methods/ssdttime', 'SSDTTime'],
-		                ['/Universal/nvram-methods/manual', 'Manual'],
-		            ]
-		        },
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Universal/nvram-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/nvram-methods/ssdttime', 'SSDTTime'],
+                        ['/Universal/nvram-methods/manual', 'Manual'],
+                    ]
+                },
                 ['/Universal/rhub', 'USB RHUB'],
-		        {
-					title: 'Methods',
-		            collapsable: true,
-		            sidebarDepth: 2,
-		            children: [
-		                ['/Universal/rhub-methods/prebuilt', 'Prebuilt'],
-						['/Universal/rhub-methods/ssdttime', 'SSDTTime'],
-		                ['/Universal/rhub-methods/manual', 'Manual'],
-		            ]
-		        },
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Universal/rhub-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/rhub-methods/ssdttime', 'SSDTTime'],
+                        ['/Universal/rhub-methods/manual', 'Manual'],
+                    ]
+                },
                 ['/Universal/imei', 'IMEI'],
-		        {
-					title: 'Methods',
-		            collapsable: true,
-		            sidebarDepth: 2,
-		            children: [
-		                ['/Universal/imei-methods/prebuilt', 'Prebuilt'],
-		                ['/Universal/imei-methods/manual', 'Manual'],
-		            ]
-		        },
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Universal/imei-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/imei-methods/manual', 'Manual'],
+                    ]
+                },
                 ['/Universal/unc0', 'Fixing Uncore Bridge'],
-		        {
-					title: 'Methods',
-		            collapsable: true,
-		            sidebarDepth: 2,
-		            children: [
-						['/Universal/unc0-methods/prebuilt', 'Prebuilt'],
-		                ['/Universal/unc0-methods/manual', 'Manual'],
-		            ]
-		        },
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Universal/unc0-methods/prebuilt', 'Prebuilt'],
+                        ['/Universal/unc0-methods/manual', 'Manual'],
+                    ]
+                },
                 ['/Universal/smbus', 'Fixing SMBus Support'],
 		        {
 					title: 'Methods',
@@ -276,7 +270,7 @@ module.exports = {
 		            ]
 		        },
                 ['/Universal/irq', 'IRQ Fix'],
-				['/Universal/spoof', 'GPU Spoof'],
+                ['/Universal/spoof', 'GPU Spoof'],
             ]
         },
         {
@@ -293,20 +287,18 @@ module.exports = {
             sidebarDepth: 1,
             children: [
                 ['troubleshooting', 'Troubleshooting'],
-				['CONTRIBUTING', 'Contributing'],
+                ['CONTRIBUTING', 'Contributing'],
             ]
         },
-    	],
+        ],
     },
-    /**
-     * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
-     */
     plugins: [
-        '@vuepress/plugin-back-to-top',
+        '@vuepress/back-to-top',
         'vuepress-plugin-smooth-scroll',
-        ['vuepress-plugin-medium-zoom',
+        'vuepress-plugin-fulltext-search',
+        ['@vuepress/medium-zoom',
             {
-                selector: "img",
+                selector: ".theme-succinct-content :not(a) > img",
                 options: {
                     background: 'var(--bodyBgColor)'
                 }
