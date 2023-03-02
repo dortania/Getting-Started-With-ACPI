@@ -6,7 +6,7 @@
 
 ## What this SSDT does
 
-The purpose of SSDT-PLUG-ALT is to allow the kernel's XCPM (XNU's CPU Power Management) to manage our CPU's power management. It's pretty self explanatory why you'd want this. In addition to that, newer boards such as the Intel 600 series define CPU objects as `Device` according to the new ACPI 5.0 specification, but macOS expects them to be defined as `Processor`. This SSDT fixes this issue by defining `Device` objects for macOS.
+The purpose of SSDT-PLUG-ALT is to allow the kernel's XCPM (XNU's CPU Power Management) to manage our CPU's power management. It's pretty self explanatory why you'd want this. In addition to that, newer boards such as the Intel 600 series define CPU objects as `Device` according to the new ACPI 5.0 specification, but macOS expects them to be defined as `Processor`. This SSDT fixes this issue by defining `Processor` objects for macOS.
 
 ## Methods to make this SSDT
 
