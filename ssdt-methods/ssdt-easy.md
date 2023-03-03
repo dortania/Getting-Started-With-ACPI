@@ -25,16 +25,16 @@ What are all these options?:
   * IRQ patching, mainly needed for X79, X99 and laptop users(use option `C` to omit conflicting legacy IRQs)
 * `2. FakeEC - OS-aware Fake EC`
   * This is the SSDT-EC, required for Catalina and newer users
-* `3. FakeEC Laptop  - OS-aware Fake EC`
+* `3. FakeEC Laptop  - OS-aware Fake EC - Leaves Existing Untouched`
   * This is the SSDT-EC, but the laptop version only Builds Fake EC and leaves the existing EC devices untouched, again required for Catalina and newer users
 * `4. USBX - Power properties for USB on SKL and newer SMBIOS`
   * This is the SSDT-USBX.  The prebuilt version can be used if desired, but SSDTTime can build a customizable version of SSDT-USBX.
 * `5. PluginType - Sets plugin-type = 1 on First ProcessorObj`
-  * This is the SSDT-PLUG, and can be used on Haswell and newer.  Will also check and redefine processor objects for xxth generation and newer Intel and AMD systems.
+  * This is the SSDT-PLUG, and can be used on Haswell and newer.  Will also check and redefine processor objects for 12th generation and newer Intel and AMD systems.
 * `6. PMC - Sets Power Management controller status`
   * This is the SSDT-PMC, for Intel true 300+ series only, this device is missing from ACPI in recent boards and helps to bring back NVRAM support.
-* `7. RTCAWAC - Context-Aware AWAC Disable and and RTC ENable/Fake/Range Fix`
-  * This is the SSDT-AWAC/RTC0, its purpose  is to fix the system clocks found on newer hardware, and also enable, fake, and/or fix the range.
+* `7. RTCAWAC - Context-Aware AWAC Disable and and RTC Enable/Fake/Range Fix`
+  * This is the SSDT-AWAC/RTC0, its purpose is to fix the system clocks found on newer hardware, and also enable, fake, and/or fix the RTC range.
 * `8. USB Reset - Reset USB controllers to allow hardware mapping`
   * This is SSDT-RHUB, used for resetting USB ports in macOS for Asus's Z490 motherboards
 * `9. PCI Bridge - Create missing PCI bridges for passed device path`
@@ -58,18 +58,18 @@ For Skylake and newer plus AMD, you can either build SSDT-USBX with SSDTTime or 
 
 ### Manual Method
 
-Don't forget that SSDTs need to be added to OpenCore, reminder that .aml is complied, .dsl is code. **Add only the .aml file**:
+Don't forget that SSDTs need to be added to OpenCore, reminder that .aml is compiled, .dsl is code. **Add only the .aml file**:
 
 * EFI/OC/ACPI
 * config.plist -> ACPI -> Add
 
 Reminder that Cmd/Ctrl+R with ProperTree pointed at your OC folder will add all your SSDTs, kexts and .efi drivers to the config for you. **Do not add your DSDT to OpenCore, its already in your firmware**. If you are unsure what this is referring to, go back to the OpenCore guide and select your config based of the architecture of your CPU.
 
-For those who do not yet have a config.plist, you'll want to next head back to your respective OpenCore guides and create the config.plist:
+For those who do not yet have a `config.plist`, you'll want to next head back to your respective OpenCore guides and create the config.plist:
 
 * [OpenCore Install guide](https://dortania.github.io/OpenCore-Install-Guide/)
 
-Users of `FixHPET` will also need to merge oc_patches.plist into their config.plist
+Users of `FixHPET`, `XOSI`, and `RTCAWAC` will also need to merge `oc_patches.plist` into their `config.plist`
 
 Steps to do this:
 
@@ -80,7 +80,7 @@ Steps to do this:
 
 ### PatchMerge method
 
-**NOTE:** This method does require that you have your `config.plist` already created.  If you have not done so, please start on the [OpenCore Install guide](https://dortania.github.io/OpenCore-Install-Guide/) to get this created.
+**NOTE:** This method does require that you have your `config.plist` already created.  If you have not done so, please start on the [OpenCore Install guide](https://dortania.github.io/OpenCore-Install-Guide/) before running this tool.
 
 SSDTTime now includes a separate script called PatchMerge.  This script will automatically merge the patches you selected previously into your `config.plist`.
 
