@@ -6,16 +6,10 @@ What this tool does is, it dumps your DSDT from your firmware, and then creates 
 
 ## So what **CAN'T** SSDTTime do
 
-* **SSDT-PNLF**:
-  * Need to be configured to your system
 * **SSDT-GPI0**:
   * Need to be configured to your system
-* **USBX SSDT**:
-  * This is included on sample SSDTs but SSDTTime only makes the SSDT-EC part, Skylake and newer users can grab a pre-built here: [SSDT-USBX.aml](https://github.com/dortania/OpenCore-Post-Install/blob/master/extra-files/SSDT-USBX.aml)
 * **IMEI SSDT**:
   * If you have either a Sandy bridge CPU with 7 series motherboard or Ivy Bridge with 6 series motherboard, you'll need to either use the prebuilt or manually create it.
-* **RTC0 RANGE SSDT**:
-  If you have X99 or X299, you'll need to configure it to your system
 
 For users who don't have all the options available to them in SSDTTime, you can follow the "SSDTs: The long way" section. You can still use SSDTTime for SSDTs it does support.
 
@@ -33,15 +27,23 @@ What are all these options?:
   * This is the SSDT-EC, required for Catalina users
 * `3. FakeEC Laptop  - OS-aware Fake EC`
   * This is the SSDT-EC, but the laptop version only Builds Fake EC and leaves the existing EC devices untouched, again required for Catalina users
-* `4. PluginType - Sets plugin-type = 1 on First ProcessorObj`
+* `4. USBX - Power properties for USB on SKL and newer SMBIOS`
+  * This is the SSDT-USBX.  The prebuilt version can be used if desired, but SSDTTime can generate one from your DSDT.
+* `5. PluginType - Sets plugin-type = 1 on First ProcessorObj`
   * This is the SSDT-PLUG, for Intel only
-* `5. PMC - Sets Power Management controller status`
+* `6. PMC - Sets Power Management controller status`
   * This is the SSDT-PMC, for Intel true 300+ series only, this device is missing from ACPI in recent boards and helps to bring back NVRAM support.
-* `6. AWAC - Context-Aware AWAC Disable and RTC Fake`
-  * This is the SSDT-AWAC/RTC0, its purpose  is to fix the system clocks found on newer hardware
-* `7. USB Reset     - Reset USB controllers to allow hardware mapping`
+* `7. RTCAWAC - Context-Aware AWAC Disable and and RTC ENable/Fake/Range Fix`
+  * This is the SSDT-AWAC/RTC0, its purpose  is to fix the system clocks found on newer hardware, and also enable, fake, and/or fix the range.
+* `8. USB Reset     - Reset USB controllers to allow hardware mapping`
   * This is SSDT-RHUB, used for resetting USB ports in macOS for Asus's Z490 motherboards
-* `8. Dump DSDT  - Automatically dump the system DSDT`
+* `9. PCI Bridge - Create missing PCI bridges for passed device path`
+  * This will create missing PCI bridges necessary for passing device path.
+* `0. PNLF - Sets up a PNLF device for laptop backlight control.`
+  * This a customized SSDT-PNLF, tailored for the specific system.  This is not automatic and you must specify the generation of the iGPU.
+* `A. XOSI - _OSI rename and patch to return true for a range of Windows versions - also checks for OSID`
+  * This is SSDT-XOSI, can also create a patch for OSID and keep it in the correct order.
+* `P. Dump DSDT  - Automatically dump the system DSDT`
   * Dumps your DSDT from your firmware
 
 What we want to do is select option `8. Dump DSDT` first, then select the appropriate option(s) for your system.
