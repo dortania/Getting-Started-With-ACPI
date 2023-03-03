@@ -80,7 +80,9 @@ Steps to do this:
 
 ### PatchMerge method
 
-SSDTTime now includes a separate script called PatchMerge.  This script will automatically merge the patches you selected into your `config.plist`.  Once you run `PatchMerge.bat` you will be presented with this screen:
+SSDTTime now includes a separate script called PatchMerge.  This script will automatically merge the patches you selected previously into your `config.plist`.
+
+Run `PatchMerge.bat` you will be presented with this screen:
 
 ![](../images/ssdt-easy-md/patchmerge.png)
 
