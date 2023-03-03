@@ -88,4 +88,4 @@ Run `PatchMerge.bat` you will be presented with this screen:
 
 ![](../images/ssdt-easy-md/patchmerge.png)
 
-Select option `1. Select config.plist` to begin the process.  Once done, your patches will be automatically merged with your `config.plist`.  Just do not forget to copy your SSDTs to your `OC/ACPI` folder.
+Select option `1. Select config.plist` to begin the process.  Once done, your patches will be automatically merged with your `config.plist`.  Just do not forget to copy your SSDTs to your `EFI/OC/ACPI` folder.
