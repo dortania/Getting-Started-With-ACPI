@@ -80,6 +80,8 @@ Steps to do this:
 
 ### PatchMerge method
 
+**NOTE:** This method does require that you have your `config.plist` already created.  If you have not done so, please start on the [OpenCore Install guide](https://dortania.github.io/OpenCore-Install-Guide/) to get this created.
+
 SSDTTime now includes a separate script called PatchMerge.  This script will automatically merge the patches you selected previously into your `config.plist`.
 
 Run `PatchMerge.bat` you will be presented with this screen:
