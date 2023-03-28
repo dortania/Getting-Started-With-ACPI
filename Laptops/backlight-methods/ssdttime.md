@@ -6,7 +6,7 @@ To begin, you must have a valid `DSDT.aml` dump.  If you do not, you will have t
 
 * Select `0. PNLF`, then it will ask a series of questions regarding what platform you have.  Once you choose a proper `_UID`, SSDTTime will find your GPU's ACPI path, and properly create a PNLF device at that location.  An added bonus of SSDTTime is that it will search your entire DSDT for any references to PNLF anywhere and rename them so that any conflicts are removed as well.
 
-[](/images/Laptops/backlight-md/ssdttime_pnlf.png)
+![](/images/Laptops/backlight-md/ssdttime_pnlf.png)
 
 Once done, SSDTTime will create several files inside its Results folder.  A SSDT-PNLF.**aml**, SSDT-PNLF.**dsl** and may create two plist files: `patches_OC.plist` and `patches_Clover.plist`.
 
