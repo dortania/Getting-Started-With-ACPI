@@ -33,7 +33,7 @@ What are all these options?:
   * This is the SSDT-PLUG, and can be used on Haswell and newer.  Will also check and redefine processor objects for 12th generation and newer Intel and AMD systems.
 * `6. PMC - Sets Power Management controller status`
   * This is the SSDT-PMC, for Intel true 300+ series only, this device is missing from ACPI in recent boards and helps to bring back NVRAM support.
-* `7. RTCAWAC - Context-Aware AWAC Disable and and RTC Enable/Fake/Range Fix`
+* `7. RTCAWAC - Context-Aware AWAC Disable and RTC Enable/Fake/Range Fix`
   * This is the SSDT-AWAC/RTC0, its purpose is to fix the system clocks found on newer hardware, and also enable, fake, and/or fix the RTC range.
 * `8. USB Reset - Reset USB controllers to allow hardware mapping`
   * This is SSDT-RHUB, used for resetting USB ports in macOS for Asus's Z490 motherboards
