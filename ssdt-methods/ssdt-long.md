@@ -1,6 +1,6 @@
 # SSDTs: The long way
 
-Well sadly some things are not handled by SSDTTime, well have no fear as making SSDTs is super easy. The basic process:
+Unfortunately, some things aren't handled by SSDTTime, but have no fear as making SSDTs is super easy. The basic process:
 
 * Dump DSDT(the one SSDTTime did for us will work)
 * Decompile DSDT
