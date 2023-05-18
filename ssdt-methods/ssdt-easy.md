@@ -33,17 +33,17 @@ What are all these options?:
 * `4. USBX`
 	* Power properties for USB on SKL and newer SMBIOS
 * `5. PluginType`
-	* Redefines CPU Objects as Processor and sets plugin-type = 1`
+	* Redefines CPU Objects as Processor and sets plugin-type = 1
 * `6. PMC `
-	* Enables Native NVRAM on True 300-Series Boards`
+	* Enables Native NVRAM on True 300-Series Boards
 * `7. RTCAWAC`
-	* Context-Aware AWAC Disable and RTC Enable/Fake/Range Fix`
+	* Context-Aware AWAC Disable and RTC Enable/Fake/Range Fix
 * `8. USB Reset`
-	* Reset USB controllers to allow hardware mapping`
+	* Reset USB controllers to allow hardware mapping
 * `9. PCI Bridge`
-	* Create missing PCI bridges for passed device path`
+	* Create missing PCI bridges for passed device path
 * `0. PNLF`
-	* Sets up a PNLF device for laptop backlight control`
+	* Sets up a PNLF device for laptop backlight control
 * `A. XOSI `
 	* _OSI rename and patch to return true for a range of Windows versions - also checks for OSID
 * P. `Dump DSDT`
