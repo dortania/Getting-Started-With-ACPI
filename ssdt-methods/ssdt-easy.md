@@ -24,7 +24,7 @@ Run the `SSDTTime.bat` file as Admin on the target machine and you should see so
 
 What are all these options?:
 
-* `1. FixHPET `
+* `1. FixHPET`
   * Patch Out IRQ Conflicts
 * `2. FakeEC`
   * OS-Aware Fake EC
@@ -34,7 +34,7 @@ What are all these options?:
   * Power properties for USB on SKL and newer SMBIOS
 * `5. PluginType`
   * Redefines CPU Objects as Processor and sets plugin-type = 1
-* `6. PMC `
+* `6. PMC`
   * Enables Native NVRAM on True 300-Series Boards
 * `7. RTCAWAC`
   * Context-Aware AWAC Disable and RTC Enable/Fake/Range Fix
@@ -44,7 +44,7 @@ What are all these options?:
   * Create missing PCI bridges for passed device path
 * `0. PNLF`
   * Sets up a PNLF device for laptop backlight control
-* `A. XOSI `
+* `A. XOSI`
   * _OSI rename and patch to return true for a range of Windows versions - also checks for OSID
 * P. `Dump DSDT`
   * Automatically dump the system DSDT
