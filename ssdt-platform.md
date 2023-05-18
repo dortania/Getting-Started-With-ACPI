@@ -25,7 +25,7 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | AMD (15/16h) | N/A | ^^ | N/A | ^^ | N/A |
 | AMD (17h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
 
-## High End Desktop
+## High-End Desktop
 
 | Platforms | **CPU** | **EC** | **RTC** | **PCI** |
 | :-------: | :-----: | :----: | :-----: | :-----: |

@@ -9,7 +9,7 @@
 
 ## Fixing SSDTTime: `Could not locate or download iasl!`
 
-This is usually due to an outdated version of Python, try either updating Python or add iasl to the scripts folder for SSDTTime:
+This is usually due to an outdated version of Python, try either updating Python or adding iasl to the scripts folder for SSDTTime:
 
 * [iasl macOS version](https://bitbucket.org/RehabMan/acpica/downloads/iasl.zip)
 * [iasl Windows version](https://acpica.org/downloads/binary-tools)
@@ -19,12 +19,12 @@ This is usually due to an outdated version of Python, try either updating Python
 
 Grab [OpenShell](https://github.com/acidanthera/OpenCorePkg/releases) and add it to EFI/OC/Tools and config.plist -> Misc -> Tools.
 
-Next, call upon OpenCore shell and enter the following:
+Next, call upon the OpenCore shell and enter the following:
 
 ```
 shell> fs0: //replace with proper drive
 
-fs0:\> dir //to verify this is the right directory
+fs0:\> dir //to verify this is the correct directory
 
   Directory of fs0:\
 
@@ -59,16 +59,16 @@ Acpi table [DSDT] successfully installed and loaded
 Pass 1 parse of [DSDT]
 ```
 
-This is a common error on DSDTs that have methods that aren't supported by MaciASL, the easiest way is to delete MaciASL and make sure you grab it from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
+If you encounter an error on DSDTs due to unsupported methods in MaciASL, the simplest solution is to uninstall MaciASL and download it from Acidanthera's repository. Here's the link: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
 
 ## Invalid character (0x3D), expecting ASL keyword or name
 
 ![](./images/troubleshooting-md/invalid-parse.png)
 
-Similar to the above error, you're running an outdated copy of MaciASL. Make sure you're using the latest from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
+Like the above error, you're running an outdated copy of MaciASL. Make sure you're using the latest from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
 
 ## Syntax error, unexpected PARSEOP_ONE, expecting '('
 
 ![](./images/troubleshooting-md/invalid-parse.png)
 
-Similar to the above 2 errors, you're running an outdated copy of MaciASL. Make sure you're using the latest from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
+Like the above 2 errors, you're running an outdated copy of MaciASL. Make sure you're using the latest from Acidanthera's repo: [MaciASL](https://github.com/acidanthera/MaciASL/releases)
