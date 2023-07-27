@@ -7,7 +7,7 @@ What we will be doing is removing the Reserved Memory Regions to allow this tabl
 
 ## Preparation
 
-First we need to gather files necessary to patch our DMAR Table.  If you've used the `SysReport` Quirk that is included with the Debug version of OpenCore, then you should have a `DMAR-1.aml` file residing inside your EFI Partition `SysReport/ACPI` folder.  This is your un-modified DMAR Table that we will be manipulating going forward so make sure to store a copy somewhere on your PC for easy access.
+First we need to gather files necessary to patch our DMAR Table.  If you've used the `SysReport` Quirk that is included with the Debug version of OpenCore, then you should have a `DMAR-1.aml` file residing inside your EFI Partition `SysReport/ACPI` folder, otherwise please follow the procedure [here](/Manual/dump.html#sysreport-quirk) to get started.  Once you have the file, it is best to store it in a save location for easy access later on in this section.
 
 ## Manipulation
 
