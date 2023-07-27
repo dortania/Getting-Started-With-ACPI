@@ -1,6 +1,9 @@
 # Patching DMAR Table: Manual
 
-What we will be doing is removing the Reserved Memory Regions to allow this table to load without conflicts in macOS - which is necessary for Intel I225 based Ethernet Controllers, Aquantia Ethernet Controllers, and some WiFi devices.
+What we will be doing is removing the Reserved Memory Regions to allow this table to load without conflicts in macOS - which is necessary for the following hardware devices:
+* Intel I225 based Ethernet Controllers
+* Aquantia Ethernet Controllers
+* Some WiFi devices
 
 ## Preparation
 
@@ -20,9 +23,17 @@ If your DMAR Table looks like Example #2 which has no Reserved Memory Regions, y
 
 Now if your DMAR Table looks like Example #1, please continue below.
 
-With our `DMAR-1.aml` file open, it is time to begin patching it, and do not worry, this is pretty easy to do.  All we are doing is highlighting every section that is labelled `Reserved Memory Region` or Subtable Type of `0001` just like in the example below.
+With our `DMAR-1.aml` file open, it is time to begin patching it, and do not worry this is pretty easy to do.  All we are doing is highlighting every section that is labelled `Reserved Memory Region` or Subtable Type of `0001` just like in the example below.
 
 ![](../../images/Universal/dmar-md/dmar-rmr-selected.png)
+
+The information starting with `Raw Table Data` after the last `Reserved Memory Region` entry is safe to remove as well if you choose to, this is merely raw binary data on display.  When you Compile and Save as a new `ACPI Machine Language Binary`, this data will be dynamically added and calculated by IASL.
+
+::: warning
+
+**NOTE**: Do not confuse this with a SSDT, as that is a `Secondary System Differential Table` that is a foot note for the actual DSDT.
+
+:::
 
 ### Dropping DMAR Table
 
@@ -38,6 +49,6 @@ To get started, you will need to prepare your `config.plist` for deleting or "dr
 
 ::: warning
 
-You must still conform to the OpenCore's `config.plist` schema, so make sure to consult with the OpenCore Configuration document for all required fields that must be present within `ACPI->Delete` and fill them in with their failsafe values.
+You must still conform to the OpenCore's `config.plist` schema, so make sure to consult with the [OpenCore Configuration](https://dortania.github.io/docs/release/Configuration.html) document for all required fields that must be present within `ACPI->Delete` and fill them in with their failsafe values.
 
 :::
