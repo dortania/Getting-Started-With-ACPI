@@ -12,7 +12,7 @@ First we need to gather files necessary to patch our DMAR Table.  If you've used
 
 Easiest way to manipulate the DMAR table is to use the GUI program MaciASL, this is a macOS only program, which can be acquired [here](https://github.com/acidanthera/MaciASL).  It is time to create our customized version of our original DMAR table with the Reserved Memory Regions removed.  So to start, we will open the copy of our `DMAR-1.aml` file we extracted from our system.
 
-![](../images/Universal/dmar-md/dmar-example-rmr.png) | ![](../images/Universal/dmar-md/dmar-example-normr.png)
+![](../../images/Universal/dmar-md/dmar-example-rmr.png) | ![](../../images/Universal/dmar-md/dmar-example-normr.png)
 :-------------------------------:|:------------------:
 Example of a DMAR Table with Reserved Memory Regions. | Example of a DMAR Table without Reserved Memory Regions
 
@@ -22,7 +22,7 @@ Now if your DMAR Table looks like Example #1, please continue below.
 
 With our `DMAR-1.aml` file open, it is time to begin patching it, and do not worry, this is pretty easy to do.  All we are doing is highlighting every section that is labelled `Reserved Memory Region` or Subtable Type of `0001` just like in the example below.
 
-![](../images/Universal/dmar-md/dmar-rmr-selected.png)
+![](../../images/Universal/dmar-md/dmar-rmr-selected.png)
 
 ### Dropping DMAR Table
 
