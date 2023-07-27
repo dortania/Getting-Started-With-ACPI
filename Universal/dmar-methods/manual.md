@@ -2,13 +2,13 @@
 
 ## Preparation
 
-First we need to gather files necessary to patch our DMAR Table.  If you've used the `SysReport` Quirk that is included with the Debug version of OpenCore, then you should have a DMAR-1.aml file residing inside your EFI Partition `SysReport/ACPI` folder.  This is your un-modified DMAR Table that we will be manipulating going forward so make sure to store a copy somewhere on your PC for easy access.
+First we need to gather files necessary to patch our DMAR Table.  If you've used the `SysReport` Quirk that is included with the Debug version of OpenCore, then you should have a `DMAR-1.aml` file residing inside your EFI Partition `SysReport/ACPI` folder.  This is your un-modified DMAR Table that we will be manipulating going forward so make sure to store a copy somewhere on your PC for easy access.
 
 ## Manipulation
 
 ### Dropping DMAR Table
 
-Easiest way to manipulate the DMAR table is to use the GUI program MaciASL, this is a macOS only program.  To get started, you will need to prepare your `config.plist` for deleting or "dropping" the DMAR table.
+Easiest way to manipulate the DMAR table is to use the GUI program MaciASL, this is a macOS only program, which can be acquired [here](https://github.com/acidanthera/MaciASL).  To get started, you will need to prepare your `config.plist` for deleting or "dropping" the DMAR table.
 
 ::: tip Delete Code
 
@@ -23,3 +23,7 @@ Easiest way to manipulate the DMAR table is to use the GUI program MaciASL, this
 You must still conform to the OpenCore's `config.plist` schema, so make sure to consult with the OpenCore Configuration document for all required fields that must be present within `ACPI->Delete` and fill them in with their failsafe values.
 
 :::
+
+### Creating our Customized DMAR Table
+
+Now that we're dropping our firmware's DMAR Table, it is time to create our customized version of our original DMAR table with the Reserved Memory Regions removed.  So to start, we will open our `DMAR-1.aml` file we extracted from our system.
