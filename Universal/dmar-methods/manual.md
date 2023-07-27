@@ -57,3 +57,9 @@ To get started, you will need to prepare your `config.plist` for deleting or "dr
 You must still conform to the OpenCore's `config.plist` schema, so make sure to consult with the [OpenCore Configuration](https://dortania.github.io/docs/release/Configuration.html) document for all required fields that must be present within `ACPI->Delete` and fill them in with their failsafe values.
 
 :::
+
+## Cleaning Up
+
+Of course make sure your new patched `DMAR.aml` file is in your EFI Partition's `EFI/OC/ACPI` folder and also added to your `config.plist`.  Then disable `DisableIoMapper` under `Kernel->Quirks` and reboot.
+
+If you are using a I225 based Ethernet Controller, and are utilizing `e1000=0` or `dk.e1000=0` for macOS 12.2.1 and below.  You will need to remove this boot-arg before rebooting so that `com.apple.DriverKit-AppleEthernetE1000` can match to your Intel I225-V Ethernet controller.
