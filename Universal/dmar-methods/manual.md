@@ -19,13 +19,18 @@ Easiest way to manipulate the DMAR table is to use the GUI program MaciASL, this
 :-------------------------------:|:------------------:
 Example of a DMAR Table with Reserved Memory Regions. | Example of a DMAR Table without Reserved Memory Regions
 
-If your DMAR Table looks like Example #2 which has no Reserved Memory Regions, you can skip this guide and merely disable `DisableIoMapper` in your `config.plist`, remove the  and make sure VT-d is enabled in your BIOS.
+If your DMAR Table looks like Example #2 which has no Reserved Memory Regions, you can skip this guide and merely disable `DisableIoMapper` in your `config.plist`, and enable VT-d in your BIOS.
 
 Now if your DMAR Table looks like Example #1, please continue below.
 
 With our `DMAR-1.aml` file open, it is time to begin patching it, and do not worry this is pretty easy to do.  All we are doing is highlighting every section that is labelled `Reserved Memory Region` or Subtable Type of `0001` just like in the example below.
 
 ![](../../images/Universal/dmar-md/dmar-rmr-selected.png)
+::: details Learn More
+
+To learn more, you can read up on [DMA Remapping Table: "Intel® Virtualization Technology for Directed I/O"](https://software.intel.com/content/dam/develop/external/us/en/documents-tps/vt-directed-io-spec.pdf).
+
+:::
 
 The information starting with `Raw Table Data` after the last `Reserved Memory Region` entry is safe to remove as well if you choose to, this is merely raw binary data on display.  When you Compile and Save as a new `ACPI Machine Language Binary`, this data will be dynamically added and calculated by IASL.
 
