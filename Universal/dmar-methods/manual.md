@@ -6,9 +6,11 @@ First we need to gather files necessary to patch our DMAR Table.  If you've used
 
 ## Manipulation
 
+### Dropping DMAR Table
+
 Easiest way to manipulate the DMAR table is to use the GUI program MaciASL, this is a macOS only program.  To get started, you will need to prepare your `config.plist` for deleting or "dropping" the DMAR table.
 
-::: details Delete Code
+::: tip Delete Code
 
 | Comment        | String  | Drop DMAR Table |
 | :------        | :------ | :-------------- |
@@ -18,6 +20,6 @@ Easiest way to manipulate the DMAR table is to use the GUI program MaciASL, this
 
 ::: warning
 
-You must still conform to the OpenCore's `config.plist` schema, so make sure to consult with the OpenCore Configuration document for all fields that must be apart of `ACPI->Delete` and fill them in with their failsafe values.
+You must still conform to the OpenCore's `config.plist` schema, so make sure to consult with the OpenCore Configuration document for all required fields that must be present within `ACPI->Delete` and fill them in with their failsafe values.
 
 :::
