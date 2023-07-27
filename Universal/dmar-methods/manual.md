@@ -31,7 +31,7 @@ The information starting with `Raw Table Data` after the last `Reserved Memory R
 
 ::: warning
 
-**NOTE**: Do not confuse this with a SSDT, as that is a `Secondary System Differential Table` that is a foot note for the actual DSDT.
+**NOTE**: Do not confuse this with a SSDT, as that is a `Secondary System Description Table` which provides extra details for the actual DSDT.
 
 :::
 
