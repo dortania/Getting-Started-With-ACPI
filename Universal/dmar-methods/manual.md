@@ -7,7 +7,7 @@ What we will be doing is removing the Reserved Memory Regions to allow this tabl
 
 ## Preparation
 
-First we need to gather files necessary to patch our DMAR Table.  If you've used the `SysReport` Quirk that is included with the Debug version of OpenCore, then you should have a `DMAR-1.aml` file residing inside your EFI Partition `SysReport/ACPI` folder, otherwise please follow the procedure [here](/Manual/dump.html#sysreport-quirk) to get started.  Once you have the file, it is best to store it in a save location for easy access later on in this section.
+First we need to gather files necessary to patch our DMAR Table.  If you've used the `SysReport` Quirk that is included with the Debug version of OpenCore, then you should have a `DMAR-1.aml` file residing inside your EFI Partition `SysReport/ACPI` folder, otherwise please follow the procedure [here](/Manual/dump.html#sysreport-quirk) to get started.  Once you have the file, it is best to store it in a safe location for easy access later on in this section.
 
 ## Manipulation
 
@@ -23,7 +23,7 @@ If your DMAR Table looks like Example #2 which has no Reserved Memory Regions, y
 
 Now if your DMAR Table looks like Example #1, please continue below.
 
-With our `DMAR-1.aml` file open, it is time to begin patching it, and do not worry this is pretty easy to do.  All we are doing is highlighting every section that is labelled `Reserved Memory Region` or Subtable Type of `0001` just like in the example below.
+With our `DMAR-1.aml` file open, it is time to begin patching it, and do not worry this is pretty easy to do.  All we are doing is highlighting every section that is labelled `Reserved Memory Region` or Subtable Type of `0001` until you reach the next non-`0001` Subtable Type or when you reach the end of the file just like in the example below, and remove the entries entirely.
 
 ![](../../images/Universal/dmar-md/dmar-rmr-selected.png)
 ::: details Learn More
@@ -32,7 +32,7 @@ To learn more, you can read up on [DMA Remapping Table: "Intel® Virtualization 
 
 :::
 
-The information starting with `Raw Table Data` after the last `Reserved Memory Region` entry is safe to remove as well if you choose to, this is merely raw binary data on display.  When you Compile and Save as a new `ACPI Machine Language Binary`, this data will be dynamically added and calculated by IASL.
+The information starting with `Raw Table Data` at the end of the table is safe to remove as well if you choose to, this is merely raw binary table data and is only there for display.  When you Compile and Save as a new `ACPI Machine Language Binary`, this data is changed to reflect the new information in the binary table.
 
 ::: warning
 
@@ -40,9 +40,9 @@ The information starting with `Raw Table Data` after the last `Reserved Memory R
 
 :::
 
-### Dropping DMAR Table
+### Dropping the DMAR Table
 
-To get started, you will need to prepare your `config.plist` for deleting or "dropping" the DMAR table.  This is done in the `ACPI->Delete` section.
+Now you will need to prepare your `config.plist` for deleting or "dropping" the DMAR table.  This is done in the `ACPI->Delete` section.
 
 ::: tip Delete Code
 
