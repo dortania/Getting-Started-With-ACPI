@@ -43,6 +43,8 @@ What are all these options?:
   * This a customized SSDT-PNLF, tailored for the specific system.  This is not automatic and you must specify the generation of the iGPU.
 * `A. XOSI - _OSI rename and patch to return true for a range of Windows versions - also checks for OSID`
   * This is SSDT-XOSI, can also create a patch for OSID and keep it in the correct order.
+* `B. Fix DMAR - Remove Reserved Memory Regions from the DMAR Table`
+  * This is primarily needed for devices that require VT-d functionality such as: I225 based ethernet controllers, Aquantia Ethernet Controllers and some WiFi Devices.
 * `P. Dump DSDT  - Automatically dump the system DSDT`
   * Dumps your DSDT from your firmware
 
