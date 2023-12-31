@@ -176,6 +176,15 @@ module.exports = {
                         ['/Universal/ec-methods/manual', 'Manual'],
                     ]
                 },
+                ['/Universal/dmar', 'DMAR Table (VT-d)'],
+                {
+                    title: 'Methods',
+                    collapsable: true,
+                    sidebarDepth: 2,
+                    children: [
+                        ['/Universal/dmar-methods/manual', 'Manual'],
+                    ]
+                },
                 ['/Universal/plug', 'CPU Power Management'],
                 {
                     title: 'Methods',
