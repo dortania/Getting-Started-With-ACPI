@@ -34,6 +34,8 @@
   * [Prebuilt](/Universal/ec-methods/prebuilt.md)
   * [SSDTTime](/Universal/ec-methods/ssdttime.md)
   * [Manual](/Universal/ec-methods/manual.md)
+* [DMAR Table (VT-d)](/Universal/dmar.md)
+  * [Manual](/Universal/dmar-methods/manual.md)
 * [CPU Power Management](/Universal/plug.md)
   * [Prebuilt](/Universal/plug-methods/prebuilt.md)
   * [SSDTTime](/Universal/plug-methods/ssdttime.md)
