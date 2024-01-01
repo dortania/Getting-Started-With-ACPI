@@ -9,10 +9,11 @@
 
 ## Finding the ACPI path
 
-To find the ACPI pathing, you have 2 methods:
+To find the ACPI pathing, you have 3 methods:
 
 * [DSDT](#dsdt)
 * [DeviceManager](#devicemanager)
+* [Linux](#linux)
 
 ### DSDT
 
@@ -36,7 +37,7 @@ If we then search for instances of `CP00` we find that its full ACPI pathing is 
 
 Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 
-##### DeviceManager
+### DeviceManager
 
 If you already have Windows installed on this machine, finding the CPU pathing is fairly easy.
 
@@ -60,6 +61,14 @@ When this happens, you can either:
 So with the above X299 example, our CPU pathing would be `SB.SCK0.CP00`
 
 Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
+
+### Linux
+
+Finding the CPU's ACPI path with Linux is very simple. Simply `cat` the firmware_node path:
+
+```
+cat /sys/devices/system/cpu/cpu0/firmware_node/path
+```
 
 ## Edits to the sample SSDT
 
