@@ -92,7 +92,7 @@ You will want to test the SSDT at this point by [compiling the SSDT](/Manual/com
 
 ## Enabling Trackpad
 
-Often times, the I2C devices check to see if they are running in Windows before enabling themselves. Similarly to the `GPI0` device, these devices contain a `_STA` method.
+For some firmwares, the I2C devices check to see if they are running in Windows before enabling themselves. Similarly to the `GPI0` device, these devices contain a `_STA` method.
 
 ::: details _STA Example (Optional)
 
