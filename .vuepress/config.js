@@ -186,16 +186,26 @@ module.exports = {
                     ]
                 },
                 ['/Universal/plug', 'CPU Power Management'],
-                {
-                    title: 'Methods',
-                    collapsable: true,
-                    sidebarDepth: 2,
-                    children: [
-                        ['/Universal/plug-methods/prebuilt', 'Prebuilt'],
-                        ['/Universal/plug-methods/ssdttime', 'SSDTTime'],
-                        ['/Universal/plug-methods/manual', 'Manual'],
-                    ]
-                },
+		        {
+					title: 'Methods',
+		            collapsable: true,
+		            sidebarDepth: 2,
+		            children: [
+		                ['/Universal/plug-methods/prebuilt', 'Prebuilt'],
+						['/Universal/plug-methods/ssdttime', 'SSDTTime'],
+		                ['/Universal/plug-methods/manual', 'Manual'],
+		            ]
+		        },
+                ['/Universal/plug-alt', 'CPU Power Management and Processor Definition'],
+		        {
+					title: 'Methods',
+		            collapsable: true,
+		            sidebarDepth: 2,
+		            children: [
+		                ['/Universal/plug-alt-methods/prebuilt', 'Prebuilt'],
+		                ['/Universal/plug-alt-methods/manual', 'Manual'],
+		            ]
+		        },
                 ['/Universal/awac', 'AWAC vs RTC'],
                 {
                     title: 'Methods',
@@ -251,14 +261,23 @@ module.exports = {
                     ]
                 },
                 ['/Universal/smbus', 'Fixing SMBus Support'],
-                {
-                    title: 'Methods',
-                    collapsable: true,
-                    sidebarDepth: 2,
-                    children: [
-                        ['/Universal/smbus-methods/manual', 'Manual'],
-                    ]
-                },
+		        {
+					title: 'Methods',
+		            collapsable: true,
+		            sidebarDepth: 2,
+		            children: [
+		                ['/Universal/smbus-methods/manual', 'Manual'],
+		            ]
+		        },
+                ['/Universal/brg0', 'Fixing Property Injection'],
+		        {
+					title: 'Methods',
+		            collapsable: true,
+		            sidebarDepth: 2,
+		            children: [
+		                ['/Universal/brg0-methods/ssdttime', 'SSDTTime'],
+		            ]
+		        },
                 ['/Universal/irq', 'IRQ Fix'],
                 ['/Universal/spoof', 'GPU Spoof'],
             ]
