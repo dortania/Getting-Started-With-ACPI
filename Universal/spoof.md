@@ -135,7 +135,14 @@ Buffer (0x04)
     0xB0, 0x67, 0x00, 0x00
 },
 ```
-
+Some AMD GPUs stopped working since WEG 1.5.2 update. The VRAM is correctly recognized but there's no GPU acceleration. To fix this issue you need to add
+```
+"no-gfx-spoof", 
+Buffer (0x04)
+{
+    0x01, 0x00, 0x00, 0x00
+},
+```
 **Model**:
 
 ```
