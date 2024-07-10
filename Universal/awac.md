@@ -1,11 +1,11 @@
-# Fixing System Clocks (SSDT-AWAC/RTC0)
+# Fixing System Clocks (SSDT-RTCAWAC)
 
 * [What this SSDT does](#what-this-ssdt-does)
 * [Methods to make this SSDT](#methods-to-make-this-ssdt)
 
 ## What this SSDT does
 
-The purpose of SSDT-AWAC/RTC0 is to fix the system clocks found on newer hardware, mainly found in the following:
+The purpose of SSDT-RTCAWAC is to fix the system clocks found on newer hardware, mainly found in the following:
 
 * B360
 * B365
@@ -20,7 +20,7 @@ The purpose of SSDT-AWAC/RTC0 is to fix the system clocks found on newer hardwar
 * X99
 * X299
 
-SSDT-AWAC tries to re-enable the old RTC clock that is compatible with macOS, while SSDT-RTC0 will instead create a "fake" RTC clock if there is no legacy one to enable.
+SSDT-RTCAWAC tries to re-enable the old RTC clock, or create a "fake" RTC clock if there is no legacy one to enable.
 
 ## Methods to make this SSDT
 
