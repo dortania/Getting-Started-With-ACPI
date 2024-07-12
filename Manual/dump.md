@@ -35,7 +35,7 @@ With OpenCore, we have 2 options:
 
 ### SysReport Quirk
 
-As of OpenCore 0.5.9, we have a new quirk called SysReport that can be enabled in your `config.plist` under `Misc` > `SysReport`. This quick will actually dump your DSDT automatically when hitting the boot screen. The main issues are:
+As of OpenCore 0.5.9, we have a new quirk called SysReport that can be enabled in your `config.plist` under `Misc` > `SysReport`. This quirk will actually dump your DSDT automatically when hitting the boot screen. The main issues are:
 
 * You already need a bootable OpenCore USB to get this dump
 * This also requires a DEBUG version of 0.5.9
