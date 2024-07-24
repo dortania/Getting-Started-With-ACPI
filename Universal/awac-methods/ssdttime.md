@@ -6,7 +6,7 @@ The second involves using SSDTTime which automates most of the process. See here
 
 To get the SSDT-PMC, run the following:
 
-* `7. Dump DSDT` then run `6. AWAC`
+* `P. Dump DSDT` then run `6. AWAC`
 
 This will provide you with some files, the main one you care about is SSDT-AWAC.**aml**. or SSDT-RTC0.**aml**. The DSDT and .dsl are only left for referencing or verification.
 
