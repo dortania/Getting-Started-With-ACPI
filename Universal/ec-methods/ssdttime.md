@@ -4,11 +4,11 @@ The second involves using SSDTTime which automates most of the process. See here
 
 To get the SSDT-EC on desktops, run the following:
 
-* `7. Dump DSDT` then run `2. FakeEC`
+* `P. Dump DSDT` then run `2. FakeEC`
 
 To get the SSDT-EC on laptops, run the following:
 
-* `7. Dump DSDT` then run `3.  FakeEC Laptop`
+* `P. Dump DSDT` then run `3.  FakeEC Laptop`
 
 This will provide you with some files, the main one you care about is SSDT-EC.**aml**. The DSDT and .dsl are only left for referencing or verification.
 
