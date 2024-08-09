@@ -1,6 +1,7 @@
 # Patching DMAR Table: Manual
 
 What we will be doing is removing the Reserved Memory Regions to allow this table to load without conflicts in macOS - which is necessary for the following hardware devices:
+
 * Intel I225 based Ethernet Controllers
 * Aquantia Ethernet Controllers
 * Some WiFi devices
