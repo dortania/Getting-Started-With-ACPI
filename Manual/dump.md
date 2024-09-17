@@ -17,7 +17,10 @@ So to start, we'll need to get a copy of your DSDT from your firmware. The easie
 * [SSDTTime](https://github.com/corpnewt/SSDTTime)
   * Supports both Windows and Linux for DSDT dumping
   * `4. Dump DSDT - Automatically dump the system DSDT`
-* Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above method
+* sysfs
+  * Run `sudo cat /sys/firmware/acpi/tables/DSDT > DSDT.aml`
+
+* Do note that all ACPI patches from clover/OpenCore will be applied to the DSDT with the above 2 methods
 
 ## From Clover
 

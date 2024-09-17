@@ -23,6 +23,7 @@ To find the ACPI pathing, you have 2 methods:
 
 * [DSDT](#dsdt)
 * [DeviceManager](#devicemanager)
+* [Linux](#linux)
 
 ### DSDT
 
@@ -59,6 +60,28 @@ Start by opening up Device Manager in Windows and looking for a device named `Em
 ![](../../images/Desktops/ec.png)
 
 From the above, we can see that our pathing is `SB.PC00.LPC0.EC0`
+
+Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
+
+### Linux
+
+Use `find` over the ACPI tree:
+
+```
+find /sys/devices/LNXSYSTM:00 -name 'PNP0C09:*'
+```
+
+The above command finds all PNP0C09 devices in the ACPI tree. The output may be something like:
+
+```
+/sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:18/PNP0C09:00
+```
+
+To get the pathing, cat the `path`, taking the results from above, like so:
+
+```
+cat /sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/device:18/PNP0C09:00/path
+```
 
 Now with the pathing, you can head here: [Edits to the sample SSDT](#edits-to-the-sample-ssdt)
 
