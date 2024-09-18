@@ -20,7 +20,7 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Skylake | ^^ | [SSDT-EC-USBX](./Universal/ec-fix) | ^^ | ^^ | ^^ |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Coffee Lake | ^^ | ^^ | [SSDT-AWAC](./Universal/awac) | [SSDT-PMC](./Universal/nvram) | ^^ |
+| Coffee Lake | ^^ | ^^ | [SSDT-RTCAWAC](./Universal/awac) | [SSDT-PMC](./Universal/nvram) | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | N/A | [SSDT-RHUB](./Universal/rhub) |
 | AMD (15/16h) | N/A | ^^ | N/A | ^^ | N/A |
 | AMD (17h) | [SSDT-CPUR for B550 and A520](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-CPUR.aml) | ^^ | ^^ | ^^ | ^^ |
@@ -32,7 +32,7 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Nehalem and Westmere | N/A | [SSDT-EC](./Universal/ec-fix.html) | N/A | N/A |
 | Sandy Bridge-E | ^^ | ^^ | ^^ | [SSDT-UNC](./Universal/unc0) |
 | Ivy Bridge-E | ^^ | ^^ | ^^ | ^^ |
-| Haswell-E | [SSDT-PLUG](./Universal/plug) | [SSDT-EC-USBX](./Universal/ec-fix) | [SSDT-RTC0-RANGE](./Universal/awac) | ^^ |
+| Haswell-E | [SSDT-PLUG](./Universal/plug) | [SSDT-EC-USBX](./Universal/ec-fix) | [SSDT-RTCAWAC](./Universal/awac) | ^^ |
 | Broadwell-E | ^^ | ^^ | ^^ | ^^ |
 | Skylake-X | ^^ | ^^ | ^^ | N/A |
 
@@ -47,7 +47,7 @@ Please see the **specific ACPI section of your config.plist**, all SSDTs needed 
 | Broadwell | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Skylake | ^^ | [SSDT-EC-USBX](./Universal/ec-fix) | ^^ | ^^ | ^^ | ^^ | N/A |
 | Kaby Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
-| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | ^^ | ^^ | [SSDT-AWAC](./Universal/awac) | ^^ | ^^ |
+| Coffee Lake (8th Gen) and Whiskey Lake | ^^ | ^^ | ^^ | ^^ | [SSDT-RTCAWAC](./Universal/awac) | ^^ | ^^ |
 | Coffee Lake (9th Gen) | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Comet Lake | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ | ^^ |
 | Ice Lake | ^^ | ^^ | ^^ | ^^ | ^^ | [SSDT-RHUB](./Universal/rhub) | ^^ |
