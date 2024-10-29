@@ -41,7 +41,7 @@ Simply select your hardware type and generation, then download the associated fi
 
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -66,7 +66,7 @@ SSDT-EC:
   * Required Ivy Bridge CPU with 6 series motherboard
     * ie. H61, B65, Q65, P67, H67, Q67, Z68
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -94,7 +94,7 @@ SSDT-IMEI
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -119,7 +119,7 @@ SSDT-EC:
 * [SSDT-PLUG-DRTNIA](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PLUG-DRTNIA.aml)
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -147,7 +147,7 @@ SSDT-EC-USBX:
 * [SSDT-AWAC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-AWAC.aml)
 * [SSDT-PMC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PMC.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -186,7 +186,7 @@ SSDT-PMC:
 * [SSDT-RHUB](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RHUB.aml)
   * Specifically for Asus's 400 series motherboards, Gigabyte and others do not need SSDT-RHUB
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -224,7 +224,7 @@ SSDT-RHUB:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -260,7 +260,7 @@ SSDT-XOSI:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -299,7 +299,7 @@ SSDT-XOSI:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -335,7 +335,7 @@ SSDT-XOSI:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -373,7 +373,7 @@ SSDT-XOSI:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -417,7 +417,7 @@ SSDT-XOSI:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -465,7 +465,7 @@ SSDT-XOSI:
 * [SSDT-PNLF](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-PNLF.aml)
 * [SSDT-XOSI](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-XOSI.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -510,7 +510,7 @@ SSDT-XOSI:
 
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -531,7 +531,7 @@ SSDT-EC:
 * [SSDT-EC-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-DESKTOP.aml)
 * [SSDT-UNC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-UNC.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -558,7 +558,7 @@ SSDT-UNC0:
 * [SSDT-RTC0-RANGE-HEDT](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RTC0-RANGE-HEDT.aml)
 * [SSDT-UNC](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-UNC.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -594,7 +594,7 @@ SSDT-UNC0:
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 * [SSDT-RTC0-RANGE-HEDT](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-RTC0-RANGE-HEDT.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -626,7 +626,7 @@ SSDT-RTC0-RANGE-HEDT:
 
 * [SSDT-EC-USBX-DESKTOP](https://github.com/dortania/Getting-Started-With-ACPI/blob/master/extra-files/compiled/SSDT-EC-USBX-DESKTOP.aml)
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
@@ -651,7 +651,7 @@ SSDT-EC-USBX:
     * X570 and older **DO NOT** need SSDT-CPUR
     * No threadripper machines need this either
 
-Once downloaded, place them into your EFI folder under EFI/OC/ACPI and head back to the install guide
+Once downloaded, place them into your folder EFI/OC/ACPI and head back to the install guide
 
 * [config.plist Setup](https://dortania.github.io/OpenCore-Install-Guide/config.plist/)
 
