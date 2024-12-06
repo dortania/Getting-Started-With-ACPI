@@ -70,7 +70,7 @@ Now that we have our ACPI path, lets grab our SSDT and get to work:
 From the above SSDT, it's very likely your processor is already there. If so, you can delete all the other entries other than yours and the `Method PMPM` as this is what injects the `plugin-type=1` property into our system.
 
 * **Reminder**: We only need to apply `plugin-type=1` to the first thread
-
+* **Reminder#2**: Do not delete right curly bracket at the very end of the SSDT-PLUG.aml file. Doing so will result in syntax error preventing you from compiling. Great example is the "Cleaned Up" image below which lacks said bracket.
 For the below example, we'll be using the X299 example(`SB.SCK0.CP00`)
 
 Original          |  Cleaned Up
