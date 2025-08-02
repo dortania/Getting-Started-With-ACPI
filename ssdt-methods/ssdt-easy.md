@@ -22,7 +22,9 @@ Run the `SSDTTime.bat` file as Admin on the target machine and you should see so
 What are all these options?:
 
 * `1. FixHPET - Patch out IRQ Conflicts`
-  * IRQ patching, mainly needed for X79, X99 and laptop users(use option `C` to omit conflicting legacy IRQs)
+  * IRQ patching, mainly needed for X79, X99 and laptop users
+  * Use option `C` to omit conflicting legacy IRQs
+    * Does that mean it doesn't nullify any IRQ from these devices: `IPIC`, `RTC`, and `TIMR`?
 * `2. FakeEC - OS-aware Fake EC`
   * This is the SSDT-EC, required for Catalina and newer users
 * `3. FakeEC Laptop  - OS-aware Fake EC - Leaves Existing Untouched`
@@ -91,3 +93,21 @@ Run `PatchMerge.bat` you will be presented with this screen:
 ![](../images/ssdt-easy-md/patchmerge.png)
 
 Select option `1. Select config.plist` to begin the process.  Once done, your patches will be stored in a `config.plist` inside the Results folder.  You will need to verify that copy of your `config.plist` with your existing one, making sure everything is intact and the patches inserted properly.  Then copy both the `config.plist` and the SSDTs from the Results folder to your `EFI/OC` and `EFI/OC/ACPI` folders respectively.
+
+---
+
+### Never nullify any IRQ from devices `IPIC`, `RTC`, and `TIMR`.
+  1. These Devices Are Not Multi-Function
+  Unlike a complex device that might have multiple IRQs for different functions, these are simple, single-purpose components.
+
+   * `TIMR` (Timer): Its entire job is to send a timing signal on IRQ 0. If you nullify IRQ 0, the timer device is effectively disabled from the OS's perspective. It
+     has no other function.
+   * `RTC` (Real-Time Clock): Its job is to keep time and send an alarm signal on IRQ 8. If you nullify IRQ 8, you disable its ability to signal the CPU, which is its
+     primary role for macOS.
+   * `IPIC` (Interrupt Controller): This is the manager. Nullifying its IRQ (IRQ 2, which is the cascade for all others) is like telling the manager not to listen to
+     any employees. The entire system fails.
+
+ **Is SSDTime able to patch an IRQ to change its properties from Shared to Exclusive?**
+If IPIC, RTC, TIMR, HPET are essential and cannot be patched, SSDTime should not offer to nullify them.
+
+Is the device obsolete legacy hardware? (LPT parallel port, UAR/COM serial port, FDC floppy controller) the problem is its existence, it *can* safely be nullified.
