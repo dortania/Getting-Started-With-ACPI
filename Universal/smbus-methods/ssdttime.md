@@ -1,12 +1,12 @@
-# Fixing RHUB: SSDTTime
+# Fixing SMBus support: SSDTTime
 
 The second involves using SSDTTime which automates most of the process. See here on how to use it: [SSDTs: Easy Way](/ssdt-methods/ssdt-easy.md)
 
-To get the SSDT-RHUB, run the following:
+To get the SSDT-SBUS-MCHC, run the following:
 
-* `P. Dump DSDT` then run `7. USB Reset`
+* `P. Dump DSDT` then run `C. SMBus`
 
-This will provide you with some files, the main one you care about is SSDT-USB-Reset.**aml**(Same file as SSDT-RHUB). The DSDT and .dsl are only left for referencing or verification.
+This will provide you with some files, the main one you care about is SSDT-SBUS-MCHC.**aml**. The DSDT and .dsl are only left for referencing or verification.
 
 The main things to note with this method:
 
