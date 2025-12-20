@@ -4,7 +4,7 @@ The second involves using SSDTTime which automates most of the process. See here
 
 To get the SSDT-PMC, run the following:
 
-* `7. Dump DSDT` then run `5. PMC`
+* `P. Dump DSDT` then run `5. PMC`
 
 This will provide you with some files, the main one you care about is SSDT-PMC.**aml**. The DSDT and .dsl are only left for referencing or verification.
 
