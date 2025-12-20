@@ -52,6 +52,7 @@
 * [IRQ Fix](/Universal/irq.md)
 * [GPU Spoof](/Universal/spoof.md)
 * [Fixing SMBus Support](/Universal/smbus.md)
+  * [SSDTTime](/Universal/smbus-methods/ssdttime.md)
   * [Manual](/Universal/smbus-methods/manual.md)
 
 ## Cleanup

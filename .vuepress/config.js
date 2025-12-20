@@ -256,6 +256,7 @@ module.exports = {
                     collapsable: true,
                     sidebarDepth: 2,
                     children: [
+                        ['/Universal/smbus-methods/ssdttime', 'SSDTTime']
                         ['/Universal/smbus-methods/manual', 'Manual'],
                     ]
                 },
