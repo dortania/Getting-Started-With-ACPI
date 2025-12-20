@@ -52,8 +52,8 @@ What are all these options?:
 * `P. Dump DSDT  - Automatically dump the system DSDT`
   * Dumps your DSDT from your firmware
 * `F. ALS0 - Defines a fake Ambient Light Sensor`
-  * This creates a fake Ambient Light Sensor to trick macOS into thinking you have one. This SSDT is required for some kexts like AsusSMC.
-  
+  * This creates a fake Ambient Light Sensor to trick macOS into thinking you have one. This SSDT is required for some kexts like AsusSMC
+
 What we want to do is select option `P. Dump DSDT` first, then select the appropriate option(s) for your system.
 
 > What about USBX?
