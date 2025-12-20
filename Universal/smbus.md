@@ -19,6 +19,7 @@ For install purposes, this SSDT isn't needed but for post-install it's recommend
 
 ## Methods to make this SSDT
 
-To make this SSDT, you only got 1 method: Doing it manually
+There are 2 main ways to make this SSDT:
 
+* [SSDTTime](/Universal/smbus-methods/ssdttime.md)
 * [Manual](/Universal/smbus-methods/manual.md)

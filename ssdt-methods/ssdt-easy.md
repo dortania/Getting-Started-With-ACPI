@@ -45,8 +45,14 @@ What are all these options?:
   * This is SSDT-XOSI, can also create a patch for OSID and keep it in the correct order.
 * `B. Fix DMAR - Remove Reserved Memory Regions from the DMAR Table`
   * This is primarily needed for devices that require VT-d functionality such as: I225 based ethernet controllers, Aquantia Ethernet Controllers and some WiFi Devices.
+* `C. SMBus - Defines an MCHC and BUS0 device for SMBus compatibility`
+  * This helps fixing AppleSMBus support in macOS, which mainly handles the System Management Bus
+* `E. ACPI > Device - Searches the loaded tables for the passed ACPI path and prints the corresponding Device Path`
+  * This prints the Device Path for the ACPI path you pass, which can be used to add specific propeties to that device from OpenCore config file
 * `P. Dump DSDT  - Automatically dump the system DSDT`
   * Dumps your DSDT from your firmware
+* `F. ALS0 - Defines a fake Ambient Light Sensor`
+  * This creates a fake Ambient Light Sensor to trick macOS into thinking you have one. This SSDT is required for some kexts like AsusSMC
 
 What we want to do is select option `P. Dump DSDT` first, then select the appropriate option(s) for your system.
 
